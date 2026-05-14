@@ -1,4 +1,4 @@
-# wefamily.ai
+# wefamily
 
 Welcome to **wefamily** – a project by [dias-smith-rock](https://github.com/dias-smith-rock).
 
