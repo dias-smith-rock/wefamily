@@ -102,7 +102,7 @@ function StatCard({
   valueClassName: string;
 }) {
   return (
-    <div className="rounded-2xl bg-white p-5 shadow-sm">
+    <div className="rounded-2xl bg-white p-4 shadow-sm md:p-5">
       <p className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
         <span className="text-sm font-medium text-gray-600">{label}</span>
         <span
@@ -139,8 +139,8 @@ function ProfileTag({ badge }: { badge: ProfileBadge }) {
 
 function MemberCard({ member }: { member: FamilyMemberMock }) {
   return (
-    <article className="rounded-3xl bg-white p-6 shadow-sm">
-      <div className="flex items-start gap-4">
+    <article className="rounded-2xl bg-white p-4 shadow-sm md:rounded-3xl md:p-6">
+      <div className="flex min-h-0 items-start gap-4">
         <div
           className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-lg font-bold uppercase text-white ${member.avatarClass}`}
           aria-hidden
@@ -166,11 +166,13 @@ function MemberCard({ member }: { member: FamilyMemberMock }) {
 
       <ul className="space-y-3">
         {member.tasks.map((task) => (
-          <li key={task} className="flex items-start gap-3">
+          <li key={task} className="flex min-h-[44px] items-start gap-3 sm:min-h-0">
             <span
-              className="mt-0.5 inline-flex h-4 w-4 shrink-0 rounded-full border-2 border-gray-300 bg-white"
+              className="mt-0.5 inline-flex h-11 w-11 shrink-0 items-center justify-center sm:h-4 sm:w-4"
               aria-hidden
-            />
+            >
+              <span className="inline-flex h-4 w-4 rounded-full border-2 border-gray-300 bg-white sm:mt-0.5" />
+            </span>
             <span className="text-sm leading-snug text-gray-500">{task}</span>
           </li>
         ))}
@@ -207,7 +209,7 @@ export function FamilyMembers() {
         />
       </div>
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {MOCK_FAMILY_MEMBERS.map((member) => (
           <MemberCard key={member.id} member={member} />
         ))}

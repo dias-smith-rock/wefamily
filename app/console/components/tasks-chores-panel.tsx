@@ -149,31 +149,33 @@ function Avatar({
 }
 
 function HollowCheckbox({ done }: { done: boolean }) {
-  if (done) {
-    return (
-      <span
-        className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-white shadow-sm ring-2 ring-emerald-500/20"
-        aria-hidden
-      >
-        <svg
-          viewBox="0 0 16 16"
-          className="h-3 w-3"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M3.5 8.5 6.5 11.5 12.5 4.5" />
-        </svg>
-      </span>
-    );
-  }
-  return (
+  const inner = done ? (
     <span
-      className="h-5 w-5 shrink-0 rounded-full border-[1.5px] border-gray-300 bg-white shadow-[inset_0_1px_0_rgba(255,255,255,0.9)]"
+      className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500 text-white shadow-sm ring-2 ring-emerald-500/20"
+      aria-hidden
+    >
+      <svg
+        viewBox="0 0 16 16"
+        className="h-3 w-3"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M3.5 8.5 6.5 11.5 12.5 4.5" />
+      </svg>
+    </span>
+  ) : (
+    <span
+      className="h-6 w-6 rounded-full border-[1.5px] border-gray-300 bg-white shadow-[inset_0_1px_0_rgba(255,255,255,0.9)]"
       aria-hidden
     />
+  );
+  return (
+    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full">
+      {inner}
+    </span>
   );
 }
 
@@ -206,7 +208,7 @@ export function TasksChoresPanel() {
 
         <div className="flex flex-wrap items-center gap-3">
           <div
-            className="inline-flex rounded-full bg-black/[0.04] p-1 ring-1 ring-black/[0.06]"
+            className="inline-flex min-h-[44px] items-center rounded-full bg-black/[0.04] p-1 ring-1 ring-black/[0.06]"
             role="tablist"
             aria-label="Task status"
           >
@@ -225,7 +227,7 @@ export function TasksChoresPanel() {
                   role="tab"
                   aria-selected={selected}
                   onClick={() => setTab(id)}
-                  className={`rounded-full px-4 py-1.5 text-[13px] font-medium transition-all ${
+                  className={`min-h-[44px] rounded-full px-4 py-2 text-[13px] font-medium transition-all sm:min-h-0 sm:py-1.5 ${
                     selected
                       ? "bg-white text-gray-900 shadow-sm ring-1 ring-black/[0.06]"
                       : "text-gray-500 hover:text-gray-700"
@@ -243,7 +245,7 @@ export function TasksChoresPanel() {
               setRefreshSpin(true);
               window.setTimeout(() => setRefreshSpin(false), 650);
             }}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-gray-500 transition-colors hover:bg-black/[0.05] hover:text-gray-800 active:scale-[0.98]"
+            className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full text-gray-500 transition-colors hover:bg-black/[0.05] hover:text-gray-800 active:scale-[0.98] sm:h-10 sm:w-10 sm:min-h-0 sm:min-w-0"
             aria-label="Refresh tasks"
           >
             <RefreshCw
@@ -254,10 +256,10 @@ export function TasksChoresPanel() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {/* Household Tasks */}
         <section
-          className="rounded-3xl bg-white p-6 shadow-sm"
+          className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm md:rounded-3xl md:p-6"
           aria-labelledby="household-heading"
         >
           <header className="mb-1 space-y-1">
@@ -281,7 +283,7 @@ export function TasksChoresPanel() {
               filteredHousehold.map((task) => (
                 <li
                   key={task.id}
-                  className="flex items-center gap-4 border-b border-gray-50 py-4 last:border-b-0"
+                  className="flex min-h-[44px] items-center gap-4 border-b border-gray-50 py-3 last:border-b-0 md:py-4"
                 >
                   <HollowCheckbox done={task.done} />
                   <div className="min-w-0 flex-1">
@@ -313,7 +315,7 @@ export function TasksChoresPanel() {
 
         {/* Assigned Tasks */}
         <section
-          className="rounded-3xl bg-white p-6 shadow-sm"
+          className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm md:rounded-3xl md:p-6"
           aria-labelledby="assigned-heading"
         >
           <header className="mb-1 space-y-1">
@@ -332,7 +334,7 @@ export function TasksChoresPanel() {
             <button
               type="button"
               onClick={() => setMemberFilter(null)}
-              className={`rounded-full px-3.5 py-1.5 text-[12px] font-semibold transition-all ${
+              className={`min-h-[44px] rounded-full px-3.5 py-2 text-[12px] font-semibold transition-all sm:min-h-0 sm:py-1.5 ${
                 memberFilter === null
                   ? "bg-gray-900 text-white shadow-sm"
                   : "bg-gray-100 text-gray-600 hover:bg-gray-200/80"
@@ -348,7 +350,7 @@ export function TasksChoresPanel() {
                   type="button"
                   onClick={() => setMemberFilter(m.id)}
                   aria-pressed={on}
-                  className={`relative rounded-full p-0.5 transition-transform active:scale-[0.97] ${
+                  className={`relative flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full p-0.5 transition-transform active:scale-[0.97] sm:min-h-0 sm:min-w-0 ${
                     on ? `ring-2 ${m.ring} ring-offset-2 ring-offset-white` : ""
                   }`}
                   title={m.name}
@@ -372,9 +374,9 @@ export function TasksChoresPanel() {
               filteredAssigned.map((task) => (
                 <li
                   key={task.id}
-                  className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-50/90 via-white to-violet-50/40 p-[1px] shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] ring-1 ring-indigo-100/80"
+                  className="group relative min-h-[44px] overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-50/90 via-white to-violet-50/40 p-[1px] shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] ring-1 ring-indigo-100/80"
                 >
-                  <div className="flex items-center gap-4 rounded-[15px] bg-white/85 px-4 py-3.5 backdrop-blur-[2px]">
+                  <div className="relative flex min-h-[44px] items-center rounded-[15px] bg-white/85 px-3 py-3 backdrop-blur-[2px] md:px-4 md:py-3.5">
                     <div className="absolute left-0 top-3 bottom-3 w-[3px] rounded-full bg-gradient-to-b from-indigo-400 to-violet-400 opacity-90" />
                     <div className="relative flex w-full items-center gap-4 pl-1">
                       <HollowCheckbox done={task.done} />

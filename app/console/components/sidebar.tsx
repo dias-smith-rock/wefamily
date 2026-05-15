@@ -25,7 +25,7 @@ type SidebarProps = {
 
 export function Sidebar({ user, active, onSelect }: SidebarProps) {
   return (
-    <aside className="fixed left-0 top-0 z-40 flex h-screen w-64 flex-col border-r border-gray-100 bg-white">
+    <aside className="fixed left-0 top-0 z-40 hidden h-screen w-64 flex-col border-r border-gray-100 bg-white md:flex">
       <div className="border-b border-gray-100/80 px-5 pb-5 pt-6">
         <div className="flex items-center gap-3">
           <div
@@ -54,7 +54,7 @@ export function Sidebar({ user, active, onSelect }: SidebarProps) {
               key={id}
               type="button"
               onClick={() => onSelect(id)}
-              className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-[15px] font-medium transition-colors ${
+              className={`flex min-h-[44px] w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-[15px] font-medium transition-colors ${
                 isActive
                   ? "bg-blue-600 text-white shadow-sm shadow-blue-600/25"
                   : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"

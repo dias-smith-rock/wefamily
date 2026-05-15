@@ -182,17 +182,17 @@ export function DashboardView({ user }: DashboardViewProps) {
   const subtitle = useOverviewSubtitle(user.name);
 
   return (
-    <div className="mx-auto max-w-6xl space-y-8">
+    <div className="mx-auto max-w-6xl space-y-6 md:space-y-8">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight text-gray-900">
+        <h1 className="text-2xl font-bold tracking-tight text-gray-900 md:text-3xl">
           Dashboard
         </h1>
-        <p className="mt-2 text-base text-gray-500">{subtitle}</p>
+        <p className="mt-2 text-sm text-gray-500 md:text-base">{subtitle}</p>
       </div>
 
       {/* Summary row */}
-      <div className="grid gap-4 sm:grid-cols-3">
-        <div className="rounded-3xl border border-gray-100 bg-white p-6 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <div className="rounded-2xl border border-gray-100 bg-white p-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] md:rounded-3xl md:p-6">
           <div className="flex items-start justify-between gap-3">
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-wider text-gray-400">
@@ -211,7 +211,7 @@ export function DashboardView({ user }: DashboardViewProps) {
           </div>
         </div>
 
-        <div className="rounded-3xl border border-gray-100 bg-white p-6 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+        <div className="rounded-2xl border border-gray-100 bg-white p-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] md:rounded-3xl md:p-6">
           <div className="flex items-start justify-between gap-3">
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-wider text-gray-400">
@@ -230,7 +230,7 @@ export function DashboardView({ user }: DashboardViewProps) {
           </div>
         </div>
 
-        <div className="rounded-3xl border border-gray-100 bg-white p-6 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+        <div className="rounded-2xl border border-gray-100 bg-white p-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] md:rounded-3xl md:p-6">
           <div className="flex items-start justify-between gap-3">
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-wider text-gray-400">
@@ -251,22 +251,25 @@ export function DashboardView({ user }: DashboardViewProps) {
       </div>
 
       {/* Middle row */}
-      <div className="grid gap-6 lg:grid-cols-5">
-        <section className="rounded-3xl border border-gray-100 bg-white p-6 shadow-[0_2px_12px_rgba(0,0,0,0.04)] lg:col-span-3">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-5">
+        <section className="rounded-2xl border border-gray-100 bg-white p-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] md:rounded-3xl md:p-6 lg:col-span-3">
           <div className="flex items-center justify-between gap-3">
             <h2 className="text-lg font-bold text-gray-900">Tasks & Chores</h2>
             <button
               type="button"
-              className="text-sm font-semibold text-blue-600 transition hover:text-blue-700"
+              className="inline-flex min-h-[44px] items-center rounded-lg px-2 text-sm font-semibold text-blue-600 transition hover:bg-blue-50 hover:text-blue-700 md:min-h-0 md:px-0"
             >
               View all
             </button>
           </div>
           <ul className="mt-5 divide-y divide-gray-100">
             {MOCK_DASHBOARD_TASKS.map((task) => (
-              <li key={task.id} className="flex items-start gap-3 py-4 first:pt-0">
+              <li
+                key={task.id}
+                className="flex min-h-[44px] items-start gap-3 py-3 first:pt-0 md:items-center md:py-4"
+              >
                 <span
-                  className={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border ${
+                  className={`mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border md:h-6 md:w-6 ${
                     task.done
                       ? "border-emerald-500 bg-emerald-500 text-white"
                       : "border-gray-300 bg-white"
@@ -274,7 +277,7 @@ export function DashboardView({ user }: DashboardViewProps) {
                   aria-hidden
                 >
                   {task.done ? (
-                    <Check className="h-3.5 w-3.5" strokeWidth={3} />
+                    <Check className="h-4 w-4 md:h-3.5 md:w-3.5" strokeWidth={3} />
                   ) : null}
                 </span>
                 <div className="min-w-0 flex-1">
@@ -298,7 +301,7 @@ export function DashboardView({ user }: DashboardViewProps) {
         </section>
 
         <div className="flex flex-col gap-6 lg:col-span-2">
-          <section className="rounded-3xl border border-gray-100 bg-white p-6 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+          <section className="rounded-2xl border border-gray-100 bg-white p-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] md:rounded-3xl md:p-6">
             <h2 className="text-lg font-bold text-gray-900">Upcoming events</h2>
             <ul className="mt-4 space-y-4">
               {MOCK_EVENTS.map((ev) => (
@@ -316,7 +319,7 @@ export function DashboardView({ user }: DashboardViewProps) {
             </ul>
           </section>
 
-          <section className="rounded-3xl border border-gray-100 bg-white p-6 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+          <section className="rounded-2xl border border-gray-100 bg-white p-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] md:rounded-3xl md:p-6">
             <h2 className="text-lg font-bold text-gray-900">Recent activity</h2>
             <ul className="relative mt-4 space-y-0 pl-2">
               <div
@@ -346,13 +349,13 @@ export function DashboardView({ user }: DashboardViewProps) {
       </div>
 
       {/* Family members */}
-      <section className="rounded-3xl border border-gray-100 bg-white p-6 shadow-[0_2px_12px_rgba(0,0,0,0.04)] md:p-8">
+      <section className="rounded-2xl border border-gray-100 bg-white p-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] md:rounded-3xl md:p-6 lg:p-8">
         <h2 className="text-lg font-bold text-gray-900">Family members</h2>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {MOCK_MEMBER_CARDS.map((m) => (
             <div
               key={m.id}
-              className="rounded-2xl border border-gray-100 bg-gray-50/50 p-5 transition hover:border-gray-200 hover:bg-white"
+              className="rounded-2xl border border-gray-100 bg-gray-50/50 p-4 transition hover:border-gray-200 hover:bg-white md:p-5"
             >
               <div className="flex items-center gap-3">
                 <div
