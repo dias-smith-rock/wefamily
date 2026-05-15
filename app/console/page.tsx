@@ -18,6 +18,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
  * 数据库：`profiles.household_id`，`tasks` 含 household_id / title / description / completed / due_date
  */
 
+/** Apple Sign in with Apple — Web 端 Services ID（须与 Apple Developer / Supabase 配置一致） */
+const APPLE_WEB_SERVICES_ID = "ai.wefamily.app";
+
 type Task = {
   id: string;
   title: string;
@@ -168,33 +171,39 @@ export default function WebConsole() {
     };
   }, [loadTasks]);
 
-  // 处理 OAuth 登录
-  const handleLogin = async (provider: 'apple' | 'google') => {
+  async function handleLogin(provider: "apple" | "google") {
+    const supabase = clientRef.current;
+    if (!supabase || isAuthenticating) return;
+
+    setAuthError(null);
     setIsAuthenticating(true);
+
     try {
-      const authOptions: any = {
-        redirectTo: `${window.location.origin}/console`, // 登录后跳回控制台
+      const options: {
+        redirectTo: string;
+        queryParams?: Record<string, string>;
+      } = {
+        redirectTo: `${window.location.origin}/console`,
       };
 
-      // ⚠️ 核心修复：如果是 Apple 登录，必须显式传入 Web 端的 Services ID
-      if (provider === 'apple') {
-        authOptions.queryParams = {
-          client_id: 'app.wefamily.app' // 请确认这里是你真实的 Web Services ID
+      // 强制使用 Web Services ID，避免 Supabase 在多个 Client ID 时误选第一个（iOS Bundle ID）
+      if (provider === "apple") {
+        options.queryParams = {
+          client_id: APPLE_WEB_SERVICES_ID,
         };
       }
 
       const { error } = await supabase.auth.signInWithOAuth({
-        provider: provider,
-        options: authOptions
+        provider,
+        options,
       });
-      
       if (error) throw error;
-    } catch (error) {
-      console.error('登录失败:', error);
-      alert('登录请求失败，请稍后重试');
+    } catch (err) {
+      console.error("登录失败:", err);
+      setAuthError("登录请求失败，请稍后重试");
       setIsAuthenticating(false);
     }
-  };
+  }
 
   async function handleSignOut() {
     const supabase = clientRef.current;
