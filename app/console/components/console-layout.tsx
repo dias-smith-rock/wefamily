@@ -30,10 +30,12 @@ function formatHeaderDate(d: Date) {
 
 type ConsoleLayoutProps = {
   user: ConsoleUser;
+  /** 当前家庭 ID，供后续任务等模块查询使用 */
+  householdId?: string | null;
   children?: React.ReactNode;
 };
 
-export function ConsoleLayout({ user, children }: ConsoleLayoutProps) {
+export function ConsoleLayout({ user, householdId, children }: ConsoleLayoutProps) {
   const [active, setActive] = useState<ConsoleNavId>("dashboard");
   const [headerDate, setHeaderDate] = useState("");
   const [headerDateTime, setHeaderDateTime] = useState<string | undefined>(
@@ -88,9 +90,17 @@ export function ConsoleLayout({ user, children }: ConsoleLayoutProps) {
                   {headerDate || "…"}
                 </time>
               </div>
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-600 text-xs font-semibold text-white sm:hidden">
-                {user.initials}
-              </div>
+              {user.avatarUrl ? (
+                <img
+                  src={user.avatarUrl}
+                  alt=""
+                  className="flex h-10 w-10 shrink-0 rounded-full object-cover ring-1 ring-black/5 sm:hidden"
+                />
+              ) : (
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-600 text-xs font-semibold text-white sm:hidden">
+                  {user.initials}
+                </div>
+              )}
               <button
                 type="button"
                 className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full text-gray-400 transition hover:bg-gray-200/80 hover:text-gray-700 sm:min-h-0 sm:min-w-0 sm:p-1.5"
@@ -114,7 +124,10 @@ export function ConsoleLayout({ user, children }: ConsoleLayoutProps) {
           </div>
         </header>
 
-        <main className="p-4 md:p-8">
+        <main
+          className="p-4 md:p-8"
+          data-household-id={householdId ?? undefined}
+        >
           {children ??
             (active === "members" ? (
               <FamilyMembers />

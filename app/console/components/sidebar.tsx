@@ -28,12 +28,20 @@ export function Sidebar({ user, active, onSelect }: SidebarProps) {
     <aside className="fixed left-0 top-0 z-40 hidden h-screen w-64 flex-col border-r border-gray-100 bg-white md:flex">
       <div className="border-b border-gray-100/80 px-5 pb-5 pt-6">
         <div className="flex items-center gap-3">
-          <div
-            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-blue-600 text-sm font-semibold text-white"
-            aria-hidden
-          >
-            {user.initials}
-          </div>
+          {user.avatarUrl ? (
+            <img
+              src={user.avatarUrl}
+              alt=""
+              className="h-11 w-11 shrink-0 rounded-full object-cover ring-1 ring-black/5"
+            />
+          ) : (
+            <div
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-blue-600 text-sm font-semibold text-white"
+              aria-hidden
+            >
+              {user.initials}
+            </div>
+          )}
           <div className="min-w-0">
             <p className="truncate font-semibold text-gray-900">{user.name}</p>
             <span className="mt-1 inline-flex rounded-full bg-blue-50 px-2 py-0.5 text-[11px] font-medium text-blue-600">
