@@ -168,27 +168,33 @@ export default function WebConsole() {
     };
   }, [loadTasks]);
 
-  async function handleLogin(provider: "apple" | "google") {
-    const supabase = clientRef.current;
-    if (!supabase || isAuthenticating) return;
-
-    setAuthError(null);
+  // 处理 OAuth 登录
+  const handleLogin = async (provider: 'apple' | 'google') => {
     setIsAuthenticating(true);
-
     try {
+      const authOptions: any = {
+        redirectTo: `${window.location.origin}/console`, // 登录后跳回控制台
+      };
+
+      // ⚠️ 核心修复：如果是 Apple 登录，必须显式传入 Web 端的 Services ID
+      if (provider === 'apple') {
+        authOptions.queryParams = {
+          client_id: 'app.wefamily.app' // 请确认这里是你真实的 Web Services ID
+        };
+      }
+
       const { error } = await supabase.auth.signInWithOAuth({
-        provider,
-        options: {
-          redirectTo: `${window.location.origin}/console`,
-        },
+        provider: provider,
+        options: authOptions
       });
+      
       if (error) throw error;
-    } catch (err) {
-      console.error("登录失败:", err);
-      setAuthError("登录请求失败，请稍后重试");
+    } catch (error) {
+      console.error('登录失败:', error);
+      alert('登录请求失败，请稍后重试');
       setIsAuthenticating(false);
     }
-  }
+  };
 
   async function handleSignOut() {
     const supabase = clientRef.current;
