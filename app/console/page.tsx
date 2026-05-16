@@ -1,13 +1,11 @@
 "use client";
 
-import {
-  createClient,
-  type Session,
-  type SupabaseClient,
-} from "@supabase/supabase-js";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ConsoleLayout } from "./components/console-layout";
+import { useConsoleAuth } from "./hooks/use-console-auth";
 import type { ConsoleUser, HouseholdMembership } from "./types";
+import { requireAuthenticatedSession } from "@/lib/auth/require-session";
+import { getSupabaseBrowserClient } from "@/lib/supabase/browser-client";
 
 function GoogleMark({ className }: { className?: string }) {
   return (
@@ -69,163 +67,94 @@ function membershipToConsoleUser(
 }
 
 export default function ConsolePage() {
-  const clientRef = useRef<SupabaseClient | null>(null);
+  const { auth, isAuthenticating, authError, signInWithOAuth, signOut, refreshAuth } =
+    useConsoleAuth();
 
-  const [session, setSession] = useState<Session | null>(null);
   const [currentMember, setCurrentMember] = useState<HouseholdMembership | null>(
     null,
   );
-  const [isLoading, setIsLoading] = useState(true);
-  const [configError, setConfigError] = useState(false);
-  /** 已登录但未找到 status=active 的家庭成员关系 */
+  const [membershipLoading, setMembershipLoading] = useState(false);
   const [noMembership, setNoMembership] = useState(false);
   const [membershipQueryError, setMembershipQueryError] = useState<string | null>(
     null,
   );
-  const [isAuthenticating, setIsAuthenticating] = useState(false);
-  const [authError, setAuthError] = useState<string | null>(null);
 
-  const loadActiveMembership = useCallback(
-    async (supabase: SupabaseClient, userId: string) => {
-      setMembershipQueryError(null);
-      const { data, error } = await supabase
-        .from("household_memberships")
-        .select("id, household_id, role, nickname, avatar_url, status")
-        .eq("user_id", userId)
-        .eq("status", "active")
-        .maybeSingle();
+  const loadActiveMembership = useCallback(async (userId: string) => {
+    const supabase = getSupabaseBrowserClient();
+    if (!supabase) return;
 
-      if (error) {
-        setMembershipQueryError(error.message);
-        setCurrentMember(null);
-        setNoMembership(false);
-        return;
-      }
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
 
-      if (!data) {
-        setCurrentMember(null);
-        setNoMembership(true);
-        return;
-      }
-
-      setCurrentMember(data as HouseholdMembership);
+    if (!session?.user) {
+      setCurrentMember(null);
       setNoMembership(false);
-    },
-    [],
-  );
-
-  useEffect(() => {
-    const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-
-    if (!url || !key) {
-      setConfigError(true);
-      setIsLoading(false);
+      setMembershipQueryError(null);
+      void refreshAuth();
       return;
     }
 
-    if (!clientRef.current) {
-      clientRef.current = createClient(url, key, {
-        auth: {
-          persistSession: true,
-          detectSessionInUrl: true,
-        },
-      });
+    const guard = await requireAuthenticatedSession(supabase);
+    if (!guard.ok) {
+      void refreshAuth();
+      return;
     }
 
-    const supabase = clientRef.current;
-    let cancelled = false;
-
-    async function applySession(next: Session | null) {
-      if (cancelled) return;
-      setSession(next);
-      if (!next?.user) {
-        setCurrentMember(null);
-        setNoMembership(false);
-        setMembershipQueryError(null);
-        return;
-      }
-      await loadActiveMembership(supabase, next.user.id);
-    }
-
-    async function bootstrap() {
-      setIsLoading(true);
-      setMembershipQueryError(null);
-      setNoMembership(false);
-      const {
-        data: { session: initial },
-      } = await supabase.auth.getSession();
-      if (cancelled) return;
-      await applySession(initial);
-      if (cancelled) return;
-      setIsLoading(false);
-    }
-
-    void bootstrap();
-
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange(async (event, nextSession) => {
-      if (cancelled) return;
-      if (event === "INITIAL_SESSION") return;
-
-      if (event === "SIGNED_OUT") {
-        setSession(null);
-        setCurrentMember(null);
-        setNoMembership(false);
-        setMembershipQueryError(null);
-        setIsAuthenticating(false);
-        setIsLoading(false);
-        return;
-      }
-
-      if (event === "SIGNED_IN" || event === "USER_UPDATED") {
-        setIsAuthenticating(false);
-        setIsLoading(true);
-        await applySession(nextSession);
-        if (!cancelled) setIsLoading(false);
-      }
-    });
-
-    return () => {
-      cancelled = true;
-      subscription.unsubscribe();
-    };
-  }, [loadActiveMembership]);
-
-  async function handleOAuthLogin(provider: "apple" | "google") {
-    const supabase = clientRef.current;
-    if (!supabase || isAuthenticating) return;
-    setAuthError(null);
-    setIsAuthenticating(true);
-    try {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider,
-        options: {
-          redirectTo: `${window.location.origin}/console`,
-        },
-      });
-      if (error) throw error;
-    } catch (e) {
-      console.error(e);
-      setAuthError("登录请求失败，请稍后重试");
-      setIsAuthenticating(false);
-    }
-  }
-
-  async function handleSignOut() {
-    const supabase = clientRef.current;
-    if (!supabase) return;
-    setIsLoading(true);
-    await supabase.auth.signOut();
-    setSession(null);
-    setCurrentMember(null);
-    setNoMembership(false);
+    setMembershipLoading(true);
     setMembershipQueryError(null);
-    setIsLoading(false);
+
+    const { data, error } = await supabase
+      .from("household_memberships")
+      .select("id, household_id, role, nickname, avatar_url, status")
+      .eq("user_id", userId)
+      .eq("status", "active")
+      .maybeSingle();
+
+    setMembershipLoading(false);
+
+    if (error) {
+      setMembershipQueryError(error.message);
+      setCurrentMember(null);
+      setNoMembership(false);
+      return;
+    }
+
+    if (!data) {
+      setCurrentMember(null);
+      setNoMembership(true);
+      return;
+    }
+
+    setCurrentMember(data as HouseholdMembership);
+    setNoMembership(false);
+  }, [refreshAuth]);
+
+  useEffect(() => {
+    if (auth.status !== "authenticated") {
+      setCurrentMember(null);
+      setNoMembership(false);
+      setMembershipQueryError(null);
+      setMembershipLoading(false);
+      return;
+    }
+    void loadActiveMembership(auth.user.id);
+  }, [auth, loadActiveMembership]);
+
+  const handleSessionLost = useCallback(() => {
+    void refreshAuth();
+  }, [refreshAuth]);
+
+  if (auth.status === "loading" || membershipLoading) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center gap-3 bg-[#F2F2F7] text-gray-500">
+        <div className="h-9 w-9 animate-spin rounded-full border-2 border-gray-300 border-t-gray-600" />
+        <span className="text-sm font-medium">验证登录状态…</span>
+      </div>
+    );
   }
 
-  if (configError) {
+  if (auth.status === "config_error") {
     return (
       <div className="flex min-h-screen items-center justify-center bg-[#F2F2F7] px-6">
         <div className="max-w-md rounded-3xl border border-gray-200 bg-white p-8 text-center shadow-sm">
@@ -241,16 +170,7 @@ export default function ConsolePage() {
     );
   }
 
-  if (isLoading) {
-    return (
-      <div className="flex min-h-screen flex-col items-center justify-center gap-3 bg-[#F2F2F7] text-gray-500">
-        <div className="h-9 w-9 animate-spin rounded-full border-2 border-gray-300 border-t-gray-600" />
-        <span className="text-sm font-medium">加载中…</span>
-      </div>
-    );
-  }
-
-  if (!session?.user) {
+  if (auth.status === "unauthenticated") {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center bg-[#FAFAFA] p-6 font-sans">
         <div className="flex w-full max-w-md flex-col items-center rounded-3xl border border-gray-100 bg-white p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
@@ -260,13 +180,21 @@ export default function ConsolePage() {
           <h1 className="mb-2 text-xl font-semibold text-gray-900">
             登录 Web 控制台
           </h1>
-          <p className="mb-10 text-center text-sm leading-relaxed text-gray-500">
+          <p className="mb-6 text-center text-sm leading-relaxed text-gray-500">
             使用 Apple 或 Google 账号登录以查看家庭数据（只读）。
           </p>
+          <p className="mb-8 text-center text-xs text-gray-400">
+            登录状态保持 10 分钟，超时需重新登录。
+          </p>
+          {auth.message ? (
+            <p className="mb-4 w-full rounded-xl bg-amber-50 px-3 py-2 text-center text-sm text-amber-800">
+              {auth.message}
+            </p>
+          ) : null}
           <div className="w-full space-y-4">
             <button
               type="button"
-              onClick={() => void handleOAuthLogin("apple")}
+              onClick={() => void signInWithOAuth("apple")}
               disabled={isAuthenticating}
               className="flex w-full min-h-[44px] items-center justify-center gap-3 rounded-full bg-black px-6 py-3.5 font-medium text-white transition hover:bg-gray-800 disabled:opacity-50"
             >
@@ -282,7 +210,7 @@ export default function ConsolePage() {
             </button>
             <button
               type="button"
-              onClick={() => void handleOAuthLogin("google")}
+              onClick={() => void signInWithOAuth("google")}
               disabled={isAuthenticating}
               className="flex w-full min-h-[44px] items-center justify-center gap-3 rounded-full border border-gray-200 bg-white px-6 py-3.5 font-medium text-gray-700 shadow-sm transition hover:bg-gray-50 disabled:opacity-50"
             >
@@ -306,7 +234,7 @@ export default function ConsolePage() {
           <p className="mt-3 text-sm text-red-700">{membershipQueryError}</p>
           <button
             type="button"
-            onClick={() => void handleSignOut()}
+            onClick={() => void signOut()}
             className="mt-6 min-h-[44px] w-full rounded-full bg-gray-900 px-4 py-2 text-sm font-semibold text-white hover:bg-gray-800"
           >
             退出登录
@@ -327,7 +255,7 @@ export default function ConsolePage() {
           </p>
           <button
             type="button"
-            onClick={() => void handleSignOut()}
+            onClick={() => void signOut()}
             className="mt-8 min-h-[44px] w-full rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50"
           >
             退出登录
@@ -339,13 +267,16 @@ export default function ConsolePage() {
 
   const consoleUser = membershipToConsoleUser(
     currentMember,
-    session.user.email,
+    auth.user.email,
   );
 
   return (
     <ConsoleLayout
       user={consoleUser}
       householdId={currentMember.household_id}
+      currentUserId={auth.user.id}
+      onSessionLost={handleSessionLost}
+      onSignOut={signOut}
     />
   );
 }

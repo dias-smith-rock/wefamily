@@ -1,6 +1,6 @@
-export type ConsoleNavId = "dashboard" | "tasks" | "members" | "settings";
+export type ConsoleNavId = "calendar" | "family" | "me";
 
-/** 供侧栏 / Header 展示的用户摘要（由 household_memberships + Auth 映射而来） */
+/** 供界面展示的用户摘要（由 household_memberships + Auth 映射而来） */
 export type ConsoleUser = {
   name: string;
   initials: string;
