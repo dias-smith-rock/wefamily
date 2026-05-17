@@ -4,7 +4,12 @@ import { Cloud, UserPlus, UserRound } from "lucide-react";
 import { useEffect, useState } from "react";
 import { fetchMemberTasks } from "../../family/api";
 import type { FamilyMemberDisplay, FamilyPageData, TaskRow } from "../../family/types";
-import { formatDateZh, formatPhoneDisplay } from "../../family/utils";
+import {
+  formatDateZh,
+  formatPhoneDisplay,
+  normalizeIdArray,
+  resolveTaskForWhomMembers,
+} from "../../family/utils";
 import {
   ActionSheetPanel,
   AlertPanel,
@@ -43,6 +48,31 @@ function MemberAvatar({
       aria-hidden
     >
       {member.initials}
+    </div>
+  );
+}
+
+function TaskForWhomAvatars({ members }: { members: FamilyMemberDisplay[] }) {
+  if (members.length === 0) return null;
+  return (
+    <div className="flex -space-x-2 overflow-hidden" aria-hidden>
+      {members.map((member) =>
+        member.avatarUrl ? (
+          <img
+            key={member.membershipId}
+            src={member.avatarUrl}
+            alt=""
+            className="inline-block h-6 w-6 rounded-full object-cover ring-2 ring-white"
+          />
+        ) : (
+          <span
+            key={member.membershipId}
+            className={`inline-flex h-6 w-6 items-center justify-center rounded-full text-[10px] font-semibold text-white ring-2 ring-white ${member.avatarClass}`}
+          >
+            {member.initials}
+          </span>
+        ),
+      )}
     </div>
   );
 }
@@ -155,11 +185,13 @@ export function SelfProfileSheet({
 export function MemberDetailSheet({
   member,
   householdId,
+  allMembers,
   open,
   onClose,
 }: {
   member: FamilyMemberDisplay;
   householdId: string;
+  allMembers: FamilyMemberDisplay[];
   open: boolean;
   onClose: () => void;
 }) {
@@ -230,19 +262,37 @@ export function MemberDetailSheet({
               <p className="mt-3 text-sm text-gray-400">暂无未完成任务</p>
             ) : (
               <ul className="mt-3 space-y-2">
-                {tasks.map((task) => (
-                  <li
-                    key={task.id}
-                    className="rounded-2xl bg-white px-4 py-3 shadow-sm"
-                  >
-                    <p className="font-medium text-gray-900">{task.title}</p>
-                    {task.due_date ? (
-                      <p className="mt-0.5 text-xs text-gray-400">
-                        截止 {formatDateZh(task.due_date)}
-                      </p>
-                    ) : null}
-                  </li>
-                ))}
+                {tasks.map((task) => {
+                  const targetIds = normalizeIdArray(task.target_profile_ids);
+                  const forWhomMembers = resolveTaskForWhomMembers(
+                    task,
+                    allMembers,
+                  );
+                  const isEveryone = targetIds.length === 0;
+
+                  return (
+                    <li
+                      key={task.id}
+                      className="flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-sm"
+                    >
+                      <div className="min-w-0 flex-1">
+                        <p className="font-medium text-gray-900">{task.title}</p>
+                        {task.due_date ? (
+                          <p className="mt-0.5 text-xs text-gray-400">
+                            截止 {formatDateZh(task.due_date)}
+                          </p>
+                        ) : null}
+                      </div>
+                      {isEveryone ? (
+                        <span className="shrink-0 text-xs text-gray-400">
+                          所有人
+                        </span>
+                      ) : (
+                        <TaskForWhomAvatars members={forWhomMembers} />
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             )}
           </div>
@@ -345,6 +395,7 @@ export function FamilyModals({
         <MemberDetailSheet
           member={modal.member}
           householdId={householdId}
+          allMembers={[data.self, ...data.others]}
           open
           onClose={onClose}
         />

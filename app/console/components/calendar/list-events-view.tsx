@@ -5,6 +5,7 @@ import {
   groupEventsByDate,
 } from "../../calendar/list-utils";
 import type { CalendarEvent } from "../../calendar/types";
+import { ForWhomListTrailing } from "./for-whom-display";
 import { useCallback, useEffect, useMemo } from "react";
 
 /** 吸顶 Header 下方锚点（safe-area + 导航栏近似高度） */
@@ -23,20 +24,20 @@ function CompactTaskCard({
     <button
       type="button"
       onClick={onPress}
-      className="mx-4 mb-3 flex items-center rounded-2xl border border-gray-100 bg-white p-4 text-left shadow-sm transition active:opacity-95"
+      className="mx-4 mb-3 flex w-auto flex-1 items-center justify-between self-stretch rounded-2xl border border-gray-100 bg-white p-4 text-left shadow-sm transition active:opacity-95"
     >
-      <span
-        className="mr-3 h-2 w-2 shrink-0 rounded-full bg-blue-500"
-        aria-hidden
-      />
-      <span className="min-w-0 flex-1">
-        <span className="block text-base font-bold text-gray-900">
-          {event.title}
-        </span>
-        <span className="mt-1 block text-xs text-gray-400 tabular-nums">
-          {timeLabel}
-        </span>
-      </span>
+      <div className="flex min-w-0 shrink items-center gap-3">
+        <span
+          className="h-2 w-2 shrink-0 rounded-full bg-blue-500"
+          aria-hidden
+        />
+        <div className="min-w-0">
+          <p className="truncate font-semibold text-gray-900">{event.title}</p>
+          <p className="mt-0.5 text-xs tabular-nums text-gray-400">{timeLabel}</p>
+        </div>
+      </div>
+
+      <ForWhomListTrailing event={event} className="ml-4 shrink-0" />
     </button>
   );
 }
@@ -128,10 +129,11 @@ export function ListEventsView({
   }
 
   return (
-    <div className="pb-32 pt-1">
+    <div className="w-full pb-32 pt-1">
       {groups.map((group) => (
         <section
           key={group.date.toISOString()}
+          className="flex w-full flex-col items-stretch"
           data-list-date-section
           data-date={group.date.toISOString()}
           aria-label={group.weekdayLabel}
@@ -140,13 +142,15 @@ export function ListEventsView({
             dayNumber={group.dayNumber}
             weekdayLabel={group.weekdayLabel}
           />
-          {group.events.map((event) => (
-            <CompactTaskCard
-              key={event.id}
-              event={event}
-              onPress={() => onEventPress(event)}
-            />
-          ))}
+          <div className="flex w-full flex-col items-stretch">
+            {group.events.map((event) => (
+              <CompactTaskCard
+                key={event.id}
+                event={event}
+                onPress={() => onEventPress(event)}
+              />
+            ))}
+          </div>
         </section>
       ))}
     </div>

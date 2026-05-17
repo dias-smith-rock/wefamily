@@ -28,9 +28,9 @@ export function ConsoleLayout({
 
   return (
     <div className="min-h-dvh bg-[#F2F2F7] font-sans text-gray-900">
-      <div className="mx-auto min-h-dvh max-w-lg">
+      <div className="mx-auto min-h-dvh w-full max-w-lg min-w-0">
         <main
-          className="pb-[calc(5.5rem+env(safe-area-inset-bottom))]"
+          className="min-w-0 w-full pb-[calc(5.5rem+env(safe-area-inset-bottom))]"
           data-household-id={householdId ?? undefined}
         >
           {children ??

@@ -1,7 +1,11 @@
 "use client";
 
 import type { CalendarEvent, CalendarPerson } from "../../calendar/types";
-import { isHouseholdWideBeneficiaries } from "../../calendar/utils";
+import {
+  isHouseholdWideBeneficiaries,
+  normalizeIdArray,
+  personIsInForWhomList,
+} from "../../calendar/utils";
 import {
   getTaskDetailFieldValues,
   type TaskPrioritySegment,
@@ -98,19 +102,19 @@ function BeneficiaryAvatar({
 
   return (
     <div className="flex w-[72px] shrink-0 flex-col items-center gap-1.5">
-      <div className="relative">
+      <div className="relative p-0.5">
         {person.avatarUrl ? (
           <img
             src={person.avatarUrl}
             alt=""
             className={`h-14 w-14 rounded-full object-cover ring-1 ring-black/5 ${
-              selected ? "ring-2 ring-blue-500" : ""
+              selected ? "ring-2 ring-blue-500 ring-offset-2 ring-offset-white" : ""
             }`}
           />
         ) : (
           <div
             className={`flex h-14 w-14 items-center justify-center rounded-full text-sm font-semibold text-white ${person.avatarClass} ${
-              selected ? "ring-2 ring-blue-500 ring-offset-1" : ""
+              selected ? "ring-2 ring-blue-500 ring-offset-2 ring-offset-white" : ""
             }`}
           >
             {person.initials}
@@ -161,15 +165,14 @@ function PrioritySegment({
 function resolveForWhomDisplay(event: CalendarEvent): {
   isEveryone: boolean;
   people: CalendarPerson[];
-  selectedId: string | null;
+  forWhomIds: string[];
 } {
   const people = event.beneficiaries ?? [];
+  const forWhomIds = normalizeIdArray(event.forWhomIds);
   if (isHouseholdWideBeneficiaries(event)) {
-    return { isEveryone: true, people: [], selectedId: null };
+    return { isEveryone: true, people: [], forWhomIds: [] };
   }
-  const selectedId =
-    event.forPerson?.id ?? people[0]?.id ?? null;
-  return { isEveryone: false, people, selectedId };
+  return { isEveryone: false, people, forWhomIds };
 }
 
 export function TaskDetailSheet({
@@ -239,9 +242,9 @@ export function TaskDetailSheet({
               />
             </InsetCard>
 
-            <InsetCard>
+            <InsetCard className="overflow-visible">
               <CardSectionTitle icon={Users}>为了谁</CardSectionTitle>
-              <div className="flex gap-3 overflow-x-auto px-4 pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              <div className="flex gap-3 overflow-x-auto overflow-y-visible px-4 pb-5 pt-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                 {forWhom.isEveryone ? (
                   <BeneficiaryAvatar person={null} selected={false} />
                 ) : (
@@ -249,7 +252,7 @@ export function TaskDetailSheet({
                     <BeneficiaryAvatar
                       key={person.id}
                       person={person}
-                      selected={person.id === forWhom.selectedId}
+                      selected={personIsInForWhomList(person, forWhom.forWhomIds)}
                     />
                   ))
                 )}

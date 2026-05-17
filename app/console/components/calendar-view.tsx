@@ -1,13 +1,18 @@
 "use client";
 
 import { fetchCalendarPageData } from "../calendar/api";
+import {
+  reviveCalendarEvents,
+  serializeCalendarEvents,
+} from "../calendar/event-cache";
 import type {
   CalendarDay,
   CalendarEvent,
   CalendarModalState,
-  CalendarPerson,
   CalendarViewMode,
 } from "../calendar/types";
+import { useCachedSupabase } from "../hooks/use-cached-supabase";
+import { LOCAL_CACHE_KEYS } from "../lib/local-cache";
 import { groupEventsByDate } from "../calendar/list-utils";
 import {
   buildWeekView,
@@ -23,9 +28,10 @@ import {
   Sparkles,
   UserRound,
 } from "lucide-react";
+import { ForWhomCardRow } from "./calendar/for-whom-display";
 import { SignOutButton } from "./console-sign-out-button";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { getSupabaseBrowserClient } from "@/lib/supabase/browser-client";
+import { dateKey, startOfDay } from "../calendar/month-utils";
 import { startOfMonth } from "../calendar/month-utils";
 import { CalendarModals } from "./calendar/calendar-modals";
 import { MonthPickerSheet } from "./calendar/month-picker-sheet";
@@ -45,26 +51,6 @@ const VIEW_MENU_ITEMS: {
   { id: "month", label: "Month", enabled: false },
   { id: "year", label: "Year", enabled: false },
 ];
-
-function PersonBubble({ person }: { person: CalendarPerson }) {
-  if (person.avatarUrl) {
-    return (
-      <img
-        src={person.avatarUrl}
-        alt=""
-        className="h-8 w-8 shrink-0 rounded-full object-cover ring-1 ring-black/5"
-      />
-    );
-  }
-  return (
-    <div
-      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-semibold text-white ${person.avatarClass}`}
-      aria-hidden
-    >
-      {person.initials}
-    </div>
-  );
-}
 
 function CalendarNavBar({
   monthLabel,
@@ -102,7 +88,7 @@ function CalendarNavBar({
   }, [isViewMenuOpen, onViewMenuOpenChange]);
 
   return (
-    <header className="sticky top-0 z-30 bg-[#F2F2F7]/90 backdrop-blur-sm">
+    <header className="sticky top-0 z-40 overflow-visible bg-[#F2F2F7]/80 backdrop-blur-md">
       <div className="flex items-center justify-between gap-3 px-4 pb-3 pt-[max(0.5rem,env(safe-area-inset-top))]">
         <div className="relative shrink-0" ref={viewMenuRef}>
           <button
@@ -119,7 +105,7 @@ function CalendarNavBar({
           {isViewMenuOpen ? (
             <div
               role="menu"
-              className="absolute top-full left-4 z-50 mt-2 min-w-[160px] rounded-2xl border border-gray-100 bg-white/95 py-2 shadow-lg backdrop-blur-xl"
+              className="absolute top-full left-0 z-50 mt-2 min-w-[160px] rounded-2xl border border-gray-100 bg-white/95 py-2 shadow-lg backdrop-blur-xl"
             >
               {VIEW_MENU_ITEMS.map((item) => {
                 const isActive = item.enabled && item.id === viewMode;
@@ -186,56 +172,93 @@ function CalendarNavBar({
 
 function WeekStrip({
   days,
+  selectedDate,
   onSelectDay,
 }: {
   days: CalendarDay[];
+  selectedDate: Date;
   onSelectDay: (date: Date) => void;
 }) {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const selectedKey = dateKey(selectedDate);
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const selectedEl = container.querySelector<HTMLElement>(
+      `#date-${selectedKey}`,
+    );
+    if (!selectedEl) return;
+
+    const frame = requestAnimationFrame(() => {
+      const targetLeft =
+        selectedEl.offsetLeft -
+        container.clientWidth / 2 +
+        selectedEl.clientWidth / 2;
+      container.scrollTo({
+        left: Math.max(0, targetLeft),
+        behavior: "smooth",
+      });
+    });
+
+    return () => cancelAnimationFrame(frame);
+  }, [selectedKey, days]);
+
   return (
-    <div
-      className="flex overflow-x-auto snap-x overscroll-x-contain px-3 pb-1 pt-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-      style={{ msOverflowStyle: "none", scrollbarWidth: "none" }}
-      role="list"
-      aria-label="周视图"
-    >
-      {days.map((day) => {
-        const selected = day.isSelected;
-        return (
-          <button
-            key={day.date.toISOString()}
-            type="button"
-            onClick={() => onSelectDay(day.date)}
-            aria-pressed={selected}
-            aria-label={`${day.weekdayShort} ${day.dayNumber}`}
-            className="flex min-w-[3.5rem] w-14 flex-shrink-0 snap-center flex-col items-center gap-1.5 py-1"
-          >
-            <span
-              className={`text-[11px] font-medium ${
-                selected ? "text-blue-600" : "text-gray-400"
-              }`}
+    <div className="w-full min-w-0" aria-label="日期时间轴">
+      <div
+        ref={scrollContainerRef}
+        role="list"
+        className="flex w-full touch-pan-x snap-x snap-mandatory scroll-smooth overflow-x-auto overscroll-x-contain px-4 pb-1 pt-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        style={{ msOverflowStyle: "none", scrollbarWidth: "none" }}
+      >
+        {days.map((day) => {
+          const selected = day.isSelected;
+          const key = dateKey(day.date);
+          return (
+            <div
+              key={key}
+              id={`date-${key}`}
+              role="listitem"
+              className="w-[14%] min-w-[3.5rem] flex-shrink-0 snap-center"
             >
-              {day.weekdayShort}
-            </span>
-            <span
-              className={`flex h-9 w-9 items-center justify-center rounded-full text-[15px] font-bold tabular-nums transition-colors ${
-                selected ? "bg-blue-600 text-white" : "text-gray-900"
-              }`}
+            <button
+              type="button"
+              onClick={() => onSelectDay(day.date)}
+              aria-pressed={selected}
+              aria-label={`${day.weekdayShort} ${day.dayNumber}`}
+              className="flex w-full flex-col items-center gap-1.5 py-1"
             >
-              {day.dayNumber}
-            </span>
-            <span
-              className={`h-1.5 w-1.5 rounded-full ${
-                day.hasEvents
-                  ? selected
-                    ? "bg-blue-600"
-                    : "bg-blue-500"
-                  : "bg-transparent"
-              }`}
-              aria-hidden={!day.hasEvents}
-            />
-          </button>
-        );
-      })}
+              <span
+                className={`text-[11px] font-medium ${
+                  selected ? "text-blue-600" : "text-gray-400"
+                }`}
+              >
+                {day.weekdayShort}
+              </span>
+              <span
+                className={`flex h-9 w-9 items-center justify-center rounded-full text-[15px] font-bold tabular-nums transition-colors ${
+                  selected ? "bg-blue-600 text-white" : "text-gray-900"
+                }`}
+              >
+                {day.dayNumber}
+              </span>
+              <span
+                className={`h-1.5 w-1.5 rounded-full ${
+                  day.hasEvents
+                    ? selected
+                      ? "bg-blue-600"
+                      : "bg-blue-500"
+                    : "bg-transparent"
+                }`}
+                aria-hidden={!day.hasEvents}
+              />
+            </button>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
@@ -278,12 +301,7 @@ function EventCard({
           <span className="tabular-nums">{timeLabel}</span>
         </div>
 
-        {event.forPerson ? (
-          <div className="mt-3 flex items-center justify-between gap-3">
-            <span className="text-[13px] text-gray-400">为了谁 (For)</span>
-            <PersonBubble person={event.forPerson} />
-          </div>
-        ) : null}
+        <ForWhomCardRow event={event} />
 
         <div className="mt-2.5 flex items-center justify-between gap-3">
           <div className="flex items-center gap-1.5 text-[13px] text-gray-400">
@@ -351,9 +369,6 @@ export function CalendarView({
   onSignOut,
 }: CalendarViewProps) {
   const [selectedDate, setSelectedDate] = useState(() => startOfDay(new Date()));
-  const [events, setEvents] = useState<CalendarEvent[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const [modal, setModal] = useState<CalendarModalState>({ kind: "none" });
   const [isMonthPickerOpen, setIsMonthPickerOpen] = useState(false);
   const [viewMode, setViewMode] = useState<CalendarViewMode>("day");
@@ -362,7 +377,27 @@ export function CalendarView({
   const [viewingMonth, setViewingMonth] = useState(() =>
     startOfMonth(new Date()),
   );
-  const loadGenRef = useRef(0);
+
+  const {
+    data: cachedEvents,
+    loading,
+    error,
+    revalidate: load,
+  } = useCachedSupabase({
+    cacheKey: LOCAL_CACHE_KEYS.tasks,
+    householdId,
+    enabled,
+    fetchData: async () => {
+      const result = await fetchCalendarPageData(householdId);
+      if (!result.ok) return result;
+      return { ok: true as const, data: result.data.events };
+    },
+    revive: reviveCalendarEvents,
+    serialize: serializeCalendarEvents,
+    onSessionLost,
+  });
+
+  const events = useMemo(() => cachedEvents ?? [], [cachedEvents]);
 
   useEffect(() => {
     if (isMonthPickerOpen) {
@@ -370,66 +405,6 @@ export function CalendarView({
       setViewingMonth(startOfMonth(anchor));
     }
   }, [isMonthPickerOpen, selectedDate, listHeaderDate, viewMode]);
-
-  const load = useCallback(async () => {
-    const gen = ++loadGenRef.current;
-
-    const supabase = getSupabaseBrowserClient();
-    if (!supabase) {
-      if (gen !== loadGenRef.current) return;
-      setError("缺少 Supabase 配置");
-      setEvents([]);
-      setLoading(false);
-      return;
-    }
-
-    const {
-      data: { session },
-    } = await supabase.auth.getSession();
-
-    if (!session?.user) {
-      if (gen !== loadGenRef.current) return;
-      setLoading(false);
-      setEvents([]);
-      setError(null);
-      onSessionLost();
-      return;
-    }
-
-    if (gen !== loadGenRef.current) return;
-    setLoading(true);
-    setError(null);
-
-    const result = await fetchCalendarPageData(householdId);
-
-    if (gen !== loadGenRef.current) return;
-
-    if (!result.ok) {
-      if (result.reason === "no_session" || result.reason === "expired") {
-        setEvents([]);
-        setError(null);
-        onSessionLost();
-      } else {
-        setError(result.message);
-        setEvents([]);
-      }
-      setLoading(false);
-      return;
-    }
-
-    setEvents(result.data.events);
-    setLoading(false);
-  }, [householdId, onSessionLost]);
-
-  useEffect(() => {
-    if (!enabled) {
-      setLoading(false);
-      setEvents([]);
-      setError(null);
-      return;
-    }
-    void load();
-  }, [enabled, load]);
 
   const weekView = useMemo(
     () => buildWeekView(selectedDate, events),
@@ -493,7 +468,7 @@ export function CalendarView({
 
   return (
     <>
-      <div className={`relative min-h-full ${modalOpen ? "overflow-hidden" : ""}`}>
+      <div className="relative min-h-full">
         <CalendarNavBar
           monthLabel={headerMonthLabel}
           onSignOut={onSignOut}
@@ -503,10 +478,16 @@ export function CalendarView({
           isViewMenuOpen={isViewMenuOpen}
           onViewMenuOpenChange={setIsViewMenuOpen}
         />
+        <div
+          className={
+            modalOpen ? "overflow-x-hidden overflow-y-hidden" : undefined
+          }
+        >
         {viewMode === "day" ? (
           <WeekStrip
             days={weekView.days}
-            onSelectDay={(date) => setSelectedDate(date)}
+            selectedDate={selectedDate}
+            onSelectDay={(date) => setSelectedDate(startOfDay(date))}
           />
         ) : null}
 
@@ -545,6 +526,7 @@ export function CalendarView({
             />
           </span>
         </button>
+        </div>
       </div>
 
       <CalendarModals
@@ -557,7 +539,7 @@ export function CalendarView({
         open={isMonthPickerOpen}
         onClose={() => setIsMonthPickerOpen(false)}
         selectedDate={selectedDate}
-        onSelectDate={setSelectedDate}
+        onSelectDate={(date) => setSelectedDate(startOfDay(date))}
         events={events}
         viewingMonth={viewingMonth}
         onViewingMonthChange={setViewingMonth}
@@ -566,8 +548,3 @@ export function CalendarView({
   );
 }
 
-function startOfDay(d: Date): Date {
-  const x = new Date(d);
-  x.setHours(0, 0, 0, 0);
-  return x;
-}

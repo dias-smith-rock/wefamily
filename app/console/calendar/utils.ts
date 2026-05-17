@@ -1,3 +1,4 @@
+import { addDays, subDays } from "date-fns";
 import { isIncompleteTask } from "../family/utils";
 import type {
   CalendarDay,
@@ -83,49 +84,59 @@ function startOfDay(d: Date): Date {
   return x;
 }
 
-function startOfWeekSunday(date: Date): Date {
-  const d = startOfDay(date);
-  d.setDate(d.getDate() - d.getDay());
-  return d;
-}
-
 function sameCalendarDay(a: Date, b: Date): boolean {
   return startOfDay(a).getTime() === startOfDay(b).getTime();
 }
 
-export function buildWeekView(
-  selectedDate: Date,
-  events: CalendarEvent[],
-): CalendarWeekView {
-  const weekStart = startOfWeekSunday(selectedDate);
-  const today = startOfDay(new Date());
+/** 滚动时间轴：选中日前后各 14 天（共 29 天） */
+export const TIMELINE_DAY_RADIUS = 14;
 
+function collectIncompleteEventDates(events: CalendarEvent[]): Set<string> {
   const incompleteDates = new Set<string>();
   for (const e of events) {
     if (isIncompleteTask(e.status)) {
       incompleteDates.add(startOfDay(e.startAt).toDateString());
     }
   }
+  return incompleteDates;
+}
 
-  const days: CalendarDay[] = Array.from({ length: 7 }, (_, i) => {
-    const date = new Date(weekStart);
-    date.setDate(weekStart.getDate() + i);
+/** 围绕 anchorDate 生成 29 天滚动时间轴 */
+export function buildTimelineDates(
+  anchorDate: Date,
+  events: CalendarEvent[],
+): CalendarDay[] {
+  const center = startOfDay(anchorDate);
+  const today = startOfDay(new Date());
+  const rangeStart = subDays(center, TIMELINE_DAY_RADIUS);
+  const incompleteDates = collectIncompleteEventDates(events);
+  const totalDays = TIMELINE_DAY_RADIUS * 2 + 1;
+
+  return Array.from({ length: totalDays }, (_, index) => {
+    const date = addDays(rangeStart, index);
     return {
       date,
       weekdayShort: WEEKDAY_SHORT[date.getDay()]!,
       dayNumber: date.getDate(),
       hasEvents: incompleteDates.has(date.toDateString()),
-      isSelected: sameCalendarDay(date, selectedDate),
+      isSelected: sameCalendarDay(date, center),
       isToday: sameCalendarDay(date, today),
     };
   });
+}
 
-  const y = selectedDate.getFullYear();
-  const m = selectedDate.getMonth();
+export function buildWeekView(
+  selectedDate: Date,
+  events: CalendarEvent[],
+): CalendarWeekView {
+  const anchor = startOfDay(selectedDate);
+  const days = buildTimelineDates(anchor, events);
+  const y = anchor.getFullYear();
+  const m = anchor.getMonth();
   return {
     year: y,
     month: m + 1,
-    label: formatCalendarMonthLabel(selectedDate),
+    label: formatCalendarMonthLabel(anchor),
     days,
   };
 }
@@ -168,6 +179,26 @@ function buildLookupMaps(
   };
 }
 
+/** 安全解析 for_whom / target_profile_ids 等 ID 数组 */
+export function normalizeIdArray(value: unknown): string[] {
+  if (value == null) return [];
+  if (!Array.isArray(value)) return [];
+  return value.filter(
+    (item): item is string => typeof item === "string" && item.trim().length > 0,
+  );
+}
+
+function collectMatchIds(
+  seed: string,
+  extra: Array<string | null | undefined>,
+): string[] {
+  const out = new Set<string>([seed]);
+  for (const id of extra) {
+    if (id && id.trim()) out.add(id);
+  }
+  return [...out];
+}
+
 function resolvePerson(
   id: string,
   maps: LookupMaps,
@@ -189,6 +220,12 @@ function resolvePerson(
       initials: initialsFromName(name),
       avatarClass: pickAvatarClass(membership.id),
       isManagedProfile: isManaged,
+      matchIds: collectMatchIds(membership.id, [
+        membership.profile_id,
+        membership.user_id,
+        profile?.id,
+        profile?.user_id,
+      ]),
     };
   }
 
@@ -196,6 +233,7 @@ function resolvePerson(
   if (profile) {
     const name = profile.name?.trim() || "档案成员";
     const isManaged = !profile.user_id;
+    const linked = maps.membershipByProfileId.get(profile.id);
     return {
       id: profile.id,
       name,
@@ -203,6 +241,11 @@ function resolvePerson(
       initials: initialsFromName(name),
       avatarClass: pickAvatarClass(profile.id),
       isManagedProfile: isManaged,
+      matchIds: collectMatchIds(profile.id, [
+        profile.user_id,
+        linked?.id,
+        linked?.user_id,
+      ]),
     };
   }
 
@@ -215,17 +258,29 @@ function resolvePerson(
   return null;
 }
 
+/** 判断成员是否在当前任务的 for_whom / target_profile_ids 中 */
+export function personIsInForWhomList(
+  person: CalendarPerson,
+  forWhomIds: string[] | null | undefined,
+): boolean {
+  const ids = normalizeIdArray(forWhomIds);
+  if (ids.length === 0) return false;
+  const set = new Set(ids);
+  return person.matchIds.some((key) => set.has(key));
+}
+
 function resolvePeople(ids: string[] | null | undefined, maps: LookupMaps): CalendarPerson[] {
-  if (!ids?.length) return [];
+  const normalized = normalizeIdArray(ids);
+  if (normalized.length === 0) return [];
   const seen = new Set<string>();
   const out: CalendarPerson[] = [];
-  for (const id of ids) {
-    if (seen.has(id)) continue;
+  for (const id of normalized) {
     const p = resolvePerson(id, maps);
-    if (p) {
-      seen.add(id);
-      out.push(p);
-    }
+    if (!p) continue;
+    const dedupeKey = p.matchIds.join("|");
+    if (seen.has(dedupeKey)) continue;
+    seen.add(dedupeKey);
+    out.push(p);
   }
   return out;
 }
@@ -251,7 +306,8 @@ export function mapTasksToCalendarEvents(
     .map((task) => {
       const startAt = new Date(task.due_date!);
       const endAt = task.end_datetime ? new Date(task.end_datetime) : null;
-      const beneficiaries = resolvePeople(task.target_profile_ids, maps);
+      const forWhomIds = normalizeIdArray(task.target_profile_ids);
+      const beneficiaries = resolvePeople(forWhomIds, maps);
       const assignees = resolvePeople(task.involved_member_ids, maps);
       const forPerson = beneficiaries[0] ?? null;
 
@@ -266,6 +322,7 @@ export function mapTasksToCalendarEvents(
         priority: task.priority,
         statusLabel: formatStatusLabel(task.status),
         forPerson,
+        forWhomIds,
         assigneeLabel: formatAssigneeLabel(assignees),
         assignees,
         beneficiaries,
@@ -277,5 +334,13 @@ export function mapTasksToCalendarEvents(
 
 /** 详情抽屉：是否未指定具体受益人（全家任务） */
 export function isHouseholdWideBeneficiaries(event: CalendarEvent): boolean {
-  return event.beneficiaries.length === 0;
+  const ids = normalizeIdArray(event.forWhomIds);
+  return ids.length === 0 && event.beneficiaries.length === 0;
+}
+
+/** 任务卡片：解析「为了谁」展示用成员列表 */
+export function getForWhomPeople(event: CalendarEvent): CalendarPerson[] {
+  if (isHouseholdWideBeneficiaries(event)) return [];
+  if (event.beneficiaries.length > 0) return event.beneficiaries;
+  return event.forPerson ? [event.forPerson] : [];
 }

@@ -10,7 +10,7 @@ function Bar({ className = "" }: { className?: string }) {
 export function CalendarPageSkeleton() {
   return (
     <div className="relative min-h-full">
-      <div className="sticky top-0 z-30 bg-[#F2F2F7]/90 px-4 pb-3 pt-[max(0.5rem,env(safe-area-inset-top))] backdrop-blur-sm">
+      <div className="sticky top-0 z-40 bg-[#F2F2F7]/80 px-4 pb-3 pt-[max(0.5rem,env(safe-area-inset-top))] backdrop-blur-md">
         <div className="flex items-center justify-between">
           <Bar className="h-10 w-10 rounded-full" />
           <Bar className="h-5 w-28" />
@@ -19,9 +19,12 @@ export function CalendarPageSkeleton() {
         <div className="mt-3 h-px bg-gray-200/90" />
       </div>
 
-      <div className="flex justify-between gap-1 px-4 pt-4">
-        {Array.from({ length: 7 }).map((_, i) => (
-          <div key={i} className="flex w-[46px] flex-col items-center gap-2">
+      <div className="flex gap-2 overflow-hidden px-4 pt-4">
+        {Array.from({ length: 9 }).map((_, i) => (
+          <div
+            key={i}
+            className="flex w-[14%] min-w-[3.5rem] shrink-0 flex-col items-center gap-2"
+          >
             <Bar className="h-3 w-6" />
             <Bar className="h-9 w-9 rounded-full" />
             <Bar className="h-1.5 w-1.5 rounded-full" />

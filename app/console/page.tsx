@@ -1,10 +1,13 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
+import { ArrowLeft } from "lucide-react";
 import { ConsoleLayout } from "./components/console-layout";
 import { useConsoleAuth } from "./hooks/use-console-auth";
 import type { ConsoleUser, HouseholdMembership } from "./types";
 import { requireAuthenticatedSession } from "@/lib/auth/require-session";
+import { LANDINGPAGE_CONSOLE_HREF } from "@/lib/site-urls";
 import { getSupabaseBrowserClient } from "@/lib/supabase/browser-client";
 
 function GoogleMark({ className }: { className?: string }) {
@@ -172,7 +175,14 @@ export default function ConsolePage() {
 
   if (auth.status === "unauthenticated") {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center bg-[#FAFAFA] p-6 font-sans">
+      <div className="relative flex min-h-screen flex-col items-center justify-center bg-[#FAFAFA] p-6 font-sans">
+        <Link
+          href={LANDINGPAGE_CONSOLE_HREF}
+          className="absolute right-4 top-[max(1rem,env(safe-area-inset-top))] inline-flex min-h-[44px] items-center gap-1.5 rounded-full px-3 py-2 text-sm font-medium text-gray-500 transition hover:bg-black/5 hover:text-gray-900"
+        >
+          <ArrowLeft className="h-4 w-4 shrink-0" strokeWidth={2} aria-hidden />
+          回到官网
+        </Link>
         <div className="flex w-full max-w-md flex-col items-center rounded-3xl border border-gray-100 bg-white p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
           <div className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
             WeFamily<span className="text-blue-600">.ai</span>

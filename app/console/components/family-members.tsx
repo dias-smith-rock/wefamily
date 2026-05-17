@@ -1,11 +1,16 @@
 "use client";
 
 import { ChevronRight, Cloud, Eye, EyeOff, Users } from "lucide-react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { fetchFamilyPageData } from "../family/api";
-import type { FamilyMemberDisplay, FamilyModalState, FamilyPageData } from "../family/types";
+import {
+  reviveFamilyPageData,
+  serializeFamilyPageData,
+} from "../family/page-cache";
+import type { FamilyMemberDisplay, FamilyModalState } from "../family/types";
 import { maskPhone } from "../family/utils";
-import { getSupabaseBrowserClient } from "@/lib/supabase/browser-client";
+import { useCachedSupabase } from "../hooks/use-cached-supabase";
+import { LOCAL_CACHE_KEYS } from "../lib/local-cache";
 import { ConsoleTabHeader } from "./console-tab-header";
 import { FamilyModals } from "./family/family-modals";
 import { FamilyPageSkeleton } from "./family/family-skeleton";
@@ -115,71 +120,18 @@ export function FamilyHomeView({
   onSessionLost,
   onSignOut,
 }: FamilyHomeViewProps) {
-  const [data, setData] = useState<FamilyPageData | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const [phoneVisible, setPhoneVisible] = useState(false);
   const [modal, setModal] = useState<FamilyModalState>({ kind: "none" });
-  const loadGenRef = useRef(0);
 
-  const load = useCallback(async () => {
-    const gen = ++loadGenRef.current;
-
-    const supabase = getSupabaseBrowserClient();
-    if (!supabase) {
-      if (gen !== loadGenRef.current) return;
-      setError("缺少 Supabase 配置");
-      setData(null);
-      setLoading(false);
-      return;
-    }
-
-    const {
-      data: { session },
-    } = await supabase.auth.getSession();
-
-    if (!session?.user) {
-      if (gen !== loadGenRef.current) return;
-      setLoading(false);
-      setData(null);
-      setError(null);
-      onSessionLost();
-      return;
-    }
-
-    if (gen !== loadGenRef.current) return;
-    setLoading(true);
-    setError(null);
-
-    const result = await fetchFamilyPageData(householdId, currentUserId);
-
-    if (gen !== loadGenRef.current) return;
-
-    if (!result.ok) {
-      if (result.reason === "no_session" || result.reason === "expired") {
-        setData(null);
-        setError(null);
-        onSessionLost();
-        setLoading(false);
-        return;
-      }
-      setError(result.message);
-      setData(null);
-    } else {
-      setData(result.data);
-    }
-    setLoading(false);
-  }, [householdId, currentUserId, onSessionLost]);
-
-  useEffect(() => {
-    if (!enabled) {
-      setLoading(false);
-      setData(null);
-      setError(null);
-      return;
-    }
-    void load();
-  }, [enabled, load]);
+  const { data, loading, error, revalidate: load } = useCachedSupabase({
+    cacheKey: LOCAL_CACHE_KEYS.members,
+    householdId,
+    enabled,
+    fetchData: () => fetchFamilyPageData(householdId, currentUserId),
+    revive: reviveFamilyPageData,
+    serialize: serializeFamilyPageData,
+    onSessionLost,
+  });
 
   const closeModal = () => setModal({ kind: "none" });
 

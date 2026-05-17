@@ -6,6 +6,8 @@ export type CalendarPerson = {
   initials: string;
   avatarClass: string;
   isManagedProfile: boolean;
+  /** membership / profile / user_id 等可匹配 for_whom 的 ID */
+  matchIds: string[];
 };
 
 /** 日程事件（由 tasks 表映射） */
@@ -19,8 +21,10 @@ export type CalendarEvent = {
   status: string;
   priority: string | null;
   statusLabel: string;
-  /** 为了谁 — 优先档案成员 */
+  /** 为了谁 — 优先档案成员（首张，兼容旧 UI） */
   forPerson: CalendarPerson | null;
+  /** 对应 tasks.target_profile_ids / for_whom */
+  forWhomIds: string[];
   assigneeLabel: string;
   /** 详情抽屉：执行人列表 */
   assignees: CalendarPerson[];

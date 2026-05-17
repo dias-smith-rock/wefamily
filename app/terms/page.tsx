@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { LANDINGPAGE_CONSOLE_HREF } from "@/lib/site-urls";
 
 export const metadata: Metadata = {
   title: "Terms of Service — WeFamily.ai",
@@ -15,7 +16,7 @@ export default function TermsPage() {
     <div className="min-h-dvh bg-[#FAFAFA] pb-24 pt-8 sm:pt-12">
       <div className="mx-auto max-w-3xl px-5 sm:px-6">
         <Link
-          href="/"
+          href={LANDINGPAGE_CONSOLE_HREF}
           className="inline-block text-[15px] font-medium text-[#007AFF] transition-colors hover:text-[#0066D6] hover:underline"
         >
           WeFamily.ai

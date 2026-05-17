@@ -198,10 +198,38 @@ export function profileToDisplay(
   };
 }
 
+/** 安全解析 target_profile_ids / for_whom 等 ID 数组 */
+export function normalizeIdArray(value: unknown): string[] {
+  if (value == null) return [];
+  if (!Array.isArray(value)) return [];
+  return value.filter(
+    (item): item is string => typeof item === "string" && item.trim().length > 0,
+  );
+}
+
 export function memberTaskFilterIds(member: FamilyMemberDisplay): string[] {
   return [member.membershipId, member.profileId, member.userId].filter(
     (id): id is string => Boolean(id),
   );
+}
+
+export function resolveTaskForWhomMembers(
+  task: { target_profile_ids: string[] | null },
+  members: FamilyMemberDisplay[],
+): FamilyMemberDisplay[] {
+  const ids = normalizeIdArray(task.target_profile_ids);
+  if (ids.length === 0) return [];
+  const idSet = new Set(ids);
+  const seen = new Set<string>();
+  const out: FamilyMemberDisplay[] = [];
+  for (const member of members) {
+    const keys = memberTaskFilterIds(member);
+    if (!keys.some((key) => idSet.has(key))) continue;
+    if (seen.has(member.membershipId)) continue;
+    seen.add(member.membershipId);
+    out.push(member);
+  }
+  return out;
 }
 
 export function taskMatchesMember(

@@ -13,6 +13,7 @@ import {
   onConsoleLoginSuccess,
 } from "@/lib/auth/session-lifecycle";
 import { getSupabaseBrowserClient } from "@/lib/supabase/browser-client";
+import { clearAllLocalCaches } from "../lib/local-cache";
 
 export type ConsoleAuthState =
   | { status: "loading" }
@@ -183,6 +184,7 @@ export function useConsoleAuth() {
     const supabase = getSupabaseBrowserClient();
     if (!supabase) return;
     setAuth({ status: "loading" });
+    clearAllLocalCaches();
     await endConsoleSession(supabase);
     setAuth({ status: "unauthenticated" });
   }, []);

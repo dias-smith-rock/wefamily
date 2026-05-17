@@ -1,8 +1,10 @@
 import Link from "next/link";
-
-const WEB_CONSOLE_HREF = "https://app.wefamily.ai";
-const APP_STORE_HREF = "https://apps.apple.com/app/wefamily";
-const CONTACT_EMAIL = "music.player.250617@gmail.com";
+import {
+  APP_STORE_HREF,
+  CONTACT_EMAIL,
+  LANDINGPAGE_CONSOLE_HREF,
+  WEB_CONSOLE_HREF,
+} from "@/lib/site-urls";
 
 export default function Home() {
   return (
@@ -11,7 +13,7 @@ export default function Home() {
       <header className="fixed top-0 z-50 w-full border-b border-gray-100/90 bg-white/70 backdrop-blur-md backdrop-saturate-150">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
           <Link
-            href="/"
+            href={LANDINGPAGE_CONSOLE_HREF}
             className="text-xl font-bold tracking-tight text-slate-900 transition-opacity hover:opacity-80"
           >
             WeFamily<span className="text-blue-600">.ai</span>
