@@ -144,9 +144,17 @@ export default function Home() {
       {/* 页脚 */}
       <footer className="mt-20 border-t border-gray-100 bg-white/80 py-12 backdrop-blur-sm">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 md:flex-row">
-          <p className="text-sm text-slate-400">
-            © 2026 WeFamily.ai. All rights reserved.
-          </p>
+          <div className="flex flex-col items-center gap-1 md:items-start">
+            <p className="text-sm text-slate-400">
+              © 2026 WeFamily.ai. All rights reserved.
+            </p>
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="text-xs text-slate-400/70 transition-colors hover:text-slate-500"
+            >
+              {CONTACT_EMAIL}
+            </a>
+          </div>
           <nav className="flex gap-6 text-sm font-medium text-slate-400">
             <Link
               href="/privacy"
