@@ -1,6 +1,8 @@
 import Link from "next/link";
 import {
   APP_STORE_HREF,
+  COMPANY_NAME_EN,
+  COMPANY_NAME_ZH,
   CONTACT_EMAIL,
   LANDINGPAGE_CONSOLE_HREF,
   WEB_CONSOLE_HREF,
@@ -147,6 +149,9 @@ export default function Home() {
           <div className="flex flex-col items-center gap-1 md:items-start">
             <p className="text-sm text-slate-400">
               © 2026 WeFamily.ai. All rights reserved.
+            </p>
+            <p className="text-xs text-slate-400/70">
+              {COMPANY_NAME_ZH} · {COMPANY_NAME_EN}
             </p>
             <a
               href={`mailto:${CONTACT_EMAIL}`}
