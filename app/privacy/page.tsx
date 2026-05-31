@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { LANDINGPAGE_CONSOLE_HREF } from "@/lib/site-urls";
+import { LANDINGPAGE_CONSOLE_HREF, PRODUCT_NAME_EN, PRODUCT_NAME_ZH } from "@/lib/site-urls";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — WeFamily.ai",
+  title: "Privacy Policy — WeCircle",
   description:
-    "How WeFamily.ai collects, uses, and protects your information when you use our website and mobile application.",
+    "How WeCircle collects, uses, and protects your information when you use our website and mobile application.",
 };
 
 const SUPPORT_EMAIL = "music.player.250617@gmail.com";
@@ -19,7 +19,7 @@ export default function PrivacyPage() {
           href={LANDINGPAGE_CONSOLE_HREF}
           className="inline-block text-[15px] font-medium text-[#007AFF] transition-colors hover:text-[#0066D6] hover:underline"
         >
-          WeFamily.ai
+          {PRODUCT_NAME_ZH} {PRODUCT_NAME_EN}
         </Link>
       </div>
 
@@ -35,7 +35,7 @@ export default function PrivacyPage() {
 
         <div className="space-y-10 pt-10 text-[17px] leading-[1.65] text-neutral-800">
           <p>
-            Welcome to WeFamily.ai. Your family&apos;s privacy and data security
+            Welcome to WeCircle. Your family&apos;s privacy and data security
             are our highest priorities. This Privacy Policy explains how we
             collect, use, and protect your information when you use our website
             and mobile application.
@@ -91,7 +91,7 @@ export default function PrivacyPage() {
               2. How We Use Your Information
             </h2>
             <p className="mt-4">
-              We use your data strictly to deliver the WeFamily.ai experience:
+              We use your data strictly to deliver the WeCircle experience:
             </p>
             <ul className="mt-4 list-disc space-y-3 pl-5 text-neutral-700 marker:text-neutral-400">
               <li>

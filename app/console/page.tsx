@@ -7,7 +7,7 @@ import { ConsoleLayout } from "./components/console-layout";
 import { useConsoleAuth } from "./hooks/use-console-auth";
 import type { ConsoleUser, HouseholdMembership } from "./types";
 import { requireAuthenticatedSession } from "@/lib/auth/require-session";
-import { LANDINGPAGE_CONSOLE_HREF } from "@/lib/site-urls";
+import { LANDINGPAGE_CONSOLE_HREF, PRODUCT_NAME_EN, PRODUCT_NAME_ZH } from "@/lib/site-urls";
 import { getSupabaseBrowserClient } from "@/lib/supabase/browser-client";
 
 function GoogleMark({ className }: { className?: string }) {
@@ -185,7 +185,8 @@ export default function ConsolePage() {
         </Link>
         <div className="flex w-full max-w-md flex-col items-center rounded-3xl border border-gray-100 bg-white p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
           <div className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-            WeFamily<span className="text-blue-600">.ai</span>
+            {PRODUCT_NAME_ZH}
+            <span className="text-blue-600">{PRODUCT_NAME_EN}</span>
           </div>
           <h1 className="mb-2 text-xl font-semibold text-gray-900">
             登录 Web 控制台
@@ -260,7 +261,7 @@ export default function ConsolePage() {
         <div className="max-w-md rounded-3xl border border-gray-200 bg-white p-8 text-center shadow-sm">
           <h1 className="text-lg font-semibold text-gray-900">尚未加入家庭</h1>
           <p className="mt-4 text-sm leading-relaxed text-gray-600">
-            您尚未加入任何家庭，或加入申请正在审批中。请在 WeFamily iOS
+            您尚未加入任何家庭，或加入申请正在审批中。请在同圈 iOS
             客户端完成家庭创建或加入。
           </p>
           <button

@@ -63,7 +63,7 @@ export function ReadonlyModeAlert({
         <div className="px-4 pb-3 pt-5 text-center">
           <h2 className="text-[17px] font-semibold text-gray-900">只读模式</h2>
           <p className="mt-3 text-[13px] leading-relaxed text-gray-500">
-            请使用 WeFamily iOS 客户端添加新事务。
+            请使用同圈 iOS 客户端添加新事务。
           </p>
         </div>
         <button

@@ -35,7 +35,7 @@ export function MeView({ user, onSignOut }: MeViewProps) {
         <div className="rounded-3xl bg-white p-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
           <p className="text-[15px] font-medium text-gray-900">账户与设置</p>
           <p className="mt-2 text-[13px] leading-relaxed text-gray-400">
-            完整设置请在 WeFamily iOS 应用中管理。
+            完整设置请在同圈 iOS 应用中管理。
           </p>
         </div>
       </div>

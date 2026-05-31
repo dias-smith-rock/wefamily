@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { PRODUCT_NAME_EN, PRODUCT_NAME_ZH } from "@/lib/site-urls";
 import "./globals.css";
 
 const inter = Inter({
@@ -9,9 +10,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "WeFamily.ai — 下一代智能家庭中枢",
+  title: `${PRODUCT_NAME_ZH} ${PRODUCT_NAME_EN} — 小圈子轻量协作中枢`,
   description:
-    "身份档案分离、专属任务追踪、多端实时同步。重新定义家庭协作，让爱与秩序并存。",
+    "任务分工、日程同步、成员档案。适用于家庭、旅行团、社团小组等紧密小团队。轻量清晰，不需要全员下载 App。",
 };
 
 export default function RootLayout({

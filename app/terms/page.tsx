@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { LANDINGPAGE_CONSOLE_HREF } from "@/lib/site-urls";
+import { LANDINGPAGE_CONSOLE_HREF, PRODUCT_NAME_EN, PRODUCT_NAME_ZH } from "@/lib/site-urls";
 
 export const metadata: Metadata = {
-  title: "Terms of Service — WeFamily.ai",
+  title: "Terms of Service — WeCircle",
   description:
-    "Terms governing your access to and use of the WeFamily.ai website and mobile application.",
+    "Terms governing your access to and use of the WeCircle website and mobile application.",
 };
 
 const SUPPORT_EMAIL = "music.player.250617@gmail.com";
@@ -19,7 +19,7 @@ export default function TermsPage() {
           href={LANDINGPAGE_CONSOLE_HREF}
           className="inline-block text-[15px] font-medium text-[#007AFF] transition-colors hover:text-[#0066D6] hover:underline"
         >
-          WeFamily.ai
+          {PRODUCT_NAME_ZH} {PRODUCT_NAME_EN}
         </Link>
       </div>
 
@@ -36,7 +36,7 @@ export default function TermsPage() {
         <div className="space-y-10 pt-10 text-[17px] leading-[1.65] text-neutral-800">
           <p>
             These Terms of Service (&quot;Terms&quot;) govern your access to and
-            use of the WeFamily.ai website and mobile application. By using our
+            use of the WeCircle website and mobile application. By using our
             service, you agree to be bound by these Terms.
           </p>
 
@@ -45,7 +45,7 @@ export default function TermsPage() {
               1. Description of Service
             </h2>
             <p className="mt-4">
-              WeFamily.ai is a family collaboration and productivity tool designed
+              WeCircle is a family collaboration and productivity tool designed
               to help households manage tasks, schedules, and member profiles. The
               service is provided &quot;as is&quot; and we reserve the right to
               modify, update, or discontinue features at our discretion.
@@ -63,7 +63,7 @@ export default function TermsPage() {
               </li>
               <li>
                 You are responsible for maintaining the security of your account
-                and any devices you use to access WeFamily.ai.
+                and any devices you use to access WeCircle.
               </li>
               <li>
                 You must promptly notify us of any unauthorized use of your
@@ -97,7 +97,7 @@ export default function TermsPage() {
             <h2 className="text-xl font-semibold tracking-tight text-neutral-950">
               4. Acceptable Use
             </h2>
-            <p className="mt-4">You agree not to use WeFamily.ai to:</p>
+            <p className="mt-4">You agree not to use WeCircle to:</p>
             <ul className="mt-4 list-disc space-y-3 pl-5 text-neutral-700 marker:text-neutral-400">
               <li>
                 Upload, post, or transmit any content that is illegal, abusive,
@@ -119,7 +119,7 @@ export default function TermsPage() {
               5. Limitation of Liability
             </h2>
             <p className="mt-4">
-              To the maximum extent permitted by law, WeFamily.ai and its
+              To the maximum extent permitted by law, WeCircle and its
               creators shall not be liable for any indirect, incidental, special,
               consequential, or punitive damages, or any loss of profits or
               revenues, whether incurred directly or indirectly, resulting from

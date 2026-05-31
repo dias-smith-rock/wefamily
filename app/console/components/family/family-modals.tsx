@@ -111,7 +111,7 @@ export function HouseholdAlertModal({
         </div>
         <div className="border-t border-gray-200/80 bg-gray-50/80 px-4 py-3">
           <p className="text-center text-[12px] leading-relaxed text-gray-400">
-            如需修改家庭名称或解散家庭，请前往 WeFamily iOS 客户端。
+            如需修改家庭名称或解散家庭，请前往同圈 iOS 客户端。
           </p>
         </div>
         <button
@@ -357,7 +357,7 @@ export function ReadonlyHintAlert({
             多端安全限制
           </h2>
           <p className="mt-3 text-[13px] leading-relaxed text-gray-500">
-            请使用 WeFamily iOS App 扫描二维码或发送快捷邀请链接。
+            请使用同圈 iOS App 扫描二维码或发送快捷邀请链接。
           </p>
         </div>
         <button
