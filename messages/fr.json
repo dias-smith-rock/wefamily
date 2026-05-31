@@ -1,0 +1,80 @@
+{
+  "meta": {
+    "title": "WeCircle — Hub de collaboration légère pour petits groupes",
+    "description": "Répartition des tâches, synchronisation des agendas et profils des membres pour les familles, groupes de voyage, clubs et autres petites équipes soudées. Léger et clair — pas besoin que tout le monde télécharge l'application."
+  },
+  "nav": {
+    "webConsole": "Console Web",
+    "getApp": "Obtenir l'App"
+  },
+  "hero": {
+    "titleLine1": "Faites collaborer les petits groupes",
+    "titleLine2": "sans compter sur les discussions de groupe",
+    "subtitle": "Tâches, agendas, répartitions et profils des membres — pour les familles, groupes de voyage, clubs et plus encore. Léger et clair, sans obligation d'installer l'application pour tous.",
+    "downloadAppStore": "Télécharger sur l'App Store",
+    "exploreWeb": "Découvrir la version Web",
+    "screenshotPlaceholder": "[ Captures d'écran de l'application ou maquette 3D du téléphone ]"
+  },
+  "useCases": {
+    "sectionTitle": "Cas d'utilisation",
+    "sectionSubtitle": "Tout petit groupe soudé de 3 à 20 personnes qui se fait confiance et doit se répartir le travail peut utiliser WeCircle pour s'organiser.",
+    "items": {
+      "family": {
+        "title": "Famille",
+        "pain": "Trajets scolaires, courses et rappels de médicaments se perdent dans les discussions de groupe.",
+        "solution": "L'organisateur gère les profils et les tâches — chacun sait qui est responsable, et l'agenda familial est visible d'un coup d'œil."
+      },
+      "travel": {
+        "title": "Groupe de voyage",
+        "pain": "Réservations, heures de rendez-vous, pièces d'identité et bagages défilent dans le chat.",
+        "solution": "Les voyages sont planifiés dans le calendrier avec une répartition claire — tout le monde n'a pas besoin de l'application."
+      },
+      "club": {
+        "title": "Club / Comité de classe",
+        "pain": "La préparation d'événements implique de nombreuses tâches, une participation inégale et un suivi difficile.",
+        "solution": "Séparez les tâches communes des tâches personnelles pour une répartition claire des rôles."
+      },
+      "roommates": {
+        "title": "Colocataires",
+        "pain": "Factures, rotations de ménage et courses communes reposent sur des accords verbaux facilement oubliés.",
+        "solution": "Tâches récurrentes avec rappels — chaque colocataire a un rôle enregistré et un responsable identifié."
+      },
+      "startup": {
+        "title": "Équipe startup",
+        "pain": "Pas envie d'outils d'entreprise, mais besoin d'une coordination légère des tâches et des agendas.",
+        "solution": "Gérez la progression depuis la console Web, consultez sur mobile — la taille idéale pour une petite équipe."
+      }
+    }
+  },
+  "features": {
+    "sectionTitle": "Simplifié pour les petits groupes",
+    "sectionSubtitle": "Participation inégale ? C'est là que nous avons commencé à concevoir le produit.",
+    "profile": {
+      "title": "Profils de membres sans téléchargement",
+      "description": "Pas besoin d'obliger chaque membre à installer l'application. L'organisateur peut créer des profils pour ceux qui n'utilisent pas l'app — grands-parents, enfants, compagnons de voyage temporaires ou collaborateurs externes. Une seule personne peut gérer l'agenda et les tâches de tout le groupe."
+    },
+    "tasks": {
+      "title": "Flux de tâches dédié",
+      "description": "Distinction claire entre tâches communes et tâches personnelles. Réserver un hôtel, apporter des documents, préparer du matériel, assurer des rotations — chaque tâche a un responsable et un suivi."
+    },
+    "privacy": {
+      "title": "Confidentialité de niveau entreprise",
+      "description": "Intégration profonde avec la connexion native Apple. Architecture cloud-native moderne avec chiffrement de bout en bout pour les données de votre groupe."
+    },
+    "sync": {
+      "title": "Console multi-appareils synchronisée",
+      "description": "Fluide sur mobile, avec une console Web complète. Planifiez des voyages, organisez des événements ou suivez la progression depuis votre ordinateur — tout reste synchronisé."
+    }
+  },
+  "footer": {
+    "copyright": "© 2026 {productZh} ({productEn}). Tous droits réservés.",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation",
+    "contact": "Nous contacter"
+  },
+  "legal": {
+    "privacyTitle": "Privacy Policy",
+    "termsTitle": "Terms of Service",
+    "lastUpdated": "Last Updated: {date}"
+  }
+}

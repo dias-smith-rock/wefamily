@@ -1,0 +1,80 @@
+{
+  "meta": {
+    "title": "同圈 WeCircle — 小圈子輕量協作中樞",
+    "description": "任務分工、日程同步、成員檔案。適用於家庭、旅行團、社團小組等緊密小團隊。輕量清晰，不需要全員下載 App。"
+  },
+  "nav": {
+    "webConsole": "Web 控制台",
+    "getApp": "取得 App"
+  },
+  "hero": {
+    "titleLine1": "讓小圈子協作，",
+    "titleLine2": "不再靠群聊硬撐",
+    "subtitle": "任務、日程、分工、成員檔案——家庭、旅行團、社團小組都能用。輕量清晰，不需要全員下載 App。",
+    "downloadAppStore": "在 App Store 下載",
+    "exploreWeb": "探索 Web 端功能",
+    "screenshotPlaceholder": "[ 這裡預留放置 App 核心介面的精美截圖或 3D 手機模型 ]"
+  },
+  "useCases": {
+    "sectionTitle": "適用場景",
+    "sectionSubtitle": "凡是有協作需求的緊密小圈子——3 到 20 人、彼此信任、需要分事排期——都能用同圈理清瑣事。",
+    "items": {
+      "family": {
+        "title": "家庭",
+        "pain": "接送、採購、長輩用藥散在群聊裡，容易遺漏。",
+        "solution": "主理人建檔代管，任務責任到人，全家日程一眼可見。"
+      },
+      "travel": {
+        "title": "旅行團",
+        "pain": "訂票訂房、集合時間、證件行李，資訊總在群裡刷過。",
+        "solution": "行程排進日曆，「誰去辦」分工清楚，同行成員不必人人裝 App。"
+      },
+      "club": {
+        "title": "社團 / 班委",
+        "pain": "活動籌備事項多，成員參與不均，進度難追蹤。",
+        "solution": "公共待辦與個人任務分開管理，籌備分工一目了然。"
+      },
+      "roommates": {
+        "title": "合租 / 室友",
+        "pain": "水電繳費、清潔輪換、共同採購，口頭約定容易忘。",
+        "solution": "週期性任務加提醒，室友分工有記錄、有責任人。"
+      },
+      "startup": {
+        "title": "創業小組",
+        "pain": "不想上飛書釘釘，但又需要輕量的任務與日程協同。",
+        "solution": "Web 控制台統籌進度，行動端隨時查看，體量剛好夠用。"
+      }
+    }
+  },
+  "features": {
+    "sectionTitle": "化繁為簡，為小圈子而生",
+    "sectionSubtitle": "成員參與門檻不一？我們以此為起點設計產品。",
+    "profile": {
+      "title": "首創「免下載」成員檔案機制",
+      "description": "無需強制每位成員都下載註冊 App。主理人可為不參與 App 的人建立專屬檔案——長輩、兒童、臨時同行者或外部協作者均可納入。一人即可統籌全圈子的日程與待辦，徹底掃除參與門檻。"
+    },
+    "tasks": {
+      "title": "專屬任務流轉",
+      "description": "清晰區分「公共待辦」與「個人專屬任務」。訂酒店、帶證件、準備物料、值班輪換——責任到人，進度可查。"
+    },
+    "privacy": {
+      "title": "企業級隱私保護",
+      "description": "深度整合 Apple 原生安全登入。基於現代雲原生架構，圈子資料享受端到端加密防護。"
+    },
+    "sync": {
+      "title": "多端無縫同步控制台",
+      "description": "不僅在手機上絲滑操作，更提供 Web 網頁控制台。在電腦前統籌旅行行程、活動籌備或小組進度，全平台即時互通。"
+    }
+  },
+  "footer": {
+    "copyright": "© 2026 {productZh} ({productEn}). All rights reserved.",
+    "privacy": "隱私政策",
+    "terms": "服務條款",
+    "contact": "聯絡我們"
+  },
+  "legal": {
+    "privacyTitle": "Privacy Policy",
+    "termsTitle": "Terms of Service",
+    "lastUpdated": "Last Updated: {date}"
+  }
+}

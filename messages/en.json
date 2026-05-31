@@ -1,0 +1,80 @@
+{
+  "meta": {
+    "title": "WeCircle — Lightweight Hub for Small-Group Collaboration",
+    "description": "Task assignment, schedule sync, and member profiles for families, travel groups, clubs, and other tight-knit teams. Lightweight and clear — no need for everyone to download the app."
+  },
+  "nav": {
+    "webConsole": "Web Console",
+    "getApp": "Get the App"
+  },
+  "hero": {
+    "titleLine1": "Help small groups collaborate",
+    "titleLine2": "without relying on chaotic group chats",
+    "subtitle": "Tasks, schedules, assignments, and member profiles — for families, travel groups, clubs, and more. Lightweight and clear, with no need for everyone to install the app.",
+    "downloadAppStore": "Download on the App Store",
+    "exploreWeb": "Explore Web Features",
+    "screenshotPlaceholder": "[ App screenshots or a 3D phone mockup will go here ]"
+  },
+  "useCases": {
+    "sectionTitle": "Use Cases",
+    "sectionSubtitle": "Any tight-knit circle of 3–20 people who trust each other and need to divide work and schedule events can use WeCircle to stay organized.",
+    "items": {
+      "family": {
+        "title": "Family",
+        "pain": "School pickups, groceries, and medication reminders get lost in group chats.",
+        "solution": "The organizer manages profiles and tasks — everyone knows who is responsible, and the whole schedule is visible at a glance."
+      },
+      "travel": {
+        "title": "Travel Group",
+        "pain": "Bookings, meeting times, IDs, and luggage details scroll past in the chat.",
+        "solution": "Trips go on the calendar with clear \"who handles what\" assignments — not everyone needs the app."
+      },
+      "club": {
+        "title": "Club / Class Committee",
+        "pain": "Event prep involves many tasks, uneven participation, and hard-to-track progress.",
+        "solution": "Separate shared to-dos from personal tasks so preparation roles are crystal clear."
+      },
+      "roommates": {
+        "title": "Roommates",
+        "pain": "Utilities, cleaning rotations, and shared shopping rely on verbal agreements that are easily forgotten.",
+        "solution": "Recurring tasks with reminders — every roommate assignment is recorded with a clear owner."
+      },
+      "startup": {
+        "title": "Startup Team",
+        "pain": "You don't want enterprise tools, but you still need lightweight task and schedule coordination.",
+        "solution": "Manage progress from the web console, check in on mobile — just the right size for a small team."
+      }
+    }
+  },
+  "features": {
+    "sectionTitle": "Simplified for Small Groups",
+    "sectionSubtitle": "Uneven participation? That's where we started designing the product.",
+    "profile": {
+      "title": "No-Download Member Profiles",
+      "description": "No need to force every member to install the app. Organizers can create profiles for people who don't use the app — grandparents, children, temporary travel companions, or external collaborators. One person can manage the whole circle's schedule and to-dos, removing participation barriers entirely."
+    },
+    "tasks": {
+      "title": "Dedicated Task Flow",
+      "description": "Clearly separate shared to-dos from personal tasks. Book hotels, bring documents, prepare materials, rotate shifts — every item has an owner and trackable progress."
+    },
+    "privacy": {
+      "title": "Enterprise-Grade Privacy",
+      "description": "Deep integration with Apple native sign-in. Built on modern cloud-native architecture with end-to-end encryption for your circle's data."
+    },
+    "sync": {
+      "title": "Seamless Multi-Device Console",
+      "description": "Smooth on mobile, plus a full web console. Plan trips, organize events, or track team progress from your desktop — everything stays in sync across platforms."
+    }
+  },
+  "footer": {
+    "copyright": "© 2026 {productZh} ({productEn}). All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "contact": "Contact Us"
+  },
+  "legal": {
+    "privacyTitle": "Privacy Policy",
+    "termsTitle": "Terms of Service",
+    "lastUpdated": "Last Updated: {date}"
+  }
+}

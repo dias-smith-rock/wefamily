@@ -1,0 +1,80 @@
+{
+  "meta": {
+    "title": "WeCircle — Hub leve de colaboração para pequenos grupos",
+    "description": "Atribuição de tarefas, sincronização de calendários e perfis de membros para famílias, grupos de viagem, clubes e outras equipas unidas. Leve e claro — não é preciso que todos descarreguem a app."
+  },
+  "nav": {
+    "webConsole": "Consola Web",
+    "getApp": "Obter a App"
+  },
+  "hero": {
+    "titleLine1": "Faça pequenos grupos colaborarem",
+    "titleLine2": "sem depender de chats caóticos",
+    "subtitle": "Tarefas, calendários, atribuições e perfis de membros — para famílias, grupos de viagem, clubes e mais. Leve e claro, sem necessidade de todos instalarem a app.",
+    "downloadAppStore": "Descarregar na App Store",
+    "exploreWeb": "Explorar funcionalidades Web",
+    "screenshotPlaceholder": "[ Capturas de ecrã da app ou mockup 3D do telemóvel ]"
+  },
+  "useCases": {
+    "sectionTitle": "Casos de uso",
+    "sectionSubtitle": "Qualquer grupo unido de 3 a 20 pessoas que confie uns nos outros e precise de dividir tarefas e planear pode usar o WeCircle para se organizar.",
+    "items": {
+      "family": {
+        "title": "Família",
+        "pain": "Buscas escolares, compras e lembretes de medicação perdem-se nos chats de grupo.",
+        "solution": "O organizador gere perfis e tarefas — todos sabem quem é responsável e o calendário familiar é visível num relance."
+      },
+      "travel": {
+        "title": "Grupo de viagem",
+        "pain": "Reservas, horários de encontro, documentos e bagagem passam no chat.",
+        "solution": "As viagens vão para o calendário com atribuições claras — nem todos precisam da app."
+      },
+      "club": {
+        "title": "Clube / Comité de turma",
+        "pain": "Preparar eventos envolve muitas tarefas, participação desigual e progresso difícil de acompanhar.",
+        "solution": "Separe tarefas partilhadas de tarefas pessoais para que os papéis fiquem claros."
+      },
+      "roommates": {
+        "title": "Colegas de casa",
+        "pain": "Contas, rodízios de limpeza e compras partilhadas dependem de acordos verbais facilmente esquecidos.",
+        "solution": "Tarefas recorrentes com lembretes — cada colega tem um papel registado e um responsável claro."
+      },
+      "startup": {
+        "title": "Equipa empreendedora",
+        "pain": "Não quer ferramentas empresariais, mas precisa de coordenação leve de tarefas e calendários.",
+        "solution": "Gira o progresso na consola Web, consulte no telemóvel — o tamanho certo para uma equipa pequena."
+      }
+    }
+  },
+  "features": {
+    "sectionTitle": "Simplificado para pequenos grupos",
+    "sectionSubtitle": "Participação desigual? Foi daí que começámos a desenhar o produto.",
+    "profile": {
+      "title": "Perfis de membros sem descarga",
+      "description": "Não é preciso obrigar cada membro a instalar a app. O organizador pode criar perfis para quem não a usa — avós, crianças, companheiros de viagem temporários ou colaboradores externos. Uma pessoa pode gerir o calendário e as tarefas de todo o grupo."
+    },
+    "tasks": {
+      "title": "Fluxo de tarefas dedicado",
+      "description": "Distinção clara entre tarefas partilhadas e pessoais. Reservar hotéis, levar documentos, preparar materiais, turnos — cada tarefa tem um responsável e progresso rastreável."
+    },
+    "privacy": {
+      "title": "Privacidade de nível empresarial",
+      "description": "Integração profunda com início de sessão nativo Apple. Arquitetura cloud-native moderna com encriptação de ponta a ponta para os dados do seu grupo."
+    },
+    "sync": {
+      "title": "Consola sincronizada multiplataforma",
+      "description": "Fluido no telemóvel, com consola Web completa. Planeie viagens, organize eventos ou acompanhe o progresso no computador — tudo sincronizado em tempo real."
+    }
+  },
+  "footer": {
+    "copyright": "© 2026 {productZh} ({productEn}). Todos os direitos reservados.",
+    "privacy": "Política de privacidade",
+    "terms": "Termos de serviço",
+    "contact": "Contacte-nos"
+  },
+  "legal": {
+    "privacyTitle": "Privacy Policy",
+    "termsTitle": "Terms of Service",
+    "lastUpdated": "Last Updated: {date}"
+  }
+}

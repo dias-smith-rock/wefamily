@@ -1,0 +1,80 @@
+{
+  "meta": {
+    "title": "WeCircle — Centro ligero de colaboración para grupos pequeños",
+    "description": "Asignación de tareas, sincronización de calendarios y perfiles de miembros para familias, grupos de viaje, clubes y otros equipos unidos. Ligero y claro — no hace falta que todos descarguen la app."
+  },
+  "nav": {
+    "webConsole": "Consola Web",
+    "getApp": "Obtener la App"
+  },
+  "hero": {
+    "titleLine1": "Haz que los grupos pequeños colaboren",
+    "titleLine2": "sin depender de chats caóticos",
+    "subtitle": "Tareas, calendarios, asignaciones y perfiles de miembros — para familias, grupos de viaje, clubes y más. Ligero y claro, sin necesidad de que todos instalen la app.",
+    "downloadAppStore": "Descargar en App Store",
+    "exploreWeb": "Explorar funciones Web",
+    "screenshotPlaceholder": "[ Aquí irán capturas de la app o un modelo 3D del teléfono ]"
+  },
+  "useCases": {
+    "sectionTitle": "Casos de uso",
+    "sectionSubtitle": "Cualquier grupo unido de 3 a 20 personas que confíe entre sí y necesite repartir tareas y planificar puede usar WeCircle para organizarse.",
+    "items": {
+      "family": {
+        "title": "Familia",
+        "pain": "Recogidas escolares, compras y recordatorios de medicación se pierden en los chats grupales.",
+        "solution": "El organizador gestiona perfiles y tareas — todos saben quién es responsable y el calendario familiar es visible de un vistazo."
+      },
+      "travel": {
+        "title": "Grupo de viaje",
+        "pain": "Reservas, horas de encuentro, documentos y equipaje se pierden en el chat.",
+        "solution": "Los viajes van al calendario con asignaciones claras de quién hace qué — no todos necesitan la app."
+      },
+      "club": {
+        "title": "Club / Comité de clase",
+        "pain": "Preparar eventos implica muchas tareas, participación desigual y progreso difícil de seguir.",
+        "solution": "Separa tareas compartidas de tareas personales para que los roles de preparación queden claros."
+      },
+      "roommates": {
+        "title": "Compañeros de piso",
+        "pain": "Facturas, turnos de limpieza y compras compartidas dependen de acuerdos verbales que se olvidan fácilmente.",
+        "solution": "Tareas recurrentes con recordatorios — cada compañero tiene un rol registrado y un responsable claro."
+      },
+      "startup": {
+        "title": "Equipo emprendedor",
+        "pain": "No quieres herramientas empresariales, pero sí necesitas coordinación ligera de tareas y calendarios.",
+        "solution": "Gestiona el progreso desde la consola Web, consulta en móvil — el tamaño justo para un equipo pequeño."
+      }
+    }
+  },
+  "features": {
+    "sectionTitle": "Simplificado para grupos pequeños",
+    "sectionSubtitle": "¿Participación desigual? Ahí es donde empezamos a diseñar el producto.",
+    "profile": {
+      "title": "Perfiles de miembros sin descarga",
+      "description": "No hace falta obligar a cada miembro a instalar la app. El organizador puede crear perfiles para quienes no la usan — abuelos, niños, compañeros de viaje temporales o colaboradores externos. Una persona puede gestionar el calendario y las tareas de todo el grupo."
+    },
+    "tasks": {
+      "title": "Flujo de tareas dedicado",
+      "description": "Distinción clara entre tareas compartidas y personales. Reservar hoteles, llevar documentos, preparar materiales, turnos — cada tarea tiene un responsable y progreso rastreable."
+    },
+    "privacy": {
+      "title": "Privacidad de nivel empresarial",
+      "description": "Integración profunda con inicio de sesión nativo de Apple. Arquitectura cloud-native moderna con cifrado de extremo a extremo para los datos de tu grupo."
+    },
+    "sync": {
+      "title": "Consola sincronizada multiplataforma",
+      "description": "Fluido en móvil, con consola Web completa. Planifica viajes, organiza eventos o sigue el progreso desde el ordenador — todo sincronizado en tiempo real."
+    }
+  },
+  "footer": {
+    "copyright": "© 2026 {productZh} ({productEn}). Todos los derechos reservados.",
+    "privacy": "Política de privacidad",
+    "terms": "Términos de servicio",
+    "contact": "Contáctanos"
+  },
+  "legal": {
+    "privacyTitle": "Privacy Policy",
+    "termsTitle": "Terms of Service",
+    "lastUpdated": "Last Updated: {date}"
+  }
+}

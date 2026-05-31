@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { LANDINGPAGE_CONSOLE_HREF, PRODUCT_NAME_EN, PRODUCT_NAME_ZH } from "@/lib/site-urls";
+import { notFound } from "next/navigation";
+import { getDictionary } from "@/lib/i18n/get-dictionary";
+import { isLocale, type Locale } from "@/lib/i18n/config";
+import { PRODUCT_NAME_EN, PRODUCT_NAME_ZH } from "@/lib/site-urls";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — WeCircle",
@@ -11,12 +14,22 @@ export const metadata: Metadata = {
 const SUPPORT_EMAIL = "music.player.250617@gmail.com";
 const LAST_UPDATED = "May 14, 2026";
 
-export default function PrivacyPage() {
+type PrivacyPageProps = {
+  params: Promise<{ locale: string }>;
+};
+
+export default async function PrivacyPage({ params }: PrivacyPageProps) {
+  const { locale: localeParam } = await params;
+  if (!isLocale(localeParam)) notFound();
+
+  const locale = localeParam as Locale;
+  const dict = await getDictionary(locale);
+
   return (
     <div className="min-h-dvh bg-[#FAFAFA] pb-24 pt-8 sm:pt-12">
       <div className="mx-auto max-w-3xl px-5 sm:px-6">
         <Link
-          href={LANDINGPAGE_CONSOLE_HREF}
+          href={`/${locale}`}
           className="inline-block text-[15px] font-medium text-[#007AFF] transition-colors hover:text-[#0066D6] hover:underline"
         >
           {PRODUCT_NAME_ZH} {PRODUCT_NAME_EN}
@@ -26,10 +39,10 @@ export default function PrivacyPage() {
       <article className="mx-auto mt-10 max-w-3xl px-5 sm:mt-14 sm:px-6">
         <header className="border-b border-neutral-200/90 pb-10">
           <h1 className="text-3xl font-semibold tracking-tight text-neutral-950 sm:text-[2rem] sm:leading-tight">
-            Privacy Policy
+            {dict.legal.privacyTitle}
           </h1>
           <p className="mt-3 text-sm text-neutral-500">
-            Last Updated: {LAST_UPDATED}
+            {dict.legal.lastUpdated.replace("{date}", LAST_UPDATED)}
           </p>
         </header>
 
