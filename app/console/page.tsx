@@ -5,8 +5,12 @@ import { useCallback, useEffect, useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import { ConsoleLayout } from "./components/console-layout";
 import { useConsoleAuth } from "./hooks/use-console-auth";
-import { fetchPrimaryActiveMembership, fetchProfileAvatarUrl } from "./lib/membership-query";
-import type { ConsoleUser, HouseholdMembership } from "./types";
+import {
+  pickInitialHouseholdId,
+  setSelectedHouseholdId,
+} from "./lib/household-preference";
+import { fetchHouseholdOptionsForUser } from "./lib/membership-query";
+import type { ConsoleUser, HouseholdOption } from "./types";
 import { requireAuthenticatedSession } from "@/lib/auth/require-session";
 import { LANDINGPAGE_CONSOLE_HREF, PRODUCT_NAME_EN, PRODUCT_NAME_ZH } from "@/lib/site-urls";
 import { getSupabaseBrowserClient } from "@/lib/supabase/browser-client";
@@ -53,10 +57,10 @@ function formatRoleLabel(role: string): string {
 }
 
 function membershipToConsoleUser(
-  member: HouseholdMembership,
+  option: HouseholdOption,
   emailFallback: string | undefined,
-  avatarUrl: string | null,
 ): ConsoleUser {
+  const member = option.membership;
   const name =
     member.nickname?.trim() ||
     (emailFallback?.includes("@")
@@ -67,7 +71,7 @@ function membershipToConsoleUser(
     name,
     initials: initialsFromDisplayName(name),
     role: formatRoleLabel(member.role),
-    avatarUrl,
+    avatarUrl: option.avatarUrl,
   };
 }
 
@@ -75,19 +79,19 @@ export default function ConsolePage() {
   const { auth, isAuthenticating, authError, signInWithOAuth, signOut, refreshAuth } =
     useConsoleAuth();
 
-  const [currentMember, setCurrentMember] = useState<HouseholdMembership | null>(
-    null,
+  const [householdOptions, setHouseholdOptions] = useState<HouseholdOption[]>(
+    [],
   );
+  const [selectedHouseholdId, setSelectedHouseholdIdState] = useState<
+    string | null
+  >(null);
   const [membershipLoading, setMembershipLoading] = useState(false);
   const [noMembership, setNoMembership] = useState(false);
   const [membershipQueryError, setMembershipQueryError] = useState<string | null>(
     null,
   );
-  const [membershipAvatarUrl, setMembershipAvatarUrl] = useState<string | null>(
-    null,
-  );
 
-  const loadActiveMembership = useCallback(async (userId: string) => {
+  const loadHouseholdOptions = useCallback(async (userId: string) => {
     const supabase = getSupabaseBrowserClient();
     if (!supabase) return;
 
@@ -96,10 +100,10 @@ export default function ConsolePage() {
     } = await supabase.auth.getSession();
 
     if (!session?.user) {
-      setCurrentMember(null);
+      setHouseholdOptions([]);
+      setSelectedHouseholdIdState(null);
       setNoMembership(false);
       setMembershipQueryError(null);
-      setMembershipAvatarUrl(null);
       void refreshAuth();
       return;
     }
@@ -113,47 +117,56 @@ export default function ConsolePage() {
     setMembershipLoading(true);
     setMembershipQueryError(null);
 
-    const { data, error } = await fetchPrimaryActiveMembership(supabase, userId);
+    const { data, error } = await fetchHouseholdOptionsForUser(supabase, userId);
 
     if (error) {
       setMembershipLoading(false);
       setMembershipQueryError(error);
-      setCurrentMember(null);
-      setMembershipAvatarUrl(null);
+      setHouseholdOptions([]);
+      setSelectedHouseholdIdState(null);
       setNoMembership(false);
       return;
     }
 
-    if (!data) {
+    if (data.length === 0) {
       setMembershipLoading(false);
-      setCurrentMember(null);
-      setMembershipAvatarUrl(null);
+      setHouseholdOptions([]);
+      setSelectedHouseholdIdState(null);
       setNoMembership(true);
       return;
     }
 
-    const avatarUrl = await fetchProfileAvatarUrl(
-      supabase,
-      data.profile_id,
+    const initialId = pickInitialHouseholdId(
+      userId,
+      data.map((o) => o.householdId),
     );
 
     setMembershipLoading(false);
-    setCurrentMember(data);
-    setMembershipAvatarUrl(avatarUrl);
+    setHouseholdOptions(data);
+    setSelectedHouseholdIdState(initialId);
     setNoMembership(false);
   }, [refreshAuth]);
 
+  const handleSelectHousehold = useCallback(
+    (householdId: string) => {
+      if (auth.status !== "authenticated") return;
+      setSelectedHouseholdIdState(householdId);
+      setSelectedHouseholdId(auth.user.id, householdId);
+    },
+    [auth],
+  );
+
   useEffect(() => {
     if (auth.status !== "authenticated") {
-      setCurrentMember(null);
+      setHouseholdOptions([]);
+      setSelectedHouseholdIdState(null);
       setNoMembership(false);
       setMembershipQueryError(null);
-      setMembershipAvatarUrl(null);
       setMembershipLoading(false);
       return;
     }
-    void loadActiveMembership(auth.user.id);
-  }, [auth, loadActiveMembership]);
+    void loadHouseholdOptions(auth.user.id);
+  }, [auth, loadHouseholdOptions]);
 
   const handleSessionLost = useCallback(() => {
     void refreshAuth();
@@ -266,7 +279,7 @@ export default function ConsolePage() {
     );
   }
 
-  if (noMembership || !currentMember) {
+  if (noMembership || !selectedHouseholdId) {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center bg-[#F2F2F7] px-6">
         <div className="max-w-md rounded-3xl border border-gray-200 bg-white p-8 text-center shadow-sm">
@@ -287,16 +300,25 @@ export default function ConsolePage() {
     );
   }
 
+  const selectedOption =
+    householdOptions.find((o) => o.householdId === selectedHouseholdId) ??
+    householdOptions[0];
+
+  if (!selectedOption) {
+    return null;
+  }
+
   const consoleUser = membershipToConsoleUser(
-    currentMember,
+    selectedOption,
     auth.user.email,
-    membershipAvatarUrl,
   );
 
   return (
     <ConsoleLayout
       user={consoleUser}
-      householdId={currentMember.household_id}
+      householdId={selectedOption.householdId}
+      householdOptions={householdOptions}
+      onSelectHousehold={handleSelectHousehold}
       currentUserId={auth.user.id}
       onSessionLost={handleSessionLost}
       onSignOut={signOut}

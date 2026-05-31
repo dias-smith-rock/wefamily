@@ -20,3 +20,11 @@ export type HouseholdMembership = {
   joined_at?: string | null;
   created_at?: string | null;
 };
+
+/** 家庭切换器选项 */
+export type HouseholdOption = {
+  householdId: string;
+  householdName: string;
+  membership: HouseholdMembership;
+  avatarUrl: string | null;
+};

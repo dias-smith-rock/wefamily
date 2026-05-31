@@ -1,5 +1,6 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
+import { isAppSubdomainHost, isConsolePath } from "@/lib/app-host";
 import {
   getLocaleFromPathname,
   isLocale,
@@ -21,17 +22,14 @@ export function middleware(req: NextRequest) {
   const hostname = req.headers.get("host") || "";
   const pathname = url.pathname;
 
-  const isAppSubdomain =
-    hostname === "app.wefamily.ai" || hostname === "app.localhost:3000";
-
-  if (isAppSubdomain) {
-    if (pathname === "/console" || pathname.startsWith("/console/")) {
+  // app 子域仅提供 Web 控制台：/ 或 /zh-CN 等落地页路径一律进 /console
+  if (isAppSubdomainHost(hostname)) {
+    if (isConsolePath(pathname)) {
       return NextResponse.next();
     }
 
-    url.pathname =
-      pathname === "/" ? "/console" : `/console${pathname}`;
-    return NextResponse.rewrite(url);
+    url.pathname = "/console";
+    return NextResponse.redirect(url);
   }
 
   if (pathname.startsWith("/console")) {
