@@ -9,6 +9,10 @@ import {
   type Locale,
 } from "@/lib/i18n/config";
 import {
+  formatCopyright,
+  ProductLogo,
+} from "@/lib/i18n/product-brand";
+import {
   USE_CASE_ICONS,
   USE_CASE_KEYS,
 } from "@/lib/i18n/types";
@@ -17,8 +21,6 @@ import {
   COMPANY_NAME_EN,
   COMPANY_NAME_ZH,
   CONTACT_EMAIL,
-  PRODUCT_NAME_EN,
-  PRODUCT_NAME_ZH,
   WEB_CONSOLE_HREF,
 } from "@/lib/site-urls";
 
@@ -38,9 +40,7 @@ export default async function HomePage({ params }: HomePageProps) {
   const dict = await getDictionary(locale);
   const isRtl = isRtlLocale(locale);
 
-  const copyright = dict.footer.copyright
-    .replace("{productZh}", PRODUCT_NAME_ZH)
-    .replace("{productEn}", PRODUCT_NAME_EN);
+  const copyright = formatCopyright(dict.footer.copyright, locale);
 
   return (
     <div
@@ -51,10 +51,9 @@ export default async function HomePage({ params }: HomePageProps) {
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-6">
           <Link
             href={`/${locale}`}
-            className="shrink-0 text-xl font-bold tracking-tight text-slate-900 transition-opacity hover:opacity-80"
+            className="shrink-0 text-xl transition-opacity hover:opacity-80"
           >
-            {PRODUCT_NAME_ZH}
-            <span className="text-blue-600">{PRODUCT_NAME_EN}</span>
+            <ProductLogo locale={locale} />
           </Link>
           <div className="flex items-center gap-3 sm:gap-4">
             <LanguageSwitcher currentLocale={locale} />

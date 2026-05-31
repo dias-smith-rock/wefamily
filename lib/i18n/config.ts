@@ -38,6 +38,10 @@ export function isRtlLocale(locale: Locale): boolean {
   return rtlLocales.includes(locale);
 }
 
+export function isChineseLocale(locale: Locale): boolean {
+  return locale === "zh-CN" || locale === "zh-TW";
+}
+
 export function getLocaleFromPathname(pathname: string): Locale | null {
   const segment = pathname.split("/")[1];
   return segment && isLocale(segment) ? segment : null;

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { isLocale, type Locale } from "@/lib/i18n/config";
-import { PRODUCT_NAME_EN, PRODUCT_NAME_ZH } from "@/lib/site-urls";
+import { ProductLogo } from "@/lib/i18n/product-brand";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — WeCircle",
@@ -32,7 +32,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
           href={`/${locale}`}
           className="inline-block text-[15px] font-medium text-[#007AFF] transition-colors hover:text-[#0066D6] hover:underline"
         >
-          {PRODUCT_NAME_ZH} {PRODUCT_NAME_EN}
+          <ProductLogo locale={locale} linkStyle className="text-[15px] font-medium" />
         </Link>
       </div>
 
