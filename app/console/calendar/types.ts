@@ -23,7 +23,7 @@ export type CalendarEvent = {
   statusLabel: string;
   /** 为了谁 — 优先档案成员（首张，兼容旧 UI） */
   forPerson: CalendarPerson | null;
-  /** 对应 tasks.target_profile_ids / for_whom */
+  /** 对应 tasks.target_profile_id / for_whom */
   forWhomIds: string[];
   assigneeLabel: string;
   /** 详情抽屉：执行人列表 */
@@ -60,7 +60,9 @@ export type TaskRow = {
   end_datetime: string | null;
   is_all_day: boolean | null;
   involved_member_ids: string[] | null;
-  target_profile_ids: string[] | null;
+  target_profile_id: string | null;
+  /** @deprecated 仅兼容旧 schema */
+  target_profile_ids?: string[] | null;
   recurrence_rule: string | null;
   recurrence_interval: string | null;
 };
@@ -70,7 +72,6 @@ export type MembershipLookupRow = {
   user_id: string | null;
   profile_id: string | null;
   nickname: string | null;
-  avatar_url: string | null;
 };
 
 export type ProfileLookupRow = {

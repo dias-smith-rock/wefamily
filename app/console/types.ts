@@ -12,8 +12,11 @@ export type ConsoleUser = {
 export type HouseholdMembership = {
   id: string;
   household_id: string;
+  user_id?: string | null;
+  profile_id: string | null;
   role: string;
   nickname: string | null;
-  avatar_url: string | null;
   status: string;
+  joined_at?: string | null;
+  created_at?: string | null;
 };

@@ -3,11 +3,11 @@
 import { Cloud, UserPlus, UserRound } from "lucide-react";
 import { useEffect, useState } from "react";
 import { fetchMemberTasks } from "../../family/api";
+import { taskTargetProfileIds } from "../../lib/task-fields";
 import type { FamilyMemberDisplay, FamilyPageData, TaskRow } from "../../family/types";
 import {
   formatDateZh,
   formatPhoneDisplay,
-  normalizeIdArray,
   resolveTaskForWhomMembers,
 } from "../../family/utils";
 import {
@@ -263,7 +263,7 @@ export function MemberDetailSheet({
             ) : (
               <ul className="mt-3 space-y-2">
                 {tasks.map((task) => {
-                  const targetIds = normalizeIdArray(task.target_profile_ids);
+                  const targetIds = taskTargetProfileIds(task);
                   const forWhomMembers = resolveTaskForWhomMembers(
                     task,
                     allMembers,

@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import { ConsoleLayout } from "./components/console-layout";
 import { useConsoleAuth } from "./hooks/use-console-auth";
+import { HOUSEHOLD_MEMBERSHIP_COLUMNS, fetchProfileAvatarUrl } from "./lib/membership-query";
 import type { ConsoleUser, HouseholdMembership } from "./types";
 import { requireAuthenticatedSession } from "@/lib/auth/require-session";
 import { LANDINGPAGE_CONSOLE_HREF, PRODUCT_NAME_EN, PRODUCT_NAME_ZH } from "@/lib/site-urls";
@@ -54,6 +55,7 @@ function formatRoleLabel(role: string): string {
 function membershipToConsoleUser(
   member: HouseholdMembership,
   emailFallback: string | undefined,
+  avatarUrl: string | null,
 ): ConsoleUser {
   const name =
     member.nickname?.trim() ||
@@ -65,7 +67,7 @@ function membershipToConsoleUser(
     name,
     initials: initialsFromDisplayName(name),
     role: formatRoleLabel(member.role),
-    avatarUrl: member.avatar_url,
+    avatarUrl,
   };
 }
 
@@ -81,6 +83,9 @@ export default function ConsolePage() {
   const [membershipQueryError, setMembershipQueryError] = useState<string | null>(
     null,
   );
+  const [membershipAvatarUrl, setMembershipAvatarUrl] = useState<string | null>(
+    null,
+  );
 
   const loadActiveMembership = useCallback(async (userId: string) => {
     const supabase = getSupabaseBrowserClient();
@@ -94,6 +99,7 @@ export default function ConsolePage() {
       setCurrentMember(null);
       setNoMembership(false);
       setMembershipQueryError(null);
+      setMembershipAvatarUrl(null);
       void refreshAuth();
       return;
     }
@@ -109,27 +115,36 @@ export default function ConsolePage() {
 
     const { data, error } = await supabase
       .from("household_memberships")
-      .select("id, household_id, role, nickname, avatar_url, status")
+      .select(HOUSEHOLD_MEMBERSHIP_COLUMNS)
       .eq("user_id", userId)
       .eq("status", "active")
       .maybeSingle();
 
-    setMembershipLoading(false);
-
     if (error) {
+      setMembershipLoading(false);
       setMembershipQueryError(error.message);
       setCurrentMember(null);
+      setMembershipAvatarUrl(null);
       setNoMembership(false);
       return;
     }
 
     if (!data) {
+      setMembershipLoading(false);
       setCurrentMember(null);
+      setMembershipAvatarUrl(null);
       setNoMembership(true);
       return;
     }
 
+    const avatarUrl = await fetchProfileAvatarUrl(
+      supabase,
+      (data as HouseholdMembership).profile_id,
+    );
+
+    setMembershipLoading(false);
     setCurrentMember(data as HouseholdMembership);
+    setMembershipAvatarUrl(avatarUrl);
     setNoMembership(false);
   }, [refreshAuth]);
 
@@ -138,6 +153,7 @@ export default function ConsolePage() {
       setCurrentMember(null);
       setNoMembership(false);
       setMembershipQueryError(null);
+      setMembershipAvatarUrl(null);
       setMembershipLoading(false);
       return;
     }
@@ -279,6 +295,7 @@ export default function ConsolePage() {
   const consoleUser = membershipToConsoleUser(
     currentMember,
     auth.user.email,
+    membershipAvatarUrl,
   );
 
   return (

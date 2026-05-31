@@ -1,5 +1,7 @@
 import { requireAuthenticatedSession } from "@/lib/auth/require-session";
 import { getSupabaseBrowserClient } from "@/lib/supabase/browser-client";
+import { HOUSEHOLD_MEMBERSHIP_COLUMNS } from "../lib/membership-query";
+import { normalizeTaskTargetFields, taskTargetProfileIds } from "../lib/task-fields";
 import { mapTasksToCalendarEvents } from "./utils";
 import type {
   CalendarPageData,
@@ -10,10 +12,9 @@ import type {
 } from "./types";
 
 const TASK_COLUMNS =
-  "id, title, description, status, priority, due_date, end_datetime, is_all_day, involved_member_ids, target_profile_ids, recurrence_rule, recurrence_interval";
+  "id, title, description, status, priority, due_date, end_datetime, is_all_day, involved_member_ids, target_profile_id, recurrence_rule, recurrence_interval";
 
-const MEMBERSHIP_COLUMNS =
-  "id, user_id, profile_id, nickname, avatar_url";
+const MEMBERSHIP_COLUMNS = HOUSEHOLD_MEMBERSHIP_COLUMNS;
 
 const PROFILE_COLUMNS =
   "id, name, avatar_url, user_id";
@@ -31,6 +32,7 @@ function toOptionalString(value: unknown): string | null {
 }
 
 function normalizeTask(raw: Record<string, unknown>): TaskRow {
+  const targetFields = normalizeTaskTargetFields(raw);
   return {
     id: String(raw.id),
     title: String(raw.title ?? ""),
@@ -41,7 +43,7 @@ function normalizeTask(raw: Record<string, unknown>): TaskRow {
     end_datetime: (raw.end_datetime as string | null) ?? null,
     is_all_day: (raw.is_all_day as boolean | null) ?? null,
     involved_member_ids: (raw.involved_member_ids as string[] | null) ?? null,
-    target_profile_ids: (raw.target_profile_ids as string[] | null) ?? null,
+    ...targetFields,
     recurrence_rule: toOptionalString(raw.recurrence_rule),
     recurrence_interval: toOptionalString(raw.recurrence_interval),
   };
@@ -50,7 +52,7 @@ function normalizeTask(raw: Record<string, unknown>): TaskRow {
 function collectReferencedPersonIds(tasks: TaskRow[]): string[] {
   const ids = new Set<string>();
   for (const task of tasks) {
-    for (const id of task.target_profile_ids ?? []) {
+    for (const id of taskTargetProfileIds(task)) {
       if (id) ids.add(id);
     }
     for (const id of task.involved_member_ids ?? []) {
@@ -66,7 +68,6 @@ function normalizeMembership(raw: Record<string, unknown>): MembershipLookupRow 
     user_id: (raw.user_id as string | null) ?? null,
     profile_id: (raw.profile_id as string | null) ?? null,
     nickname: (raw.nickname as string | null) ?? null,
-    avatar_url: (raw.avatar_url as string | null) ?? null,
   };
 }
 

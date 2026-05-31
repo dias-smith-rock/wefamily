@@ -1,5 +1,6 @@
 import { addDays, subDays } from "date-fns";
 import { isIncompleteTask } from "../family/utils";
+import { taskTargetProfileIds } from "../lib/task-fields";
 import type {
   CalendarDay,
   CalendarEvent,
@@ -216,7 +217,7 @@ function resolvePerson(
     return {
       id: membership.id,
       name,
-      avatarUrl: membership.avatar_url || profile?.avatar_url || null,
+      avatarUrl: profile?.avatar_url || null,
       initials: initialsFromName(name),
       avatarClass: pickAvatarClass(membership.id),
       isManagedProfile: isManaged,
@@ -306,7 +307,7 @@ export function mapTasksToCalendarEvents(
     .map((task) => {
       const startAt = new Date(task.due_date!);
       const endAt = task.end_datetime ? new Date(task.end_datetime) : null;
-      const forWhomIds = normalizeIdArray(task.target_profile_ids);
+      const forWhomIds = taskTargetProfileIds(task);
       const beneficiaries = resolvePeople(forWhomIds, maps);
       const assignees = resolvePeople(task.involved_member_ids, maps);
       const forPerson = beneficiaries[0] ?? null;

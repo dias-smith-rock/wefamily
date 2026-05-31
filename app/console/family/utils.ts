@@ -1,3 +1,4 @@
+import { taskTargetProfileIds } from "../lib/task-fields";
 import type {
   FamilyMemberDisplay,
   FamilyProfileRow,
@@ -106,15 +107,11 @@ export function membershipToDisplay(
   const displayName =
     row.nickname?.trim() ||
     profile?.name?.trim() ||
-    row.email?.trim() ||
+    profile?.email?.trim() ||
     "未命名成员";
 
-  const phone =
-    row.phone_number ||
-    profile?.mainphone ||
-    profile?.secondphone ||
-    null;
-  const email = row.email || profile?.email || null;
+  const phone = profile?.mainphone || profile?.secondphone || null;
+  const email = profile?.email || null;
 
   const isCreator =
     household.creator_id != null &&
@@ -146,7 +143,7 @@ export function membershipToDisplay(
     displayName,
     subtitle,
     detailLine,
-    avatarUrl: row.avatar_url || profile?.avatar_url || null,
+    avatarUrl: profile?.avatar_url || null,
     initials: initialsFromName(displayName),
     avatarClass: pickAvatarClass(row.id),
     roleLabel,
@@ -214,10 +211,13 @@ export function memberTaskFilterIds(member: FamilyMemberDisplay): string[] {
 }
 
 export function resolveTaskForWhomMembers(
-  task: { target_profile_ids: string[] | null },
+  task: {
+    target_profile_id?: string | null;
+    target_profile_ids?: string[] | null;
+  },
   members: FamilyMemberDisplay[],
 ): FamilyMemberDisplay[] {
-  const ids = normalizeIdArray(task.target_profile_ids);
+  const ids = taskTargetProfileIds(task);
   if (ids.length === 0) return [];
   const idSet = new Set(ids);
   const seen = new Set<string>();
@@ -235,13 +235,14 @@ export function resolveTaskForWhomMembers(
 export function taskMatchesMember(
   task: {
     involved_member_ids: string[] | null;
-    target_profile_ids: string[] | null;
+    target_profile_id?: string | null;
+    target_profile_ids?: string[] | null;
   },
   ids: string[],
 ): boolean {
   if (ids.length === 0) return false;
   const involved = task.involved_member_ids ?? [];
-  const targets = task.target_profile_ids ?? [];
+  const targets = taskTargetProfileIds(task);
   return ids.some(
     (id) => involved.includes(id) || targets.includes(id),
   );

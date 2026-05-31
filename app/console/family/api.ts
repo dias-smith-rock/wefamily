@@ -8,6 +8,8 @@ import {
   sortFamilyMembers,
   taskMatchesMember,
 } from "./utils";
+import { HOUSEHOLD_MEMBERSHIP_COLUMNS } from "../lib/membership-query";
+import { normalizeTaskTargetFields } from "../lib/task-fields";
 import type {
   FamilyMemberDisplay,
   FamilyProfileRow,
@@ -18,8 +20,7 @@ import type {
   TaskRow,
 } from "./types";
 
-const MEMBERSHIP_COLUMNS =
-  "id, household_id, user_id, profile_id, role, nickname, avatar_url, phone_number, email, status, joined_at, created_at";
+const MEMBERSHIP_COLUMNS = HOUSEHOLD_MEMBERSHIP_COLUMNS;
 
 const PROFILE_COLUMNS = [
   "id",
@@ -44,9 +45,6 @@ function normalizeMembership(raw: Record<string, unknown>): MembershipRowBase {
     profile_id: (raw.profile_id as string | null) ?? null,
     role: String(raw.role ?? "member"),
     nickname: (raw.nickname as string | null) ?? null,
-    avatar_url: (raw.avatar_url as string | null) ?? null,
-    phone_number: (raw.phone_number as string | null) ?? null,
-    email: (raw.email as string | null) ?? null,
     status: String(raw.status ?? "active"),
     joined_at: (raw.joined_at as string | null) ?? null,
     created_at: (raw.created_at as string | null) ?? null,
@@ -231,7 +229,7 @@ export async function fetchMemberTasks(
   const { data, error } = await supabase
     .from("tasks")
     .select(
-      "id, title, status, due_date, involved_member_ids, target_profile_ids",
+      "id, title, status, due_date, involved_member_ids, target_profile_id",
     )
     .eq("household_id", householdId)
     .order("due_date", { ascending: true, nullsFirst: false });
@@ -240,7 +238,20 @@ export async function fetchMemberTasks(
     return { tasks: [], error: error.message };
   }
 
-  const filtered = ((data ?? []) as TaskRow[]).filter(
+  const rows = (data ?? []).map((row) => {
+    const raw = row as Record<string, unknown>;
+    const targetFields = normalizeTaskTargetFields(raw);
+    return {
+      id: String(raw.id),
+      title: String(raw.title ?? ""),
+      status: String(raw.status ?? "pending"),
+      due_date: (raw.due_date as string | null) ?? null,
+      involved_member_ids: (raw.involved_member_ids as string[] | null) ?? null,
+      ...targetFields,
+    } satisfies TaskRow;
+  });
+
+  const filtered = rows.filter(
     (t) => isIncompleteTask(t.status) && taskMatchesMember(t, ids),
   );
 

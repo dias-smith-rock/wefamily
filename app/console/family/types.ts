@@ -1,4 +1,4 @@
-/** household_memberships 行（不含联表） */
+/** household_memberships 行（不含联表，与 Supabase 列名一致） */
 export type MembershipRowBase = {
   id: string;
   household_id: string;
@@ -6,9 +6,6 @@ export type MembershipRowBase = {
   profile_id: string | null;
   role: string;
   nickname: string | null;
-  avatar_url: string | null;
-  phone_number: string | null;
-  email: string | null;
   status: string;
   joined_at: string | null;
   created_at: string | null;
@@ -61,7 +58,9 @@ export type TaskRow = {
   status: string;
   due_date: string | null;
   involved_member_ids: string[] | null;
-  target_profile_ids: string[] | null;
+  target_profile_id: string | null;
+  /** @deprecated 仅兼容旧 schema，新数据用 target_profile_id */
+  target_profile_ids?: string[] | null;
 };
 
 /** 前端展示用成员模型 */
