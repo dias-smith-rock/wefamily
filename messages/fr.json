@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "WeCircle — Hub de collaboration légère pour petits groupes",
-    "description": "Répartition des tâches, synchronisation des agendas et profils des membres pour les familles, groupes de voyage, clubs et autres petites équipes soudées. Léger et clair — pas besoin que tout le monde télécharge l'application."
+    "description": "Répartition des tâches, synchronisation des agendas et profils des membres pour les groupes, groupes de voyage, clubs et autres petites équipes soudées. Léger et clair — pas besoin que tout le monde télécharge l'application."
   },
   "nav": {
     "webConsole": "Console Web",
@@ -10,7 +10,7 @@
   "hero": {
     "titleLine1": "Faites collaborer les petits groupes",
     "titleLine2": "sans compter sur les discussions de groupe",
-    "subtitle": "Tâches, agendas, répartitions et profils des membres — pour les familles, groupes de voyage, clubs et plus encore. Léger et clair, sans obligation d'installer l'application pour tous.",
+    "subtitle": "Tâches, agendas, répartitions et profils des membres — pour les groupes, groupes de voyage, clubs et plus encore. Léger et clair, sans obligation d'installer l'application pour tous.",
     "downloadAppStore": "Télécharger sur l'App Store",
     "exploreWeb": "Découvrir la version Web",
     "screenshotPlaceholder": "[ Captures d'écran de l'application ou maquette 3D du téléphone ]"
@@ -20,9 +20,9 @@
     "sectionSubtitle": "Tout petit groupe soudé de 3 à 20 personnes qui se fait confiance et doit se répartir le travail peut utiliser WeCircle pour s'organiser.",
     "items": {
       "family": {
-        "title": "Famille",
+        "title": "Groupe",
         "pain": "Trajets scolaires, courses et rappels de médicaments se perdent dans les discussions de groupe.",
-        "solution": "L'organisateur gère les profils et les tâches — chacun sait qui est responsable, et l'agenda familial est visible d'un coup d'œil."
+        "solution": "L'organisateur gère les profils et les tâches — chacun sait qui est responsable, et l'agenda du groupe est visible d'un coup d'œil."
       },
       "travel": {
         "title": "Groupe de voyage",

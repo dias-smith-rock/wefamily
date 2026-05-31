@@ -56,7 +56,10 @@ export default async function HomePage({ params }: HomePageProps) {
             <ProductLogo locale={locale} />
           </Link>
           <div className="flex items-center gap-3 sm:gap-4">
-            <LanguageSwitcher currentLocale={locale} />
+            <LanguageSwitcher
+              currentLocale={locale}
+              selectLanguageLabel={dict.common.selectLanguage}
+            />
             <Link
               href={WEB_CONSOLE_HREF}
               className="rounded-full bg-black px-4 py-2 text-sm font-medium text-white shadow-lg shadow-gray-200/80 transition hover:bg-gray-800 sm:hidden"

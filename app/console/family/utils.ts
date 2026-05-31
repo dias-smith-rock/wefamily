@@ -1,3 +1,7 @@
+import { getActiveDictionary } from "@/lib/i18n/client-dictionary";
+import { resolveClientLocale } from "@/lib/i18n/client-locale";
+import { formatLocaleDate, formatRoleLabel as formatRoleLabelI18n } from "@/lib/i18n/formatters";
+import type { Dictionary } from "@/lib/i18n/types";
 import { taskTargetProfileIds } from "../lib/task-fields";
 import type {
   FamilyMemberDisplay,
@@ -31,12 +35,20 @@ export function initialsFromName(name: string): string {
   return trimmed.slice(0, 2).toUpperCase();
 }
 
-export function formatRoleLabel(role: string): string {
-  const r = role.trim().toLowerCase();
-  if (r === "owner" || r === "creator") return "创建者";
-  if (r === "admin") return "管理员";
-  if (r === "member") return "成员";
-  return role.replace(/_/g, " ") || "成员";
+function labels(dict?: Dictionary) {
+  return (dict ?? getActiveDictionary()).common;
+}
+
+export function formatRoleLabel(role: string, dict?: Dictionary): string {
+  return formatRoleLabelI18n(dict ?? getActiveDictionary(), role);
+}
+
+export function formatDateLocalized(iso: string | null | undefined): string {
+  return formatLocaleDate(resolveClientLocale(), iso);
+}
+
+export function formatDateZh(iso: string | null | undefined): string {
+  return formatDateLocalized(iso);
 }
 
 export function maskPhone(phone: string | null | undefined): string | null {
@@ -53,19 +65,6 @@ export function formatPhoneDisplay(phone: string | null | undefined): string | n
     return `${digits.slice(0, 3)}****${digits.slice(-4)}`;
   }
   return phone;
-}
-
-export function formatDateZh(iso: string | null | undefined): string {
-  if (!iso) return "—";
-  try {
-    return new Date(iso).toLocaleDateString("zh-CN", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  } catch {
-    return "—";
-  }
 }
 
 export function isManagedMembership(row: MembershipRow): boolean {
@@ -101,14 +100,16 @@ function pickAvatarClass(seed: string): string {
 export function membershipToDisplay(
   row: MembershipRow,
   household: HouseholdRow,
+  dict?: Dictionary,
 ): FamilyMemberDisplay {
+  const common = labels(dict);
   const profile = row.family_profiles;
   const managed = isManagedMembership(row);
   const displayName =
     row.nickname?.trim() ||
     profile?.name?.trim() ||
     profile?.email?.trim() ||
-    "未命名成员";
+    common.defaults.unnamedMember;
 
   const phone = profile?.mainphone || profile?.secondphone || null;
   const email = profile?.email || null;
@@ -118,7 +119,9 @@ export function membershipToDisplay(
     row.user_id != null &&
     row.user_id === household.creator_id;
 
-  const roleLabel = isCreator ? "创建者" : formatRoleLabel(row.role);
+  const roleLabel = isCreator
+    ? common.roles.creator
+    : formatRoleLabel(row.role, dict);
 
   let detailLine: string | null =
     maskPhone(phone) ?? formatPhoneDisplay(phone);
@@ -134,7 +137,7 @@ export function membershipToDisplay(
   }
 
   let subtitle = roleLabel;
-  if (managed) subtitle = "成员";
+  if (managed) subtitle = common.defaults.member;
 
   return {
     membershipId: row.id,
@@ -158,8 +161,10 @@ export function membershipToDisplay(
 /** 无 household_membership、仅存在于 family_profiles 的免下载档案 */
 export function profileToDisplay(
   profile: FamilyProfileRow,
+  dict?: Dictionary,
 ): FamilyMemberDisplay {
-  const displayName = profile.name?.trim() || "未命名档案";
+  const common = labels(dict);
+  const displayName = profile.name?.trim() || common.defaults.unnamedProfile;
   const phone = profile.mainphone || profile.secondphone || null;
   const email = profile.email || null;
 
@@ -181,12 +186,12 @@ export function profileToDisplay(
     userId: profile.user_id,
     profileId: profile.id,
     displayName,
-    subtitle: "成员",
+    subtitle: common.defaults.member,
     detailLine,
     avatarUrl: profile.avatar_url,
     initials: initialsFromName(displayName),
     avatarClass: pickAvatarClass(profile.id),
-    roleLabel: "成员",
+    roleLabel: common.defaults.member,
     isManagedProfile: isManagedProfileRow(profile),
     isCreator: false,
     phone,

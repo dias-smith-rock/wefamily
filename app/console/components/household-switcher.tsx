@@ -1,3 +1,6 @@
+"use client";
+
+import { useDictionary } from "@/lib/i18n/dictionary-provider";
 import type { HouseholdOption } from "../types";
 
 type HouseholdSwitcherProps = {
@@ -11,6 +14,7 @@ export function HouseholdSwitcher({
   selectedHouseholdId,
   onSelect,
 }: HouseholdSwitcherProps) {
+  const { t } = useDictionary();
   const selected =
     options.find((o) => o.householdId === selectedHouseholdId) ?? options[0];
 
@@ -33,7 +37,7 @@ export function HouseholdSwitcher({
     <div className="sticky top-0 z-50 border-b border-gray-200/90 bg-[#F2F2F7]/95 px-4 py-2.5 backdrop-blur-md">
       <div className="mx-auto max-w-lg">
         <label htmlFor="household-switcher" className="sr-only">
-          切换家庭
+          {t("console.nav.switchGroup")}
         </label>
         <div className="relative">
           <span

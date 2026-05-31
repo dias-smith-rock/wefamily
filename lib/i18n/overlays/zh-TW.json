@@ -1,0 +1,358 @@
+{
+  "errors": {
+    "title": "出錯了",
+    "unexpected": "發生了意外錯誤。",
+    "tryAgain": "重試",
+    "notFoundTitle": "頁面未找到",
+    "notFoundDescription": "您造訪的頁面不存在。",
+    "backToHome": "返回首頁"
+  },
+  "common": {
+    "selectLanguage": "選擇語言",
+    "close": "關閉",
+    "cancel": "取消",
+    "ok": "好",
+    "gotIt": "知道了",
+    "retry": "重試",
+    "unknownError": "未知錯誤",
+    "signOut": "退出",
+    "signOutLogin": "退出登入",
+    "loading": "載入中…",
+    "everyone": "所有人",
+    "none": "無",
+    "profile": "檔案",
+    "roles": {
+      "creator": "建立者",
+      "admin": "管理員",
+      "member": "成員",
+      "groupAdmin": "群組管理員"
+    },
+    "defaults": {
+      "member": "成員",
+      "unnamedGroup": "未命名群組",
+      "unnamedMember": "未命名成員",
+      "unnamedProfile": "未命名檔案",
+      "unnamedTask": "未命名任務",
+      "profileMember": "檔案成員",
+      "peopleCount": "{count} 等 {total} 人"
+    }
+  },
+  "console": {
+    "auth": {
+      "verifying": "驗證登入狀態…",
+      "missingConfigTitle": "缺少 Supabase 設定",
+      "missingConfigBody": "請在 .env.local 中設定 NEXT_PUBLIC_SUPABASE_URL 與 NEXT_PUBLIC_SUPABASE_ANON_KEY。",
+      "backToSite": "回到官網",
+      "loginTitle": "登入 Web 控制台",
+      "loginSubtitle": "使用 Apple 或 Google 帳號登入以檢視群組資料（唯讀）。",
+      "sessionHint": "登入狀態保持 10 分鐘，逾時需重新登入。",
+      "redirecting": "跳轉中…",
+      "signInApple": "透過 Apple 登入",
+      "signInGoogle": "透過 Google 登入",
+      "loginFailed": "登入請求失敗，請稍後重試",
+      "sessionExpired": "登入已過期，請重新登入",
+      "pleaseSignIn": "請先登入"
+    },
+    "membership": {
+      "loadFailedTitle": "暫時無法載入群組資訊",
+      "noMembershipTitle": "尚未加入群組",
+      "noMembershipBody": "您尚未加入任何群組，或加入申請正在審批中。請在同圈 iOS 用戶端完成群組建立或加入。"
+    },
+    "nav": {
+      "main": "主導航",
+      "calendar": "日程表",
+      "group": "群組",
+      "me": "我的",
+      "switchGroup": "切換群組"
+    },
+    "me": {
+      "title": "我的",
+      "accountSettings": "帳戶與設定",
+      "settingsHint": "完整設定請在同圈 iOS 應用中管理。"
+    },
+    "group": {
+      "title": "群組",
+      "loadFailed": "無法載入群組資料",
+      "groupProfile": "群組資料",
+      "membersSection": "群組成員",
+      "noOtherMembers": "暫無其他群組成員",
+      "hidePhone": "隱藏手機號",
+      "showPhone": "顯示手機號",
+      "createdAt": "建立於 {date}",
+      "memberCount": "目前共 {total} 位成員",
+      "editGroupHint": "如需修改群組名稱或解散群組，請前往同圈 iOS 用戶端。",
+      "phone": "手機號",
+      "email": "信箱",
+      "noContact": "暫無聯絡方式",
+      "managedProfileHint": "此檔案由群組管理員共同維護。",
+      "pendingTasks": "目前待辦事項",
+      "noPendingTasks": "暫無未完成任務",
+      "duePrefix": "截止",
+      "inviteMember": "邀請新成員",
+      "createProfile": "建立免下載檔案",
+      "securityLimitTitle": "多端安全限制",
+      "securityLimitBody": "請使用同圈 iOS App 掃描 QR 碼或傳送快捷邀請連結。"
+    },
+    "calendar": {
+      "switchView": "切換檢視",
+      "selectMonth": "選擇月份",
+      "timeline": "日期時間軸",
+      "createNew": "新建",
+      "assigneeLabel": "誰去辦 (Assignee)",
+      "noEventsToday": "今天沒有安排日程",
+      "loadFailed": "無法載入日程資料",
+      "noEvents": "暫無日程安排",
+      "viewList": "列表",
+      "viewDay": "日",
+      "view3Day": "3 天",
+      "viewWeek": "週",
+      "viewMonth": "月",
+      "viewYear": "年",
+      "newTask": "新建任務",
+      "newEvent": "新建日程",
+      "readonlyTitle": "唯讀模式",
+      "readonlyBody": "請使用同圈 iOS 用戶端新增新事務。",
+      "aiTitle": "Hermes AI 助理已就緒",
+      "aiBody": "語音輸入與智慧排程功能僅在 iOS App 中開放。",
+      "taskDetail": "任務詳情",
+      "forWhomLabel": "為了誰 (For)",
+      "forWhomPrefix": "為了",
+      "forWhomMembers": "{count} 位成員",
+      "fieldTime": "時間",
+      "fieldRepeat": "重複",
+      "fieldReminder": "提醒",
+      "fieldAssignee": "誰去辦",
+      "fieldBudget": "預計開銷",
+      "fieldStatus": "目前狀態",
+      "fieldForWhom": "為了誰",
+      "fieldPriority": "任務優先順序",
+      "priorityUrgent": "緊急",
+      "priorityNormal": "一般",
+      "fieldEmergency": "緊急聯絡號碼 / 會議連結",
+      "fieldLocation": "地理位置",
+      "fieldFinanceNotes": "財務與備註",
+      "fieldDescription": "詳細說明",
+      "fieldMoreDetails": "更多細節",
+      "allDay": "全天",
+      "closeMonthPicker": "關閉月曆",
+      "selectDate": "選擇日期",
+      "dayAria": "{day}日"
+    },
+    "status": {
+      "pending": "待接受",
+      "inProgress": "進行中",
+      "done": "已完成",
+      "cancelled": "已取消",
+      "fallback": "待處理"
+    },
+    "recurrence": {
+      "never": "永不",
+      "daily": "每天",
+      "weekly": "每週",
+      "monthly": "每月",
+      "yearly": "每年"
+    },
+    "taskDetail": {
+      "reminderDefault": "提前 15 分鐘",
+      "budgetDefault": "無",
+      "locationDefault": "東田麗園",
+      "emergencyDefault": "無",
+      "descriptionPlaceholder": "可填寫開支明細、支付方式等…",
+      "notesEmpty": "暫無備註"
+    },
+    "api": {
+      "missingConfig": "缺少 Supabase 設定",
+      "pleaseSignIn": "請先登入",
+      "sessionExpired": "登入已過期，請重新登入",
+      "groupNotFound": "未找到群組資訊",
+      "notInGroup": "目前使用者不在該群組成員列表中",
+      "networkError": "網路異常，請稍後重試"
+    }
+  },
+  "legal": {
+    "privacyTitle": "隱私權政策",
+    "termsTitle": "服務條款",
+    "lastUpdated": "最後更新：{date}",
+    "privacyMetaDescription": "同圈（WeCircle）在您使用網站與行動應用時如何收集、使用並保護您的資訊。",
+    "termsMetaDescription": "管轄您對同圈（WeCircle）網站與行動應用存取與使用的條款。",
+    "privacy": {
+      "intro": "歡迎使用同圈（WeCircle）。您所在群組的隱私與資料安全是我們的首要關切。本隱私權政策說明我們在您使用網站與行動應用時如何收集、使用並保護您的資訊。",
+      "sections": [
+        {
+          "heading": "1. 我們收集的資訊",
+          "lead": "我們僅收集提供服務與改進產品所必需的資訊：",
+          "items": [
+            {
+              "term": "帳戶資訊：",
+              "body": "當您使用「透過 Apple 登入」時，我們會收集 Apple 提供的姓名與電子郵件地址，用於建立您的安全帳戶。"
+            },
+            {
+              "term": "群組資料：",
+              "body": "為實現群組協作，我們會儲存您建立的任務、日程與群組結構。"
+            },
+            {
+              "term": "託管檔案：",
+              "body": "若您為沒有獨立帳戶的群組成員建立「檔案成員」（Virtual Profiles）（如兒童或長輩），您確認有權為群組管理目的提供其基本識別資訊（如姓名或暱稱）。"
+            },
+            {
+              "term": "技術資料：",
+              "body": "我們可能收集裝置類型、應用程式當機日誌、使用指標等非個人識別資訊，以保障應用穩定性。"
+            }
+          ],
+          "paragraphs": []
+        },
+        {
+          "heading": "2. 我們如何使用您的資訊",
+          "lead": "我們嚴格將您的資料用於提供同圈體驗：",
+          "items": [
+            {
+              "term": "",
+              "body": "在您的裝置間即時同步任務、日程與群組角色。"
+            },
+            {
+              "term": "",
+              "body": "安全地驗證您的身分。"
+            },
+            {
+              "term": "",
+              "body": "提供客戶支援並回應您的意見。"
+            }
+          ],
+          "paragraphs": []
+        },
+        {
+          "heading": "3. 資料儲存與安全",
+          "lead": "",
+          "items": [],
+          "paragraphs": [
+            "我們採用企業級雲端基礎設施（包括 Supabase）安全儲存您的資料。資料在傳輸與靜態儲存時均加密。我們實施嚴格的列級安全（RLS）資料庫策略，確保您的群組資料完全隔離，僅對您群組內的授權成員可存取。"
+          ]
+        },
+        {
+          "heading": "4. 資訊共享",
+          "lead": "",
+          "items": [],
+          "paragraphs": [
+            "我們不會、也永遠不會向第三方出售您的個人資料。我們僅與可信的服務提供商（如安全雲端託管）共享資訊，且嚴格限於營運服務之目的。在法律要求時，我們也可能披露資訊。"
+          ]
+        },
+        {
+          "heading": "5. 您的權利與資料刪除",
+          "lead": "",
+          "items": [],
+          "paragraphs": [
+            "您對自己的資料擁有完全控制權。您可在應用內隨時編輯個人資料、刪除特定任務或移除群組成員。您也可透過應用設定中的「危險區域」永久刪除整個帳戶及所有關聯資料。刪除後不可恢復。"
+          ]
+        },
+        {
+          "heading": "6. 聯絡我們",
+          "lead": "",
+          "items": [],
+          "paragraphs": []
+        }
+      ],
+      "contactLead": "如您對本隱私權政策有任何疑問，請聯絡：music.player.250617@gmail.com"
+    },
+    "terms": {
+      "intro": "本服務條款（「條款」）管轄您對同圈（WeCircle）網站與行動應用的存取與使用。使用我們的服務即表示您同意受本條款約束。",
+      "sections": [
+        {
+          "heading": "1. 服務說明",
+          "lead": "",
+          "items": [],
+          "paragraphs": [
+            "同圈（WeCircle）是一款群組協作與效率工具，協助群組管理任務、日程與成員檔案。服務按「現狀」提供，我們保留自行修改、更新或停用功能的權利。"
+          ]
+        },
+        {
+          "heading": "2. 使用者帳戶與安全",
+          "lead": "",
+          "items": [
+            {
+              "term": "",
+              "body": "建立帳戶時（例如透過 Apple ID）您須提供準確資訊。"
+            },
+            {
+              "term": "",
+              "body": "您須維護帳戶及用於存取同圈之裝置的安全。"
+            },
+            {
+              "term": "",
+              "body": "如發現帳戶遭未經授權使用，須及時通知我們。"
+            }
+          ],
+          "paragraphs": []
+        },
+        {
+          "heading": "3. 群組管理",
+          "lead": "",
+          "items": [
+            {
+              "term": "",
+              "body": "在應用內建立「群組」時，您擔任管理員。"
+            },
+            {
+              "term": "",
+              "body": "您對輸入的其他群組成員資料負全部責任，包括為無活躍帳戶者建立的虛擬檔案。"
+            },
+            {
+              "term": "",
+              "body": "您負責管理邀請加入群組的人員，並在必要時移除成員。"
+            }
+          ],
+          "paragraphs": []
+        },
+        {
+          "heading": "4. 可接受使用",
+          "lead": "您同意不將同圈用於：",
+          "items": [
+            {
+              "term": "",
+              "body": "上傳、發布或傳輸任何違法、辱罵、騷擾或侵犯他人隱私的內容。"
+            },
+            {
+              "term": "",
+              "body": "試圖入侵、破壞或危及應用、伺服器或資料庫結構的安全。"
+            },
+            {
+              "term": "",
+              "body": "未經我們明確書面許可，複製、翻印或轉售服務的任何部分。"
+            }
+          ],
+          "paragraphs": []
+        },
+        {
+          "heading": "5. 責任限制",
+          "lead": "",
+          "items": [],
+          "paragraphs": [
+            "在法律允許的最大範圍內，同圈及其建立者不對任何間接、附帶、特殊、後果性或懲罰性損害，或任何利潤或收入損失（無論直接還是間接產生）承擔責任，包括因 (a) 您存取、使用或無法存取、使用服務；(b) 服務上任何第三方的行為或內容而產生的情形。"
+          ]
+        },
+        {
+          "heading": "6. 適用法律",
+          "lead": "",
+          "items": [],
+          "paragraphs": [
+            "本條款受香港特別行政區法律管轄並依其解釋，不適用其法律衝突規則。"
+          ]
+        },
+        {
+          "heading": "7. 條款變更",
+          "lead": "",
+          "items": [],
+          "paragraphs": [
+            "我們保留隨時修改本條款的權利。重大變更將透過更新本頁頂部「最後更新」日期通知使用者。變更後您繼續使用服務即視為接受新條款。"
+          ]
+        },
+        {
+          "heading": "8. 聯絡資訊",
+          "lead": "",
+          "items": [],
+          "paragraphs": []
+        }
+      ],
+      "contactLead": "如對本條款有任何疑問，請聯絡：music.player.250617@gmail.com"
+    }
+  }
+}

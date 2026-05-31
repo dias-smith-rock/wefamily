@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "WeCircle — Hub leve de colaboração para pequenos grupos",
-    "description": "Atribuição de tarefas, sincronização de calendários e perfis de membros para famílias, grupos de viagem, clubes e outras equipas unidas. Leve e claro — não é preciso que todos descarreguem a app."
+    "description": "Atribuição de tarefas, sincronização de calendários e perfis de membros para grupos, grupos de viagem, clubes e outras equipas unidas. Leve e claro — não é preciso que todos descarreguem a app."
   },
   "nav": {
     "webConsole": "Consola Web",
@@ -10,7 +10,7 @@
   "hero": {
     "titleLine1": "Faça pequenos grupos colaborarem",
     "titleLine2": "sem depender de chats caóticos",
-    "subtitle": "Tarefas, calendários, atribuições e perfis de membros — para famílias, grupos de viagem, clubes e mais. Leve e claro, sem necessidade de todos instalarem a app.",
+    "subtitle": "Tarefas, calendários, atribuições e perfis de membros — para grupos, grupos de viagem, clubes e mais. Leve e claro, sem necessidade de todos instalarem a app.",
     "downloadAppStore": "Descarregar na App Store",
     "exploreWeb": "Explorar funcionalidades Web",
     "screenshotPlaceholder": "[ Capturas de ecrã da app ou mockup 3D do telemóvel ]"
@@ -20,9 +20,9 @@
     "sectionSubtitle": "Qualquer grupo unido de 3 a 20 pessoas que confie uns nos outros e precise de dividir tarefas e planear pode usar o WeCircle para se organizar.",
     "items": {
       "family": {
-        "title": "Família",
+        "title": "Grupo",
         "pain": "Buscas escolares, compras e lembretes de medicação perdem-se nos chats de grupo.",
-        "solution": "O organizador gere perfis e tarefas — todos sabem quem é responsável e o calendário familiar é visível num relance."
+        "solution": "O organizador gere perfis e tarefas — todos sabem quem é responsável e o calendário do grupo é visível num relance."
       },
       "travel": {
         "title": "Grupo de viagem",

@@ -1,0 +1,358 @@
+{
+  "errors": {
+    "title": "Algo salió mal",
+    "unexpected": "Ocurrió un error inesperado.",
+    "tryAgain": "Reintentar",
+    "notFoundTitle": "Página no encontrada",
+    "notFoundDescription": "La página que busca no existe.",
+    "backToHome": "Volver al inicio"
+  },
+  "common": {
+    "selectLanguage": "Elegir idioma",
+    "close": "Cerrar",
+    "cancel": "Cancelar",
+    "ok": "OK",
+    "gotIt": "Entendido",
+    "retry": "Reintentar",
+    "unknownError": "Error desconocido",
+    "signOut": "Salir",
+    "signOutLogin": "Cerrar sesión",
+    "loading": "Cargando…",
+    "everyone": "Todos",
+    "none": "Ninguno",
+    "profile": "Perfil",
+    "roles": {
+      "creator": "Creador",
+      "admin": "Admin",
+      "member": "Miembro",
+      "groupAdmin": "Admin del grupo"
+    },
+    "defaults": {
+      "member": "Miembro",
+      "unnamedGroup": "Grupo sin nombre",
+      "unnamedMember": "Miembro sin nombre",
+      "unnamedProfile": "Perfil sin nombre",
+      "unnamedTask": "Tarea sin nombre",
+      "profileMember": "Miembro de perfil",
+      "peopleCount": "{count} de {total} personas"
+    }
+  },
+  "console": {
+    "auth": {
+      "verifying": "Verificando inicio de sesión…",
+      "missingConfigTitle": "Falta configuración de Supabase",
+      "missingConfigBody": "Configure NEXT_PUBLIC_SUPABASE_URL y NEXT_PUBLIC_SUPABASE_ANON_KEY en .env.local.",
+      "backToSite": "Volver al sitio",
+      "loginTitle": "Iniciar sesión en la consola web",
+      "loginSubtitle": "Inicie sesión con Apple o Google para ver datos del grupo (solo lectura).",
+      "sessionHint": "La sesión dura 10 minutos; vuelva a iniciar sesión después.",
+      "redirecting": "Redirigiendo…",
+      "signInApple": "Iniciar sesión con Apple",
+      "signInGoogle": "Iniciar sesión con Google",
+      "loginFailed": "Error al iniciar sesión. Inténtelo más tarde.",
+      "sessionExpired": "Sesión expirada. Inicie sesión de nuevo.",
+      "pleaseSignIn": "Inicie sesión primero"
+    },
+    "membership": {
+      "loadFailedTitle": "No se puede cargar el grupo",
+      "noMembershipTitle": "Sin grupo",
+      "noMembershipBody": "No se ha unido a ningún grupo o su solicitud está pendiente. Cree o únase en la app WeCircle iOS."
+    },
+    "nav": {
+      "main": "Navegación principal",
+      "calendar": "Calendario",
+      "group": "Grupo",
+      "me": "Yo",
+      "switchGroup": "Cambiar grupo"
+    },
+    "me": {
+      "title": "Yo",
+      "accountSettings": "Cuenta y ajustes",
+      "settingsHint": "Ajustes completos en la app WeCircle iOS."
+    },
+    "group": {
+      "title": "Grupo",
+      "loadFailed": "No se pueden cargar los datos",
+      "groupProfile": "Perfil del grupo",
+      "membersSection": "Miembros",
+      "noOtherMembers": "No hay más miembros",
+      "hidePhone": "Ocultar teléfono",
+      "showPhone": "Mostrar teléfono",
+      "createdAt": "Creado el {date}",
+      "memberCount": "{total} miembros",
+      "editGroupHint": "Para renombrar o disolver el grupo, use la app WeCircle iOS.",
+      "phone": "Teléfono",
+      "email": "Correo",
+      "noContact": "Sin contacto",
+      "managedProfileHint": "Perfil mantenido por administradores.",
+      "pendingTasks": "Tareas pendientes",
+      "noPendingTasks": "Sin tareas abiertas",
+      "duePrefix": "Vence",
+      "inviteMember": "Invitar miembro",
+      "createProfile": "Crear perfil sin app",
+      "securityLimitTitle": "Seguridad multidispositivo",
+      "securityLimitBody": "Use la app WeCircle iOS para escanear un QR o enviar un enlace de invitación."
+    },
+    "calendar": {
+      "switchView": "Switch view",
+      "selectMonth": "Select month",
+      "timeline": "Date timeline",
+      "createNew": "Create",
+      "assigneeLabel": "Responsable",
+      "noEventsToday": "No hay eventos hoy",
+      "loadFailed": "No se puede cargar el calendario",
+      "noEvents": "Sin eventos",
+      "viewList": "List",
+      "viewDay": "Day",
+      "view3Day": "3 Day",
+      "viewWeek": "Week",
+      "viewMonth": "Month",
+      "viewYear": "Year",
+      "newTask": "New task",
+      "newEvent": "New event",
+      "readonlyTitle": "Modo solo lectura",
+      "readonlyBody": "Añada elementos en la app WeCircle iOS.",
+      "aiTitle": "Asistente Hermes AI listo",
+      "aiBody": "Voz y planificación inteligente solo en iOS.",
+      "taskDetail": "Detalles de la tarea",
+      "forWhomLabel": "Para quién (For)",
+      "forWhomPrefix": "Para",
+      "forWhomMembers": "{count} miembros",
+      "fieldTime": "Time",
+      "fieldRepeat": "Repeat",
+      "fieldReminder": "Reminder",
+      "fieldAssignee": "Responsable",
+      "fieldBudget": "Coste estimado",
+      "fieldStatus": "Status",
+      "fieldForWhom": "For whom",
+      "fieldPriority": "Priority",
+      "priorityUrgent": "Urgent",
+      "priorityNormal": "Normal",
+      "fieldEmergency": "Contacto de emergencia / enlace",
+      "fieldLocation": "Location",
+      "fieldFinanceNotes": "Finanzas y notas",
+      "fieldDescription": "Description",
+      "fieldMoreDetails": "More details",
+      "allDay": "Todo el día",
+      "closeMonthPicker": "Cerrar calendario",
+      "selectDate": "Elegir fecha",
+      "dayAria": "Día {day}"
+    },
+    "status": {
+      "pending": "Pendiente",
+      "inProgress": "En curso",
+      "done": "Hecho",
+      "cancelled": "Cancelado",
+      "fallback": "Pendiente"
+    },
+    "recurrence": {
+      "never": "Nunca",
+      "daily": "Diario",
+      "weekly": "Semanal",
+      "monthly": "Mensual",
+      "yearly": "Anual"
+    },
+    "taskDetail": {
+      "reminderDefault": "15 minutos antes",
+      "budgetDefault": "Ninguno",
+      "locationDefault": "Dongtian Liyuan",
+      "emergencyDefault": "Ninguno",
+      "descriptionPlaceholder": "Detalles de gastos, forma de pago, etc.",
+      "notesEmpty": "Sin notas"
+    },
+    "api": {
+      "missingConfig": "Falta configuración de Supabase",
+      "pleaseSignIn": "Inicie sesión primero",
+      "sessionExpired": "Sesión expirada. Inicie sesión de nuevo.",
+      "groupNotFound": "Grupo no encontrado",
+      "notInGroup": "No es miembro de este grupo",
+      "networkError": "Error de red. Inténtelo más tarde."
+    }
+  },
+  "legal": {
+    "privacyTitle": "Política de privacidad",
+    "termsTitle": "Términos de servicio",
+    "lastUpdated": "Última actualización: {date}",
+    "privacyMetaDescription": "Cómo WeCircle recopila, usa y protege su información.",
+    "termsMetaDescription": "Términos de acceso y uso de WeCircle.",
+    "privacy": {
+      "intro": "Bienvenido a WeCircle. La privacidad y seguridad de su grupo son nuestra prioridad. Esta política explica cómo recopilamos, usamos y protegemos su información.",
+      "sections": [
+        {
+          "heading": "1. Information We Collect",
+          "lead": "We only collect information that is necessary to provide and improve our service:",
+          "items": [
+            {
+              "term": "Account Information:",
+              "body": "When you sign in using \"Sign in with Apple,\" we collect the name and email address provided by Apple to create your secure account."
+            },
+            {
+              "term": "Group Data:",
+              "body": "To enable group collaboration, we store the tasks, events, and group structures you create."
+            },
+            {
+              "term": "Managed Profiles:",
+              "body": "If you create \"Virtual Profiles\" for group members who do not have their own accounts (such as young children or elders), you confirm that you have the right to provide their basic identifying information (like names or nicknames) for group management purposes."
+            },
+            {
+              "term": "Technical Data:",
+              "body": "We may collect non-personally identifiable information such as device type, app crash logs, and usage metrics to ensure the stability of the App."
+            }
+          ],
+          "paragraphs": []
+        },
+        {
+          "heading": "2. How We Use Your Information",
+          "lead": "We use your data strictly to deliver the WeCircle experience:",
+          "items": [
+            {
+              "term": "",
+              "body": "To sync tasks, events, and group roles across your devices in real-time."
+            },
+            {
+              "term": "",
+              "body": "To authenticate your identity securely."
+            },
+            {
+              "term": "",
+              "body": "To provide customer support and respond to your feedback."
+            }
+          ],
+          "paragraphs": []
+        },
+        {
+          "heading": "3. Data Storage & Security",
+          "lead": "",
+          "items": [],
+          "paragraphs": [
+            "We utilize enterprise-grade cloud infrastructure (including Supabase) to store your data securely. Your data is encrypted in transit and at rest. We employ strict Row-Level Security (RLS) database policies to ensure that your group data is completely isolated and only accessible to authorized members of your specific group."
+          ]
+        },
+        {
+          "heading": "4. Information Sharing",
+          "lead": "",
+          "items": [],
+          "paragraphs": [
+            "We do not, and will never, sell your personal data to third parties. We only share information with trusted service providers (such as secure cloud hosting) strictly for the purpose of operating our service. We may also disclose information if required by law."
+          ]
+        },
+        {
+          "heading": "5. Your Rights and Data Deletion",
+          "lead": "",
+          "items": [],
+          "paragraphs": [
+            "You have full control over your data. You can edit your profile, delete specific tasks, or remove group members at any time within the App. You may also permanently delete your entire account and all associated data via the \"Danger Zone\" in the App's settings. Once deleted, this action is irreversible."
+          ]
+        },
+        {
+          "heading": "6. Contact Us",
+          "lead": "",
+          "items": [],
+          "paragraphs": []
+        }
+      ],
+      "contactLead": "Preguntas sobre esta política: music.player.250617@gmail.com"
+    },
+    "terms": {
+      "intro": "Estos Términos de servicio rigen su acceso y uso del sitio y la aplicación WeCircle. Al usar el servicio, acepta estos Términos.",
+      "sections": [
+        {
+          "heading": "1. Description of Service",
+          "lead": "",
+          "items": [],
+          "paragraphs": [
+            "WeCircle is a group collaboration and productivity tool designed to help groups manage tasks, schedules, and member profiles. The service is provided \"as is\" and we reserve the right to modify, update, or discontinue features at our discretion."
+          ]
+        },
+        {
+          "heading": "2. User Accounts & Security",
+          "lead": "",
+          "items": [
+            {
+              "term": "",
+              "body": "You must provide accurate information when creating an account (e.g., via Apple ID)."
+            },
+            {
+              "term": "",
+              "body": "You are responsible for maintaining the security of your account and any devices you use to access WeCircle."
+            },
+            {
+              "term": "",
+              "body": "You must promptly notify us of any unauthorized use of your account."
+            }
+          ],
+          "paragraphs": []
+        },
+        {
+          "heading": "3. Group Administration",
+          "lead": "",
+          "items": [
+            {
+              "term": "",
+              "body": "When you create a \"Group\" within the App, you act as the Administrator."
+            },
+            {
+              "term": "",
+              "body": "You are solely responsible for the data you input regarding other group members, including virtual profiles created for individuals without active accounts."
+            },
+            {
+              "term": "",
+              "body": "You are responsible for managing who is invited to join your group and for removing members when necessary."
+            }
+          ],
+          "paragraphs": []
+        },
+        {
+          "heading": "4. Acceptable Use",
+          "lead": "You agree not to use WeCircle to:",
+          "items": [
+            {
+              "term": "",
+              "body": "Upload, post, or transmit any content that is illegal, abusive, harassing, or violates the privacy of others."
+            },
+            {
+              "term": "",
+              "body": "Attempt to hack, disrupt, or compromise the security of the App, our servers, or our database structure."
+            },
+            {
+              "term": "",
+              "body": "Reproduce, duplicate, copy, or resell any part of the Service without our express written permission."
+            }
+          ],
+          "paragraphs": []
+        },
+        {
+          "heading": "5. Limitation of Liability",
+          "lead": "",
+          "items": [],
+          "paragraphs": [
+            "To the maximum extent permitted by law, WeCircle and its creators shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, resulting from (a) your access to or use of or inability to access or use the Service; (b) any conduct or content of any third party on the Service."
+          ]
+        },
+        {
+          "heading": "6. Governing Law",
+          "lead": "",
+          "items": [],
+          "paragraphs": [
+            "These Terms shall be governed and construed in accordance with the laws of the Hong Kong Special Administrative Region, without regard to its conflict of law provisions."
+          ]
+        },
+        {
+          "heading": "7. Changes to Terms",
+          "lead": "",
+          "items": [],
+          "paragraphs": [
+            "We reserve the right to modify these Terms at any time. We will notify users of any significant changes by updating the \"Last Updated\" date at the top of this page. Your continued use of the Service after such changes constitutes acceptance of the new Terms."
+          ]
+        },
+        {
+          "heading": "8. Contact Information",
+          "lead": "",
+          "items": [],
+          "paragraphs": []
+        }
+      ],
+      "contactLead": "Preguntas sobre estos Términos: music.player.250617@gmail.com"
+    }
+  }
+}

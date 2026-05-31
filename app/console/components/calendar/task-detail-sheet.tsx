@@ -10,6 +10,7 @@ import {
   getTaskDetailFieldValues,
   type TaskPrioritySegment,
 } from "../../calendar/task-detail-utils";
+import { useDictionary } from "@/lib/i18n/dictionary-provider";
 import { OverlayRoot } from "../family/ios-overlays";
 import {
   Banknote,
@@ -24,8 +25,6 @@ import {
   UserRound,
   Users,
 } from "lucide-react";
-
-const MOCK_LOCATION = "东田丽园";
 
 function InsetCard({
   children,
@@ -83,9 +82,11 @@ function InfoRow({
 function BeneficiaryAvatar({
   person,
   selected,
+  everyoneLabel,
 }: {
   person: CalendarPerson | null;
   selected: boolean;
+  everyoneLabel: string;
 }) {
   if (!person) {
     return (
@@ -94,7 +95,7 @@ function BeneficiaryAvatar({
           <Users className="h-6 w-6 text-gray-400" strokeWidth={2} />
         </div>
         <span className="max-w-[72px] truncate text-center text-[11px] text-gray-400">
-          所有人
+          {everyoneLabel}
         </span>
       </div>
     );
@@ -135,8 +136,12 @@ function BeneficiaryAvatar({
 
 function PrioritySegment({
   active,
+  priorityUrgent,
+  priorityNormal,
 }: {
   active: TaskPrioritySegment;
+  priorityUrgent: string;
+  priorityNormal: string;
 }) {
   return (
     <div className="flex rounded-xl bg-gray-100/80 p-1">
@@ -147,7 +152,7 @@ function PrioritySegment({
             : "text-gray-400"
         }`}
       >
-        紧急
+        {priorityUrgent}
       </div>
       <div
         className={`flex-1 rounded-lg py-2.5 text-center text-[15px] font-medium ${
@@ -156,7 +161,7 @@ function PrioritySegment({
             : "text-gray-400"
         }`}
       >
-        一般
+        {priorityNormal}
       </div>
     </div>
   );
@@ -184,7 +189,9 @@ export function TaskDetailSheet({
   open: boolean;
   onClose: () => void;
 }) {
+  const { t } = useDictionary();
   const fields = getTaskDetailFieldValues(event);
+  const labels = fields.labels;
   const forWhom = resolveForWhomDisplay(event);
 
   return (
@@ -201,10 +208,10 @@ export function TaskDetailSheet({
                 onClick={onClose}
                 className="min-w-[52px] text-left text-[17px] font-medium text-blue-600 active:opacity-70"
               >
-                关闭
+                {t("common.close")}
               </button>
                             <h2 className="pointer-events-none absolute left-1/2 -translate-x-1/2 text-[17px] font-bold text-gray-900">
-                任务详情
+                {t("console.calendar.taskDetail")}
               </h2>
               <div className="min-w-[52px]" aria-hidden /></header>
 
@@ -215,24 +222,24 @@ export function TaskDetailSheet({
             <InsetCard className="divide-y divide-gray-100">
               <InfoRow
                 icon={Calendar}
-                label="时间"
+                label={labels.fieldTime}
                 value={fields.timeValue}
               />
-              <InfoRow icon={Repeat} label="重复" value={fields.repeatValue} />
-              <InfoRow icon={Bell} label="提醒" value={fields.reminderValue} />
+              <InfoRow icon={Repeat} label={labels.fieldRepeat} value={fields.repeatValue} />
+              <InfoRow icon={Bell} label={labels.fieldReminder} value={fields.reminderValue} />
               <InfoRow
                 icon={User}
-                label="谁去办"
+                label={labels.fieldAssignee}
                 value={fields.assigneeValue}
               />
               <InfoRow
                 icon={Banknote}
-                label="预计开销"
+                label={labels.fieldBudget}
                 value={fields.budgetValue}
               />
               <InfoRow
                 icon={Tag}
-                label="当前状态"
+                label={labels.fieldStatus}
                 value={fields.statusValue}
                 valueClassName={
                   fields.statusHighlight
@@ -243,16 +250,21 @@ export function TaskDetailSheet({
             </InsetCard>
 
             <InsetCard className="overflow-visible">
-              <CardSectionTitle icon={Users}>为了谁</CardSectionTitle>
+              <CardSectionTitle icon={Users}>{labels.fieldForWhom}</CardSectionTitle>
               <div className="flex gap-3 overflow-x-auto overflow-y-visible px-4 pb-5 pt-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                 {forWhom.isEveryone ? (
-                  <BeneficiaryAvatar person={null} selected={false} />
+                  <BeneficiaryAvatar
+                    person={null}
+                    selected={false}
+                    everyoneLabel={t("common.everyone")}
+                  />
                 ) : (
                   forWhom.people.map((person) => (
                     <BeneficiaryAvatar
                       key={person.id}
                       person={person}
                       selected={personIsInForWhomList(person, forWhom.forWhomIds)}
+                      everyoneLabel={t("common.everyone")}
                     />
                   ))
                 )}
@@ -260,14 +272,18 @@ export function TaskDetailSheet({
             </InsetCard>
 
             <InsetCard>
-              <CardSectionTitle>任务优先级</CardSectionTitle>
+              <CardSectionTitle>{labels.fieldPriority}</CardSectionTitle>
               <div className="px-4 pb-4">
-                <PrioritySegment active={fields.prioritySegment} />
+                <PrioritySegment
+                  active={fields.prioritySegment}
+                  priorityUrgent={fields.priorityUrgent}
+                  priorityNormal={fields.priorityNormal}
+                />
               </div>
             </InsetCard>
 
             <InsetCard>
-              <CardSectionTitle>紧急联系号码 / 会议链接</CardSectionTitle>
+              <CardSectionTitle>{labels.fieldEmergency}</CardSectionTitle>
               <div className="flex items-center justify-between px-4 pb-4">
                 <span className="text-[15px] text-gray-300">
                   {fields.emergencyContactValue}
@@ -281,14 +297,14 @@ export function TaskDetailSheet({
             </InsetCard>
 
             <InsetCard>
-              <CardSectionTitle>地理位置</CardSectionTitle>
+              <CardSectionTitle>{labels.fieldLocation}</CardSectionTitle>
               <div className="flex items-center gap-2 px-4 pb-4">
                 <MapPin
                   className="h-[18px] w-[18px] shrink-0 text-gray-400"
                   strokeWidth={2}
                 />
                 <span className="min-w-0 flex-1 text-[15px] text-gray-900">
-                  {MOCK_LOCATION}
+                  {fields.locationValue}
                 </span>
                 <ChevronRight
                   className="h-5 w-5 shrink-0 text-gray-300"
@@ -299,11 +315,11 @@ export function TaskDetailSheet({
             </InsetCard>
 
             <InsetCard>
-              <CardSectionTitle>财务与备注</CardSectionTitle>
+              <CardSectionTitle>{labels.fieldFinanceNotes}</CardSectionTitle>
               <div className="px-4 pb-2">
                 <div className="flex items-center justify-between py-1">
                   <span className="text-base font-bold text-gray-900">
-                    预计开销
+                    {labels.fieldBudget}
                   </span>
                   <span className="text-base text-gray-400">
                     {fields.budgetValue}
@@ -311,7 +327,7 @@ export function TaskDetailSheet({
                 </div>
               </div>
               <div className="border-t border-gray-100 px-4 py-3">
-                <p className="text-[13px] text-gray-400">详细说明</p>
+                <p className="text-[13px] text-gray-400">{labels.fieldDescription}</p>
                 {fields.descriptionValue ? (
                   <p className="mt-2 text-[15px] leading-relaxed text-gray-700">
                     {fields.descriptionValue}
@@ -325,7 +341,7 @@ export function TaskDetailSheet({
             </InsetCard>
 
             <InsetCard>
-              <CardSectionTitle>更多细节</CardSectionTitle>
+              <CardSectionTitle>{labels.fieldMoreDetails}</CardSectionTitle>
               <p className="px-4 pb-4 text-[15px] text-gray-300">
                 {fields.descriptionValue || fields.notesEmptyLabel}
               </p>

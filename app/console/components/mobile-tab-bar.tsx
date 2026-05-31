@@ -1,17 +1,9 @@
 "use client";
 
 import { Calendar, Settings, Users } from "lucide-react";
+import { useMemo } from "react";
+import { useDictionary } from "@/lib/i18n/dictionary-provider";
 import type { ConsoleNavId } from "../types";
-
-const TABS: {
-  id: ConsoleNavId;
-  label: string;
-  icon: typeof Calendar;
-}[] = [
-  { id: "calendar", label: "日程表", icon: Calendar },
-  { id: "family", label: "家庭", icon: Users },
-  { id: "me", label: "我的", icon: Settings },
-];
 
 type MobileTabBarProps = {
   active: ConsoleNavId;
@@ -19,13 +11,25 @@ type MobileTabBarProps = {
 };
 
 export function MobileTabBar({ active, onSelect }: MobileTabBarProps) {
+  const { t } = useDictionary();
+
+  const tabs = useMemo(
+    () =>
+      [
+        { id: "calendar" as const, label: t("console.nav.calendar"), icon: Calendar },
+        { id: "family" as const, label: t("console.nav.group"), icon: Users },
+        { id: "me" as const, label: t("console.nav.me"), icon: Settings },
+      ] as const,
+    [t],
+  );
+
   return (
     <nav
       className="pointer-events-none fixed bottom-0 left-0 right-0 z-50 flex justify-center px-5 pb-[max(0.75rem,env(safe-area-inset-bottom))]"
-      aria-label="主导航"
+      aria-label={t("console.nav.main")}
     >
       <div className="pointer-events-auto flex w-full max-w-lg items-stretch justify-around rounded-[28px] border border-white/60 bg-white/90 px-2 py-2 shadow-[0_8px_30px_rgb(0,0,0,0.08)] backdrop-blur-xl">
-        {TABS.map(({ id, label, icon: Icon }) => {
+        {tabs.map(({ id, label, icon: Icon }) => {
           const isActive = active === id;
           return (
             <button

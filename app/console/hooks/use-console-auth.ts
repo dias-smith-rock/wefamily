@@ -18,7 +18,7 @@ import { clearAllLocalCaches } from "../lib/local-cache";
 export type ConsoleAuthState =
   | { status: "loading" }
   | { status: "config_error" }
-  | { status: "unauthenticated"; message?: string }
+  | { status: "unauthenticated"; messageKey?: string }
   | { status: "authenticated"; user: User; session: Session };
 
 const SESSION_CHECK_INTERVAL_MS = 30_000;
@@ -26,7 +26,7 @@ const SESSION_CHECK_INTERVAL_MS = 30_000;
 export function useConsoleAuth() {
   const [auth, setAuth] = useState<ConsoleAuthState>({ status: "loading" });
   const [isAuthenticating, setIsAuthenticating] = useState(false);
-  const [authError, setAuthError] = useState<string | null>(null);
+  const [authErrorKey, setAuthErrorKey] = useState<string | null>(null);
   const expiryTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const expireSession = useCallback(async () => {
@@ -38,7 +38,7 @@ export function useConsoleAuth() {
     }
     setAuth({
       status: "unauthenticated",
-      message: "登录已过期，请重新登录",
+      messageKey: "sessionExpired",
     });
   }, []);
 
@@ -72,7 +72,7 @@ export function useConsoleAuth() {
 
     if (!guard.ok) {
       if (guard.reason === "expired") {
-        setAuth({ status: "unauthenticated", message: guard.message });
+        setAuth({ status: "unauthenticated", messageKey: "sessionExpired" });
       } else {
         setAuth({ status: "unauthenticated" });
       }
@@ -161,7 +161,7 @@ export function useConsoleAuth() {
     async (provider: "apple" | "google") => {
       const supabase = getSupabaseBrowserClient();
       if (!supabase || isAuthenticating) return;
-      setAuthError(null);
+      setAuthErrorKey(null);
       setIsAuthenticating(true);
       try {
         const { error } = await supabase.auth.signInWithOAuth({
@@ -173,7 +173,7 @@ export function useConsoleAuth() {
         if (error) throw error;
       } catch (e) {
         console.error(e);
-        setAuthError("登录请求失败，请稍后重试");
+        setAuthErrorKey("loginFailed");
         setIsAuthenticating(false);
       }
     },
@@ -192,7 +192,7 @@ export function useConsoleAuth() {
   return {
     auth,
     isAuthenticating,
-    authError,
+    authErrorKey,
     signInWithOAuth,
     signOut,
     refreshAuth: resolveAuth,

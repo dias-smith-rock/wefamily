@@ -28,6 +28,8 @@ import {
   Sparkles,
   UserRound,
 } from "lucide-react";
+import { useDictionary } from "@/lib/i18n/dictionary-provider";
+import { translateApiMessage } from "@/lib/i18n/translate-api-error";
 import { ForWhomCardRow } from "./calendar/for-whom-display";
 import { SignOutButton } from "./console-sign-out-button";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -38,19 +40,6 @@ import { MonthPickerSheet } from "./calendar/month-picker-sheet";
 import { ListEventsView } from "./calendar/list-events-view";
 import { CalendarPageSkeleton } from "./calendar/calendar-skeleton";
 const CARD_SHADOW = "shadow-[0_8px_30px_rgb(0,0,0,0.04)]";
-
-const VIEW_MENU_ITEMS: {
-  id: CalendarViewMode | "3day" | "week" | "month" | "year";
-  label: string;
-  enabled: boolean;
-}[] = [
-  { id: "list", label: "List", enabled: true },
-  { id: "day", label: "Day", enabled: true },
-  { id: "3day", label: "3 Day", enabled: false },
-  { id: "week", label: "Week", enabled: false },
-  { id: "month", label: "Month", enabled: false },
-  { id: "year", label: "Year", enabled: false },
-];
 
 function CalendarNavBar({
   monthLabel,
@@ -69,7 +58,21 @@ function CalendarNavBar({
   isViewMenuOpen: boolean;
   onViewMenuOpenChange: (open: boolean) => void;
 }) {
+  const { t } = useDictionary();
   const viewMenuRef = useRef<HTMLDivElement>(null);
+
+  const viewMenuItems = useMemo(
+    () =>
+      [
+        { id: "list" as const, label: t("console.calendar.viewList"), enabled: true },
+        { id: "day" as const, label: t("console.calendar.viewDay"), enabled: true },
+        { id: "3day" as const, label: t("console.calendar.view3Day"), enabled: false },
+        { id: "week" as const, label: t("console.calendar.viewWeek"), enabled: false },
+        { id: "month" as const, label: t("console.calendar.viewMonth"), enabled: false },
+        { id: "year" as const, label: t("console.calendar.viewYear"), enabled: false },
+      ] as const,
+    [t],
+  );
 
   useEffect(() => {
     if (!isViewMenuOpen) return;
@@ -95,7 +98,7 @@ function CalendarNavBar({
             type="button"
             onClick={() => onViewMenuOpenChange(!isViewMenuOpen)}
             className="flex h-10 w-10 items-center justify-center rounded-full text-gray-800 transition active:bg-black/5"
-            aria-label="切换视图"
+            aria-label={t("console.calendar.switchView")}
             aria-haspopup="menu"
             aria-expanded={isViewMenuOpen}
           >
@@ -107,7 +110,7 @@ function CalendarNavBar({
               role="menu"
               className="absolute top-full left-0 z-50 mt-2 min-w-[160px] rounded-2xl border border-gray-100 bg-white/95 py-2 shadow-lg backdrop-blur-xl"
             >
-              {VIEW_MENU_ITEMS.map((item) => {
+              {viewMenuItems.map((item) => {
                 const isActive = item.enabled && item.id === viewMode;
                 const isSelectable =
                   item.enabled && (item.id === "list" || item.id === "day");
@@ -150,7 +153,7 @@ function CalendarNavBar({
           type="button"
           onClick={onOpenMonthPicker}
           className="flex min-w-0 items-center gap-1 rounded-lg px-2 py-1 transition active:bg-black/5"
-          aria-label="选择月份"
+          aria-label={t("console.calendar.selectMonth")}
           aria-expanded={false}
         >
           <span className="truncate text-[17px] font-bold tracking-wide text-gray-900">
@@ -179,6 +182,7 @@ function WeekStrip({
   selectedDate: Date;
   onSelectDay: (date: Date) => void;
 }) {
+  const { t } = useDictionary();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const selectedKey = dateKey(selectedDate);
 
@@ -206,7 +210,7 @@ function WeekStrip({
   }, [selectedKey, days]);
 
   return (
-    <div className="w-full min-w-0" aria-label="日期时间轴">
+    <div className="w-full min-w-0" aria-label={t("console.calendar.timeline")}>
       <div
         ref={scrollContainerRef}
         role="list"
@@ -270,6 +274,7 @@ function EventCard({
   event: CalendarEvent;
   onPress: () => void;
 }) {
+  const { t } = useDictionary();
   const timeLabel = formatEventTime(event.startAt);
 
   return (
@@ -306,7 +311,7 @@ function EventCard({
         <div className="mt-2.5 flex items-center justify-between gap-3">
           <div className="flex items-center gap-1.5 text-[13px] text-gray-400">
             <UserRound className="h-3.5 w-3.5 shrink-0" strokeWidth={2} aria-hidden />
-            <span>谁去办 (Assignee)</span>
+            <span>{t("console.calendar.assigneeLabel")}</span>
           </div>
           <span className="text-[13px] text-gray-400">{event.assigneeLabel}</span>
         </div>
@@ -322,10 +327,14 @@ function EventsSection({
   events: CalendarEvent[];
   onEventPress: (event: CalendarEvent) => void;
 }) {
+  const { t } = useDictionary();
+
   if (events.length === 0) {
     return (
       <div className="py-16 text-center">
-        <p className="text-[15px] font-medium text-gray-400">今天没有安排日程</p>
+        <p className="text-[15px] font-medium text-gray-400">
+          {t("console.calendar.noEventsToday")}
+        </p>
       </div>
     );
   }
@@ -368,6 +377,7 @@ export function CalendarView({
   onSessionLost,
   onSignOut,
 }: CalendarViewProps) {
+  const { t } = useDictionary();
   const [selectedDate, setSelectedDate] = useState(() => startOfDay(new Date()));
   const [modal, setModal] = useState<CalendarModalState>({ kind: "none" });
   const [isMonthPickerOpen, setIsMonthPickerOpen] = useState(false);
@@ -452,14 +462,18 @@ export function CalendarView({
     return (
       <div className="px-4 pt-8">
         <div className="rounded-3xl bg-white p-6 text-center shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
-          <p className="text-[15px] font-medium text-gray-900">无法加载日程数据</p>
-          <p className="mt-2 text-sm text-red-600">{error}</p>
+          <p className="text-[15px] font-medium text-gray-900">
+            {t("console.calendar.loadFailed")}
+          </p>
+          <p className="mt-2 text-sm text-red-600">
+            {translateApiMessage(t, error)}
+          </p>
           <button
             type="button"
             onClick={() => void load()}
             className="mt-4 rounded-full bg-blue-600 px-5 py-2 text-sm font-semibold text-white"
           >
-            重试
+            {t("common.retry")}
           </button>
         </div>
       </div>
@@ -510,7 +524,7 @@ export function CalendarView({
           type="button"
           onClick={() => setModal({ kind: "action-sheet" })}
           className="fixed bottom-[calc(5.75rem+env(safe-area-inset-bottom))] right-4 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 text-white shadow-[0_12px_28px_rgba(168,85,247,0.35)] transition active:scale-95"
-          aria-label="新建"
+          aria-label={t("console.calendar.createNew")}
         >
           <span className="relative flex items-center justify-center">
             <Sparkles className="h-5 w-5" strokeWidth={2} fill="currentColor" />

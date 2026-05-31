@@ -79,7 +79,7 @@ const MOCK_DASHBOARD_TASKS: DashboardTask[] = [
 ];
 
 const MOCK_EVENTS: DashboardEvent[] = [
-  { id: "1", title: "Family Movie Night", date: "Sat, May 17 · 8:00 PM", dot: "blue" },
+  { id: "1", title: "Group Movie Night", date: "Sat, May 17 · 8:00 PM", dot: "blue" },
   { id: "2", title: "Grandma’s birthday lunch", date: "Sun, May 18 · 12:30 PM", dot: "green" },
   { id: "3", title: "Soccer practice (Leo)", date: "Tue, May 20 · 4:00 PM", dot: "purple" },
 ];
@@ -105,7 +105,7 @@ const MOCK_MEMBER_CARDS: MemberCard[] = [
   {
     id: "1",
     name: "Sarah Chen",
-    subtitle: "Parent · Household Admin",
+    subtitle: "Parent · Group Admin",
     initials: "SC",
     avatarClass: "bg-blue-600",
     streak: "7d",
@@ -158,7 +158,7 @@ function firstName(full: string) {
 
 function useOverviewSubtitle(displayName: string) {
   const [line, setLine] = useState(
-    `Good morning, ${firstName(displayName)}. Here's your family's overview for today.`,
+    `Good morning, ${firstName(displayName)}. Here's your group's overview for today.`,
   );
 
   useEffect(() => {
@@ -167,7 +167,7 @@ function useOverviewSubtitle(displayName: string) {
     const prefix =
       h < 12 ? "Good morning" : h < 18 ? "Good afternoon" : "Good evening";
     setLine(
-      `${prefix}, ${fn}. Here's your family's overview for today.`,
+      `${prefix}, ${fn}. Here's your group's overview for today.`,
     );
   }, [displayName]);
 
@@ -215,7 +215,7 @@ export function DashboardView({ user }: DashboardViewProps) {
           <div className="flex items-start justify-between gap-3">
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-wider text-gray-400">
-                Family members
+                Group members
               </p>
               <p className="mt-3 text-4xl font-bold tabular-nums text-gray-900">
                 {MOCK_SUMMARY.members.count}
@@ -348,9 +348,9 @@ export function DashboardView({ user }: DashboardViewProps) {
         </div>
       </div>
 
-      {/* Family members */}
+      {/* Group members */}
       <section className="rounded-2xl border border-gray-100 bg-white p-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] md:rounded-3xl md:p-6 lg:p-8">
-        <h2 className="text-lg font-bold text-gray-900">Family members</h2>
+        <h2 className="text-lg font-bold text-gray-900">Group members</h2>
         <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {MOCK_MEMBER_CARDS.map((m) => (
             <div

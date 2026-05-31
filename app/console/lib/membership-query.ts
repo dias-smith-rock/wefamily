@@ -1,4 +1,5 @@
 import type { HouseholdMembership, HouseholdOption } from "../types";
+import { getActiveDictionary } from "@/lib/i18n/client-dictionary";
 
 /** household_memberships 可查询列（与 Supabase schema 一致，勿含已删除字段） */
 export const HOUSEHOLD_MEMBERSHIP_COLUMNS =
@@ -66,7 +67,7 @@ async function fetchHouseholdNameMap(
   for (const row of data ?? []) {
     const id = String((row as { id: string }).id);
     const name = (row as { name: string | null }).name?.trim();
-    map.set(id, name || "未命名家庭");
+    map.set(id, name || getActiveDictionary().common.defaults.unnamedGroup);
   }
 
   return map;
@@ -128,7 +129,7 @@ export async function fetchHouseholdOptionsForUser(
 
   const options: HouseholdOption[] = memberships.map((membership) => ({
     householdId: membership.household_id,
-    householdName: nameMap.get(membership.household_id) ?? "未命名家庭",
+    householdName: nameMap.get(membership.household_id) ?? getActiveDictionary().common.defaults.unnamedGroup,
     membership,
     avatarUrl: membership.profile_id
       ? (avatarMap.get(membership.profile_id) ?? null)

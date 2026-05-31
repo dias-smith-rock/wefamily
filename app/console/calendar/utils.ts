@@ -1,4 +1,11 @@
 import { addDays, subDays } from "date-fns";
+import { getActiveDictionary } from "@/lib/i18n/client-dictionary";
+import {
+  formatCalendarMonthLabel as formatCalendarMonthLabelI18n,
+  formatStatusLabel as formatStatusLabelI18n,
+} from "@/lib/i18n/formatters";
+import { interpolate } from "@/lib/i18n/translate";
+import { resolveClientLocale } from "@/lib/i18n/client-locale";
 import { isIncompleteTask } from "../family/utils";
 import { taskTargetProfileIds } from "../lib/task-fields";
 import type {
@@ -11,7 +18,16 @@ import type {
   TaskRow,
 } from "./types";
 
-const WEEKDAY_SHORT = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] as const;
+function weekdayShort(dayIndex: number): string {
+  return new Intl.DateTimeFormat(resolveClientLocale(), { weekday: "short" }).format(
+    new Date(2024, 0, dayIndex),
+  );
+}
+
+/** Header 月份标签 */
+export function formatCalendarMonthLabel(date: Date): string {
+  return formatCalendarMonthLabelI18n(resolveClientLocale(), date);
+}
 
 const AVATAR_CLASSES = [
   "bg-rose-500",
@@ -22,28 +38,6 @@ const AVATAR_CLASSES = [
   "bg-sky-500",
   "bg-fuchsia-500",
 ] as const;
-
-const MONTH_NAMES = [
-  "JAN",
-  "FEB",
-  "MAR",
-  "APR",
-  "MAY",
-  "JUN",
-  "JUL",
-  "AUG",
-  "SEP",
-  "OCT",
-  "NOV",
-  "DEC",
-] as const;
-
-/** Header 月份标签，如 "MAY 2026" */
-export function formatCalendarMonthLabel(date: Date): string {
-  const y = date.getFullYear();
-  const m = date.getMonth();
-  return `${MONTH_NAMES[m]} ${y}`;
-}
 
 function pickAvatarClass(seed: string): string {
   let hash = 0;
@@ -71,12 +65,7 @@ export function formatEventTime(date: Date): string {
 }
 
 export function formatStatusLabel(status: string): string {
-  const s = status.trim().toLowerCase();
-  if (s === "pending" || s === "todo" || s === "待接受") return "待接受";
-  if (s === "accepted" || s === "in_progress" || s === "进行中") return "进行中";
-  if (s === "done" || s === "completed" || s === "已完成") return "已完成";
-  if (s === "declined" || s === "cancelled" || s === "canceled") return "已取消";
-  return status || "待处理";
+  return formatStatusLabelI18n(getActiveDictionary(), status);
 }
 
 function startOfDay(d: Date): Date {
@@ -117,7 +106,7 @@ export function buildTimelineDates(
     const date = addDays(rangeStart, index);
     return {
       date,
-      weekdayShort: WEEKDAY_SHORT[date.getDay()]!,
+      weekdayShort: weekdayShort(date.getDay()),
       dayNumber: date.getDate(),
       hasEvents: incompleteDates.has(date.toDateString()),
       isSelected: sameCalendarDay(date, center),
@@ -204,6 +193,8 @@ function resolvePerson(
   id: string,
   maps: LookupMaps,
 ): CalendarPerson | null {
+  const dictionary = getActiveDictionary();
+  const defaults = dictionary.common.defaults;
   const membership = maps.membershipById.get(id);
   if (membership) {
     const profile = membership.profile_id
@@ -212,7 +203,7 @@ function resolvePerson(
     const name =
       membership.nickname?.trim() ||
       profile?.name?.trim() ||
-      "成员";
+      defaults.member;
     const isManaged = !membership.user_id || Boolean(profile && !profile.user_id);
     return {
       id: membership.id,
@@ -232,7 +223,7 @@ function resolvePerson(
 
   const profile = maps.profileById.get(id);
   if (profile) {
-    const name = profile.name?.trim() || "档案成员";
+    const name = profile.name?.trim() || defaults.profileMember;
     const isManaged = !profile.user_id;
     const linked = maps.membershipByProfileId.get(profile.id);
     return {
@@ -287,12 +278,16 @@ function resolvePeople(ids: string[] | null | undefined, maps: LookupMaps): Cale
 }
 
 function formatAssigneeLabel(assignees: CalendarPerson[]): string {
-  if (assignees.length === 0) return "所有人";
+  const dictionary = getActiveDictionary();
+  if (assignees.length === 0) return dictionary.common.everyone;
   if (assignees.length === 1) return assignees[0]!.name;
   if (assignees.length <= 3) {
     return assignees.map((a) => a.name).join("、");
   }
-  return `${assignees[0]!.name} 等 ${assignees.length} 人`;
+  return interpolate(dictionary.common.defaults.peopleCount, {
+    count: assignees[0]!.name,
+    total: assignees.length,
+  });
 }
 
 export function mapTasksToCalendarEvents(
@@ -314,7 +309,7 @@ export function mapTasksToCalendarEvents(
 
       return {
         id: task.id,
-        title: task.title?.trim() || "未命名任务",
+        title: task.title?.trim() || getActiveDictionary().common.defaults.unnamedTask,
         description: task.description,
         startAt,
         endAt,

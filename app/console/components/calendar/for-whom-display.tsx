@@ -6,6 +6,7 @@ import {
   isHouseholdWideBeneficiaries,
   normalizeIdArray,
 } from "../../calendar/utils";
+import { useDictionary } from "@/lib/i18n/dictionary-provider";
 import { Users } from "lucide-react";
 
 const LIST_AVATAR_SIZE = "h-7 w-7";
@@ -45,12 +46,15 @@ export function ForWhomAvatarGroup({
   people: CalendarPerson[];
   sizeClass?: string;
 }) {
+  const { t } = useDictionary();
+  const names = people.map((p) => p.name).join("、");
+
   if (people.length === 0) return null;
 
   return (
     <div
       className="flex -space-x-2 overflow-hidden"
-      aria-label={`为了 ${people.map((p) => p.name).join("、")}`}
+      aria-label={`${t("console.calendar.forWhomPrefix")} ${names}`}
     >
       {people.map((person) => (
         <AvatarChip key={person.id} person={person} className={sizeClass} />
@@ -67,6 +71,7 @@ export function ForWhomListTrailing({
   event: CalendarEvent;
   className?: string;
 }) {
+  const { t } = useDictionary();
   const forWhomIds = normalizeIdArray(event.forWhomIds);
 
   if (isHouseholdWideBeneficiaries(event)) {
@@ -74,7 +79,7 @@ export function ForWhomListTrailing({
       <div className={className}>
         <span className="inline-flex items-center gap-1 rounded-md bg-gray-50 px-2 py-0.5 text-xs text-gray-400">
           <Users className="h-3.5 w-3.5 shrink-0" strokeWidth={2} aria-hidden />
-          所有人
+          {t("common.everyone")}
         </span>
       </div>
     );
@@ -84,7 +89,10 @@ export function ForWhomListTrailing({
   if (people.length === 0) {
     if (forWhomIds.length === 0) return null;
     return (
-      <div className={className} aria-label={`为了 ${forWhomIds.length} 位成员`}>
+      <div
+        className={className}
+        aria-label={t("console.calendar.forWhomMembers", { count: forWhomIds.length })}
+      >
         <span
           className={`inline-flex ${LIST_AVATAR_SIZE} items-center justify-center rounded-full bg-gray-100 text-[11px] font-semibold text-gray-500 ring-2 ring-white`}
         >
@@ -96,11 +104,12 @@ export function ForWhomListTrailing({
 
   const visible = people.slice(0, LIST_MAX_VISIBLE_AVATARS);
   const overflowCount = people.length - visible.length;
+  const names = people.map((p) => p.name).join("、");
 
   return (
     <div
       className={className}
-      aria-label={`为了 ${people.map((p) => p.name).join("、")}`}
+      aria-label={`${t("console.calendar.forWhomPrefix")} ${names}`}
     >
       <div className="flex -space-x-1.5 overflow-hidden">
         {visible.map((person) => (
@@ -125,13 +134,17 @@ export function ForWhomListTrailing({
 
 /** 任务卡片行：为了谁 (For) */
 export function ForWhomCardRow({ event }: { event: CalendarEvent }) {
+  const { t } = useDictionary();
+
   if (isHouseholdWideBeneficiaries(event)) {
     return (
       <div className="mt-3 flex items-center justify-between gap-3">
-        <span className="text-[13px] text-gray-400">为了谁 (For)</span>
+        <span className="text-[13px] text-gray-400">
+          {t("console.calendar.forWhomLabel")}
+        </span>
         <div className="flex items-center gap-1.5 text-[13px] text-gray-500">
           <Users className="h-4 w-4 shrink-0" strokeWidth={2} aria-hidden />
-          <span>所有人</span>
+          <span>{t("common.everyone")}</span>
         </div>
       </div>
     );
@@ -142,7 +155,9 @@ export function ForWhomCardRow({ event }: { event: CalendarEvent }) {
 
   return (
     <div className="mt-3 flex items-center justify-between gap-3">
-      <span className="text-[13px] text-gray-400">为了谁 (For)</span>
+      <span className="text-[13px] text-gray-400">
+        {t("console.calendar.forWhomLabel")}
+      </span>
       {people.length === 1 ? (
         <div className="flex items-center gap-2">
           <AvatarChip person={people[0]!} className="h-8 w-8" />

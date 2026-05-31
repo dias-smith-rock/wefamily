@@ -85,7 +85,7 @@ export async function fetchCalendarPageData(
 ): Promise<FetchCalendarResult> {
   const supabase = getSupabaseBrowserClient();
   if (!supabase) {
-    return { ok: false, reason: "no_client", message: "缺少 Supabase 配置" };
+    return { ok: false, reason: "no_client", message: "missingConfig" };
   }
 
   const {
@@ -93,19 +93,15 @@ export async function fetchCalendarPageData(
   } = await supabase.auth.getSession();
 
   if (!session?.user) {
-    return { ok: false, reason: "no_session", message: "请先登录" };
+    return { ok: false, reason: "no_session", message: "pleaseSignIn" };
   }
 
   const guard = await requireAuthenticatedSession(supabase);
   if (!guard.ok) {
     if (guard.reason === "expired") {
-      return {
-        ok: false,
-        reason: "expired",
-        message: guard.message ?? "登录已过期，请重新登录",
-      };
+      return { ok: false, reason: "expired", message: "sessionExpired" };
     }
-    return { ok: false, reason: "no_session", message: "请先登录" };
+    return { ok: false, reason: "no_session", message: "pleaseSignIn" };
   }
 
   const [tasksRes, membershipsRes] = await Promise.all([

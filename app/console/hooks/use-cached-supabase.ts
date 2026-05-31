@@ -67,7 +67,7 @@ export function useCachedSupabase<T>({
     if (!supabase) {
       if (gen !== loadGenRef.current) return;
       if (!hasDataRef.current) {
-        setError("缺少 Supabase 配置");
+        setError("missingConfig");
         setData(null);
       }
       setLoading(false);
@@ -128,7 +128,7 @@ export function useCachedSupabase<T>({
     } catch (err) {
       console.error(`[wefamily-cache] revalidate error (${cacheKey}):`, err);
       if (!hasDataRef.current) {
-        setError("网络异常，请稍后重试");
+        setError("networkError");
       }
       setLoading(false);
     }

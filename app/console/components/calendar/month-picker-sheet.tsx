@@ -12,6 +12,7 @@ import {
   type MonthGridCell,
   type TaskDotTone,
 } from "../../calendar/month-utils";
+import { useDictionary } from "@/lib/i18n/dictionary-provider";
 import { X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -84,6 +85,7 @@ function MonthDayCell({
   dots: TaskDotTone[];
   onSelect: () => void;
 }) {
+  const { t } = useDictionary();
   const { inCurrentMonth, isSelected, isToday, dayNumber } = cell;
 
   return (
@@ -91,7 +93,7 @@ function MonthDayCell({
       type="button"
       onClick={onSelect}
       aria-pressed={isSelected}
-      aria-label={`${dayNumber}日`}
+      aria-label={t("console.calendar.dayAria", { day: dayNumber })}
       className="flex flex-col items-center justify-start"
     >
       <span
@@ -204,6 +206,7 @@ export function MonthPickerSheet({
   viewingMonth,
   onViewingMonthChange,
 }: MonthPickerSheetProps) {
+  const { t } = useDictionary();
   const [entered, setEntered] = useState(false);
 
   useEffect(() => {
@@ -241,7 +244,7 @@ export function MonthPickerSheet({
         className={`absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-300 ${
           entered ? "opacity-100" : "opacity-0"
         }`}
-        aria-label="关闭月历"
+        aria-label={t("console.calendar.closeMonthPicker")}
         onClick={onClose}
       />
 
@@ -251,7 +254,7 @@ export function MonthPickerSheet({
         }`}
         role="dialog"
         aria-modal="true"
-        aria-label="选择日期"
+        aria-label={t("console.calendar.selectDate")}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-center">
@@ -277,7 +280,7 @@ export function MonthPickerSheet({
               type="button"
               onClick={onClose}
               className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition active:bg-gray-200"
-              aria-label="关闭"
+              aria-label={t("common.close")}
             >
               <X className="h-4 w-4" strokeWidth={2.25} />
             </button>

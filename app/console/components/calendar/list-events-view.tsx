@@ -5,6 +5,7 @@ import {
   groupEventsByDate,
 } from "../../calendar/list-utils";
 import type { CalendarEvent } from "../../calendar/types";
+import { useDictionary } from "@/lib/i18n/dictionary-provider";
 import { ForWhomListTrailing } from "./for-whom-display";
 import { useCallback, useEffect, useMemo } from "react";
 
@@ -70,6 +71,7 @@ export function ListEventsView({
   onEventPress,
   onVisibleDateChange,
 }: ListEventsViewProps) {
+  const { t } = useDictionary();
   const groups = useMemo(() => groupEventsByDate(events), [events]);
 
   const resolveVisibleDate = useCallback(() => {
@@ -123,7 +125,9 @@ export function ListEventsView({
   if (groups.length === 0) {
     return (
       <div className="py-16 text-center">
-        <p className="text-[15px] font-medium text-gray-400">暂无日程安排</p>
+        <p className="text-[15px] font-medium text-gray-400">
+          {t("console.calendar.noEvents")}
+        </p>
       </div>
     );
   }

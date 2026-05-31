@@ -2,6 +2,8 @@
 
 import { ChevronRight, Cloud, Eye, EyeOff, Users } from "lucide-react";
 import { useState } from "react";
+import { useDictionary } from "@/lib/i18n/dictionary-provider";
+import { translateApiMessage } from "@/lib/i18n/translate-api-error";
 import { fetchFamilyPageData } from "../family/api";
 import {
   reviveFamilyPageData,
@@ -34,10 +36,12 @@ function Chevron() {
 }
 
 function ProfileTag() {
+  const { t } = useDictionary();
+
   return (
     <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-400">
       <Cloud className="h-3 w-3 shrink-0" strokeWidth={2} aria-hidden />
-      档案
+      {t("common.profile")}
     </span>
   );
 }
@@ -120,6 +124,7 @@ export function FamilyHomeView({
   onSessionLost,
   onSignOut,
 }: FamilyHomeViewProps) {
+  const { t } = useDictionary();
   const [phoneVisible, setPhoneVisible] = useState(false);
   const [modal, setModal] = useState<FamilyModalState>({ kind: "none" });
 
@@ -143,14 +148,18 @@ export function FamilyHomeView({
     return (
       <div className="px-4 pt-8">
         <div className="rounded-3xl bg-white p-6 text-center shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
-          <p className="text-[15px] font-medium text-gray-900">无法加载家庭数据</p>
-          <p className="mt-2 text-sm text-red-600">{error ?? "未知错误"}</p>
+          <p className="text-[15px] font-medium text-gray-900">
+            {t("console.group.loadFailed")}
+          </p>
+          <p className="mt-2 text-sm text-red-600">
+            {translateApiMessage(t, error)}
+          </p>
           <button
             type="button"
             onClick={() => void load()}
             className="mt-4 rounded-full bg-blue-600 px-5 py-2 text-sm font-semibold text-white"
           >
-            重试
+            {t("common.retry")}
           </button>
         </div>
       </div>
@@ -167,7 +176,7 @@ export function FamilyHomeView({
           modal.kind !== "none" ? "overflow-hidden" : undefined
         }
       >
-        <ConsoleTabHeader title="家庭" onSignOut={onSignOut} />
+        <ConsoleTabHeader title={t("console.group.title")} onSignOut={onSignOut} />
 
         <div className="space-y-4 px-4 pb-6 pt-4">
           <InsetCard>
@@ -183,7 +192,9 @@ export function FamilyHomeView({
                   <p className="text-[17px] font-semibold text-gray-900">
                     {household.name}
                   </p>
-                  <p className="mt-0.5 text-[13px] text-gray-400">家庭资料</p>
+                  <p className="mt-0.5 text-[13px] text-gray-400">
+                    {t("console.group.groupProfile")}
+                  </p>
                 </>
               }
             />
@@ -201,7 +212,7 @@ export function FamilyHomeView({
                     </p>
                     {self.isCreator ? (
                       <span className="inline-flex shrink-0 rounded-full bg-blue-50 px-2.5 py-1 text-xs font-medium text-blue-600">
-                        创建者
+                        {t("common.roles.creator")}
                       </span>
                     ) : null}
                   </div>
@@ -219,7 +230,11 @@ export function FamilyHomeView({
                           setPhoneVisible((v) => !v);
                         }}
                         className="flex h-7 w-7 items-center justify-center rounded-full text-gray-400 transition active:bg-gray-100"
-                        aria-label={phoneVisible ? "隐藏手机号" : "显示手机号"}
+                        aria-label={
+                          phoneVisible
+                            ? t("console.group.hidePhone")
+                            : t("console.group.showPhone")
+                        }
                       >
                         {phoneVisible ? (
                           <EyeOff className="h-3.5 w-3.5" strokeWidth={2} />
@@ -235,12 +250,12 @@ export function FamilyHomeView({
           </InsetCard>
 
           <p className="px-1 pt-2 text-[13px] font-medium text-gray-400">
-            家庭成员
+            {t("console.group.membersSection")}
           </p>
 
           {others.length === 0 ? (
             <div className="rounded-3xl bg-white px-4 py-8 text-center shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
-              <p className="text-sm text-gray-400">暂无其他家庭成员</p>
+              <p className="text-sm text-gray-400">{t("console.group.noOtherMembers")}</p>
             </div>
           ) : (
             others.map((member) => (

@@ -12,9 +12,13 @@ import {
 
 type LanguageSwitcherProps = {
   currentLocale: Locale;
+  selectLanguageLabel?: string;
 };
 
-export function LanguageSwitcher({ currentLocale }: LanguageSwitcherProps) {
+export function LanguageSwitcher({
+  currentLocale,
+  selectLanguageLabel = "Select language",
+}: LanguageSwitcherProps) {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
@@ -48,7 +52,7 @@ export function LanguageSwitcher({ currentLocale }: LanguageSwitcherProps) {
         className="flex items-center gap-1.5 rounded-full border border-gray-200/90 bg-white/80 px-3 py-1.5 text-sm font-medium text-slate-600 backdrop-blur-sm transition hover:border-gray-300 hover:text-slate-900"
         aria-expanded={open}
         aria-haspopup="listbox"
-        aria-label="Select language"
+        aria-label={selectLanguageLabel}
       >
         <span aria-hidden="true">🌐</span>
         <span>{localeLabels[currentLocale]}</span>

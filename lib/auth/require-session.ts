@@ -63,7 +63,6 @@ export async function requireAuthenticatedSession(
     return {
       ok: false,
       reason: "expired",
-      message: "登录已过期，请重新登录",
     };
   }
 

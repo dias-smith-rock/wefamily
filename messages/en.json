@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "WeCircle — Lightweight Hub for Small-Group Collaboration",
-    "description": "Task assignment, schedule sync, and member profiles for families, travel groups, clubs, and other tight-knit teams. Lightweight and clear — no need for everyone to download the app."
+    "description": "Task assignment, schedule sync, and member profiles for groups, travel groups, clubs, and other tight-knit teams. Lightweight and clear — no need for everyone to download the app."
   },
   "nav": {
     "webConsole": "Web Console",
@@ -10,7 +10,7 @@
   "hero": {
     "titleLine1": "Help small groups collaborate",
     "titleLine2": "without relying on chaotic group chats",
-    "subtitle": "Tasks, schedules, assignments, and member profiles — for families, travel groups, clubs, and more. Lightweight and clear, with no need for everyone to install the app.",
+    "subtitle": "Tasks, schedules, assignments, and member profiles — for groups, travel groups, clubs, and more. Lightweight and clear, with no need for everyone to install the app.",
     "downloadAppStore": "Download on the App Store",
     "exploreWeb": "Explore Web Features",
     "screenshotPlaceholder": "[ App screenshots or a 3D phone mockup will go here ]"
@@ -20,9 +20,9 @@
     "sectionSubtitle": "Any tight-knit circle of 3–20 people who trust each other and need to divide work and schedule events can use WeCircle to stay organized.",
     "items": {
       "family": {
-        "title": "Family",
+        "title": "Group",
         "pain": "School pickups, groceries, and medication reminders get lost in group chats.",
-        "solution": "The organizer manages profiles and tasks — everyone knows who is responsible, and the whole schedule is visible at a glance."
+        "solution": "The organizer manages profiles and tasks — everyone knows who is responsible, and the whole group schedule is visible at a glance."
       },
       "travel": {
         "title": "Travel Group",

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { useOptionalDictionary } from "@/lib/i18n/dictionary-provider";
 
 type OverlayRootProps = {
   open: boolean;
@@ -16,6 +17,9 @@ export function OverlayRoot({
   children,
   variant = "sheet",
 }: OverlayRootProps) {
+  const dictionary = useOptionalDictionary();
+  const closeLabel = dictionary?.t("common.close") ?? "关闭";
+
   useEffect(() => {
     if (!open) return;
     const prev = document.body.style.overflow;
@@ -32,7 +36,7 @@ export function OverlayRoot({
       <button
         type="button"
         className="absolute inset-0 bg-black/40 backdrop-blur-md"
-        aria-label="关闭"
+        aria-label={closeLabel}
         onClick={onClose}
       />
       <div

@@ -257,7 +257,7 @@ export function TasksChoresPanel() {
       </div>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        {/* Household Tasks */}
+        {/* Group Tasks */}
         <section
           className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm md:rounded-3xl md:p-6"
           aria-labelledby="household-heading"
@@ -267,10 +267,10 @@ export function TasksChoresPanel() {
               id="household-heading"
               className="text-lg font-semibold tracking-tight text-gray-900"
             >
-              Household Tasks
+              Group Tasks
             </h2>
             <p className="text-[13px] leading-relaxed text-gray-400">
-              Visible to everyone in the home
+              Visible to everyone in the group
             </p>
           </header>
 
@@ -326,7 +326,7 @@ export function TasksChoresPanel() {
               Assigned Tasks
             </h2>
             <p className="text-[13px] leading-relaxed text-gray-400">
-              Personal tasks for each family member
+              Personal tasks for each group member
             </p>
           </header>
 

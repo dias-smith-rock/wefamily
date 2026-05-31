@@ -2,11 +2,13 @@
 
 import { Cloud, UserPlus, UserRound } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useDictionary } from "@/lib/i18n/dictionary-provider";
+import { translateApiMessage } from "@/lib/i18n/translate-api-error";
 import { fetchMemberTasks } from "../../family/api";
 import { taskTargetProfileIds } from "../../lib/task-fields";
 import type { FamilyMemberDisplay, FamilyPageData, TaskRow } from "../../family/types";
 import {
-  formatDateZh,
+  formatDateLocalized,
   formatPhoneDisplay,
   resolveTaskForWhomMembers,
 } from "../../family/utils";
@@ -78,10 +80,12 @@ function TaskForWhomAvatars({ members }: { members: FamilyMemberDisplay[] }) {
 }
 
 function ProfileTag() {
+  const { t } = useDictionary();
+
   return (
     <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-gray-100 px-2 py-0.5 text-[11px] font-medium text-gray-500">
       <Cloud className="h-3 w-3" strokeWidth={2} aria-hidden />
-      档案
+      {t("common.profile")}
     </span>
   );
 }
@@ -95,6 +99,8 @@ export function HouseholdAlertModal({
   open: boolean;
   onClose: () => void;
 }) {
+  const { t } = useDictionary();
+
   return (
     <OverlayRoot open={open} onClose={onClose} variant="alert">
       <AlertPanel>
@@ -103,15 +109,17 @@ export function HouseholdAlertModal({
             {data.household.name}
           </h2>
           <p className="mt-3 text-[13px] leading-relaxed text-gray-500">
-            创建于 {formatDateZh(data.household.created_at)}
+            {t("console.group.createdAt", {
+              date: formatDateLocalized(data.household.created_at),
+            })}
           </p>
           <p className="mt-1 text-[13px] text-gray-500">
-            当前共 {data.memberCount} 位成员
+            {t("console.group.memberCount", { total: data.memberCount })}
           </p>
         </div>
         <div className="border-t border-gray-200/80 bg-gray-50/80 px-4 py-3">
           <p className="text-center text-[12px] leading-relaxed text-gray-400">
-            如需修改家庭名称或解散家庭，请前往同圈 iOS 客户端。
+            {t("console.group.editGroupHint")}
           </p>
         </div>
         <button
@@ -119,7 +127,7 @@ export function HouseholdAlertModal({
           onClick={onClose}
           className="w-full border-t border-gray-200/80 py-3.5 text-[17px] font-semibold text-blue-600 active:bg-gray-50"
         >
-          好
+          {t("common.ok")}
         </button>
       </AlertPanel>
     </OverlayRoot>
@@ -135,6 +143,7 @@ export function SelfProfileSheet({
   open: boolean;
   onClose: () => void;
 }) {
+  const { t } = useDictionary();
   const phone = formatPhoneDisplay(member.phone);
   const email = member.email;
 
@@ -150,7 +159,7 @@ export function SelfProfileSheet({
           </h2>
           {member.isCreator ? (
             <span className="mt-2 inline-flex rounded-full bg-blue-50 px-2.5 py-1 text-xs font-medium text-blue-600">
-              创建者
+              {t("common.roles.creator")}
             </span>
           ) : (
             <p className="mt-2 text-sm text-gray-500">{member.roleLabel}</p>
@@ -158,7 +167,7 @@ export function SelfProfileSheet({
           <div className="mt-8 space-y-3 rounded-2xl bg-white p-4 text-left shadow-sm">
             {phone ? (
               <div>
-                <p className="text-xs text-gray-400">手机号</p>
+                <p className="text-xs text-gray-400">{t("console.group.phone")}</p>
                 <p className="mt-0.5 text-[15px] font-medium tabular-nums text-gray-900">
                   {phone}
                 </p>
@@ -166,14 +175,14 @@ export function SelfProfileSheet({
             ) : null}
             {email ? (
               <div>
-                <p className="text-xs text-gray-400">邮箱</p>
+                <p className="text-xs text-gray-400">{t("console.group.email")}</p>
                 <p className="mt-0.5 break-all text-[15px] font-medium text-gray-900">
                   {email}
                 </p>
               </div>
             ) : null}
             {!phone && !email ? (
-              <p className="text-sm text-gray-400">暂无联系方式</p>
+              <p className="text-sm text-gray-400">{t("console.group.noContact")}</p>
             ) : null}
           </div>
         </div>
@@ -195,6 +204,7 @@ export function MemberDetailSheet({
   open: boolean;
   onClose: () => void;
 }) {
+  const { t } = useDictionary();
   const [tasks, setTasks] = useState<TaskRow[]>([]);
   const [tasksLoading, setTasksLoading] = useState(true);
   const [tasksError, setTasksError] = useState<string | null>(null);
@@ -239,13 +249,13 @@ export function MemberDetailSheet({
 
           {member.isManagedProfile ? (
             <p className="mt-4 rounded-xl bg-gray-100/80 px-3 py-2.5 text-[12px] leading-relaxed text-gray-500">
-              此档案由家庭管理员共同维护。
+              {t("console.group.managedProfileHint")}
             </p>
           ) : null}
 
           <div className="mt-6">
             <h3 className="text-[13px] font-semibold text-gray-500">
-              当前待办事项
+              {t("console.group.pendingTasks")}
             </h3>
             {tasksLoading ? (
               <div className="mt-3 space-y-2">
@@ -257,9 +267,13 @@ export function MemberDetailSheet({
                 ))}
               </div>
             ) : tasksError ? (
-              <p className="mt-3 text-sm text-red-500">{tasksError}</p>
+              <p className="mt-3 text-sm text-red-500">
+                {translateApiMessage(t, tasksError)}
+              </p>
             ) : tasks.length === 0 ? (
-              <p className="mt-3 text-sm text-gray-400">暂无未完成任务</p>
+              <p className="mt-3 text-sm text-gray-400">
+                {t("console.group.noPendingTasks")}
+              </p>
             ) : (
               <ul className="mt-3 space-y-2">
                 {tasks.map((task) => {
@@ -279,13 +293,14 @@ export function MemberDetailSheet({
                         <p className="font-medium text-gray-900">{task.title}</p>
                         {task.due_date ? (
                           <p className="mt-0.5 text-xs text-gray-400">
-                            截止 {formatDateZh(task.due_date)}
+                            {t("console.group.duePrefix")}{" "}
+                            {formatDateLocalized(task.due_date)}
                           </p>
                         ) : null}
                       </div>
                       {isEveryone ? (
                         <span className="shrink-0 text-xs text-gray-400">
-                          所有人
+                          {t("common.everyone")}
                         </span>
                       ) : (
                         <TaskForWhomAvatars members={forWhomMembers} />
@@ -311,6 +326,8 @@ export function FamilyActionSheet({
   onClose: () => void;
   onSelectOption: () => void;
 }) {
+  const { t } = useDictionary();
+
   return (
     <OverlayRoot open={open} onClose={onClose} variant="action-sheet">
       <ActionSheetPanel>
@@ -320,7 +337,7 @@ export function FamilyActionSheet({
           className="flex w-full items-center gap-3 border-b border-gray-100 px-4 py-3.5 text-left text-[17px] text-gray-900 active:bg-gray-50"
         >
           <UserPlus className="h-5 w-5 text-blue-600" strokeWidth={2} />
-          邀请新成员
+          {t("console.group.inviteMember")}
         </button>
         <button
           type="button"
@@ -328,14 +345,14 @@ export function FamilyActionSheet({
           className="flex w-full items-center gap-3 px-4 py-3.5 text-left text-[17px] text-gray-900 active:bg-gray-50"
         >
           <UserRound className="h-5 w-5 text-violet-600" strokeWidth={2} />
-          创建免下载档案
+          {t("console.group.createProfile")}
         </button>
         <button
           type="button"
           onClick={onClose}
           className="mt-2 w-full rounded-2xl bg-white/95 py-3.5 text-[17px] font-semibold text-blue-600 backdrop-blur-xl active:bg-gray-50"
         >
-          取消
+          {t("common.cancel")}
         </button>
       </ActionSheetPanel>
     </OverlayRoot>
@@ -349,15 +366,17 @@ export function ReadonlyHintAlert({
   open: boolean;
   onClose: () => void;
 }) {
+  const { t } = useDictionary();
+
   return (
     <OverlayRoot open={open} onClose={onClose} variant="alert">
       <AlertPanel>
         <div className="px-4 pb-3 pt-5 text-center">
           <h2 className="text-[17px] font-semibold text-gray-900">
-            多端安全限制
+            {t("console.group.securityLimitTitle")}
           </h2>
           <p className="mt-3 text-[13px] leading-relaxed text-gray-500">
-            请使用同圈 iOS App 扫描二维码或发送快捷邀请链接。
+            {t("console.group.securityLimitBody")}
           </p>
         </div>
         <button
@@ -365,7 +384,7 @@ export function ReadonlyHintAlert({
           onClick={onClose}
           className="w-full border-t border-gray-200/80 py-3.5 text-[17px] font-semibold text-blue-600 active:bg-gray-50"
         >
-          知道了
+          {t("common.gotIt")}
         </button>
       </AlertPanel>
     </OverlayRoot>

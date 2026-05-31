@@ -1,3 +1,4 @@
+import { getActiveDictionary } from "@/lib/i18n/client-dictionary";
 import { requireAuthenticatedSession } from "@/lib/auth/require-session";
 import { getSupabaseBrowserClient } from "@/lib/supabase/browser-client";
 import {
@@ -100,22 +101,18 @@ export async function fetchFamilyPageData(
 ): Promise<FetchFamilyResult> {
   const supabase = getSupabaseBrowserClient();
   if (!supabase) {
-    return { ok: false, reason: "no_client", message: "缺少 Supabase 配置" };
+    return { ok: false, reason: "no_client", message: "missingConfig" };
   }
 
   const guard = await requireAuthenticatedSession(supabase);
   if (!guard.ok) {
     if (guard.reason === "no_session") {
-      return { ok: false, reason: "no_session", message: "请先登录" };
+      return { ok: false, reason: "no_session", message: "pleaseSignIn" };
     }
     if (guard.reason === "expired") {
-      return {
-        ok: false,
-        reason: "expired",
-        message: guard.message ?? "登录已过期，请重新登录",
-      };
+      return { ok: false, reason: "expired", message: "sessionExpired" };
     }
-    return { ok: false, reason: "no_client", message: "缺少 Supabase 配置" };
+    return { ok: false, reason: "no_client", message: "missingConfig" };
   }
 
   const { data: household, error: householdError } = await supabase
@@ -128,7 +125,7 @@ export async function fetchFamilyPageData(
     return { ok: false, reason: "error", message: householdError.message };
   }
   if (!household) {
-    return { ok: false, reason: "error", message: "未找到家庭信息" };
+    return { ok: false, reason: "error", message: "groupNotFound" };
   }
 
   const { data: membershipRows, error: membersError } = await supabase
@@ -165,8 +162,10 @@ export async function fetchFamilyPageData(
   );
   const householdRow = household as HouseholdRow;
 
+  const dictionary = getActiveDictionary();
+
   const membershipDisplays = memberships.map((m) =>
-    membershipToDisplay(m, householdRow),
+    membershipToDisplay(m, householdRow, dictionary),
   );
 
   const linkedProfileIds = new Set(
@@ -177,7 +176,7 @@ export async function fetchFamilyPageData(
 
   const orphanProfileDisplays = allProfiles
     .filter((p) => !linkedProfileIds.has(p.id))
-    .map((p) => profileToDisplay(p));
+    .map((p) => profileToDisplay(p, dictionary));
 
   const displays = [...membershipDisplays, ...orphanProfileDisplays];
 
@@ -187,7 +186,7 @@ export async function fetchFamilyPageData(
     return {
       ok: false,
       reason: "error",
-      message: "当前用户不在该家庭成员列表中",
+      message: "notInGroup",
     };
   }
 
@@ -212,14 +211,14 @@ export async function fetchMemberTasks(
 ): Promise<{ tasks: TaskRow[]; error: string | null; unauthorized?: boolean }> {
   const supabase = getSupabaseBrowserClient();
   if (!supabase) {
-    return { tasks: [], error: "缺少 Supabase 配置" };
+    return { tasks: [], error: "missingConfig" };
   }
 
   const guard = await requireAuthenticatedSession(supabase);
   if (!guard.ok) {
     return {
       tasks: [],
-      error: guard.message ?? "请先登录",
+      error: guard.reason === "expired" ? "sessionExpired" : "pleaseSignIn",
       unauthorized: true,
     };
   }
