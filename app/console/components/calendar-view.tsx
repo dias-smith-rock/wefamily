@@ -19,6 +19,7 @@ import {
   eventsForDate,
   formatCalendarMonthLabel,
   formatEventTime,
+  scheduledCalendarEvents,
 } from "../calendar/utils";
 import {
   AlarmClock,
@@ -113,7 +114,8 @@ function CalendarNavBar({
               {viewMenuItems.map((item) => {
                 const isActive = item.enabled && item.id === viewMode;
                 const isSelectable =
-                  item.enabled && (item.id === "list" || item.id === "day");
+                  item.enabled &&
+                  (item.id === "list" || item.id === "day");
 
                 return (
                   <button
@@ -409,6 +411,11 @@ export function CalendarView({
 
   const events = useMemo(() => cachedEvents ?? [], [cachedEvents]);
 
+  const scheduledEvents = useMemo(
+    () => scheduledCalendarEvents(events),
+    [events],
+  );
+
   useEffect(() => {
     if (isMonthPickerOpen) {
       const anchor = viewMode === "list" ? listHeaderDate : selectedDate;
@@ -417,16 +424,19 @@ export function CalendarView({
   }, [isMonthPickerOpen, selectedDate, listHeaderDate, viewMode]);
 
   const weekView = useMemo(
-    () => buildWeekView(selectedDate, events),
-    [selectedDate, events],
+    () => buildWeekView(selectedDate, scheduledEvents),
+    [selectedDate, scheduledEvents],
   );
 
   const dayEvents = useMemo(
-    () => eventsForDate(events, selectedDate),
-    [events, selectedDate],
+    () => eventsForDate(scheduledEvents, selectedDate),
+    [scheduledEvents, selectedDate],
   );
 
-  const listGroups = useMemo(() => groupEventsByDate(events), [events]);
+  const listGroups = useMemo(
+    () => groupEventsByDate(scheduledEvents),
+    [scheduledEvents],
+  );
 
   useEffect(() => {
     if (viewMode !== "list" || listGroups.length === 0) return;
@@ -507,7 +517,7 @@ export function CalendarView({
 
         {viewMode === "list" ? (
           <ListEventsView
-            events={events}
+            events={scheduledEvents}
             onEventPress={(event) => setModal({ kind: "task", event })}
             onVisibleDateChange={handleListVisibleDateChange}
           />
@@ -554,7 +564,7 @@ export function CalendarView({
         onClose={() => setIsMonthPickerOpen(false)}
         selectedDate={selectedDate}
         onSelectDate={(date) => setSelectedDate(startOfDay(date))}
-        events={events}
+        events={scheduledEvents}
         viewingMonth={viewingMonth}
         onViewingMonthChange={setViewingMonth}
       />

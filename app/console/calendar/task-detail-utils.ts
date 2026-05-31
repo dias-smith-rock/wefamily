@@ -27,11 +27,13 @@ export function getTaskDetailFieldValues(event: CalendarEvent) {
   const dictionary = getActiveDictionary();
   const detail = dictionary.console.taskDetail;
   const calendar = dictionary.console.calendar;
-  const timeValue = formatTaskDetailDateTime(
-    resolveClientLocale(),
-    event.startAt,
-    event.isAllDay,
-  );
+  const locale = resolveClientLocale();
+
+  const timeValue = event.isFlexibleTodo
+    ? event.endAt
+      ? formatTaskDetailDateTime(locale, event.endAt, true)
+      : calendar.todoNoDeadline
+    : formatTaskDetailDateTime(locale, event.startAt, event.isAllDay);
   const prioritySegment = resolveTaskPrioritySegment(event.priority);
 
   return {
@@ -57,5 +59,6 @@ export function getTaskDetailFieldValues(event: CalendarEvent) {
     labels: calendar,
     priorityUrgent: calendar.priorityUrgent,
     priorityNormal: calendar.priorityNormal,
+    timeLabel: event.isFlexibleTodo ? calendar.fieldDeadline : calendar.fieldTime,
   };
 }

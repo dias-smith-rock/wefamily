@@ -61,6 +61,7 @@
     "nav": {
       "main": "Navigation principale",
       "calendar": "Calendrier",
+      "todo": "À faire",
       "group": "Groupe",
       "me": "Moi",
       "switchGroup": "Changer de groupe"
@@ -136,7 +137,21 @@
       "allDay": "Toute la journée",
       "closeMonthPicker": "Fermer le calendrier",
       "selectDate": "Choisir une date",
-      "dayAria": "Jour {day}"
+      "dayAria": "Jour {day}",
+      "viewTodo": "À faire",
+      "todoEmptyTitle": "Aucune tâche à faire",
+      "todoEmptyBody": "Ajoutez des tâches sans heure de début précise à terminer avant la date limite.",
+      "todoSectionOverdue": "En retard",
+      "todoSectionToday": "À faire aujourd'hui",
+      "todoSectionThisWeek": "Cette semaine",
+      "todoSectionLater": "Plus tard",
+      "todoOverdueBanner": "{count} tâches en retard",
+      "todoOverdueHint": "Appuyez pour consulter et replanifier",
+      "todoOverdueTitle": "En retard",
+      "todoOverdueOnlyTitle": "Rien d'imminent",
+      "todoOverdueOnlyBody": "Toutes les tâches sont en retard. Consultez la bannière ci-dessus.",
+      "todoNoDeadline": "Sans échéance",
+      "fieldDeadline": "Échéance"
     },
     "status": {
       "pending": "En attente",

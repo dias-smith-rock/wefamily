@@ -61,6 +61,7 @@
     "nav": {
       "main": "التنقل الرئيسي",
       "calendar": "التقويم",
+      "todo": "المهام",
       "group": "المجموعة",
       "me": "أنا",
       "switchGroup": "تبديل المجموعة"
@@ -136,7 +137,21 @@
       "allDay": "طوال اليوم",
       "closeMonthPicker": "إغلاق منتقي الشهر",
       "selectDate": "اختر التاريخ",
-      "dayAria": "يوم {day}"
+      "dayAria": "يوم {day}",
+      "viewTodo": "المهام",
+      "todoEmptyTitle": "لا توجد مهام",
+      "todoEmptyBody": "أضف مهامًا بدون وقت بدء محدد وأنجزها قبل الموعد النهائي.",
+      "todoSectionOverdue": "متأخرة",
+      "todoSectionToday": "مستحقة اليوم",
+      "todoSectionThisWeek": "هذا الأسبوع",
+      "todoSectionLater": "لاحقًا",
+      "todoOverdueBanner": "{count} مهام متأخرة",
+      "todoOverdueHint": "اضغط للمراجعة وإعادة الجدولة",
+      "todoOverdueTitle": "متأخرة",
+      "todoOverdueOnlyTitle": "لا شيء قريبًا",
+      "todoOverdueOnlyBody": "جميع المهام متأخرة. راجع الشريط أعلاه.",
+      "todoNoDeadline": "بدون موعد نهائي",
+      "fieldDeadline": "الموعد النهائي"
     },
     "status": {
       "pending": "قيد الانتظار",

@@ -32,6 +32,9 @@ export type CalendarEvent = {
   beneficiaries: CalendarPerson[];
   recurrenceRule: string | null;
   recurrenceInterval: string | null;
+  /** `tasks.task_type`：`scheduled` 定时日程；`flexible` 灵活待办 */
+  taskType: string | null;
+  isFlexibleTodo: boolean;
 };
 
 export type CalendarDay = {
@@ -63,6 +66,8 @@ export type TaskRow = {
   target_profile_ids: string[] | null;
   recurrence_rule: string | null;
   recurrence_interval: string | null;
+  task_type: string | null;
+  created_at: string | null;
 };
 
 export type MembershipLookupRow = {
@@ -83,7 +88,7 @@ export type CalendarPageData = {
   events: CalendarEvent[];
 };
 
-/** 日程表主内容区视图模式（仅 list / day 已实现） */
+/** 日程表主内容区视图模式 */
 export type CalendarViewMode = "list" | "day";
 
 export type CalendarModalState =

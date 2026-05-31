@@ -1,5 +1,6 @@
 import type { HouseholdMembership, HouseholdOption } from "../types";
 import { getActiveDictionary } from "@/lib/i18n/client-dictionary";
+import { resolveAvatarUrl } from "@/lib/supabase/storage-url";
 
 /** household_memberships 可查询列（与 Supabase schema 一致，勿含已删除字段） */
 export const HOUSEHOLD_MEMBERSHIP_COLUMNS =
@@ -73,30 +74,50 @@ async function fetchHouseholdNameMap(
   return map;
 }
 
-async function fetchProfileAvatarMap(
+async function fetchMembershipAvatarsFromFamilyProfiles(
   supabase: SupabaseClient,
-  profileIds: string[],
+  memberships: HouseholdMembership[],
 ): Promise<Map<string, string | null>> {
-  const map = new Map<string, string | null>();
-  const unique = [...new Set(profileIds.filter(Boolean))];
-  if (unique.length === 0) return map;
+  const avatarsByMembershipId = new Map<string, string | null>();
+  if (memberships.length === 0) return avatarsByMembershipId;
 
+  const householdIds = [...new Set(memberships.map((m) => m.household_id))];
   const { data, error } = await supabase
     .from("family_profiles")
-    .select("id, avatar_url")
-    .in("id", unique);
+    .select("id, household_id, user_id, avatar_url")
+    .in("household_id", householdIds);
 
   if (error) {
-    console.warn("[wefamily] fetchProfileAvatarMap:", error.message);
-    return map;
+    console.warn("[wefamily] fetchMembershipAvatarsFromFamilyProfiles:", error.message);
+    return avatarsByMembershipId;
   }
 
-  for (const row of data ?? []) {
-    const id = String((row as { id: string }).id);
-    map.set(id, (row as { avatar_url: string | null }).avatar_url ?? null);
+  const profiles = (data ?? []).map((row) => ({
+    id: String((row as { id: string }).id),
+    household_id: String((row as { household_id: string }).household_id),
+    user_id: ((row as { user_id: string | null }).user_id as string | null) ?? null,
+    avatar_url: ((row as { avatar_url: string | null }).avatar_url as string | null) ?? null,
+  }));
+
+  for (const membership of memberships) {
+    let avatarUrl: string | null = null;
+
+    if (membership.profile_id) {
+      const profile = profiles.find((p) => p.id === membership.profile_id);
+      avatarUrl = resolveAvatarUrl(profile?.avatar_url ?? null);
+    } else if (membership.user_id) {
+      const profile = profiles.find(
+        (p) =>
+          p.user_id === membership.user_id &&
+          p.household_id === membership.household_id,
+      );
+      avatarUrl = resolveAvatarUrl(profile?.avatar_url ?? null);
+    }
+
+    avatarsByMembershipId.set(membership.id, avatarUrl);
   }
 
-  return map;
+  return avatarsByMembershipId;
 }
 
 /** 加载用户全部 active 家庭及展示信息，供家庭切换器使用 */
@@ -118,22 +139,17 @@ export async function fetchHouseholdOptionsForUser(
   }
 
   const householdIds = memberships.map((m) => m.household_id);
-  const profileIds = memberships
-    .map((m) => m.profile_id)
-    .filter((id): id is string => Boolean(id));
 
   const [nameMap, avatarMap] = await Promise.all([
     fetchHouseholdNameMap(supabase, householdIds),
-    fetchProfileAvatarMap(supabase, profileIds),
+    fetchMembershipAvatarsFromFamilyProfiles(supabase, memberships),
   ]);
 
   const options: HouseholdOption[] = memberships.map((membership) => ({
     householdId: membership.household_id,
     householdName: nameMap.get(membership.household_id) ?? getActiveDictionary().common.defaults.unnamedGroup,
     membership,
-    avatarUrl: membership.profile_id
-      ? (avatarMap.get(membership.profile_id) ?? null)
-      : null,
+    avatarUrl: avatarMap.get(membership.id) ?? null,
   }));
 
   return { data: options, error: null };
@@ -166,5 +182,28 @@ export async function fetchProfileAvatarUrl(
     return null;
   }
 
-  return (data?.avatar_url as string | null) ?? null;
+  return resolveAvatarUrl((data?.avatar_url as string | null) ?? null);
+}
+
+/** 按 household + user_id 从 family_profiles 读取 avatar_url */
+export async function fetchProfileAvatarUrlByUserId(
+  supabase: SupabaseClient,
+  householdId: string,
+  userId: string | null | undefined,
+): Promise<string | null> {
+  if (!userId?.trim()) return null;
+
+  const { data, error } = await supabase
+    .from("family_profiles")
+    .select("avatar_url")
+    .eq("household_id", householdId)
+    .eq("user_id", userId)
+    .maybeSingle();
+
+  if (error) {
+    console.warn("[wefamily] fetchProfileAvatarUrlByUserId:", error.message);
+    return null;
+  }
+
+  return resolveAvatarUrl((data?.avatar_url as string | null) ?? null);
 }

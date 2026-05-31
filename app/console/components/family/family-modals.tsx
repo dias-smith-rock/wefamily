@@ -113,6 +113,11 @@ export function HouseholdAlertModal({
               date: formatDateLocalized(data.household.created_at),
             })}
           </p>
+          {data.household.description?.trim() ? (
+            <p className="mt-2 text-[13px] leading-relaxed text-gray-500">
+              {data.household.description.trim()}
+            </p>
+          ) : null}
           <p className="mt-1 text-[13px] text-gray-500">
             {t("console.group.memberCount", { total: data.memberCount })}
           </p>

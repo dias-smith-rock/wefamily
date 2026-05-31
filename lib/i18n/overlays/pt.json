@@ -61,6 +61,7 @@
     "nav": {
       "main": "Navegação principal",
       "calendar": "Calendário",
+      "todo": "Tarefas",
       "group": "Grupo",
       "me": "Eu",
       "switchGroup": "Mudar de grupo"
@@ -136,7 +137,21 @@
       "allDay": "Todo el día",
       "closeMonthPicker": "Cerrar calendario",
       "selectDate": "Elegir fecha",
-      "dayAria": "Día {day}"
+      "dayAria": "Día {day}",
+      "viewTodo": "Pendentes",
+      "todoEmptyTitle": "Sem pendentes",
+      "todoEmptyBody": "Adicione tarefas sem hora de início específica e conclua antes do prazo.",
+      "todoSectionOverdue": "Em atraso",
+      "todoSectionToday": "Para hoje",
+      "todoSectionThisWeek": "Esta semana",
+      "todoSectionLater": "Mais tarde",
+      "todoOverdueBanner": "{count} pendentes em atraso",
+      "todoOverdueHint": "Toque para rever e reagendar",
+      "todoOverdueTitle": "Em atraso",
+      "todoOverdueOnlyTitle": "Nada em breve",
+      "todoOverdueOnlyBody": "Todas as pendentes estão em atraso. Use o banner acima.",
+      "todoNoDeadline": "Sem prazo",
+      "fieldDeadline": "Prazo"
     },
     "status": {
       "pending": "Pendente",

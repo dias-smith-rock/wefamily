@@ -1,12 +1,17 @@
 import { addDays, subDays } from "date-fns";
 import { getActiveDictionary } from "@/lib/i18n/client-dictionary";
+import { profileAvatarDisplayUrl } from "../family/utils";
 import {
   formatCalendarMonthLabel as formatCalendarMonthLabelI18n,
   formatStatusLabel as formatStatusLabelI18n,
 } from "@/lib/i18n/formatters";
 import { interpolate } from "@/lib/i18n/translate";
 import { resolveClientLocale } from "@/lib/i18n/client-locale";
-import { isIncompleteTask } from "../family/utils";
+import {
+  isFlexibleTodoTask,
+  isOpenTodoStatus,
+  isScheduledCalendarTask,
+} from "./task-type";
 import { taskTargetProfileIds } from "../lib/task-fields";
 import type {
   CalendarDay,
@@ -143,6 +148,7 @@ export function eventsForDate(
 type LookupMaps = {
   membershipById: Map<string, MembershipLookupRow>;
   profileById: Map<string, ProfileLookupRow>;
+  profileByUserId: Map<string, ProfileLookupRow>;
   membershipByProfileId: Map<string, MembershipLookupRow>;
   membershipByUserId: Map<string, MembershipLookupRow>;
 };
@@ -153,8 +159,13 @@ function buildLookupMaps(
 ): LookupMaps {
   const membershipById = new Map(memberships.map((m) => [m.id, m]));
   const profileById = new Map(profiles.map((p) => [p.id, p]));
+  const profileByUserId = new Map<string, ProfileLookupRow>();
   const membershipByProfileId = new Map<string, MembershipLookupRow>();
   const membershipByUserId = new Map<string, MembershipLookupRow>();
+
+  for (const p of profiles) {
+    if (p.user_id) profileByUserId.set(p.user_id, p);
+  }
 
   for (const m of memberships) {
     if (m.profile_id) membershipByProfileId.set(m.profile_id, m);
@@ -164,6 +175,7 @@ function buildLookupMaps(
   return {
     membershipById,
     profileById,
+    profileByUserId,
     membershipByProfileId,
     membershipByUserId,
   };
@@ -197,9 +209,13 @@ function resolvePerson(
   const defaults = dictionary.common.defaults;
   const membership = maps.membershipById.get(id);
   if (membership) {
-    const profile = membership.profile_id
-      ? maps.profileById.get(membership.profile_id)
-      : null;
+    const profile =
+      (membership.profile_id
+        ? maps.profileById.get(membership.profile_id)
+        : null) ??
+      (membership.user_id
+        ? maps.profileByUserId.get(membership.user_id) ?? null
+        : null);
     const name =
       membership.nickname?.trim() ||
       profile?.name?.trim() ||
@@ -208,7 +224,7 @@ function resolvePerson(
     return {
       id: membership.id,
       name,
-      avatarUrl: profile?.avatar_url || null,
+      avatarUrl: profileAvatarDisplayUrl(profile),
       initials: initialsFromName(name),
       avatarClass: pickAvatarClass(membership.id),
       isManagedProfile: isManaged,
@@ -229,7 +245,7 @@ function resolvePerson(
     return {
       id: profile.id,
       name,
-      avatarUrl: profile.avatar_url,
+      avatarUrl: profileAvatarDisplayUrl(profile),
       initials: initialsFromName(name),
       avatarClass: pickAvatarClass(profile.id),
       isManagedProfile: isManaged,
@@ -290,42 +306,117 @@ function formatAssigneeLabel(assignees: CalendarPerson[]): string {
   });
 }
 
+function startOfDayLocal(d: Date): Date {
+  const x = new Date(d);
+  x.setHours(0, 0, 0, 0);
+  return x;
+}
+
+/** 灵活待办截止日（`end_datetime` 的日历日） */
+export function flexibleDeadlineDay(task: TaskRow): Date | null {
+  if (!isFlexibleTodoTask(task) || !task.end_datetime) return null;
+  return startOfDayLocal(new Date(task.end_datetime));
+}
+
+function buildCalendarEventBase(
+  task: TaskRow,
+  maps: LookupMaps,
+): Omit<CalendarEvent, "startAt" | "endAt" | "isAllDay"> {
+  const forWhomIds = taskTargetProfileIds(task);
+  const beneficiaries = resolvePeople(forWhomIds, maps);
+  const assignees = resolvePeople(task.involved_member_ids, maps);
+  const forPerson = beneficiaries[0] ?? null;
+
+  return {
+    id: task.id,
+    title: task.title?.trim() || getActiveDictionary().common.defaults.unnamedTask,
+    description: task.description,
+    status: task.status,
+    priority: task.priority,
+    statusLabel: formatStatusLabel(task.status),
+    forPerson,
+    forWhomIds,
+    assigneeLabel: formatAssigneeLabel(assignees),
+    assignees,
+    beneficiaries,
+    recurrenceRule: task.recurrence_rule,
+    recurrenceInterval: task.recurrence_interval,
+    taskType: task.task_type,
+    isFlexibleTodo: isFlexibleTodoTask(task),
+  };
+}
+
+function mapScheduledTask(
+  task: TaskRow,
+  maps: LookupMaps,
+): CalendarEvent | null {
+  if (!isScheduledCalendarTask(task) || !task.due_date) return null;
+
+  const startAt = new Date(task.due_date);
+  const endAt = task.end_datetime ? new Date(task.end_datetime) : null;
+
+  return {
+    ...buildCalendarEventBase(task, maps),
+    startAt,
+    endAt,
+    isAllDay: Boolean(task.is_all_day),
+    isFlexibleTodo: false,
+  };
+}
+
+function mapFlexibleTodoTask(
+  task: TaskRow,
+  maps: LookupMaps,
+): CalendarEvent | null {
+  if (!isFlexibleTodoTask(task)) return null;
+
+  const deadline = task.end_datetime ? new Date(task.end_datetime) : null;
+  const deadlineDay = flexibleDeadlineDay(task);
+  const fallbackStart = task.created_at
+    ? new Date(task.created_at)
+    : new Date();
+
+  return {
+    ...buildCalendarEventBase(task, maps),
+    startAt: deadlineDay ?? startOfDayLocal(fallbackStart),
+    endAt: deadline,
+    isAllDay: true,
+    isFlexibleTodo: true,
+  };
+}
+
 export function mapTasksToCalendarEvents(
   tasks: TaskRow[],
   memberships: MembershipLookupRow[],
   profiles: ProfileLookupRow[],
 ): CalendarEvent[] {
   const maps = buildLookupMaps(memberships, profiles);
+  const events: CalendarEvent[] = [];
 
-  return tasks
-    .filter((t) => t.due_date)
-    .map((task) => {
-      const startAt = new Date(task.due_date!);
-      const endAt = task.end_datetime ? new Date(task.end_datetime) : null;
-      const forWhomIds = taskTargetProfileIds(task);
-      const beneficiaries = resolvePeople(forWhomIds, maps);
-      const assignees = resolvePeople(task.involved_member_ids, maps);
-      const forPerson = beneficiaries[0] ?? null;
+  for (const task of tasks) {
+    const mapped = isFlexibleTodoTask(task)
+      ? mapFlexibleTodoTask(task, maps)
+      : mapScheduledTask(task, maps);
+    if (mapped) events.push(mapped);
+  }
 
-      return {
-        id: task.id,
-        title: task.title?.trim() || getActiveDictionary().common.defaults.unnamedTask,
-        description: task.description,
-        startAt,
-        endAt,
-        isAllDay: Boolean(task.is_all_day),
-        status: task.status,
-        priority: task.priority,
-        statusLabel: formatStatusLabel(task.status),
-        forPerson,
-        forWhomIds,
-        assigneeLabel: formatAssigneeLabel(assignees),
-        assignees,
-        beneficiaries,
-        recurrenceRule: task.recurrence_rule,
-        recurrenceInterval: task.recurrence_interval,
-      };
-    });
+  return events;
+}
+
+/** 日程 Tab 可见事件（排除灵活待办） */
+export function scheduledCalendarEvents(events: CalendarEvent[]): CalendarEvent[] {
+  return events.filter((event) => !event.isFlexibleTodo);
+}
+
+/** 待办 Tab 可见事件（灵活待办且未完成） */
+export function openFlexibleTodoEvents(events: CalendarEvent[]): CalendarEvent[] {
+  return events.filter(
+    (event) => event.isFlexibleTodo && isOpenTodoStatus(event.status),
+  );
+}
+
+export function isIncompleteTask(status: string): boolean {
+  return isOpenTodoStatus(status);
 }
 
 /** 详情抽屉：是否未指定具体受益人（全家任务） */

@@ -12,7 +12,7 @@ import type {
 } from "./types";
 
 const TASK_COLUMNS =
-  "id, title, description, status, priority, due_date, end_datetime, is_all_day, involved_member_ids, target_profile_ids, recurrence_rule, recurrence_interval";
+  "id, title, description, status, priority, due_date, end_datetime, is_all_day, involved_member_ids, target_profile_ids, recurrence_rule, recurrence_interval, task_type, created_at";
 
 const MEMBERSHIP_COLUMNS = HOUSEHOLD_MEMBERSHIP_COLUMNS;
 
@@ -46,6 +46,8 @@ function normalizeTask(raw: Record<string, unknown>): TaskRow {
     ...targetFields,
     recurrence_rule: toOptionalString(raw.recurrence_rule),
     recurrence_interval: toOptionalString(raw.recurrence_interval),
+    task_type: toOptionalString(raw.task_type),
+    created_at: toOptionalString(raw.created_at),
   };
 }
 

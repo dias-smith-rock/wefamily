@@ -7,6 +7,7 @@ import { FamilyHomeView } from "./family-members";
 import { HouseholdSwitcher } from "./household-switcher";
 import { MeView } from "./me-view";
 import { MobileTabBar } from "./mobile-tab-bar";
+import { TodoView } from "./todo-view";
 
 type ConsoleLayoutProps = {
   user: ConsoleUser;
@@ -55,6 +56,14 @@ export function ConsoleLayout({
               />
             ) : active === "calendar" ? (
               <CalendarView
+                key={householdId}
+                householdId={householdId}
+                enabled
+                onSessionLost={onSessionLost}
+                onSignOut={onSignOut}
+              />
+            ) : active === "todo" ? (
+              <TodoView
                 key={householdId}
                 householdId={householdId}
                 enabled

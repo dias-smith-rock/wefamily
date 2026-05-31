@@ -5,6 +5,7 @@ import {
   isIncompleteTask,
   memberTaskFilterIds,
   membershipToDisplay,
+  mergeMembershipsWithProfiles,
   profileToDisplay,
   sortFamilyMembers,
   taskMatchesMember,
@@ -82,17 +83,11 @@ function normalizeProfile(raw: Record<string, unknown>): FamilyProfileRow {
   };
 }
 
-function mergeMembershipsWithProfiles(
+function mergeMembershipsWithProfilesTyped(
   memberships: MembershipRowBase[],
   profiles: FamilyProfileRow[],
 ): MembershipRow[] {
-  const profileMap = new Map(profiles.map((p) => [p.id, p]));
-  return memberships.map((m) => ({
-    ...m,
-    family_profiles: m.profile_id
-      ? (profileMap.get(m.profile_id) ?? null)
-      : null,
-  }));
+  return mergeMembershipsWithProfiles(memberships, profiles);
 }
 
 export async function fetchFamilyPageData(
@@ -117,7 +112,7 @@ export async function fetchFamilyPageData(
 
   const { data: household, error: householdError } = await supabase
     .from("households")
-    .select("id, name, created_at, creator_id")
+    .select("id, name, created_at, creator_id, description, avatar_url")
     .eq("id", householdId)
     .maybeSingle();
 
@@ -156,11 +151,18 @@ export async function fetchFamilyPageData(
     normalizeProfile(row as unknown as Record<string, unknown>),
   );
 
-  const memberships = mergeMembershipsWithProfiles(
+  const memberships = mergeMembershipsWithProfilesTyped(
     membershipsBase,
     allProfiles,
   );
-  const householdRow = household as HouseholdRow;
+  const householdRow: HouseholdRow = {
+    id: String(household.id),
+    name: String(household.name ?? ""),
+    created_at: String(household.created_at ?? ""),
+    creator_id: (household.creator_id as string | null) ?? null,
+    description: (household.description as string | null) ?? null,
+    avatar_url: (household.avatar_url as string | null) ?? null,
+  };
 
   const dictionary = getActiveDictionary();
 

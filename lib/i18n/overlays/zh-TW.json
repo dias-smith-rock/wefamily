@@ -61,6 +61,7 @@
     "nav": {
       "main": "主導航",
       "calendar": "日程表",
+      "todo": "待辦",
       "group": "群組",
       "me": "我的",
       "switchGroup": "切換群組"
@@ -136,7 +137,21 @@
       "allDay": "全天",
       "closeMonthPicker": "關閉月曆",
       "selectDate": "選擇日期",
-      "dayAria": "{day}日"
+      "dayAria": "{day}日",
+      "viewTodo": "待辦",
+      "todoEmptyTitle": "暫無待辦",
+      "todoEmptyBody": "新增沒有具體開始時間的任務，在截止日前完成即可。",
+      "todoSectionOverdue": "已逾期",
+      "todoSectionToday": "今天截止",
+      "todoSectionThisWeek": "本週截止",
+      "todoSectionLater": "以後",
+      "todoOverdueBanner": "{count} 個待辦已過期",
+      "todoOverdueHint": "點擊查看並調整時間",
+      "todoOverdueTitle": "已逾期",
+      "todoOverdueOnlyTitle": "暫無即將到期",
+      "todoOverdueOnlyBody": "目前待辦均已逾期，請點擊上方橫幅查看。",
+      "todoNoDeadline": "未設截止日",
+      "fieldDeadline": "截止時間"
     },
     "status": {
       "pending": "待接受",

@@ -222,7 +222,7 @@ export function TaskDetailSheet({
             <InsetCard className="divide-y divide-gray-100">
               <InfoRow
                 icon={Calendar}
-                label={labels.fieldTime}
+                label={fields.timeLabel}
                 value={fields.timeValue}
               />
               <InfoRow icon={Repeat} label={labels.fieldRepeat} value={fields.repeatValue} />

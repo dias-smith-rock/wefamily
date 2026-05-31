@@ -61,6 +61,7 @@
     "nav": {
       "main": "முதன்மை வழிசெலுத்தல்",
       "calendar": "நாட்காட்டி",
+      "todo": "செய்யவும்",
       "group": "குழு",
       "me": "நான்",
       "switchGroup": "குழுவை மாற்று"
@@ -136,7 +137,21 @@
       "allDay": "முழு நாள்",
       "closeMonthPicker": "மாத தேர்வை மூடு",
       "selectDate": "தேதியைத் தேர்ந்தெடு",
-      "dayAria": "நாள் {day}"
+      "dayAria": "நாள் {day}",
+      "viewTodo": "செய்ய வேண்டியவை",
+      "todoEmptyTitle": "பணிகள் இல்லை",
+      "todoEmptyBody": "தொடக்க நேரம் இல்லாத பணிகளைச் சேர்த்து, காலக்கெடுவுக்குள் முடிக்கவும்.",
+      "todoSectionOverdue": "காலாவதியானவை",
+      "todoSectionToday": "இன்று முடிக்க",
+      "todoSectionThisWeek": "இந்த வாரம்",
+      "todoSectionLater": "பின்னர்",
+      "todoOverdueBanner": "{count} காலாவதி பணிகள்",
+      "todoOverdueHint": "பார்க்கவும் நேரம் மாற்றவும்",
+      "todoOverdueTitle": "காலாவதியானவை",
+      "todoOverdueOnlyTitle": "விரைவில் எதுவும் இல்லை",
+      "todoOverdueOnlyBody": "அனைத்து பணிகளும் காலாவதியாகியுள்ளன. மேலே உள்ள பதாகையைப் பாருங்கள்.",
+      "todoNoDeadline": "காலக்கெடு இல்லை",
+      "fieldDeadline": "காலக்கெடு"
     },
     "status": {
       "pending": "நிலுவை",

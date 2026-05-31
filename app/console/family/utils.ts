@@ -1,4 +1,5 @@
 import { getActiveDictionary } from "@/lib/i18n/client-dictionary";
+import { resolveAvatarUrl } from "@/lib/supabase/storage-url";
 import { resolveClientLocale } from "@/lib/i18n/client-locale";
 import { formatLocaleDate, formatRoleLabel as formatRoleLabelI18n } from "@/lib/i18n/formatters";
 import type { Dictionary } from "@/lib/i18n/types";
@@ -97,6 +98,49 @@ function pickAvatarClass(seed: string): string {
   return AVATAR_CLASSES[hash]!;
 }
 
+/** 成员头像唯一来源：`family_profiles.avatar_url`（解析 Storage 路径为可访问 URL） */
+export function profileAvatarDisplayUrl(
+  profile: Pick<FamilyProfileRow, "avatar_url"> | null | undefined,
+): string | null {
+  return resolveAvatarUrl(profile?.avatar_url ?? null);
+}
+
+/** 将 membership 关联到对应 family_profiles 行 */
+export function linkMembershipToProfile<
+  T extends {
+    profile_id: string | null;
+    user_id: string | null;
+    household_id?: string;
+  },
+>(
+  membership: T,
+  profiles: FamilyProfileRow[],
+): FamilyProfileRow | null {
+  const profileMap = new Map(profiles.map((p) => [p.id, p]));
+  if (membership.profile_id) {
+    return profileMap.get(membership.profile_id) ?? null;
+  }
+  if (membership.user_id) {
+    return (
+      profiles.find(
+        (p) =>
+          p.user_id === membership.user_id &&
+          (!membership.household_id || p.household_id === membership.household_id),
+      ) ?? null
+    );
+  }
+  return null;
+}
+
+export function mergeMembershipsWithProfiles<
+  T extends { profile_id: string | null; user_id: string | null },
+>(memberships: T[], profiles: FamilyProfileRow[]): Array<T & { family_profiles: FamilyProfileRow | null }> {
+  return memberships.map((m) => ({
+    ...m,
+    family_profiles: linkMembershipToProfile(m, profiles),
+  }));
+}
+
 export function membershipToDisplay(
   row: MembershipRow,
   household: HouseholdRow,
@@ -146,7 +190,7 @@ export function membershipToDisplay(
     displayName,
     subtitle,
     detailLine,
-    avatarUrl: profile?.avatar_url || null,
+    avatarUrl: profileAvatarDisplayUrl(profile),
     initials: initialsFromName(displayName),
     avatarClass: pickAvatarClass(row.id),
     roleLabel,
@@ -188,7 +232,7 @@ export function profileToDisplay(
     displayName,
     subtitle: common.defaults.member,
     detailLine,
-    avatarUrl: profile.avatar_url,
+    avatarUrl: profileAvatarDisplayUrl(profile),
     initials: initialsFromName(displayName),
     avatarClass: pickAvatarClass(profile.id),
     roleLabel: common.defaults.member,

@@ -32,6 +32,8 @@ export function reviveCalendarEvents(raw: unknown): CalendarEvent[] | null {
         startAt: new Date(row.startAt),
         endAt: row.endAt ? new Date(row.endAt) : null,
         forWhomIds: normalizeIdArray(row.forWhomIds),
+        isFlexibleTodo: row.isFlexibleTodo ?? false,
+        taskType: row.taskType ?? null,
         beneficiaries,
       };
     });

@@ -50,6 +50,8 @@ export type HouseholdRow = {
   name: string;
   created_at: string;
   creator_id: string | null;
+  description: string | null;
+  avatar_url: string | null;
 };
 
 export type TaskRow = {
@@ -69,6 +71,7 @@ export type FamilyMemberDisplay = {
   displayName: string;
   subtitle: string;
   detailLine: string | null;
+  /** 来自 family_profiles.avatar_url */
   avatarUrl: string | null;
   initials: string;
   avatarClass: string;

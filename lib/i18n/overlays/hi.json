@@ -61,6 +61,7 @@
     "nav": {
       "main": "मुख्य नेविगेशन",
       "calendar": "कैलेंडर",
+      "todo": "कार्य",
       "group": "समूह",
       "me": "मैं",
       "switchGroup": "समूह बदलें"
@@ -136,7 +137,21 @@
       "allDay": "पूरा दिन",
       "closeMonthPicker": "माह पिकर बंद करें",
       "selectDate": "तारीख चुनें",
-      "dayAria": "दिन {day}"
+      "dayAria": "दिन {day}",
+      "viewTodo": "करने योग्य",
+      "todoEmptyTitle": "कोई कार्य नहीं",
+      "todoEmptyBody": "बिना शुरुआती समय के कार्य जोड़ें और समय सीमा से पहले पूरा करें।",
+      "todoSectionOverdue": "अतिदेय",
+      "todoSectionToday": "आज समाप्त",
+      "todoSectionThisWeek": "इस सप्ताह",
+      "todoSectionLater": "बाद में",
+      "todoOverdueBanner": "{count} अतिदेय कार्य",
+      "todoOverdueHint": "देखने और समय बदलने के लिए टैप करें",
+      "todoOverdueTitle": "अतिदेय",
+      "todoOverdueOnlyTitle": "कोई निकट कार्य नहीं",
+      "todoOverdueOnlyBody": "सभी कार्य अतिदेय हैं। ऊपर बैनर देखें।",
+      "todoNoDeadline": "कोई समय सीमा नहीं",
+      "fieldDeadline": "समय सीमा"
     },
     "status": {
       "pending": "लंबित",

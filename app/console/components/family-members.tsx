@@ -11,6 +11,7 @@ import {
 } from "../family/page-cache";
 import type { FamilyMemberDisplay, FamilyModalState } from "../family/types";
 import { maskPhone } from "../family/utils";
+import { resolveAvatarUrl } from "@/lib/supabase/storage-url";
 import { useCachedSupabase } from "../hooks/use-cached-supabase";
 import { LOCAL_CACHE_KEYS } from "../lib/local-cache";
 import { ConsoleTabHeader } from "./console-tab-header";
@@ -168,6 +169,8 @@ export function FamilyHomeView({
 
   const { household, self, others } = data;
   const selfPhoneMasked = maskPhone(self.phone);
+  const householdDescription = household.description?.trim() ?? "";
+  const householdAvatarUrl = resolveAvatarUrl(household.avatar_url);
 
   return (
     <>
@@ -183,18 +186,28 @@ export function FamilyHomeView({
             <ListRow
               onPress={() => setModal({ kind: "household" })}
               left={
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-orange-500">
-                  <Users className="h-6 w-6 text-white" strokeWidth={2} aria-hidden />
-                </div>
+                householdAvatarUrl ? (
+                  <img
+                    src={householdAvatarUrl}
+                    alt=""
+                    className="h-12 w-12 shrink-0 rounded-full object-cover ring-1 ring-black/5"
+                  />
+                ) : (
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-orange-500">
+                    <Users className="h-6 w-6 text-white" strokeWidth={2} aria-hidden />
+                  </div>
+                )
               }
               middle={
                 <>
                   <p className="text-[17px] font-semibold text-gray-900">
                     {household.name}
                   </p>
-                  <p className="mt-0.5 text-[13px] text-gray-400">
-                    {t("console.group.groupProfile")}
-                  </p>
+                  {householdDescription ? (
+                    <p className="mt-0.5 line-clamp-2 text-[13px] text-gray-400">
+                      {householdDescription}
+                    </p>
+                  ) : null}
                 </>
               }
             />

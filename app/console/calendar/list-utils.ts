@@ -1,5 +1,6 @@
 import type { CalendarEvent } from "./types";
 import { getActiveDictionary } from "@/lib/i18n/client-dictionary";
+import { formatTodoDeadlineLabel } from "./todo-list-utils";
 import { dateKey, startOfDay } from "./month-utils";
 import { formatEventTime } from "./utils";
 
@@ -44,8 +45,12 @@ export function groupEventsByDate(events: CalendarEvent[]): CalendarDateGroup[] 
     });
 }
 
-/** 列表卡片时间：单点 "16:00" 或区间 "14:55 - 15:55" */
+/** 列表卡片时间：单点 "16:00"、区间 "14:55 - 15:55"，待办显示截止日 */
 export function formatListEventTime(event: CalendarEvent): string {
+  if (event.isFlexibleTodo) {
+    return formatTodoDeadlineLabel(event);
+  }
+
   if (event.isAllDay) return getActiveDictionary().console.calendar.allDay;
 
   const start = formatEventTime(event.startAt);

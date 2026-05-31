@@ -61,6 +61,7 @@
     "nav": {
       "main": "Main navigation",
       "calendar": "Calendar",
+      "todo": "To-Do",
       "group": "Group",
       "me": "Me",
       "switchGroup": "Switch group"
@@ -136,7 +137,21 @@
       "allDay": "All day",
       "closeMonthPicker": "Close month picker",
       "selectDate": "Select date",
-      "dayAria": "Day {day}"
+      "dayAria": "Day {day}",
+      "viewTodo": "To-do",
+      "todoEmptyTitle": "No to-dos yet",
+      "todoEmptyBody": "Add tasks without a specific start time and finish them before the deadline.",
+      "todoSectionOverdue": "Overdue",
+      "todoSectionToday": "Due today",
+      "todoSectionThisWeek": "Due this week",
+      "todoSectionLater": "Later",
+      "todoOverdueBanner": "{count} overdue to-dos",
+      "todoOverdueHint": "Tap to review and reschedule",
+      "todoOverdueTitle": "Overdue",
+      "todoOverdueOnlyTitle": "Nothing due soon",
+      "todoOverdueOnlyBody": "All open to-dos are overdue. Use the banner above to review them.",
+      "todoNoDeadline": "No deadline",
+      "fieldDeadline": "Deadline"
     },
     "status": {
       "pending": "Pending",
