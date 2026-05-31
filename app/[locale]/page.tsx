@@ -59,13 +59,19 @@ export default async function HomePage({ params }: HomePageProps) {
             <LanguageSwitcher currentLocale={locale} />
             <Link
               href={WEB_CONSOLE_HREF}
+              className="rounded-full bg-black px-4 py-2 text-sm font-medium text-white shadow-lg shadow-gray-200/80 transition hover:bg-gray-800 sm:hidden"
+            >
+              {dict.nav.webConsole}
+            </Link>
+            <Link
+              href={WEB_CONSOLE_HREF}
               className="hidden text-sm font-medium text-slate-500 transition-colors hover:text-slate-900 sm:inline"
             >
               {dict.nav.webConsole}
             </Link>
             <a
               href={APP_STORE_HREF}
-              className="rounded-full bg-black px-4 py-2 text-sm font-medium text-white shadow-lg shadow-gray-200/80 transition hover:bg-gray-800 sm:px-5"
+              className="hidden rounded-full bg-black px-5 py-2 text-sm font-medium text-white shadow-lg shadow-gray-200/80 transition hover:bg-gray-800 sm:inline-flex"
             >
               {dict.nav.getApp}
             </a>
