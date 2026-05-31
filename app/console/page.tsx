@@ -5,7 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import { ConsoleLayout } from "./components/console-layout";
 import { useConsoleAuth } from "./hooks/use-console-auth";
-import { HOUSEHOLD_MEMBERSHIP_COLUMNS, fetchProfileAvatarUrl } from "./lib/membership-query";
+import { fetchPrimaryActiveMembership, fetchProfileAvatarUrl } from "./lib/membership-query";
 import type { ConsoleUser, HouseholdMembership } from "./types";
 import { requireAuthenticatedSession } from "@/lib/auth/require-session";
 import { LANDINGPAGE_CONSOLE_HREF, PRODUCT_NAME_EN, PRODUCT_NAME_ZH } from "@/lib/site-urls";
@@ -113,16 +113,11 @@ export default function ConsolePage() {
     setMembershipLoading(true);
     setMembershipQueryError(null);
 
-    const { data, error } = await supabase
-      .from("household_memberships")
-      .select(HOUSEHOLD_MEMBERSHIP_COLUMNS)
-      .eq("user_id", userId)
-      .eq("status", "active")
-      .maybeSingle();
+    const { data, error } = await fetchPrimaryActiveMembership(supabase, userId);
 
     if (error) {
       setMembershipLoading(false);
-      setMembershipQueryError(error.message);
+      setMembershipQueryError(error);
       setCurrentMember(null);
       setMembershipAvatarUrl(null);
       setNoMembership(false);
@@ -139,11 +134,11 @@ export default function ConsolePage() {
 
     const avatarUrl = await fetchProfileAvatarUrl(
       supabase,
-      (data as HouseholdMembership).profile_id,
+      data.profile_id,
     );
 
     setMembershipLoading(false);
-    setCurrentMember(data as HouseholdMembership);
+    setCurrentMember(data);
     setMembershipAvatarUrl(avatarUrl);
     setNoMembership(false);
   }, [refreshAuth]);

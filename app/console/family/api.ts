@@ -229,7 +229,7 @@ export async function fetchMemberTasks(
   const { data, error } = await supabase
     .from("tasks")
     .select(
-      "id, title, status, due_date, involved_member_ids, target_profile_id",
+      "id, title, status, due_date, involved_member_ids, target_profile_ids",
     )
     .eq("household_id", householdId)
     .order("due_date", { ascending: true, nullsFirst: false });

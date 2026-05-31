@@ -12,7 +12,7 @@ import type {
 } from "./types";
 
 const TASK_COLUMNS =
-  "id, title, description, status, priority, due_date, end_datetime, is_all_day, involved_member_ids, target_profile_id, recurrence_rule, recurrence_interval";
+  "id, title, description, status, priority, due_date, end_datetime, is_all_day, involved_member_ids, target_profile_ids, recurrence_rule, recurrence_interval";
 
 const MEMBERSHIP_COLUMNS = HOUSEHOLD_MEMBERSHIP_COLUMNS;
 

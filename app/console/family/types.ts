@@ -58,9 +58,7 @@ export type TaskRow = {
   status: string;
   due_date: string | null;
   involved_member_ids: string[] | null;
-  target_profile_id: string | null;
-  /** @deprecated 仅兼容旧 schema，新数据用 target_profile_id */
-  target_profile_ids?: string[] | null;
+  target_profile_ids: string[] | null;
 };
 
 /** 前端展示用成员模型 */
