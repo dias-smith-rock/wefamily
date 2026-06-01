@@ -22,6 +22,15 @@ export function middleware(req: NextRequest) {
   const hostname = req.headers.get("host") || "";
   const pathname = url.pathname;
 
+  // public/ 静态资源（如 /brand/*）不应加 locale 前缀
+  if (
+    pathname.startsWith("/brand/") ||
+    pathname === "/icon.png" ||
+    pathname === "/favicon.ico"
+  ) {
+    return NextResponse.next();
+  }
+
   // app 子域仅提供 Web 控制台：/ 或 /zh-CN 等落地页路径一律进 /console
   if (isAppSubdomainHost(hostname)) {
     if (isConsolePath(pathname)) {
@@ -61,7 +70,7 @@ export function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!api|_next/static|_next/image|favicon.ico).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|icon.png|brand).*)",
     "/",
   ],
 };

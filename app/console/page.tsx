@@ -7,7 +7,8 @@ import { ConsoleLanguageSwitcher } from "@/components/console-language-switcher"
 import { useDictionary } from "@/lib/i18n/dictionary-provider";
 import { formatRoleLabel } from "@/lib/i18n/formatters";
 import { translateApiMessage } from "@/lib/i18n/translate-api-error";
-import { LANDINGPAGE_CONSOLE_HREF, PRODUCT_NAME_EN, PRODUCT_NAME_ZH } from "@/lib/site-urls";
+import { LANDINGPAGE_CONSOLE_HREF } from "@/lib/site-urls";
+import { ProductLogo } from "@/lib/i18n/product-brand";
 import { getSupabaseBrowserClient } from "@/lib/supabase/browser-client";
 import { ConsoleLayout } from "./components/console-layout";
 import { useConsoleAuth } from "./hooks/use-console-auth";
@@ -80,7 +81,7 @@ function membershipToConsoleUser(
 }
 
 export default function ConsolePage() {
-  const { dictionary, t } = useDictionary();
+  const { dictionary, locale, t } = useDictionary();
   const { auth, isAuthenticating, authErrorKey, signInWithOAuth, signOut, refreshAuth } =
     useConsoleAuth();
 
@@ -215,9 +216,8 @@ export default function ConsolePage() {
           </Link>
         </div>
         <div className="flex w-full max-w-md flex-col items-center rounded-3xl border border-gray-100 bg-white p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
-          <div className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-            {PRODUCT_NAME_ZH}
-            <span className="text-blue-600">{PRODUCT_NAME_EN}</span>
+          <div className="mb-6">
+            <ProductLogo locale={locale} iconSize={48} className="text-2xl" />
           </div>
           <h1 className="mb-2 text-xl font-semibold text-gray-900">
             {t("console.auth.loginTitle")}
