@@ -56,7 +56,7 @@
     "membership": {
       "loadFailedTitle": "Não foi possível carregar o grupo",
       "noMembershipTitle": "Sem grupo",
-      "noMembershipBody": "Ainda não entrou em nenhum grupo ou o pedido está pendente. Crie ou entre num grupo na app WeCircle iOS."
+      "noMembershipBody": "Ainda não entrou em nenhum grupo ou o pedido está pendente. Crie ou entre num grupo na app WeSync iOS."
     },
     "nav": {
       "main": "Navegação principal",
@@ -69,7 +69,7 @@
     "me": {
       "title": "Eu",
       "accountSettings": "Conta e definições",
-      "settingsHint": "Definições completas na app WeCircle iOS."
+      "settingsHint": "Definições completas na app WeSync iOS."
     },
     "group": {
       "title": "Grupo",
@@ -81,7 +81,7 @@
       "showPhone": "Mostrar teléfono",
       "createdAt": "Creado el {date}",
       "memberCount": "{total} miembros",
-      "editGroupHint": "Para renomear ou dissolver o grupo, use a app WeCircle iOS.",
+      "editGroupHint": "Para renomear ou dissolver o grupo, use a app WeSync iOS.",
       "phone": "Teléfono",
       "email": "Correo",
       "noContact": "Sin contacto",
@@ -92,7 +92,7 @@
       "inviteMember": "Invitar miembro",
       "createProfile": "Crear perfil sin app",
       "securityLimitTitle": "Seguridad multidispositivo",
-      "securityLimitBody": "Use a app WeCircle iOS para ler um QR ou enviar um link de convite."
+      "securityLimitBody": "Use a app WeSync iOS para ler um QR ou enviar um link de convite."
     },
     "calendar": {
       "switchView": "Switch view",
@@ -112,7 +112,7 @@
       "newTask": "New task",
       "newEvent": "New event",
       "readonlyTitle": "Modo solo lectura",
-      "readonlyBody": "Adicione itens na app WeCircle iOS.",
+      "readonlyBody": "Adicione itens na app WeSync iOS.",
       "aiTitle": "Asistente Hermes AI listo",
       "aiBody": "Voz y planificación inteligente solo en iOS.",
       "taskDetail": "Detalles de la tarea",
@@ -188,10 +188,10 @@
     "privacyTitle": "Política de privacidade",
     "termsTitle": "Termos de serviço",
     "lastUpdated": "Última atualização: {date}",
-    "privacyMetaDescription": "Como o WeCircle recolhe, usa e protege as suas informações.",
-    "termsMetaDescription": "Termos de acesso e utilização do WeCircle.",
+    "privacyMetaDescription": "Como o WeSync recolhe, usa e protege as suas informações.",
+    "termsMetaDescription": "Termos de acesso e utilização do WeSync.",
     "privacy": {
-      "intro": "Bem-vindo ao WeCircle. A privacidade e segurança do seu grupo são a nossa prioridade.",
+      "intro": "Bem-vindo ao WeSync. A privacidade e segurança do seu grupo são a nossa prioridade.",
       "sections": [
         {
           "heading": "1. Information We Collect",
@@ -218,7 +218,7 @@
         },
         {
           "heading": "2. How We Use Your Information",
-          "lead": "We use your data strictly to deliver the WeCircle experience:",
+          "lead": "We use your data strictly to deliver the WeSync experience:",
           "items": [
             {
               "term": "",
@@ -269,14 +269,14 @@
       "contactLead": "Questões sobre esta política: music.player.250617@gmail.com"
     },
     "terms": {
-      "intro": "Estes Termos de serviço regem o seu acesso e utilização do site e da aplicação WeCircle.",
+      "intro": "Estes Termos de serviço regem o seu acesso e utilização do site e da aplicação WeSync.",
       "sections": [
         {
           "heading": "1. Description of Service",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "WeCircle is a group collaboration and productivity tool designed to help groups manage tasks, schedules, and member profiles. The service is provided \"as is\" and we reserve the right to modify, update, or discontinue features at our discretion."
+            "WeSync is a group collaboration and productivity tool designed to help groups manage tasks, schedules, and member profiles. The service is provided \"as is\" and we reserve the right to modify, update, or discontinue features at our discretion."
           ]
         },
         {
@@ -289,7 +289,7 @@
             },
             {
               "term": "",
-              "body": "You are responsible for maintaining the security of your account and any devices you use to access WeCircle."
+              "body": "You are responsible for maintaining the security of your account and any devices you use to access WeSync."
             },
             {
               "term": "",
@@ -319,7 +319,7 @@
         },
         {
           "heading": "4. Acceptable Use",
-          "lead": "You agree not to use WeCircle to:",
+          "lead": "You agree not to use WeSync to:",
           "items": [
             {
               "term": "",
@@ -341,7 +341,7 @@
           "lead": "",
           "items": [],
           "paragraphs": [
-            "To the maximum extent permitted by law, WeCircle and its creators shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, resulting from (a) your access to or use of or inability to access or use the Service; (b) any conduct or content of any third party on the Service."
+            "To the maximum extent permitted by law, WeSync and its creators shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, resulting from (a) your access to or use of or inability to access or use the Service; (b) any conduct or content of any third party on the Service."
           ]
         },
         {

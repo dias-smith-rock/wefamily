@@ -56,7 +56,7 @@
     "membership": {
       "loadFailedTitle": "Unable to load group information",
       "noMembershipTitle": "No group membership yet",
-      "noMembershipBody": "You have not joined any group, or your join request is pending approval. Create or join a group in the WeCircle iOS app."
+      "noMembershipBody": "You have not joined any group, or your join request is pending approval. Create or join a group in the WeSync iOS app."
     },
     "nav": {
       "main": "Main navigation",
@@ -69,7 +69,7 @@
     "me": {
       "title": "Me",
       "accountSettings": "Account & settings",
-      "settingsHint": "Manage full settings in the WeCircle iOS app."
+      "settingsHint": "Manage full settings in the WeSync iOS app."
     },
     "group": {
       "title": "Group",
@@ -81,7 +81,7 @@
       "showPhone": "Show phone number",
       "createdAt": "Created on {date}",
       "memberCount": "{total} members",
-      "editGroupHint": "To rename or dissolve this group, use the WeCircle iOS app.",
+      "editGroupHint": "To rename or dissolve this group, use the WeSync iOS app.",
       "phone": "Phone",
       "email": "Email",
       "noContact": "No contact info",
@@ -92,7 +92,7 @@
       "inviteMember": "Invite member",
       "createProfile": "Create no-download profile",
       "securityLimitTitle": "Multi-device security",
-      "securityLimitBody": "Use the WeCircle iOS app to scan a QR code or send a quick invite link."
+      "securityLimitBody": "Use the WeSync iOS app to scan a QR code or send a quick invite link."
     },
     "calendar": {
       "switchView": "Switch view",
@@ -112,7 +112,7 @@
       "newTask": "New task",
       "newEvent": "New event",
       "readonlyTitle": "Read-only mode",
-      "readonlyBody": "Add new items in the WeCircle iOS app.",
+      "readonlyBody": "Add new items in the WeSync iOS app.",
       "aiTitle": "Hermes AI assistant is ready",
       "aiBody": "Voice input and smart scheduling are available in the iOS app only.",
       "taskDetail": "Task details",
@@ -188,10 +188,10 @@
     "privacyTitle": "Privacy Policy",
     "termsTitle": "Terms of Service",
     "lastUpdated": "Last updated: {date}",
-    "privacyMetaDescription": "How WeCircle collects, uses, and protects your information when you use our website and mobile app.",
-    "termsMetaDescription": "Terms governing your access to and use of the WeCircle website and mobile app.",
+    "privacyMetaDescription": "How WeSync collects, uses, and protects your information when you use our website and mobile app.",
+    "termsMetaDescription": "Terms governing your access to and use of the WeSync website and mobile app.",
     "privacy": {
-      "intro": "Welcome to WeCircle. Your group's privacy and data security are our highest priorities. This Privacy Policy explains how we collect, use, and protect your information when you use our website and mobile application.",
+      "intro": "Welcome to WeSync. Your group's privacy and data security are our highest priorities. This Privacy Policy explains how we collect, use, and protect your information when you use our website and mobile application.",
       "sections": [
         {
           "heading": "1. Information We Collect",
@@ -218,7 +218,7 @@
         },
         {
           "heading": "2. How We Use Your Information",
-          "lead": "We use your data strictly to deliver the WeCircle experience:",
+          "lead": "We use your data strictly to deliver the WeSync experience:",
           "items": [
             {
               "term": "",
@@ -269,14 +269,14 @@
       "contactLead": "If you have any questions about this Privacy Policy, please contact us at: music.player.250617@gmail.com"
     },
     "terms": {
-      "intro": "These Terms of Service (\"Terms\") govern your access to and use of the WeCircle website and mobile application. By using our service, you agree to be bound by these Terms.",
+      "intro": "These Terms of Service (\"Terms\") govern your access to and use of the WeSync website and mobile application. By using our service, you agree to be bound by these Terms.",
       "sections": [
         {
           "heading": "1. Description of Service",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "WeCircle is a group collaboration and productivity tool designed to help groups manage tasks, schedules, and member profiles. The service is provided \"as is\" and we reserve the right to modify, update, or discontinue features at our discretion."
+            "WeSync is a group collaboration and productivity tool designed to help groups manage tasks, schedules, and member profiles. The service is provided \"as is\" and we reserve the right to modify, update, or discontinue features at our discretion."
           ]
         },
         {
@@ -289,7 +289,7 @@
             },
             {
               "term": "",
-              "body": "You are responsible for maintaining the security of your account and any devices you use to access WeCircle."
+              "body": "You are responsible for maintaining the security of your account and any devices you use to access WeSync."
             },
             {
               "term": "",
@@ -319,7 +319,7 @@
         },
         {
           "heading": "4. Acceptable Use",
-          "lead": "You agree not to use WeCircle to:",
+          "lead": "You agree not to use WeSync to:",
           "items": [
             {
               "term": "",
@@ -341,7 +341,7 @@
           "lead": "",
           "items": [],
           "paragraphs": [
-            "To the maximum extent permitted by law, WeCircle and its creators shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, resulting from (a) your access to or use of or inability to access or use the Service; (b) any conduct or content of any third party on the Service."
+            "To the maximum extent permitted by law, WeSync and its creators shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, resulting from (a) your access to or use of or inability to access or use the Service; (b) any conduct or content of any third party on the Service."
           ]
         },
         {

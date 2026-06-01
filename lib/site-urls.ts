@@ -10,4 +10,4 @@ export const COMPANY_NAME_EN = "GOODCRAFT INTERNATIONAL LIMITED";
 
 /** 产品品牌 */
 export const PRODUCT_NAME_ZH = "同圈";
-export const PRODUCT_NAME_EN = "WeCircle";
+export const PRODUCT_NAME_EN = "WeSync";

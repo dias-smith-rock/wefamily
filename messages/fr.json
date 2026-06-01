@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "WeCircle — Hub de collaboration légère pour petits groupes",
+    "title": "WeSync — Hub de collaboration légère pour petits groupes",
     "description": "Répartition des tâches, synchronisation des agendas et profils des membres pour les groupes, groupes de voyage, clubs et autres petites équipes soudées. Léger et clair — pas besoin que tout le monde télécharge l'application."
   },
   "nav": {
@@ -17,7 +17,7 @@
   },
   "useCases": {
     "sectionTitle": "Cas d'utilisation",
-    "sectionSubtitle": "Tout petit groupe soudé de 3 à 20 personnes qui se fait confiance et doit se répartir le travail peut utiliser WeCircle pour s'organiser.",
+    "sectionSubtitle": "Tout petit groupe soudé de 3 à 20 personnes qui se fait confiance et doit se répartir le travail peut utiliser WeSync pour s'organiser.",
     "items": {
       "family": {
         "title": "Groupe",

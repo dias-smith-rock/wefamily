@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "WeCircle — Lightweight Hub for Small-Group Collaboration",
+    "title": "WeSync — Lightweight Hub for Small-Group Collaboration",
     "description": "Task assignment, schedule sync, and member profiles for groups, travel groups, clubs, and other tight-knit teams. Lightweight and clear — no need for everyone to download the app."
   },
   "nav": {
@@ -17,7 +17,7 @@
   },
   "useCases": {
     "sectionTitle": "Use Cases",
-    "sectionSubtitle": "Any tight-knit circle of 3–20 people who trust each other and need to divide work and schedule events can use WeCircle to stay organized.",
+    "sectionSubtitle": "Any tight-knit circle of 3–20 people who trust each other and need to divide work and schedule events can use WeSync to stay organized.",
     "items": {
       "family": {
         "title": "Group",

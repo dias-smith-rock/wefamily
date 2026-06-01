@@ -56,7 +56,7 @@
     "membership": {
       "loadFailedTitle": "Impossible de charger le groupe",
       "noMembershipTitle": "Aucun groupe",
-      "noMembershipBody": "Vous n'avez rejoint aucun groupe ou votre demande est en attente. Créez ou rejoignez un groupe dans l'app WeCircle iOS."
+      "noMembershipBody": "Vous n'avez rejoint aucun groupe ou votre demande est en attente. Créez ou rejoignez un groupe dans l'app WeSync iOS."
     },
     "nav": {
       "main": "Navigation principale",
@@ -69,7 +69,7 @@
     "me": {
       "title": "Moi",
       "accountSettings": "Compte et réglages",
-      "settingsHint": "Réglages complets dans l'app WeCircle iOS."
+      "settingsHint": "Réglages complets dans l'app WeSync iOS."
     },
     "group": {
       "title": "Groupe",
@@ -81,7 +81,7 @@
       "showPhone": "Afficher le téléphone",
       "createdAt": "Créé le {date}",
       "memberCount": "{total} membres",
-      "editGroupHint": "Pour renommer ou dissoudre le groupe, utilisez l'app WeCircle iOS.",
+      "editGroupHint": "Pour renommer ou dissoudre le groupe, utilisez l'app WeSync iOS.",
       "phone": "Téléphone",
       "email": "E-mail",
       "noContact": "Aucun contact",
@@ -92,7 +92,7 @@
       "inviteMember": "Inviter un membre",
       "createProfile": "Créer un profil sans app",
       "securityLimitTitle": "Sécurité multi-appareils",
-      "securityLimitBody": "Utilisez l'app WeCircle iOS pour scanner un QR ou envoyer un lien d'invitation."
+      "securityLimitBody": "Utilisez l'app WeSync iOS pour scanner un QR ou envoyer un lien d'invitation."
     },
     "calendar": {
       "switchView": "Changer de vue",
@@ -112,7 +112,7 @@
       "newTask": "Nouvelle tâche",
       "newEvent": "Nouvel événement",
       "readonlyTitle": "Mode lecture seule",
-      "readonlyBody": "Ajoutez des éléments dans l'app WeCircle iOS.",
+      "readonlyBody": "Ajoutez des éléments dans l'app WeSync iOS.",
       "aiTitle": "Assistant Hermes AI prêt",
       "aiBody": "Saisie vocale et planification intelligente uniquement sur iOS.",
       "taskDetail": "Détails de la tâche",
@@ -188,10 +188,10 @@
     "privacyTitle": "Politique de confidentialité",
     "termsTitle": "Conditions d'utilisation",
     "lastUpdated": "Dernière mise à jour : {date}",
-    "privacyMetaDescription": "Comment WeCircle collecte, utilise et protège vos informations.",
-    "termsMetaDescription": "Conditions d'accès et d'utilisation de WeCircle.",
+    "privacyMetaDescription": "Comment WeSync collecte, utilise et protège vos informations.",
+    "termsMetaDescription": "Conditions d'accès et d'utilisation de WeSync.",
     "privacy": {
-      "intro": "Bienvenue sur WeCircle. La confidentialité et la sécurité des données de votre groupe sont nos priorités. Cette politique explique comment nous collectons, utilisons et protégeons vos informations lorsque vous utilisez notre site et notre application mobile.",
+      "intro": "Bienvenue sur WeSync. La confidentialité et la sécurité des données de votre groupe sont nos priorités. Cette politique explique comment nous collectons, utilisons et protégeons vos informations lorsque vous utilisez notre site et notre application mobile.",
       "sections": [
         {
           "heading": "1. Informations que nous collectons",
@@ -218,7 +218,7 @@
         },
         {
           "heading": "2. Comment nous utilisons vos informations",
-          "lead": "Nous utilisons vos données uniquement pour offrir l'expérience WeCircle :",
+          "lead": "Nous utilisons vos données uniquement pour offrir l'expérience WeSync :",
           "items": [
             {
               "term": "",
@@ -269,14 +269,14 @@
       "contactLead": "Pour toute question sur cette politique : music.player.250617@gmail.com"
     },
     "terms": {
-      "intro": "Les présentes conditions (« Conditions ») régissent votre accès et votre utilisation du site et de l'application WeCircle. En utilisant le service, vous acceptez ces Conditions.",
+      "intro": "Les présentes conditions (« Conditions ») régissent votre accès et votre utilisation du site et de l'application WeSync. En utilisant le service, vous acceptez ces Conditions.",
       "sections": [
         {
           "heading": "1. Description du service",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "WeCircle aide les groupes à gérer tâches, calendriers et profils. Le service est fourni « en l'état » ; nous pouvons modifier ou interrompre des fonctionnalités."
+            "WeSync aide les groupes à gérer tâches, calendriers et profils. Le service est fourni « en l'état » ; nous pouvons modifier ou interrompre des fonctionnalités."
           ]
         },
         {
@@ -319,7 +319,7 @@
         },
         {
           "heading": "4. Utilisation acceptable",
-          "lead": "Vous vous engagez à ne pas utiliser WeCircle pour :",
+          "lead": "Vous vous engagez à ne pas utiliser WeSync pour :",
           "items": [
             {
               "term": "",
@@ -341,7 +341,7 @@
           "lead": "",
           "items": [],
           "paragraphs": [
-            "Dans la mesure permise par la loi, WeCircle et ses créateurs ne sont pas responsables des dommages indirects ou pertes de profits liés à l'accès ou l'utilisation du service."
+            "Dans la mesure permise par la loi, WeSync et ses créateurs ne sont pas responsables des dommages indirects ou pertes de profits liés à l'accès ou l'utilisation du service."
           ]
         },
         {

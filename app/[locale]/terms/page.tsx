@@ -5,6 +5,7 @@ import { LegalDocument } from "@/components/legal-document";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { isLocale, type Locale } from "@/lib/i18n/config";
 import { ProductLogo } from "@/lib/i18n/product-brand";
+import { PRODUCT_NAME_EN } from "@/lib/site-urls";
 
 const SUPPORT_EMAIL = "music.player.250617@gmail.com";
 const LAST_UPDATED = "May 14, 2026";
@@ -21,7 +22,7 @@ export async function generateMetadata({
 
   const dict = await getDictionary(localeParam as Locale);
   return {
-    title: `${dict.legal.termsTitle} — WeCircle`,
+    title: `${dict.legal.termsTitle} — ${PRODUCT_NAME_EN}`,
     description: dict.legal.termsMetaDescription,
   };
 }

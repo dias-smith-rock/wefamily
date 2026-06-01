@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "WeCircle — Centro ligero de colaboración para grupos pequeños",
+    "title": "WeSync — Centro ligero de colaboración para grupos pequeños",
     "description": "Asignación de tareas, sincronización de calendarios y perfiles de miembros para grupos, grupos de viaje, clubes y otros equipos unidos. Ligero y claro — no hace falta que todos descarguen la app."
   },
   "nav": {
@@ -17,7 +17,7 @@
   },
   "useCases": {
     "sectionTitle": "Casos de uso",
-    "sectionSubtitle": "Cualquier grupo unido de 3 a 20 personas que confíe entre sí y necesite repartir tareas y planificar puede usar WeCircle para organizarse.",
+    "sectionSubtitle": "Cualquier grupo unido de 3 a 20 personas que confíe entre sí y necesite repartir tareas y planificar puede usar WeSync para organizarse.",
     "items": {
       "family": {
         "title": "Grupo",
