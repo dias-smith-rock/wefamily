@@ -14,7 +14,9 @@
     "downloadAppStore": "App Store-ல் பதிவிறக்கம்",
     "exploreWeb": "வெப் அம்சங்களை ஆராயுங்கள்",
     "screenshotAlt": "WeSync பயன்பாட்டு திரைப்பிடிப்பு",
-    "screenshotScrollHint": "மேலும் திரைகளுக்கு ஸ்வைப் செய்யுங்கள்"
+    "screenshotScrollHint": "மேலும் திரைகளுக்கு ஸ்வைப் செய்யுங்கள் அல்லது அம்புகளைப் பயன்படுத்துங்கள்",
+    "screenshotPrev": "முந்தைய திரைப்பிடிப்பு",
+    "screenshotNext": "அடுத்த திரைப்பிடிப்பு"
   },
   "useCases": {
     "sectionTitle": "பயன்பாட்டு நிலைமைகள்",

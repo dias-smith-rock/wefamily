@@ -14,7 +14,9 @@
     "downloadAppStore": "Download on the App Store",
     "exploreWeb": "Explore Web Features",
     "screenshotAlt": "WeSync app screenshot",
-    "screenshotScrollHint": "Swipe to see more screens"
+    "screenshotScrollHint": "Swipe or use arrows to browse screens",
+    "screenshotPrev": "Previous screenshot",
+    "screenshotNext": "Next screenshot"
   },
   "useCases": {
     "sectionTitle": "Use Cases",

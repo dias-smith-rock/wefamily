@@ -113,6 +113,8 @@ export default async function HomePage({ params }: HomePageProps) {
           <HeroScreenshots
             alt={dict.hero.screenshotAlt}
             scrollHint={dict.hero.screenshotScrollHint}
+            prevLabel={dict.hero.screenshotPrev}
+            nextLabel={dict.hero.screenshotNext}
           />
         </section>
 

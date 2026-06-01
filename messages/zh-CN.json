@@ -14,7 +14,9 @@
     "downloadAppStore": "在 App Store 下载",
     "exploreWeb": "探索 Web 端功能",
     "screenshotAlt": "同圈 App 界面截图",
-    "screenshotScrollHint": "左右滑动查看更多界面"
+    "screenshotScrollHint": "左右滑动或点击箭头查看更多界面",
+    "screenshotPrev": "上一张截图",
+    "screenshotNext": "下一张截图"
   },
   "useCases": {
     "sectionTitle": "适用场景",

@@ -14,7 +14,9 @@
     "downloadAppStore": "Télécharger sur l'App Store",
     "exploreWeb": "Découvrir la version Web",
     "screenshotAlt": "Capture d'écran de l'application WeSync",
-    "screenshotScrollHint": "Faites défiler pour voir plus d'écrans"
+    "screenshotScrollHint": "Faites défiler ou utilisez les flèches",
+    "screenshotPrev": "Capture précédente",
+    "screenshotNext": "Capture suivante"
   },
   "useCases": {
     "sectionTitle": "Cas d'utilisation",
