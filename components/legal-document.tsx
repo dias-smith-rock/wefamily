@@ -27,16 +27,24 @@ export function LegalDocument({
           {section.lead ? <p className="mt-4">{section.lead}</p> : null}
           {section.items?.length ? (
             <ul className="mt-4 list-disc space-y-3 pl-5 text-neutral-700 marker:text-neutral-400">
-              {section.items.map((item) => (
-                <li key={item.term}>
-                  <span className="font-medium text-neutral-900">{item.term}</span>{" "}
-                  {item.body}
+              {section.items.map((item, index) => (
+                <li key={`${section.heading}-item-${index}`}>
+                  {item.term ? (
+                    <>
+                      <span className="font-medium text-neutral-900">
+                        {item.term}
+                      </span>{" "}
+                      {item.body}
+                    </>
+                  ) : (
+                    item.body
+                  )}
                 </li>
               ))}
             </ul>
           ) : null}
-          {section.paragraphs?.map((paragraph) => (
-            <p key={paragraph.slice(0, 40)} className="mt-4">
+          {section.paragraphs?.map((paragraph, index) => (
+            <p key={`${section.heading}-p-${index}`} className="mt-4">
               {paragraph}
             </p>
           ))}

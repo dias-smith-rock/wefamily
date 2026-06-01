@@ -13,7 +13,8 @@
     "subtitle": "任務、日程、分工、成員檔案——群組、旅行團、社團小組都能用。輕量清晰，不需要全員下載 App。",
     "downloadAppStore": "在 App Store 下載",
     "exploreWeb": "探索 Web 端功能",
-    "screenshotPlaceholder": "[ 這裡預留放置 App 核心介面的精美截圖或 3D 手機模型 ]"
+    "screenshotAlt": "同圈 App 介面截圖",
+    "screenshotScrollHint": "左右滑動查看更多介面"
   },
   "useCases": {
     "sectionTitle": "適用場景",

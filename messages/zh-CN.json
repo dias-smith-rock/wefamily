@@ -13,7 +13,8 @@
     "subtitle": "任务、日程、分工、成员档案——群组、旅行团、社团小组都能用。轻量清晰，不需要全员下载 App。",
     "downloadAppStore": "在 App Store 下载",
     "exploreWeb": "探索 Web 端功能",
-    "screenshotPlaceholder": "[ 这里预留放置 App 核心界面的精美截图或 3D 手机模型 ]"
+    "screenshotAlt": "同圈 App 界面截图",
+    "screenshotScrollHint": "左右滑动查看更多界面"
   },
   "useCases": {
     "sectionTitle": "适用场景",

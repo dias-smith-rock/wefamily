@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { HeroScreenshots } from "@/components/hero-screenshots";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import {
@@ -109,12 +110,10 @@ export default async function HomePage({ params }: HomePageProps) {
             </Link>
           </div>
 
-          <div className="relative mt-16 flex h-[400px] w-full items-center justify-center overflow-hidden rounded-[2.5rem] border border-gray-200/90 bg-gradient-to-tr from-gray-100 to-gray-50 shadow-2xl shadow-gray-200/60 md:h-[600px]">
-            <div className="pointer-events-none absolute inset-0 bg-white/40 backdrop-blur-3xl" />
-            <p className="relative z-10 max-w-md px-6 text-center font-medium text-slate-400">
-              {dict.hero.screenshotPlaceholder}
-            </p>
-          </div>
+          <HeroScreenshots
+            alt={dict.hero.screenshotAlt}
+            scrollHint={dict.hero.screenshotScrollHint}
+          />
         </section>
 
         <section className="mx-auto mt-32 max-w-7xl px-6">

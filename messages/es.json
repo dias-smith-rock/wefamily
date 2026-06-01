@@ -13,7 +13,8 @@
     "subtitle": "Tareas, calendarios, asignaciones y perfiles de miembros — para grupos, grupos de viaje, clubes y más. Ligero y claro, sin necesidad de que todos instalen la app.",
     "downloadAppStore": "Descargar en App Store",
     "exploreWeb": "Explorar funciones Web",
-    "screenshotPlaceholder": "[ Aquí irán capturas de la app o un modelo 3D del teléfono ]"
+    "screenshotAlt": "Captura de pantalla de WeSync",
+    "screenshotScrollHint": "Desliza para ver más pantallas"
   },
   "useCases": {
     "sectionTitle": "Casos de uso",

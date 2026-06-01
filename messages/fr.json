@@ -13,7 +13,8 @@
     "subtitle": "Tâches, agendas, répartitions et profils des membres — pour les groupes, groupes de voyage, clubs et plus encore. Léger et clair, sans obligation d'installer l'application pour tous.",
     "downloadAppStore": "Télécharger sur l'App Store",
     "exploreWeb": "Découvrir la version Web",
-    "screenshotPlaceholder": "[ Captures d'écran de l'application ou maquette 3D du téléphone ]"
+    "screenshotAlt": "Capture d'écran de l'application WeSync",
+    "screenshotScrollHint": "Faites défiler pour voir plus d'écrans"
   },
   "useCases": {
     "sectionTitle": "Cas d'utilisation",

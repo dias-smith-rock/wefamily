@@ -25,6 +25,7 @@ export function middleware(req: NextRequest) {
   // public/ 静态资源（如 /brand/*）不应加 locale 前缀
   if (
     pathname.startsWith("/brand/") ||
+    pathname.startsWith("/screenshots/") ||
     pathname === "/icon.png" ||
     pathname === "/favicon.ico"
   ) {
@@ -70,7 +71,7 @@ export function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!api|_next/static|_next/image|favicon.ico|icon.png|brand).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|icon.png|brand|screenshots).*)",
     "/",
   ],
 };

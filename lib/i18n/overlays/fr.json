@@ -191,49 +191,63 @@
     "privacyMetaDescription": "Comment WeSync collecte, utilise et protège vos informations.",
     "termsMetaDescription": "Conditions d'accès et d'utilisation de WeSync.",
     "privacy": {
-      "intro": "Bienvenue sur WeSync. La confidentialité et la sécurité des données de votre groupe sont nos priorités. Cette politique explique comment nous collectons, utilisons et protégeons vos informations lorsque vous utilisez notre site et notre application mobile.",
+      "intro": "Bienvenue sur WeSync. La confidentialité et la sécurité des données de votre groupe sont nos priorités. Cette politique explique comment nous collectons, utilisons et protégeons vos informations lorsque vous utilisez notre site et notre application mobile, en cohérence avec les déclarations de confidentialité de l'App Store Apple.",
       "sections": [
         {
           "heading": "1. Informations que nous collectons",
-          "lead": "Nous ne collectons que les informations nécessaires pour fournir et améliorer notre service :",
+          "lead": "Nous collectons les informations nécessaires aux fonctionnalités de collaboration de groupe. Les catégories ci-dessous correspondent aux types indiqués dans les étiquettes de confidentialité de l'App Store (contenu utilisateur, lié à votre identité, pour les fonctionnalités de l'app) :",
           "items": [
             {
               "term": "Informations de compte :",
-              "body": "Lorsque vous vous connectez avec « Se connecter avec Apple », nous collectons le nom et l'e-mail fournis par Apple pour créer votre compte sécurisé."
+              "body": "Lorsque vous vous connectez avec Apple ou Google (console web), nous collectons le nom et l'e-mail fournis par le fournisseur d'identité pour créer et sécuriser votre compte. Ces informations sont liées à votre identité."
             },
             {
-              "term": "Données de groupe :",
-              "body": "Pour la collaboration de groupe, nous stockons les tâches, événements et structures de groupe que vous créez."
+              "term": "E-mails ou messages texte :",
+              "body": "Pour les fonctionnalités essentielles, nous traitons les adresses e-mail, les numéros de téléphone optionnels ajoutés aux profils, le texte lié aux invitations et le texte saisi dans les tâches, retours ou communications de groupe. Ces données sont liées à votre compte et utilisées uniquement pour les fonctionnalités de l'app—pas pour la publicité ni le suivi inter-applications."
+            },
+            {
+              "term": "Photos ou vidéos :",
+              "body": "Si vous téléversez un avatar ou joignez des photos ou vidéos aux tâches, retours ou contenus de groupe, nous stockons et affichons ces médias au sein de votre groupe. Ce contenu est lié à votre identité et sert uniquement à fournir le service."
+            },
+            {
+              "term": "Autre contenu utilisateur :",
+              "body": "Nous stockons les données de collaboration créées par vous et votre groupe, notamment les détails de tâches et d'agendas, noms et descriptions de groupe, profils gérés, commentaires et métadonnées de pièces jointes. Ces informations sont liées à votre compte ou aux profils que vous gérez."
             },
             {
               "term": "Profils gérés :",
-              "body": "Si vous créez des « profils virtuels » pour des membres sans compte (enfants, aînés), vous confirmez avoir le droit de fournir leurs informations d'identification de base à des fins de gestion du groupe."
+              "body": "Si vous créez des profils pour des membres sans compte (enfants, aînés), vous confirmez avoir le droit de fournir leurs informations d'identification de base à des fins de gestion du groupe."
             },
             {
               "term": "Données techniques :",
-              "body": "Nous pouvons collecter des informations non personnelles (type d'appareil, journaux de plantage, métriques d'utilisation) pour assurer la stabilité de l'application."
+              "body": "Nous pouvons collecter des informations non personnelles (type d'appareil, journaux de plantage, métriques d'utilisation) pour assurer la stabilité de l'application. Ces données ne sont pas utilisées pour la publicité."
             }
           ],
           "paragraphs": []
         },
         {
           "heading": "2. Comment nous utilisons vos informations",
-          "lead": "Nous utilisons vos données uniquement pour offrir l'expérience WeSync :",
+          "lead": "Nous utilisons les informations ci-dessus uniquement pour les fonctionnalités de l'app, notamment :",
           "items": [
             {
               "term": "",
-              "body": "Synchroniser en temps réel tâches, événements et rôles sur vos appareils."
+              "body": "Fournir, synchroniser et afficher tâches, agendas, rôles, profils et contenu créé par les utilisateurs aux membres autorisés et sur vos appareils."
             },
             {
               "term": "",
-              "body": "Authentifier votre identité en toute sécurité."
+              "body": "Authentifier votre identité et appliquer des contrôles d'accès afin que seuls les membres du groupe puissent voir les données de ce groupe."
             },
             {
               "term": "",
-              "body": "Fournir l'assistance et répondre à vos retours."
+              "body": "Stocker et transmettre les photos, vidéos et textes que vous choisissez de partager dans le service."
+            },
+            {
+              "term": "",
+              "body": "Fournir l'assistance, corriger les erreurs et améliorer la fiabilité."
             }
           ],
-          "paragraphs": []
+          "paragraphs": [
+            "Nous n'utilisons pas vos données personnelles pour la publicité tierce et ne vendons pas vos données. Les données indiquées dans l'App Store comme liées à vous le sont à votre compte ou profil aux fins décrites ci-dessus."
+          ]
         },
         {
           "heading": "3. Stockage et sécurité des données",
@@ -256,7 +270,7 @@
           "lead": "",
           "items": [],
           "paragraphs": [
-            "Vous contrôlez vos données : modifier le profil, supprimer des tâches ou retirer des membres dans l'app. Vous pouvez supprimer définitivement votre compte via la « zone dangereuse » des réglages. Action irréversible."
+            "Vous contrôlez vos données : modifier le profil, supprimer des tâches, des pièces jointes ou retirer des membres dans l'app. Vous pouvez supprimer définitivement votre compte et tout le contenu associé via les options de suppression de compte dans les réglages. Action irréversible."
           ]
         },
         {
@@ -318,12 +332,31 @@
           "paragraphs": []
         },
         {
-          "heading": "4. Utilisation acceptable",
+          "heading": "4. Contenu utilisateur",
+          "lead": "",
+          "items": [
+            {
+              "term": "",
+              "body": "Vous conservez la propriété des photos, vidéos, textes et autres contenus que vous soumettez. En les soumettant, vous nous accordez une licence limitée pour les héberger, stocker, afficher et transmettre uniquement afin d'exploiter le service pour votre groupe."
+            },
+            {
+              "term": "",
+              "body": "Vous déclarez avoir les droits nécessaires pour téléverser et partager tout contenu, y compris images et vidéos, sans violer la vie privée ou les droits d'autrui."
+            },
+            {
+              "term": "",
+              "body": "Vous êtes responsable de l'exactitude et de la légalité du contenu ajouté, y compris les coordonnées stockées dans les profils."
+            }
+          ],
+          "paragraphs": []
+        },
+        {
+          "heading": "5. Utilisation acceptable",
           "lead": "Vous vous engagez à ne pas utiliser WeSync pour :",
           "items": [
             {
               "term": "",
-              "body": "Publier du contenu illégal, abusif, harcelant ou portant atteinte à la vie privée."
+              "body": "Publier du contenu illégal, abusif, harcelant ou portant atteinte à la vie privée, y compris des photos ou vidéos non autorisées d'autres personnes."
             },
             {
               "term": "",
@@ -337,7 +370,7 @@
           "paragraphs": []
         },
         {
-          "heading": "5. Limitation de responsabilité",
+          "heading": "6. Limitation de responsabilité",
           "lead": "",
           "items": [],
           "paragraphs": [
@@ -345,7 +378,7 @@
           ]
         },
         {
-          "heading": "6. Droit applicable",
+          "heading": "7. Droit applicable",
           "lead": "",
           "items": [],
           "paragraphs": [
@@ -353,7 +386,7 @@
           ]
         },
         {
-          "heading": "7. Modifications",
+          "heading": "8. Modifications",
           "lead": "",
           "items": [],
           "paragraphs": [
@@ -361,7 +394,7 @@
           ]
         },
         {
-          "heading": "8. Contact",
+          "heading": "9. Contact",
           "lead": "",
           "items": [],
           "paragraphs": []

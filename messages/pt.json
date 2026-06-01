@@ -13,7 +13,8 @@
     "subtitle": "Tarefas, calendários, atribuições e perfis de membros — para grupos, grupos de viagem, clubes e mais. Leve e claro, sem necessidade de todos instalarem a app.",
     "downloadAppStore": "Descarregar na App Store",
     "exploreWeb": "Explorar funcionalidades Web",
-    "screenshotPlaceholder": "[ Capturas de ecrã da app ou mockup 3D do telemóvel ]"
+    "screenshotAlt": "Captura de ecrã da app WeSync",
+    "screenshotScrollHint": "Deslize para ver mais ecrãs"
   },
   "useCases": {
     "sectionTitle": "Casos de uso",

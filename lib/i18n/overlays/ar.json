@@ -188,52 +188,66 @@
     "privacyTitle": "سياسة الخصوصية",
     "termsTitle": "شروط الخدمة",
     "lastUpdated": "آخر تحديث: {date}",
-    "privacyMetaDescription": "كيف يجمع WeSync معلوماتك ويستخدمها ويحميها.",
-    "termsMetaDescription": "شروط الوصول إلى موقع وتطبيق WeSync.",
+    "privacyMetaDescription": "How WeSync collects, uses, and protects your information when you use our website and mobile app.",
+    "termsMetaDescription": "Terms governing your access to and use of the WeSync website and mobile app.",
     "privacy": {
-      "intro": "مرحبًا بك في WeSync. خصوصية مجموعتك وأمان بياناتها من أولوياتنا.",
+      "intro": "Welcome to WeSync. Your group's privacy and data security are our highest priorities. This Privacy Policy explains how we collect, use, and protect your information when you use our website and mobile application. It is intended to align with the privacy disclosures we provide in the Apple App Store.",
       "sections": [
         {
           "heading": "1. Information We Collect",
-          "lead": "We only collect information that is necessary to provide and improve our service:",
+          "lead": "We collect information necessary to provide group collaboration features. The categories below include the types of data we disclose in the App Store privacy nutrition labels (User Content, linked to your identity, for app functionality):",
           "items": [
             {
               "term": "Account Information:",
-              "body": "When you sign in using \"Sign in with Apple,\" we collect the name and email address provided by Apple to create your secure account."
+              "body": "When you sign in using Sign in with Apple or Google (web console), we collect the name and email address provided by the identity provider to create and secure your account. This information is linked to your identity."
             },
             {
-              "term": "Group Data:",
-              "body": "To enable group collaboration, we store the tasks, events, and group structures you create."
+              "term": "Emails or Text Messages:",
+              "body": "To operate core features, we process email addresses, phone numbers you optionally add to member profiles, invitation-related text, and other text you enter in tasks, feedback, or group communications. This data is linked to your account and used only for app functionality—not for advertising or cross-app tracking."
+            },
+            {
+              "term": "Photos or Videos:",
+              "body": "If you choose to upload a profile avatar or attach photos or videos to tasks, feedback, or related group content, we store and display that media within your group. Such content is linked to your identity and used only to provide the service."
+            },
+            {
+              "term": "Other User Content:",
+              "body": "We store collaboration data you and your group create, including task and schedule details, group names and descriptions, managed member profiles, comments, attachments metadata, and similar content. This information is linked to your account or the profiles you manage and is used only for group collaboration features."
             },
             {
               "term": "Managed Profiles:",
-              "body": "If you create \"Virtual Profiles\" for group members who do not have their own accounts (such as young children or elders), you confirm that you have the right to provide their basic identifying information (like names or nicknames) for group management purposes."
+              "body": "If you create profiles for group members who do not have their own accounts (such as children or elders), you confirm that you have the right to provide their basic identifying information (such as names, nicknames, or optional contact details) for group management purposes."
             },
             {
               "term": "Technical Data:",
-              "body": "We may collect non-personally identifiable information such as device type, app crash logs, and usage metrics to ensure the stability of the App."
+              "body": "We may collect non-personally identifiable information such as device type, app crash logs, and usage metrics to ensure the stability of the App. This data is not used for advertising."
             }
           ],
           "paragraphs": []
         },
         {
           "heading": "2. How We Use Your Information",
-          "lead": "We use your data strictly to deliver the WeSync experience:",
+          "lead": "We use the information described above solely for app functionality, including:",
           "items": [
             {
               "term": "",
-              "body": "To sync tasks, events, and group roles across your devices in real-time."
+              "body": "Providing, syncing, and displaying tasks, schedules, group roles, profiles, and user-generated content across authorized group members and your devices."
             },
             {
               "term": "",
-              "body": "To authenticate your identity securely."
+              "body": "Authenticating your identity and enforcing access controls so only members of your group can view that group's data."
             },
             {
               "term": "",
-              "body": "To provide customer support and respond to your feedback."
+              "body": "Storing and delivering photos, videos, and text you choose to share within the service."
+            },
+            {
+              "term": "",
+              "body": "Providing customer support, fixing errors, and improving reliability."
             }
           ],
-          "paragraphs": []
+          "paragraphs": [
+            "We do not use your personal data for third-party advertising, and we do not sell your data. Data identified in the App Store as linked to you is associated with your account or profile for the purposes stated above."
+          ]
         },
         {
           "heading": "3. Data Storage & Security",
@@ -256,7 +270,7 @@
           "lead": "",
           "items": [],
           "paragraphs": [
-            "You have full control over your data. You can edit your profile, delete specific tasks, or remove group members at any time within the App. You may also permanently delete your entire account and all associated data via the \"Danger Zone\" in the App's settings. Once deleted, this action is irreversible."
+            "You have full control over your data. You can edit your profile, delete specific tasks, remove attachments, or remove group members at any time within the App. You may also permanently delete your entire account and all associated user content via the account deletion options in the App's settings. Once deleted, this action is irreversible."
           ]
         },
         {
@@ -266,10 +280,10 @@
           "paragraphs": []
         }
       ],
-      "contactLead": "أسئلة حول هذه السياسة: music.player.250617@gmail.com"
+      "contactLead": "If you have any questions about this Privacy Policy, please contact us at: music.player.250617@gmail.com"
     },
     "terms": {
-      "intro": "تحكم شروط الخدمة هذه وصولك إلى موقع وتطبيق WeSync واستخدامهما.",
+      "intro": "These Terms of Service (\"Terms\") govern your access to and use of the WeSync website and mobile application. By using our service, you agree to be bound by these Terms.",
       "sections": [
         {
           "heading": "1. Description of Service",
@@ -318,12 +332,31 @@
           "paragraphs": []
         },
         {
-          "heading": "4. Acceptable Use",
+          "heading": "4. User Content",
+          "lead": "",
+          "items": [
+            {
+              "term": "",
+              "body": "You retain ownership of the photos, videos, text, and other content you submit. By submitting content, you grant us a limited license to host, store, display, and transmit that content solely to operate the service for your group."
+            },
+            {
+              "term": "",
+              "body": "You represent that you have the necessary rights to upload and share any content you provide, including images and videos, and that doing so does not violate the privacy or rights of others."
+            },
+            {
+              "term": "",
+              "body": "You are responsible for the accuracy and legality of content you or your group administrators add, including contact information stored in member profiles."
+            }
+          ],
+          "paragraphs": []
+        },
+        {
+          "heading": "5. Acceptable Use",
           "lead": "You agree not to use WeSync to:",
           "items": [
             {
               "term": "",
-              "body": "Upload, post, or transmit any content that is illegal, abusive, harassing, or violates the privacy of others."
+              "body": "Upload, post, or transmit any content that is illegal, abusive, harassing, or violates the privacy of others, including unauthorized photos or videos of other people."
             },
             {
               "term": "",
@@ -337,7 +370,7 @@
           "paragraphs": []
         },
         {
-          "heading": "5. Limitation of Liability",
+          "heading": "6. Limitation of Liability",
           "lead": "",
           "items": [],
           "paragraphs": [
@@ -345,7 +378,7 @@
           ]
         },
         {
-          "heading": "6. Governing Law",
+          "heading": "7. Governing Law",
           "lead": "",
           "items": [],
           "paragraphs": [
@@ -353,7 +386,7 @@
           ]
         },
         {
-          "heading": "7. Changes to Terms",
+          "heading": "8. Changes to Terms",
           "lead": "",
           "items": [],
           "paragraphs": [
@@ -361,13 +394,13 @@
           ]
         },
         {
-          "heading": "8. Contact Information",
+          "heading": "9. Contact Information",
           "lead": "",
           "items": [],
           "paragraphs": []
         }
       ],
-      "contactLead": "أسئلة حول هذه الشروط: music.player.250617@gmail.com"
+      "contactLead": "For any questions regarding these Terms, please contact: music.player.250617@gmail.com"
     }
   }
 }

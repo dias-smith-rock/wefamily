@@ -8,7 +8,7 @@ import { ProductLogo } from "@/lib/i18n/product-brand";
 import { PRODUCT_NAME_EN } from "@/lib/site-urls";
 
 const SUPPORT_EMAIL = "music.player.250617@gmail.com";
-const LAST_UPDATED = "May 14, 2026";
+const LAST_UPDATED = "June 1, 2026";
 
 type PrivacyPageProps = {
   params: Promise<{ locale: string }>;
