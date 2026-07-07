@@ -5,9 +5,7 @@ import { LegalDocument } from "@/components/legal-document";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { isLocale, type Locale } from "@/lib/i18n/config";
 import { ProductLogo } from "@/lib/i18n/product-brand";
-import { PRODUCT_NAME_EN } from "@/lib/site-urls";
-
-const SUPPORT_EMAIL = "music.player.250617@gmail.com";
+import { CONTACT_EMAIL, PRODUCT_NAME_EN } from "@/lib/site-urls";
 const LAST_UPDATED = "June 1, 2026";
 
 type PrivacyPageProps = {
@@ -60,7 +58,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
             intro={dict.legal.privacy.intro}
             sections={dict.legal.privacy.sections}
             contactLead={dict.legal.privacy.contactLead}
-            supportEmail={SUPPORT_EMAIL}
+            supportEmail={CONTACT_EMAIL}
           />
         </div>
       </article>
