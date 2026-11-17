@@ -1,6 +1,6 @@
 "use client";
 
-import { CalendarDays, ListTodo, Map, Settings } from "lucide-react";
+import { CalendarDays, ListTodo, Settings } from "lucide-react";
 import { useMemo } from "react";
 import { useDictionary } from "@/lib/i18n/dictionary-provider";
 import type { ConsoleNavId } from "../types";
@@ -27,13 +27,8 @@ export function MobileTabBar({ active, onSelect }: MobileTabBarProps) {
           icon: ListTodo,
         },
         {
-          id: "family" as const,
-          label: t("console.nav.group"),
-          icon: Map,
-        },
-        {
-          id: "me" as const,
-          label: t("console.nav.me"),
+          id: "settings" as const,
+          label: t("console.nav.settings"),
           icon: Settings,
         },
       ] as const,

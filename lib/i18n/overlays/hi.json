@@ -43,9 +43,9 @@
       "missingConfigTitle": "Supabase कॉन्फ़िगरेशन गायब",
       "missingConfigBody": ".env.local में NEXT_PUBLIC_SUPABASE_URL और NEXT_PUBLIC_SUPABASE_ANON_KEY सेट करें।",
       "backToSite": "वेबसाइट पर वापस",
-      "loginTitle": "वेब कंसोल में साइन इन",
-      "loginSubtitle": "समूह डेटा देखने के लिए Apple या Google से साइन इन करें (केवल पढ़ने योग्य)।",
-      "sessionHint": "सत्र 10 मिनट तक रहता है; समाप्ति के बाद फिर साइन इन करें।",
+      "loginTitle": "वेब कंसोल",
+      "loginSubtitle": "परिवार का शेड्यूल देखने के लिए Apple या Google से साइन इन करें।",
+      "sessionHint": "सत्र लगभग 10 मिनट तक रहता है।",
       "redirecting": "पुनर्निर्देशित…",
       "signInApple": "Apple से साइन इन",
       "signInGoogle": "Google से साइन इन",
@@ -56,7 +56,7 @@
     "membership": {
       "loadFailedTitle": "समूह जानकारी लोड नहीं हो सकी",
       "noMembershipTitle": "अभी कोई समूह नहीं",
-      "noMembershipBody": "आप किसी समूह में नहीं हैं या अनुरोध लंबित है। WeSync iOS ऐप में समूह बनाएं या शामिल हों।"
+      "noMembershipBody": "आप किसी समूह में नहीं हैं या अनुरोध लंबित है। Calendly iOS ऐप में समूह बनाएं या शामिल हों।"
     },
     "nav": {
       "main": "मुख्य नेविगेशन",
@@ -64,12 +64,13 @@
       "todo": "कार्य",
       "group": "समूह",
       "me": "मैं",
-      "switchGroup": "समूह बदलें"
+      "switchGroup": "समूह बदलें",
+      "settings": "सेटिंग्स"
     },
     "me": {
       "title": "मैं",
       "accountSettings": "खाता और सेटिंग",
-      "settingsHint": "पूर्ण सेटिंग WeSync iOS ऐप में प्रबंधित करें।"
+      "settingsHint": "पूर्ण सेटिंग Calendly iOS ऐप में प्रबंधित करें।"
     },
     "group": {
       "title": "समूह",
@@ -81,7 +82,7 @@
       "showPhone": "फ़ोन दिखाएँ",
       "createdAt": "{date} को बनाया गया",
       "memberCount": "{total} सदस्य",
-      "editGroupHint": "समूह का नाम बदलने या समाप्त करने के लिए WeSync iOS ऐप का उपयोग करें।",
+      "editGroupHint": "समूह का नाम बदलने या समाप्त करने के लिए Calendly iOS ऐप का उपयोग करें।",
       "phone": "फ़ोन",
       "email": "ईमेल",
       "noContact": "कोई संपर्क नहीं",
@@ -92,7 +93,7 @@
       "inviteMember": "सदस्य आमंत्रित करें",
       "createProfile": "बिना ऐप प्रोफ़ाइल बनाएँ",
       "securityLimitTitle": "बहु-उपकरण सुरक्षा",
-      "securityLimitBody": "QR स्कैन या निमंत्रण लिंक के लिए WeSync iOS ऐप का उपयोग करें।"
+      "securityLimitBody": "QR स्कैन या निमंत्रण लिंक के लिए Calendly iOS ऐप का उपयोग करें।"
     },
     "calendar": {
       "switchView": "Switch view",
@@ -112,7 +113,7 @@
       "newTask": "New task",
       "newEvent": "New event",
       "readonlyTitle": "केवल-पढ़ने मोड",
-      "readonlyBody": "कुछ क्रियाएँ केवल WeSync iOS ऐप में उपलब्ध हैं।",
+      "readonlyBody": "कुछ क्रियाएँ केवल Calendly iOS ऐप में उपलब्ध हैं।",
       "aiTitle": "Hermes AI सहायक तैयार",
       "aiBody": "वॉयस इनपुट और स्मार्ट शेड्यूलिंग केवल iOS पर।",
       "taskDetail": "कार्य विवरण",
@@ -187,16 +188,28 @@
       "groupNotFound": "समूह नहीं मिला",
       "notInGroup": "आप इस समूह के सदस्य नहीं हैं",
       "networkError": "नेटवर्क त्रुटि। बाद में पुनः प्रयास करें।"
+    },
+    "settings": {
+      "title": "Settings",
+      "upgradeTitle": "Upgrade to Pro",
+      "upgradeSubtitle": "One payer, whole group VIP",
+      "currentGroup": "Current group",
+      "groupMembers": "Group members",
+      "memberCount": "{count} members",
+      "myself": "Myself",
+      "sortMembers": "Sort members",
+      "linkAccountTitle": "Link account",
+      "linkAccountBody": "Link Apple or Google to sync across devices. Your user ID and subscription stay the same."
     }
   },
   "legal": {
     "privacyTitle": "गोपनीयता नीति",
     "termsTitle": "सेवा की शर्तें",
     "lastUpdated": "अंतिम अपडेट: {date}",
-    "privacyMetaDescription": "How WeSync collects, uses, and protects your information when you use our website and mobile app.",
-    "termsMetaDescription": "Terms governing your access to and use of the WeSync website and mobile app.",
+    "privacyMetaDescription": "How Calendly collects, uses, and protects your information when you use our website and mobile app.",
+    "termsMetaDescription": "Terms governing your access to and use of the Calendly website and mobile app.",
     "privacy": {
-      "intro": "Welcome to WeSync. Your group's privacy and data security are our highest priorities. This Privacy Policy explains how we collect, use, and protect your information when you use our website and mobile application. It is intended to align with the privacy disclosures we provide in the Apple App Store.",
+      "intro": "Welcome to Calendly. Your group's privacy and data security are our highest priorities. This Privacy Policy explains how we collect, use, and protect your information when you use our website and mobile application. It is intended to align with the privacy disclosures we provide in the Apple App Store.",
       "sections": [
         {
           "heading": "1. Information We Collect",
@@ -288,14 +301,14 @@
       "contactLead": "If you have any questions about this Privacy Policy, please contact us at: jimo.cgg@gmail.com"
     },
     "terms": {
-      "intro": "These Terms of Service (\"Terms\") govern your access to and use of the WeSync website and mobile application. By using our service, you agree to be bound by these Terms.",
+      "intro": "These Terms of Service (\"Terms\") govern your access to and use of the Calendly website and mobile application. By using our service, you agree to be bound by these Terms.",
       "sections": [
         {
           "heading": "1. Description of Service",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "WeSync is a group collaboration and productivity tool designed to help groups manage tasks, schedules, and member profiles. The service is provided \"as is\" and we reserve the right to modify, update, or discontinue features at our discretion."
+            "Calendly is a group collaboration and productivity tool designed to help groups manage tasks, schedules, and member profiles. The service is provided \"as is\" and we reserve the right to modify, update, or discontinue features at our discretion."
           ]
         },
         {
@@ -308,7 +321,7 @@
             },
             {
               "term": "",
-              "body": "You are responsible for maintaining the security of your account and any devices you use to access WeSync."
+              "body": "You are responsible for maintaining the security of your account and any devices you use to access Calendly."
             },
             {
               "term": "",
@@ -357,7 +370,7 @@
         },
         {
           "heading": "5. Acceptable Use",
-          "lead": "You agree not to use WeSync to:",
+          "lead": "You agree not to use Calendly to:",
           "items": [
             {
               "term": "",
@@ -379,7 +392,7 @@
           "lead": "",
           "items": [],
           "paragraphs": [
-            "To the maximum extent permitted by law, WeSync and its creators shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, resulting from (a) your access to or use of or inability to access or use the Service; (b) any conduct or content of any third party on the Service."
+            "To the maximum extent permitted by law, Calendly and its creators shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, resulting from (a) your access to or use of or inability to access or use the Service; (b) any conduct or content of any third party on the Service."
           ]
         },
         {

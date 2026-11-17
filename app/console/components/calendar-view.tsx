@@ -318,7 +318,9 @@ export function CalendarView({
           label={headerMonthLabel}
           onClick={() => setIsMonthPickerOpen(true)}
         />
-        <CreateFab onClick={() => setModal({ kind: "action-sheet" })} />
+        <CreateFab
+          onClick={() => setModal({ kind: "create", mode: "scheduled" })}
+        />
       </div>
 
       <CalendarModals

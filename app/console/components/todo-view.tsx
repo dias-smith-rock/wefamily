@@ -129,7 +129,7 @@ export function TodoView({
       setCreateListOpen(true);
       return;
     }
-    setModal({ kind: "action-sheet" });
+    setModal({ kind: "create", mode: "flexible" });
   };
 
   if (loading) {

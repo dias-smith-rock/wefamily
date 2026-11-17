@@ -3,10 +3,9 @@
 import { useState } from "react";
 import type { ConsoleNavId, ConsoleUser, HouseholdOption } from "../types";
 import { CalendarView } from "./calendar-view";
-import { FamilyHomeView } from "./family-members";
 import { HouseholdSwitcher } from "./household-switcher";
-import { MeView } from "./me-view";
 import { MobileTabBar } from "./mobile-tab-bar";
+import { SettingsView } from "./settings-view";
 import { TodoView } from "./todo-view";
 
 type ConsoleLayoutProps = {
@@ -25,7 +24,6 @@ type ConsoleLayoutProps = {
 };
 
 export function ConsoleLayout({
-  user,
   householdId,
   membershipId,
   membershipRole,
@@ -49,22 +47,16 @@ export function ConsoleLayout({
           data-membership-id={membershipId}
         >
           {children ??
-            (active === "family" ? (
-              <FamilyHomeView
+            (active === "settings" ? (
+              <SettingsView
                 key={householdId}
                 householdId={householdId}
                 currentUserId={currentUserId}
+                householdOptions={householdOptions}
+                onSelectHousehold={onSelectHousehold}
                 enabled
                 onSessionLost={onSessionLost}
                 onSignOut={onSignOut}
-                householdSwitcher={
-                  <HouseholdSwitcher
-                    options={householdOptions}
-                    selectedHouseholdId={householdId}
-                    onSelect={onSelectHousehold}
-                    variant="inline"
-                  />
-                }
               />
             ) : active === "calendar" ? (
               <CalendarView
@@ -90,7 +82,7 @@ export function ConsoleLayout({
                   />
                 }
               />
-            ) : active === "todo" ? (
+            ) : (
               <TodoView
                 key={householdId}
                 householdId={householdId}
@@ -102,19 +94,6 @@ export function ConsoleLayout({
                 membershipRole={membershipRole}
                 enabled
                 onSessionLost={onSessionLost}
-                onSignOut={onSignOut}
-                householdSwitcher={
-                  <HouseholdSwitcher
-                    options={householdOptions}
-                    selectedHouseholdId={householdId}
-                    onSelect={onSelectHousehold}
-                    variant="inline"
-                  />
-                }
-              />
-            ) : (
-              <MeView
-                user={user}
                 onSignOut={onSignOut}
                 householdSwitcher={
                   <HouseholdSwitcher

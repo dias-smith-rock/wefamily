@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "同圈 — 小圈子輕量協作中樞",
+    "title": "Calendly — 小圈子輕量協作中樞",
     "description": "任務分工、日程同步、成員檔案。適用於群組、旅行團、社團小組等緊密小團隊。輕量清晰，不需要全員下載 App。"
   },
   "nav": {
@@ -13,14 +13,14 @@
     "subtitle": "任務、日程、分工、成員檔案——群組、旅行團、社團小組都能用。輕量清晰，不需要全員下載 App。",
     "downloadAppStore": "在 App Store 下載",
     "exploreWeb": "探索 Web 端功能",
-    "screenshotAlt": "同圈 App 介面截圖",
+    "screenshotAlt": "Calendly App 介面截圖",
     "screenshotScrollHint": "左右滑動或點擊箭頭查看更多介面",
     "screenshotPrev": "上一張截圖",
     "screenshotNext": "下一張截圖"
   },
   "useCases": {
     "sectionTitle": "適用場景",
-    "sectionSubtitle": "凡是有協作需求的緊密小圈子——3 到 20 人、彼此信任、需要分事排期——都能用同圈理清瑣事。",
+    "sectionSubtitle": "凡是有協作需求的緊密小圈子——3 到 20 人、彼此信任、需要分事排期——都能用 Calendly理清瑣事。",
     "items": {
       "family": {
         "title": "群組",

@@ -9,5 +9,5 @@ export const COMPANY_NAME_ZH = "良作國際有限公司";
 export const COMPANY_NAME_EN = "GOODCRAFT INTERNATIONAL LIMITED";
 
 /** 产品品牌 */
-export const PRODUCT_NAME_ZH = "同圈";
-export const PRODUCT_NAME_EN = "WeSync";
+export const PRODUCT_NAME_ZH = "Calendly";
+export const PRODUCT_NAME_EN = "Calendly";

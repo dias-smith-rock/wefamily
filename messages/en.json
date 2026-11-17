@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "WeSync — Lightweight Hub for Small-Group Collaboration",
+    "title": "Calendly — Lightweight Hub for Small-Group Collaboration",
     "description": "Task assignment, schedule sync, and member profiles for groups, travel groups, clubs, and other tight-knit teams. Lightweight and clear — no need for everyone to download the app."
   },
   "nav": {
@@ -13,14 +13,14 @@
     "subtitle": "Tasks, schedules, assignments, and member profiles — for groups, travel groups, clubs, and more. Lightweight and clear, with no need for everyone to install the app.",
     "downloadAppStore": "Download on the App Store",
     "exploreWeb": "Explore Web Features",
-    "screenshotAlt": "WeSync app screenshot",
+    "screenshotAlt": "Calendly app screenshot",
     "screenshotScrollHint": "Swipe or use arrows to browse screens",
     "screenshotPrev": "Previous screenshot",
     "screenshotNext": "Next screenshot"
   },
   "useCases": {
     "sectionTitle": "Use Cases",
-    "sectionSubtitle": "Any tight-knit circle of 3–20 people who trust each other and need to divide work and schedule events can use WeSync to stay organized.",
+    "sectionSubtitle": "Any tight-knit circle of 3–20 people who trust each other and need to divide work and schedule events can use Calendly to stay organized.",
     "items": {
       "family": {
         "title": "Group",

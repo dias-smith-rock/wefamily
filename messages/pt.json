@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "WeSync — Hub leve de colaboração para pequenos grupos",
+    "title": "Calendly — Hub leve de colaboração para pequenos grupos",
     "description": "Atribuição de tarefas, sincronização de calendários e perfis de membros para grupos, grupos de viagem, clubes e outras equipas unidas. Leve e claro — não é preciso que todos descarreguem a app."
   },
   "nav": {
@@ -13,14 +13,14 @@
     "subtitle": "Tarefas, calendários, atribuições e perfis de membros — para grupos, grupos de viagem, clubes e mais. Leve e claro, sem necessidade de todos instalarem a app.",
     "downloadAppStore": "Descarregar na App Store",
     "exploreWeb": "Explorar funcionalidades Web",
-    "screenshotAlt": "Captura de ecrã da app WeSync",
+    "screenshotAlt": "Captura de ecrã da app Calendly",
     "screenshotScrollHint": "Deslize ou use as setas para ver mais",
     "screenshotPrev": "Captura anterior",
     "screenshotNext": "Captura seguinte"
   },
   "useCases": {
     "sectionTitle": "Casos de uso",
-    "sectionSubtitle": "Qualquer grupo unido de 3 a 20 pessoas que confie uns nos outros e precise de dividir tarefas e planear pode usar o WeSync para se organizar.",
+    "sectionSubtitle": "Qualquer grupo unido de 3 a 20 pessoas que confie uns nos outros e precise de dividir tarefas e planear pode usar o Calendly para se organizar.",
     "items": {
       "family": {
         "title": "Grupo",

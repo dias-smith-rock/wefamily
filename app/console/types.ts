@@ -1,4 +1,4 @@
-export type ConsoleNavId = "calendar" | "todo" | "family" | "me";
+export type ConsoleNavId = "calendar" | "todo" | "settings";
 
 /** 供界面展示的用户摘要（由 household_memberships + Auth 映射而来） */
 export type ConsoleUser = {

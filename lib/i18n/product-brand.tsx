@@ -9,6 +9,7 @@ import {
 } from "@/lib/i18n/config";
 
 export type ProductLogoVariant = "markWithName" | "mark";
+export type ProductLogoTone = "default" | "onDark" | "onLight";
 
 type ProductLogoProps = {
   locale: Locale;
@@ -18,6 +19,8 @@ type ProductLogoProps = {
   linkStyle?: boolean;
   /** 图标边长（px），默认 32 */
   iconSize?: number;
+  /** onDark：深色背景上的白字 */
+  tone?: ProductLogoTone;
 };
 
 function productName(locale: Locale): string {
@@ -28,19 +31,21 @@ export function BrandMark({
   size = 32,
   className = "",
   title,
+  clear = false,
 }: {
   size?: number;
   className?: string;
   title?: string;
+  clear?: boolean;
 }) {
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src={BRAND_ASSETS.mark}
+      src={clear ? BRAND_ASSETS.markClear : BRAND_ASSETS.mark}
       alt=""
       width={size}
       height={size}
-      className={`shrink-0 ${className}`.trim()}
+      className={`shrink-0 rounded-[22%] ${className}`.trim()}
       aria-hidden={title ? undefined : true}
       title={title}
     />
@@ -53,6 +58,7 @@ export function ProductLogo({
   className = "",
   linkStyle = false,
   iconSize = 32,
+  tone = "default",
 }: ProductLogoProps) {
   const name = productName(locale);
 
@@ -62,27 +68,35 @@ export function ProductLogo({
         size={iconSize}
         className={className}
         title={name}
+        clear={tone === "onDark"}
       />
     );
   }
 
-  const colorClass = linkStyle
-    ? "text-[#007AFF]"
-    : isChineseLocale(locale)
-      ? "text-slate-900"
-      : "text-blue-600";
+  const colorClass =
+    tone === "onDark"
+      ? "text-white"
+      : tone === "onLight"
+        ? "text-slate-900"
+        : linkStyle
+          ? "text-[#007AFF]"
+          : "text-slate-900";
 
   return (
-    <span
-      className={`inline-flex items-center gap-2.5 ${className}`.trim()}
-    >
-      <BrandMark size={iconSize} />
+    <span className={`inline-flex items-center gap-3 ${className}`.trim()}>
+      <BrandMark size={iconSize} clear={tone === "onDark"} />
       <span className={`font-bold tracking-tight ${colorClass}`}>{name}</span>
     </span>
   );
 }
 
-export function formatCopyright(copyrightTemplate: string, locale: Locale): string {
+export function formatCopyright(
+  copyrightTemplate: string,
+  locale: Locale,
+): string {
   const name = productName(locale);
-  return copyrightTemplate.replace(/\{productZh\}\s*\(\{productEn\}\)/, name);
+  return copyrightTemplate
+    .replace(/\{productZh\}\s*\(\{productEn\}\)/, name)
+    .replace(/\{productZh\}/g, PRODUCT_NAME_ZH)
+    .replace(/\{productEn\}/g, PRODUCT_NAME_EN);
 }

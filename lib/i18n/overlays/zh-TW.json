@@ -44,9 +44,9 @@
       "missingConfigTitle": "缺少 Supabase 設定",
       "missingConfigBody": "請在 .env.local 中設定 NEXT_PUBLIC_SUPABASE_URL 與 NEXT_PUBLIC_SUPABASE_ANON_KEY。",
       "backToSite": "回到官網",
-      "loginTitle": "登入 Web 控制台",
-      "loginSubtitle": "使用 Apple 或 Google 帳號登入以檢視群組資料（唯讀）。",
-      "sessionHint": "登入狀態保持 10 分鐘，逾時需重新登入。",
+      "loginTitle": "Web 控制台",
+      "loginSubtitle": "使用 Apple 或 Google 登入，查看家庭日程與待辦。",
+      "sessionHint": "工作階段約 10 分鐘；過期後需重新登入。",
       "redirecting": "跳轉中…",
       "signInApple": "透過 Apple 登入",
       "signInGoogle": "透過 Google 登入",
@@ -57,7 +57,7 @@
     "membership": {
       "loadFailedTitle": "暫時無法載入群組資訊",
       "noMembershipTitle": "尚未加入群組",
-      "noMembershipBody": "您尚未加入任何群組，或加入申請正在審批中。請在同圈 iOS 用戶端完成群組建立或加入。"
+      "noMembershipBody": "您尚未加入任何群組，或加入申請正在審批中。請在 Calendly iOS 用戶端完成群組建立或加入。"
     },
     "nav": {
       "main": "主導航",
@@ -65,12 +65,13 @@
       "todo": "待辦",
       "group": "群組",
       "me": "我的",
-      "switchGroup": "切換群組"
+      "switchGroup": "切換群組",
+      "settings": "設定"
     },
     "me": {
       "title": "我的",
       "accountSettings": "帳戶與設定",
-      "settingsHint": "完整設定請在同圈 iOS 應用中管理。"
+      "settingsHint": "完整設定請在 Calendly iOS 應用中管理。"
     },
     "group": {
       "title": "群組",
@@ -82,7 +83,7 @@
       "showPhone": "顯示手機號",
       "createdAt": "建立於 {date}",
       "memberCount": "目前共 {total} 位成員",
-      "editGroupHint": "如需修改群組名稱或解散群組，請前往同圈 iOS 用戶端。",
+      "editGroupHint": "如需修改群組名稱或解散群組，請前往Calendly iOS 用戶端。",
       "phone": "手機號",
       "email": "信箱",
       "noContact": "暫無聯絡方式",
@@ -93,7 +94,7 @@
       "inviteMember": "邀請新成員",
       "createProfile": "建立免下載檔案",
       "securityLimitTitle": "多端安全限制",
-      "securityLimitBody": "請使用同圈 iOS App 掃描 QR 碼或傳送快捷邀請連結。"
+      "securityLimitBody": "請使用 Calendly iOS App 掃描 QR 碼或傳送快捷邀請連結。"
     },
     "calendar": {
       "switchView": "切換檢視",
@@ -118,7 +119,7 @@
       "titleRequired": "請填寫標題",
       "startRequired": "請選擇開始時間",
       "readonlyTitle": "唯讀模式",
-      "readonlyBody": "部分操作僅支援在同圈 iOS 用戶端完成。",
+      "readonlyBody": "部分操作僅支援在 Calendly iOS 用戶端完成。",
       "readonlyDetailHint": "目前帳號沒有編輯權限，僅可檢視。如需修改請使用 iOS 用戶端或聯繫家庭管理員。",
       "relatedToMe": "與我相關",
       "relatedToMeHint": "僅顯示今天與我相關的日程（我建立、我執行或受益）。",
@@ -226,16 +227,28 @@
       "groupNotFound": "未找到群組資訊",
       "notInGroup": "目前使用者不在該群組成員列表中",
       "networkError": "網路異常，請稍後重試"
+    },
+    "settings": {
+      "title": "設定",
+      "upgradeTitle": "升級到 Pro",
+      "upgradeSubtitle": "一人付費，全家 VIP",
+      "currentGroup": "目前群組",
+      "groupMembers": "群組成員",
+      "memberCount": "{count} 位成員",
+      "myself": "我自己",
+      "sortMembers": "排序成員",
+      "linkAccountTitle": "關聯帳戶",
+      "linkAccountBody": "關聯 Apple 或 Google 可在多裝置同步。使用者 ID 與訂閱保持不變。"
     }
   },
   "legal": {
     "privacyTitle": "隱私權政策",
     "termsTitle": "服務條款",
     "lastUpdated": "最後更新：{date}",
-    "privacyMetaDescription": "同圈（WeSync）在您使用網站與行動應用時如何收集、使用並保護您的資訊。",
-    "termsMetaDescription": "管轄您對同圈（WeSync）網站與行動應用存取與使用的條款。",
+    "privacyMetaDescription": "Calendly 在您使用網站與行動應用時如何收集、使用並保護您的資訊。",
+    "termsMetaDescription": "管轄您對Calendly網站與行動應用存取與使用的條款。",
     "privacy": {
-      "intro": "歡迎使用同圈（WeSync）。您所在群組的隱私與資料安全是我們的首要關切。本隱私權政策說明我們在您使用網站與行動應用時如何收集、使用並保護您的資訊，並與我們在 Apple App Store 中提供的隱私說明保持一致。",
+      "intro": "歡迎使用 Calendly。您所在群組的隱私與資料安全是我們的首要關切。本隱私權政策說明我們在您使用網站與行動應用時如何收集、使用並保護您的資訊，並與我們在 Apple App Store 中提供的隱私說明保持一致。",
       "sections": [
         {
           "heading": "1. 我們收集的資訊",
@@ -327,14 +340,14 @@
       "contactLead": "如您對本隱私權政策有任何疑問，請聯絡：jimo.cgg@gmail.com"
     },
     "terms": {
-      "intro": "本服務條款（「條款」）管轄您對同圈（WeSync）網站與行動應用的存取與使用。使用我們的服務即表示您同意受本條款約束。",
+      "intro": "本服務條款（「條款」）管轄您對Calendly網站與行動應用的存取與使用。使用我們的服務即表示您同意受本條款約束。",
       "sections": [
         {
           "heading": "1. 服務說明",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "同圈（WeSync）是一款群組協作與效率工具，協助群組管理任務、日程與成員檔案。服務按「現狀」提供，我們保留自行修改、更新或停用功能的權利。"
+            "Calendly 是一款群組協作與效率工具，協助群組管理任務、日程與成員檔案。服務按「現狀」提供，我們保留自行修改、更新或停用功能的權利。"
           ]
         },
         {
@@ -347,7 +360,7 @@
             },
             {
               "term": "",
-              "body": "您須維護帳戶及用於存取同圈之裝置的安全。"
+              "body": "您須維護帳戶及用於存取Calendly之裝置的安全。"
             },
             {
               "term": "",
@@ -396,7 +409,7 @@
         },
         {
           "heading": "5. 可接受使用",
-          "lead": "您同意不將同圈用於：",
+          "lead": "您同意不將Calendly用於：",
           "items": [
             {
               "term": "",
@@ -418,7 +431,7 @@
           "lead": "",
           "items": [],
           "paragraphs": [
-            "在法律允許的最大範圍內，同圈及其建立者不對任何間接、附帶、特殊、後果性或懲罰性損害，或任何利潤或收入損失（無論直接還是間接產生）承擔責任，包括因 (a) 您存取、使用或無法存取、使用服務；(b) 服務上任何第三方的行為或內容而產生的情形。"
+            "在法律允許的最大範圍內，Calendly 及其建立者不對任何間接、附帶、特殊、後果性或懲罰性損害，或任何利潤或收入損失（無論直接還是間接產生）承擔責任，包括因 (a) 您存取、使用或無法存取、使用服務；(b) 服務上任何第三方的行為或內容而產生的情形。"
           ]
         },
         {
