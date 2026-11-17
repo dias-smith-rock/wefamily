@@ -19,6 +19,7 @@ import {
 import { fetchHouseholdOptionsForUser } from "./lib/membership-query";
 import type { ConsoleUser, HouseholdOption } from "./types";
 import { requireAuthenticatedSession } from "@/lib/auth/require-session";
+import { resolveGuestDisplayName } from "./lib/guest-display-name";
 
 function GoogleMark({ className }: { className?: string }) {
   return (
@@ -60,12 +61,13 @@ function membershipToConsoleUser(
   dictionary: ReturnType<typeof useDictionary>["dictionary"],
 ): ConsoleUser {
   const member = option.membership;
-  const name =
+  const rawName =
     member.nickname?.trim() ||
     (emailFallback?.includes("@")
       ? emailFallback.split("@")[0]
       : emailFallback) ||
     dictionary.common.defaults.member;
+  const name = resolveGuestDisplayName(rawName, member.profile_id);
   const role = member.role.trim().toLowerCase();
   const roleLabel =
     role === "admin" || role === "owner"
@@ -332,6 +334,9 @@ export default function ConsolePage() {
     <ConsoleLayout
       user={consoleUser}
       householdId={selectedOption.householdId}
+      membershipId={selectedOption.membership.id}
+      membershipRole={selectedOption.membership.role}
+      profileId={selectedOption.membership.profile_id}
       householdOptions={householdOptions}
       onSelectHousehold={handleSelectHousehold}
       currentUserId={auth.user.id}

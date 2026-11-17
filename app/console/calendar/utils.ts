@@ -12,6 +12,7 @@ import {
   isOpenTodoStatus,
   isScheduledCalendarTask,
 } from "./task-type";
+import { resolveGuestDisplayName } from "../lib/guest-display-name";
 import { taskTargetProfileIds } from "../lib/task-fields";
 import type {
   CalendarDay,
@@ -67,6 +68,44 @@ export function formatEventTime(date: Date): string {
   const h = date.getHours();
   const m = date.getMinutes();
   return `${h.toString().padStart(2, "0")}:${m.toString().padStart(2, "0")}`;
+}
+
+/** 时长文案，对齐 iOS 卡片副标题（如 `1h` / `30min` / `1 hr 30 min`） */
+export function formatEventDuration(event: CalendarEvent): string {
+  if (event.isAllDay || !event.endAt) return "";
+  const mins = Math.max(
+    0,
+    Math.round((event.endAt.getTime() - event.startAt.getTime()) / 60_000),
+  );
+  if (mins <= 0) return "";
+  if (mins < 60) return `${mins}min`;
+  const hours = Math.floor(mins / 60);
+  const rem = mins % 60;
+  if (rem === 0) return hours === 1 ? "1h" : `${hours}h`;
+  if (hours === 1) return `1 hr ${rem} min`;
+  return `${hours} hr ${rem} min`;
+}
+
+/** 时间区间，如 `16:37 – 18:07` */
+export function formatEventTimeRange(event: CalendarEvent): string {
+  if (event.isAllDay) {
+    return getActiveDictionary().console.calendar.allDay;
+  }
+  const start = formatEventTime(event.startAt);
+  if (!event.endAt) return start;
+  return `${start} – ${formatEventTime(event.endAt)}`;
+}
+
+/** 列表/卡片右侧游客八位名或成员名 */
+export function eventTrailingPersonLabel(event: CalendarEvent): string | null {
+  const person =
+    event.forPerson ??
+    event.beneficiaries[0] ??
+    event.assignees[0] ??
+    null;
+  if (!person) return null;
+  const name = person.name.trim();
+  return name || null;
 }
 
 export function formatStatusLabel(status: string): string {
@@ -216,10 +255,12 @@ function resolvePerson(
       (membership.user_id
         ? maps.profileByUserId.get(membership.user_id) ?? null
         : null);
-    const name =
+    const profileId = membership.profile_id ?? profile?.id ?? null;
+    const rawName =
       membership.nickname?.trim() ||
       profile?.name?.trim() ||
       defaults.member;
+    const name = resolveGuestDisplayName(rawName, profileId);
     const isManaged = !membership.user_id || Boolean(profile && !profile.user_id);
     return {
       id: membership.id,
@@ -239,7 +280,8 @@ function resolvePerson(
 
   const profile = maps.profileById.get(id);
   if (profile) {
-    const name = profile.name?.trim() || defaults.profileMember;
+    const rawName = profile.name?.trim() || defaults.profileMember;
+    const name = resolveGuestDisplayName(rawName, profile.id);
     const isManaged = !profile.user_id;
     const linked = maps.membershipByProfileId.get(profile.id);
     return {
@@ -334,6 +376,8 @@ function buildCalendarEventBase(
     status: task.status,
     priority: task.priority,
     statusLabel: formatStatusLabel(task.status),
+    creatorId: task.creator_id,
+    involvedMemberIds: normalizeIdArray(task.involved_member_ids),
     forPerson,
     forWhomIds,
     assigneeLabel: formatAssigneeLabel(assignees),

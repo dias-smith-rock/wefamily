@@ -12,7 +12,7 @@ import type {
 } from "./types";
 
 const TASK_COLUMNS =
-  "id, title, description, status, priority, due_date, end_datetime, is_all_day, involved_member_ids, target_profile_ids, recurrence_rule, recurrence_interval, task_type, created_at";
+  "id, title, description, status, priority, due_date, end_datetime, is_all_day, creator_id, involved_member_ids, target_profile_ids, recurrence_rule, recurrence_interval, task_type, created_at";
 
 const MEMBERSHIP_COLUMNS = HOUSEHOLD_MEMBERSHIP_COLUMNS;
 
@@ -42,6 +42,7 @@ function normalizeTask(raw: Record<string, unknown>): TaskRow {
     due_date: (raw.due_date as string | null) ?? null,
     end_datetime: (raw.end_datetime as string | null) ?? null,
     is_all_day: (raw.is_all_day as boolean | null) ?? null,
+    creator_id: (raw.creator_id as string | null) ?? null,
     involved_member_ids: (raw.involved_member_ids as string[] | null) ?? null,
     ...targetFields,
     recurrence_rule: toOptionalString(raw.recurrence_rule),

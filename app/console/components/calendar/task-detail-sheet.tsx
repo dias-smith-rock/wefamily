@@ -10,6 +10,7 @@ import {
   getTaskDetailFieldValues,
   type TaskPrioritySegment,
 } from "../../calendar/task-detail-utils";
+import { canEditTask } from "../../lib/task-edit-access";
 import { useDictionary } from "@/lib/i18n/dictionary-provider";
 import { OverlayRoot } from "../family/ios-overlays";
 import {
@@ -182,10 +183,14 @@ function resolveForWhomDisplay(event: CalendarEvent): {
 
 export function TaskDetailSheet({
   event,
+  membershipId,
+  membershipRole,
   open,
   onClose,
 }: {
   event: CalendarEvent;
+  membershipId: string;
+  membershipRole: string;
   open: boolean;
   onClose: () => void;
 }) {
@@ -193,6 +198,11 @@ export function TaskDetailSheet({
   const fields = getTaskDetailFieldValues(event);
   const labels = fields.labels;
   const forWhom = resolveForWhomDisplay(event);
+  const editable = canEditTask({
+    creatorId: event.creatorId,
+    membershipId,
+    role: membershipRole,
+  });
 
   return (
     <OverlayRoot open={open} onClose={onClose} variant="sheet">
@@ -210,14 +220,21 @@ export function TaskDetailSheet({
               >
                 {t("common.close")}
               </button>
-                            <h2 className="pointer-events-none absolute left-1/2 -translate-x-1/2 text-[17px] font-bold text-gray-900">
+              <h2 className="pointer-events-none absolute left-1/2 -translate-x-1/2 text-[17px] font-bold text-gray-900">
                 {t("console.calendar.taskDetail")}
               </h2>
-              <div className="min-w-[52px]" aria-hidden /></header>
+              <div className="min-w-[52px]" aria-hidden />
+            </header>
 
             <h1 className="px-4 pb-2 pt-4 text-4xl font-extrabold tracking-tight text-black">
               {event.title}
             </h1>
+
+            {!editable ? (
+              <div className="mx-4 mb-3 rounded-2xl border border-amber-200/80 bg-amber-50/90 px-3 py-2.5 text-[13px] leading-snug text-amber-950">
+                {t("console.calendar.readonlyDetailHint")}
+              </div>
+            ) : null}
 
             <InsetCard className="divide-y divide-gray-100">
               <InfoRow

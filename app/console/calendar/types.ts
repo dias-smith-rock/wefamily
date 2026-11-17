@@ -21,6 +21,10 @@ export type CalendarEvent = {
   status: string;
   priority: string | null;
   statusLabel: string;
+  /** `tasks.creator_id` = household_memberships.id */
+  creatorId: string | null;
+  /** 对应 tasks.involved_member_ids（membership id） */
+  involvedMemberIds: string[];
   /** 为了谁 — 优先档案成员（首张，兼容旧 UI） */
   forPerson: CalendarPerson | null;
   /** 对应 tasks.target_profile_ids / for_whom */
@@ -62,6 +66,7 @@ export type TaskRow = {
   due_date: string | null;
   end_datetime: string | null;
   is_all_day: boolean | null;
+  creator_id: string | null;
   involved_member_ids: string[] | null;
   target_profile_ids: string[] | null;
   recurrence_rule: string | null;
@@ -88,8 +93,8 @@ export type CalendarPageData = {
   events: CalendarEvent[];
 };
 
-/** 日程表主内容区视图模式 */
-export type CalendarViewMode = "list" | "day";
+/** 日程表主内容区视图模式（对齐 iOS Schedule） */
+export type CalendarViewMode = "list" | "day" | "week" | "month";
 
 export type CalendarModalState =
   | { kind: "none" }

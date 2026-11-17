@@ -41,7 +41,7 @@ export function ConsoleLanguageSwitcher() {
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
-        className="flex items-center gap-1.5 rounded-full border border-gray-200/90 bg-white px-3 py-1.5 text-sm font-medium text-slate-600 transition hover:border-gray-300 hover:text-slate-900"
+        className="glass-pill flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-medium text-white/85 transition hover:bg-white/15"
         aria-expanded={open}
         aria-haspopup="listbox"
         aria-label={t("common.selectLanguage")}
@@ -53,17 +53,17 @@ export function ConsoleLanguageSwitcher() {
       {open ? (
         <ul
           role="listbox"
-          className="absolute end-0 z-50 mt-2 max-h-72 w-44 overflow-y-auto rounded-xl border border-gray-100 bg-white py-1 shadow-lg"
+          className="glass-panel-strong absolute end-0 z-50 mt-2 max-h-72 w-44 overflow-y-auto rounded-xl py-1 shadow-ios-dock"
         >
           {locales.map((item) => (
             <li key={item} role="option" aria-selected={item === locale}>
               <button
                 type="button"
                 onClick={() => switchLocale(item)}
-                className={`flex w-full items-center px-3 py-2 text-start text-sm transition hover:bg-gray-50 ${
+                className={`flex w-full items-center px-3 py-2 text-start text-sm transition hover:bg-white/10 ${
                   item === locale
-                    ? "font-semibold text-blue-600"
-                    : "text-slate-700"
+                    ? "font-semibold text-[#7CC4FF]"
+                    : "text-white/85"
                 }`}
               >
                 {localeLabels[item]}

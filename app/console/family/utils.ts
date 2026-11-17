@@ -3,6 +3,7 @@ import { resolveAvatarUrl } from "@/lib/supabase/storage-url";
 import { resolveClientLocale } from "@/lib/i18n/client-locale";
 import { formatLocaleDate, formatRoleLabel as formatRoleLabelI18n } from "@/lib/i18n/formatters";
 import type { Dictionary } from "@/lib/i18n/types";
+import { resolveGuestDisplayName } from "../lib/guest-display-name";
 import { taskTargetProfileIds } from "../lib/task-fields";
 import type {
   FamilyMemberDisplay,
@@ -149,11 +150,13 @@ export function membershipToDisplay(
   const common = labels(dict);
   const profile = row.family_profiles;
   const managed = isManagedMembership(row);
-  const displayName =
+  const profileId = row.profile_id ?? profile?.id ?? null;
+  const rawDisplayName =
     row.nickname?.trim() ||
     profile?.name?.trim() ||
     profile?.email?.trim() ||
     common.defaults.unnamedMember;
+  const displayName = resolveGuestDisplayName(rawDisplayName, profileId);
 
   const phone = profile?.mainphone || profile?.secondphone || null;
   const email = profile?.email || null;
@@ -208,7 +211,10 @@ export function profileToDisplay(
   dict?: Dictionary,
 ): FamilyMemberDisplay {
   const common = labels(dict);
-  const displayName = profile.name?.trim() || common.defaults.unnamedProfile;
+  const displayName = resolveGuestDisplayName(
+    profile.name?.trim() || common.defaults.unnamedProfile,
+    profile.id,
+  );
   const phone = profile.mainphone || profile.secondphone || null;
   const email = profile.email || null;
 

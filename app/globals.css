@@ -9,8 +9,90 @@
   }
 }
 
+@layer components {
+  .console-shell {
+    --ios-blue: #0a84ff;
+    --ios-blue-bright: #3b9eff;
+    --ios-text: #ffffff;
+    --ios-mute: rgba(255, 255, 255, 0.58);
+    --ios-glass: rgba(18, 26, 46, 0.48);
+    --ios-glass-strong: rgba(10, 16, 32, 0.62);
+    --ios-card: rgba(48, 42, 96, 0.52);
+    --ios-card-day: rgba(22, 34, 62, 0.68);
+    --ios-line: rgba(255, 255, 255, 0.14);
+    position: relative;
+    min-height: 100dvh;
+    color: var(--ios-text);
+    background-color: #0b1220;
+  }
+
+  .console-wallpaper {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(6, 10, 22, 0.28) 0%,
+        rgba(6, 10, 22, 0.18) 35%,
+        rgba(6, 10, 22, 0.55) 100%
+      ),
+      url("/console/wallpaper.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    pointer-events: none;
+  }
+
+  .glass-panel {
+    background: var(--ios-glass);
+    border: 1px solid var(--ios-line);
+    backdrop-filter: blur(28px) saturate(1.35);
+    -webkit-backdrop-filter: blur(28px) saturate(1.35);
+  }
+
+  .glass-panel-strong {
+    background: var(--ios-glass-strong);
+    border: 1px solid var(--ios-line);
+    backdrop-filter: blur(36px) saturate(1.4);
+    -webkit-backdrop-filter: blur(36px) saturate(1.4);
+  }
+
+  .glass-card {
+    background: var(--ios-card);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(22px) saturate(1.3);
+    -webkit-backdrop-filter: blur(22px) saturate(1.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  }
+
+  .glass-card-day {
+    background: var(--ios-card-day);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(22px) saturate(1.25);
+    -webkit-backdrop-filter: blur(22px) saturate(1.25);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  }
+
+  .glass-pill {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(20px) saturate(1.3);
+    -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  }
+}
+
 @layer utilities {
   .text-balance-safe {
     text-wrap: balance;
+  }
+
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
   }
 }

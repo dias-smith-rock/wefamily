@@ -31,6 +31,10 @@ export function reviveCalendarEvents(raw: unknown): CalendarEvent[] | null {
         ...row,
         startAt: new Date(row.startAt),
         endAt: row.endAt ? new Date(row.endAt) : null,
+        creatorId: row.creatorId ?? null,
+        involvedMemberIds: normalizeIdArray(
+          (row as { involvedMemberIds?: unknown }).involvedMemberIds,
+        ),
         forWhomIds: normalizeIdArray(row.forWhomIds),
         isFlexibleTodo: row.isFlexibleTodo ?? false,
         taskType: row.taskType ?? null,

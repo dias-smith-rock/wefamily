@@ -122,17 +122,27 @@ export function AiAssistantSheet({
 
 export function CalendarModals({
   modal,
+  membershipId,
+  membershipRole,
   onClose,
   onOpenReadonlyAlert,
 }: {
   modal: CalendarModalState;
+  membershipId: string;
+  membershipRole: string;
   onClose: () => void;
   onOpenReadonlyAlert: () => void;
 }) {
   return (
     <>
       {modal.kind === "task" ? (
-        <TaskDetailSheet event={modal.event} open onClose={onClose} />
+        <TaskDetailSheet
+          event={modal.event}
+          membershipId={membershipId}
+          membershipRole={membershipRole}
+          open
+          onClose={onClose}
+        />
       ) : null}
       <CalendarActionSheet
         open={modal.kind === "action-sheet"}
