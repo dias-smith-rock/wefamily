@@ -43,3 +43,27 @@ export type FetchListItemsResult =
       reason: "no_client" | "no_session" | "expired" | "error";
       message: string;
     };
+
+export type CreateListInput = {
+  householdId: string;
+  creatorId: string;
+  title: string;
+  kind: ListKind;
+  sortOrder?: number;
+};
+
+export type CreateListItemInput = {
+  listId: string;
+  householdId: string;
+  creatorId: string;
+  title: string;
+  sortOrder?: number;
+};
+
+export type MutationResult<T = void> =
+  | { ok: true; data: T }
+  | {
+      ok: false;
+      reason: "no_client" | "no_session" | "expired" | "error" | "validation";
+      message: string;
+    };

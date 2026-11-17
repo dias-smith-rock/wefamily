@@ -48,9 +48,7 @@ export function OverlayRoot({
         className={`relative z-10 w-full max-w-lg transition-transform duration-300 ease-out ${
           variant === "alert"
             ? "flex items-center justify-center"
-            : variant === "action-sheet"
-              ? "px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]"
-              : "px-0 pb-0"
+            : "px-3 pb-[calc(5.9rem+env(safe-area-inset-bottom))]"
         }`}
         role="dialog"
         aria-modal="true"
@@ -71,7 +69,7 @@ export function SheetPanel({
 }) {
   return (
     <div
-      className={`max-h-[min(88dvh,720px)] overflow-y-auto rounded-t-[20px] bg-[#1C1C1E] shadow-2xl ${className}`}
+      className={`max-h-[min(88dvh,720px)] overflow-y-auto rounded-[22px] border border-white/10 bg-[#1C1C1E]/95 shadow-2xl backdrop-blur-xl ${className}`}
     >
       <div className="flex justify-center pt-2.5 pb-1">
         <div className="h-1 w-9 rounded-full bg-white/20" aria-hidden />

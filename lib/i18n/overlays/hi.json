@@ -112,7 +112,7 @@
       "newTask": "New task",
       "newEvent": "New event",
       "readonlyTitle": "केवल-पढ़ने मोड",
-      "readonlyBody": "WeSync iOS ऐप में नए आइटम जोड़ें।",
+      "readonlyBody": "कुछ क्रियाएँ केवल WeSync iOS ऐप में उपलब्ध हैं।",
       "aiTitle": "Hermes AI सहायक तैयार",
       "aiBody": "वॉयस इनपुट और स्मार्ट शेड्यूलिंग केवल iOS पर।",
       "taskDetail": "कार्य विवरण",
@@ -151,7 +151,12 @@
       "todoOverdueOnlyTitle": "कोई निकट कार्य नहीं",
       "todoOverdueOnlyBody": "सभी कार्य अतिदेय हैं। ऊपर बैनर देखें।",
       "todoNoDeadline": "कोई समय सीमा नहीं",
-      "fieldDeadline": "समय सीमा"
+      "fieldDeadline": "समय सीमा",
+      "createTitlePlaceholder": "Title",
+      "createNotesPlaceholder": "Add notes…",
+      "createSubmit": "Create",
+      "titleRequired": "Please enter a title",
+      "startRequired": "Please choose a start time"
     },
     "status": {
       "pending": "लंबित",

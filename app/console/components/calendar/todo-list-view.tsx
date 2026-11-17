@@ -96,7 +96,7 @@ function SummarySheet({
   const { t } = useDictionary();
   return (
     <OverlayRoot open={open} onClose={onClose} variant="sheet">
-      <div className="flex max-h-[min(88dvh,720px)] w-full flex-col overflow-hidden rounded-t-[22px] bg-[#1C1C1E] shadow-2xl">
+      <div className="flex max-h-[min(86dvh,720px)] w-full flex-col overflow-hidden rounded-[22px] border border-white/10 bg-[#1C1C1E]/96 shadow-2xl backdrop-blur-xl">
         <div className="flex justify-center pt-2.5 pb-1">
           <div className="h-1 w-9 rounded-full bg-white/20" aria-hidden />
         </div>

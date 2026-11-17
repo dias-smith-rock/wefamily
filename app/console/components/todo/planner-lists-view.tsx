@@ -28,10 +28,12 @@ export function PlannerListsView({
   lists,
   householdName,
   onOpenList,
+  onCreateList,
 }: {
   lists: HouseholdListRow[];
   householdName?: string | null;
   onOpenList: (list: HouseholdListRow) => void;
+  onCreateList?: () => void;
 }) {
   const { t } = useDictionary();
 
@@ -44,6 +46,15 @@ export function PlannerListsView({
         <p className="mt-2 text-sm text-white/45">
           {t("console.todo.listsEmptyHint")}
         </p>
+        {onCreateList ? (
+          <button
+            type="button"
+            onClick={onCreateList}
+            className="mt-5 rounded-full bg-[#0A84FF] px-5 py-2.5 text-[14px] font-semibold text-white active:opacity-90"
+          >
+            {t("console.todo.createList")}
+          </button>
+        ) : null}
       </div>
     );
   }

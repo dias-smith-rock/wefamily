@@ -68,7 +68,9 @@ export function formatStatusLabel(
 ): string {
   const s = status.trim().toLowerCase();
   const labels = dictionary.console.status;
-  if (s === "pending" || s === "todo" || s === "待接受") return labels.pending;
+  if (s === "pending" || s === "todo" || s === "new" || s === "待接受") {
+    return labels.pending;
+  }
   if (s === "accepted" || s === "in_progress" || s === "进行中") {
     return labels.inProgress;
   }

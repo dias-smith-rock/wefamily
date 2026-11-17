@@ -112,7 +112,7 @@
       "newTask": "New task",
       "newEvent": "New event",
       "readonlyTitle": "படிக்க மட்டும் பயன்முறை",
-      "readonlyBody": "WeSync iOS பயன்பாட்டில் புதியவை சேர்க்கவும்.",
+      "readonlyBody": "சில செயல்கள் WeSync iOS செயலியில் மட்டுமே கிடைக்கும்.",
       "aiTitle": "Hermes AI உதவியாளர் தயார்",
       "aiBody": "குரல் உள்ளீடு மற்றும் ஸ்மார்ட் அட்டவணை iOS இல் மட்டும்.",
       "taskDetail": "பணி விவரங்கள்",
@@ -151,7 +151,12 @@
       "todoOverdueOnlyTitle": "விரைவில் எதுவும் இல்லை",
       "todoOverdueOnlyBody": "அனைத்து பணிகளும் காலாவதியாகியுள்ளன. மேலே உள்ள பதாகையைப் பாருங்கள்.",
       "todoNoDeadline": "காலக்கெடு இல்லை",
-      "fieldDeadline": "காலக்கெடு"
+      "fieldDeadline": "காலக்கெடு",
+      "createTitlePlaceholder": "Title",
+      "createNotesPlaceholder": "Add notes…",
+      "createSubmit": "Create",
+      "titleRequired": "Please enter a title",
+      "startRequired": "Please choose a start time"
     },
     "status": {
       "pending": "நிலுவை",

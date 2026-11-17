@@ -96,10 +96,40 @@ export type CalendarPageData = {
 /** 日程表主内容区视图模式（对齐 iOS Schedule） */
 export type CalendarViewMode = "list" | "day" | "week" | "month";
 
+/** 新建：flexible = 待办任务；scheduled = 日程 */
+export type CreateTaskMode = "flexible" | "scheduled";
+
+export type CreateTaskPriority = "low" | "normal" | "high" | "urgent";
+
+export type CreateTaskInput = {
+  householdId: string;
+  creatorId: string;
+  title: string;
+  description?: string | null;
+  mode: CreateTaskMode;
+  isAllDay?: boolean;
+  /** scheduled 开始时间 ISO */
+  dueDate?: string | null;
+  /** scheduled 结束 / flexible 截止 ISO */
+  endDatetime?: string | null;
+  priority?: CreateTaskPriority;
+  involvedMemberIds?: string[] | null;
+  targetProfileIds?: string[] | null;
+  recurrenceRule?: string | null;
+  durationMinutes?: number;
+};
+
+export type HouseholdPersonOption = {
+  membershipId: string;
+  profileId: string | null;
+  name: string;
+};
+
 export type CalendarModalState =
   | { kind: "none" }
   | { kind: "task"; event: CalendarEvent }
   | { kind: "action-sheet" }
+  | { kind: "create"; mode: CreateTaskMode }
   | { kind: "readonly-alert" }
   | { kind: "ai-sheet" };
 

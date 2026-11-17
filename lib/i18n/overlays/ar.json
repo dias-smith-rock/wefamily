@@ -112,7 +112,7 @@
       "newTask": "New task",
       "newEvent": "New event",
       "readonlyTitle": "وضع القراءة فقط",
-      "readonlyBody": "أضف عناصر في تطبيق WeSync لـ iOS.",
+      "readonlyBody": "بعض الإجراءات متاحة فقط في تطبيق WeSync على iOS.",
       "aiTitle": "مساعد Hermes AI جاهز",
       "aiBody": "الإدخال الصوتي والجدولة الذكية على iOS فقط.",
       "taskDetail": "تفاصيل المهمة",
@@ -151,7 +151,12 @@
       "todoOverdueOnlyTitle": "لا شيء قريبًا",
       "todoOverdueOnlyBody": "جميع المهام متأخرة. راجع الشريط أعلاه.",
       "todoNoDeadline": "بدون موعد نهائي",
-      "fieldDeadline": "الموعد النهائي"
+      "fieldDeadline": "الموعد النهائي",
+      "createTitlePlaceholder": "Title",
+      "createNotesPlaceholder": "Add notes…",
+      "createSubmit": "Create",
+      "titleRequired": "Please enter a title",
+      "startRequired": "Please choose a start time"
     },
     "status": {
       "pending": "قيد الانتظار",

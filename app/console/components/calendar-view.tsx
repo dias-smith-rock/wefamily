@@ -323,11 +323,16 @@ export function CalendarView({
 
       <CalendarModals
         modal={modal}
+        householdId={householdId}
         membershipId={membershipId}
         membershipRole={membershipRole}
         householdName={householdName}
+        defaultDate={selectedDate}
         onClose={closeModal}
+        onSelectCreate={(mode) => setModal({ kind: "create", mode })}
         onOpenReadonlyAlert={() => setModal({ kind: "readonly-alert" })}
+        onCreated={() => void load()}
+        onSessionLost={onSessionLost}
       />
 
       <MonthPickerSheet

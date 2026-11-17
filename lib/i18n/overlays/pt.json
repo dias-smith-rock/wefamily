@@ -112,7 +112,7 @@
       "newTask": "New task",
       "newEvent": "New event",
       "readonlyTitle": "Modo solo lectura",
-      "readonlyBody": "Adicione itens na app WeSync iOS.",
+      "readonlyBody": "Algumas ações só estão disponíveis na app WeSync iOS.",
       "aiTitle": "Asistente Hermes AI listo",
       "aiBody": "Voz y planificación inteligente solo en iOS.",
       "taskDetail": "Detalles de la tarea",
@@ -151,7 +151,12 @@
       "todoOverdueOnlyTitle": "Nada em breve",
       "todoOverdueOnlyBody": "Todas as pendentes estão em atraso. Use o banner acima.",
       "todoNoDeadline": "Sem prazo",
-      "fieldDeadline": "Prazo"
+      "fieldDeadline": "Prazo",
+      "createTitlePlaceholder": "Title",
+      "createNotesPlaceholder": "Add notes…",
+      "createSubmit": "Create",
+      "titleRequired": "Please enter a title",
+      "startRequired": "Please choose a start time"
     },
     "status": {
       "pending": "Pendente",

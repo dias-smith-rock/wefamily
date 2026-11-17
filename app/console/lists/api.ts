@@ -1,11 +1,14 @@
 import { requireAuthenticatedSession } from "@/lib/auth/require-session";
 import { getSupabaseBrowserClient } from "@/lib/supabase/browser-client";
 import type {
+  CreateListInput,
+  CreateListItemInput,
   FetchListItemsResult,
   FetchListsResult,
   HouseholdListRow,
   ListItemRow,
   ListKind,
+  MutationResult,
 } from "./types";
 
 const LIST_COLUMNS =
@@ -135,5 +138,130 @@ export async function fetchListItems(
     data: (data ?? []).map((r) =>
       normalizeItem(r as unknown as Record<string, unknown>),
     ),
+  };
+}
+
+export async function createHouseholdList(
+  input: CreateListInput,
+): Promise<MutationResult<HouseholdListRow>> {
+  const title = input.title.trim();
+  if (!title) {
+    return { ok: false, reason: "validation", message: "listTitleRequired" };
+  }
+  if (!input.householdId || !input.creatorId) {
+    return { ok: false, reason: "validation", message: "missingConfig" };
+  }
+
+  const supabase = getSupabaseBrowserClient();
+  const session = await guardSession();
+  if (!session.ok) return session;
+  if (!supabase) {
+    return { ok: false, reason: "no_client", message: "missingConfig" };
+  }
+
+  const kind = normalizeKind(input.kind);
+  const { data, error } = await supabase
+    .from("household_lists")
+    .insert({
+      household_id: input.householdId,
+      creator_id: input.creatorId,
+      title,
+      kind,
+      sort_order: input.sortOrder ?? 0,
+    })
+    .select(LIST_COLUMNS)
+    .single();
+
+  if (error) {
+    return { ok: false, reason: "error", message: error.message };
+  }
+
+  return {
+    ok: true,
+    data: normalizeList(data as unknown as Record<string, unknown>),
+  };
+}
+
+export async function createListItem(
+  input: CreateListItemInput,
+): Promise<MutationResult<ListItemRow>> {
+  const title = input.title.trim();
+  if (!title) {
+    return { ok: false, reason: "validation", message: "listItemTitleRequired" };
+  }
+  if (!input.listId || !input.householdId || !input.creatorId) {
+    return { ok: false, reason: "validation", message: "missingConfig" };
+  }
+
+  const supabase = getSupabaseBrowserClient();
+  const session = await guardSession();
+  if (!session.ok) return session;
+  if (!supabase) {
+    return { ok: false, reason: "no_client", message: "missingConfig" };
+  }
+
+  const { data, error } = await supabase
+    .from("list_items")
+    .insert({
+      list_id: input.listId,
+      household_id: input.householdId,
+      creator_id: input.creatorId,
+      title,
+      is_checked: false,
+      sort_order: input.sortOrder ?? 0,
+    })
+    .select(ITEM_COLUMNS)
+    .single();
+
+  if (error) {
+    return { ok: false, reason: "error", message: error.message };
+  }
+
+  return {
+    ok: true,
+    data: normalizeItem(data as unknown as Record<string, unknown>),
+  };
+}
+
+export async function setListItemChecked(params: {
+  itemId: string;
+  checked: boolean;
+  membershipId: string;
+}): Promise<MutationResult<ListItemRow>> {
+  const supabase = getSupabaseBrowserClient();
+  const session = await guardSession();
+  if (!session.ok) return session;
+  if (!supabase) {
+    return { ok: false, reason: "no_client", message: "missingConfig" };
+  }
+
+  const payload = params.checked
+    ? {
+        is_checked: true,
+        completed_by: params.membershipId,
+        completed_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      }
+    : {
+        is_checked: false,
+        completed_by: null,
+        completed_at: null,
+        updated_at: new Date().toISOString(),
+      };
+
+  const { data, error } = await supabase
+    .from("list_items")
+    .update(payload)
+    .eq("id", params.itemId)
+    .select(ITEM_COLUMNS)
+    .single();
+
+  if (error) {
+    return { ok: false, reason: "error", message: error.message };
+  }
+
+  return {
+    ok: true,
+    data: normalizeItem(data as unknown as Record<string, unknown>),
   };
 }

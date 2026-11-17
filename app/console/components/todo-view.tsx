@@ -1,7 +1,7 @@
 "use client";
 
 import { Menu, Printer } from "lucide-react";
-import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
 import { fetchCalendarPageData } from "../calendar/api";
 import {
   reviveCalendarEvents,
@@ -19,6 +19,7 @@ import { CalendarModals } from "./calendar/calendar-modals";
 import { CalendarPageSkeleton } from "./calendar/calendar-skeleton";
 import { CreateFab } from "./calendar/glass-chrome";
 import { TodoListView } from "./calendar/todo-list-view";
+import { CreateListSheet } from "./todo/create-list-sheet";
 import { ListDetailSheet } from "./todo/list-detail-sheet";
 import { PlannerListsView } from "./todo/planner-lists-view";
 
@@ -53,6 +54,7 @@ export function TodoView({
   const [selectedList, setSelectedList] = useState<HouseholdListRow | null>(
     null,
   );
+  const [createListOpen, setCreateListOpen] = useState(false);
 
   const {
     data: cachedEvents,
@@ -80,12 +82,29 @@ export function TodoView({
     [events],
   );
 
+  const reloadLists = useCallback(async () => {
+    setListsLoading(true);
+    setListsError(null);
+    const result = await fetchHouseholdLists(householdId);
+    setListsLoading(false);
+    if (!result.ok) {
+      if (result.reason === "expired" || result.reason === "no_session") {
+        onSessionLost();
+      }
+      setListsError(result.message);
+      setLists([]);
+      return;
+    }
+    setLists(result.data);
+  }, [householdId, onSessionLost]);
+
   useEffect(() => {
     if (!enabled || segment !== "planner") return;
     let cancelled = false;
-    setListsLoading(true);
-    setListsError(null);
-    void fetchHouseholdLists(householdId).then((result) => {
+    void (async () => {
+      setListsLoading(true);
+      setListsError(null);
+      const result = await fetchHouseholdLists(householdId);
       if (cancelled) return;
       setListsLoading(false);
       if (!result.ok) {
@@ -97,13 +116,21 @@ export function TodoView({
         return;
       }
       setLists(result.data);
-    });
+    })();
     return () => {
       cancelled = true;
     };
   }, [enabled, segment, householdId, onSessionLost]);
 
   const closeModal = () => setModal({ kind: "none" });
+
+  const handleFab = () => {
+    if (segment === "planner") {
+      setCreateListOpen(true);
+      return;
+    }
+    setModal({ kind: "action-sheet" });
+  };
 
   if (loading) {
     return <CalendarPageSkeleton />;
@@ -147,7 +174,7 @@ export function TodoView({
             </button>
             <button
               type="button"
-              onClick={() => setModal({ kind: "action-sheet" })}
+              onClick={handleFab}
               className="flex h-9 w-9 items-center justify-center rounded-full text-[#7CC4FF] transition active:bg-white/10"
               aria-label={t("console.calendar.switchView")}
             >
@@ -205,25 +232,46 @@ export function TodoView({
           lists={lists}
           householdName={householdName}
           onOpenList={setSelectedList}
+          onCreateList={() => setCreateListOpen(true)}
         />
       )}
 
-      <CreateFab onClick={() => setModal({ kind: "action-sheet" })} />
+      {selectedList == null ? <CreateFab onClick={handleFab} /> : null}
+
+      <CreateListSheet
+        open={createListOpen}
+        householdId={householdId}
+        householdName={householdName}
+        membershipId={membershipId}
+        onClose={() => setCreateListOpen(false)}
+        onCreated={(list) => {
+          setLists((prev) => [list, ...prev.filter((row) => row.id !== list.id)]);
+          setSelectedList(list);
+          void reloadLists();
+        }}
+        onSessionLost={onSessionLost}
+      />
 
       <ListDetailSheet
         list={selectedList}
         open={selectedList != null}
+        membershipId={membershipId}
         onClose={() => setSelectedList(null)}
-        onReadonlyAction={() => setModal({ kind: "readonly-alert" })}
+        onSessionLost={onSessionLost}
       />
 
       <CalendarModals
         modal={modal}
+        householdId={householdId}
         membershipId={membershipId}
         membershipRole={membershipRole}
         householdName={householdName}
+        defaultDate={new Date()}
         onClose={closeModal}
+        onSelectCreate={(mode) => setModal({ kind: "create", mode })}
         onOpenReadonlyAlert={() => setModal({ kind: "readonly-alert" })}
+        onCreated={() => void load()}
+        onSessionLost={onSessionLost}
       />
     </>
   );

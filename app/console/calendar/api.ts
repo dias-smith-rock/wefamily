@@ -3,9 +3,12 @@ import { getSupabaseBrowserClient } from "@/lib/supabase/browser-client";
 import { HOUSEHOLD_MEMBERSHIP_COLUMNS } from "../lib/membership-query";
 import { normalizeTaskTargetFields, taskTargetProfileIds } from "../lib/task-fields";
 import { mapTasksToCalendarEvents } from "./utils";
+import { resolveGuestDisplayName } from "../lib/guest-display-name";
 import type {
   CalendarPageData,
+  CreateTaskInput,
   FetchCalendarResult,
+  HouseholdPersonOption,
   MembershipLookupRow,
   ProfileLookupRow,
   TaskRow,
@@ -172,4 +175,186 @@ export async function fetchCalendarPageData(
     ok: true,
     data: { events },
   };
+}
+
+export type CreateTaskResult =
+  | { ok: true; id: string }
+  | {
+      ok: false;
+      reason: "no_client" | "no_session" | "expired" | "error" | "validation";
+      message: string;
+    };
+
+export type FetchHouseholdPeopleResult =
+  | { ok: true; data: HouseholdPersonOption[] }
+  | {
+      ok: false;
+      reason: "no_client" | "no_session" | "expired" | "error";
+      message: string;
+    };
+
+export async function fetchHouseholdPeople(
+  householdId: string,
+): Promise<FetchHouseholdPeopleResult> {
+  const supabase = getSupabaseBrowserClient();
+  if (!supabase) {
+    return { ok: false, reason: "no_client", message: "missingConfig" };
+  }
+
+  const guard = await requireAuthenticatedSession(supabase);
+  if (!guard.ok) {
+    if (guard.reason === "expired") {
+      return { ok: false, reason: "expired", message: "sessionExpired" };
+    }
+    return { ok: false, reason: "no_session", message: "pleaseSignIn" };
+  }
+
+  const { data: membershipRows, error: membershipError } = await supabase
+    .from("household_memberships")
+    .select(MEMBERSHIP_COLUMNS)
+    .eq("household_id", householdId)
+    .eq("status", "active");
+
+  if (membershipError) {
+    return { ok: false, reason: "error", message: membershipError.message };
+  }
+
+  const memberships = (membershipRows ?? []).map((r) =>
+    normalizeMembership(r as unknown as Record<string, unknown>),
+  );
+
+  const profileIds = [
+    ...new Set(
+      memberships
+        .map((m) => m.profile_id)
+        .filter((id): id is string => Boolean(id)),
+    ),
+  ];
+
+  let profiles: ProfileLookupRow[] = [];
+  if (profileIds.length > 0) {
+    const { data: profileRows, error: profilesError } = await supabase
+      .from("family_profiles")
+      .select(PROFILE_COLUMNS)
+      .eq("household_id", householdId)
+      .in("id", profileIds);
+
+    if (profilesError) {
+      return { ok: false, reason: "error", message: profilesError.message };
+    }
+
+    profiles = (profileRows ?? []).map((r) =>
+      normalizeProfile(r as unknown as Record<string, unknown>),
+    );
+  }
+
+  const profileById = new Map(profiles.map((p) => [p.id, p]));
+
+  const people: HouseholdPersonOption[] = memberships.map((m) => {
+    const profile = m.profile_id ? profileById.get(m.profile_id) : undefined;
+    const rawName =
+      m.nickname?.trim() ||
+      profile?.name?.trim() ||
+      "";
+    const name = m.profile_id
+      ? resolveGuestDisplayName(rawName || "新成员", m.profile_id)
+      : rawName || m.id.slice(0, 8);
+
+    return {
+      membershipId: m.id,
+      profileId: m.profile_id,
+      name,
+    };
+  });
+
+  people.sort((a, b) => a.name.localeCompare(b.name, "zh"));
+  return { ok: true, data: people };
+}
+
+export async function createTask(
+  input: CreateTaskInput,
+): Promise<CreateTaskResult> {
+  const title = input.title.trim();
+  if (!title) {
+    return { ok: false, reason: "validation", message: "titleRequired" };
+  }
+  if (!input.householdId || !input.creatorId) {
+    return { ok: false, reason: "validation", message: "missingConfig" };
+  }
+
+  const supabase = getSupabaseBrowserClient();
+  if (!supabase) {
+    return { ok: false, reason: "no_client", message: "missingConfig" };
+  }
+
+  const guard = await requireAuthenticatedSession(supabase);
+  if (!guard.ok) {
+    if (guard.reason === "expired") {
+      return { ok: false, reason: "expired", message: "sessionExpired" };
+    }
+    return { ok: false, reason: "no_session", message: "pleaseSignIn" };
+  }
+
+  const isFlexible = input.mode === "flexible";
+  const isAllDay = isFlexible ? false : Boolean(input.isAllDay);
+  const dueDate = isFlexible ? null : input.dueDate ?? null;
+  const endDatetime = input.endDatetime ?? null;
+
+  if (!isFlexible && !dueDate) {
+    return { ok: false, reason: "validation", message: "startRequired" };
+  }
+
+  let durationMinutes = input.durationMinutes;
+  if (durationMinutes == null) {
+    if (isFlexible) {
+      durationMinutes = 60;
+    } else if (isAllDay) {
+      durationMinutes = 0;
+    } else if (dueDate && endDatetime) {
+      const ms = new Date(endDatetime).getTime() - new Date(dueDate).getTime();
+      durationMinutes = Math.max(0, Math.round(ms / 60000));
+    } else {
+      durationMinutes = 30;
+    }
+  }
+
+  const priority = input.priority ?? "normal";
+  const recurrenceRule = input.recurrenceRule?.trim() || null;
+
+  const payload = {
+    household_id: input.householdId,
+    creator_id: input.creatorId,
+    title,
+    description: input.description?.trim() || null,
+    status: "new",
+    priority,
+    task_type: isFlexible ? "flexible" : "scheduled",
+    due_date: dueDate,
+    end_datetime: endDatetime,
+    is_all_day: isAllDay,
+    involved_member_ids:
+      input.involvedMemberIds && input.involvedMemberIds.length > 0
+        ? input.involvedMemberIds
+        : null,
+    target_profile_ids:
+      input.targetProfileIds && input.targetProfileIds.length > 0
+        ? input.targetProfileIds
+        : null,
+    recurrence_rule: recurrenceRule,
+    recurrence_interval: 1,
+    duration_minutes: durationMinutes,
+    source: "manual",
+  };
+
+  const { data, error } = await supabase
+    .from("tasks")
+    .insert(payload)
+    .select("id")
+    .single();
+
+  if (error) {
+    return { ok: false, reason: "error", message: error.message };
+  }
+
+  return { ok: true, id: String(data.id) };
 }

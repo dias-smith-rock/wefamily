@@ -2,7 +2,11 @@
 
 import { CalendarPlus, ListPlus, Sparkles } from "lucide-react";
 import { useDictionary } from "@/lib/i18n/dictionary-provider";
-import type { CalendarModalState } from "../../calendar/types";
+import type {
+  CalendarModalState,
+  CreateTaskMode,
+} from "../../calendar/types";
+import { TaskCreateSheet } from "./task-create-sheet";
 import { TaskDetailSheet } from "./task-detail-sheet";
 import {
   ActionSheetPanel,
@@ -18,7 +22,7 @@ export function CalendarActionSheet({
 }: {
   open: boolean;
   onClose: () => void;
-  onSelectCreate: () => void;
+  onSelectCreate: (mode: CreateTaskMode) => void;
 }) {
   const { t } = useDictionary();
 
@@ -27,7 +31,7 @@ export function CalendarActionSheet({
       <ActionSheetPanel>
         <button
           type="button"
-          onClick={onSelectCreate}
+          onClick={() => onSelectCreate("flexible")}
           className="flex w-full items-center gap-3 border-b border-white/[0.08] px-4 py-3.5 text-left text-[17px] text-white active:bg-white/5"
         >
           <ListPlus className="h-5 w-5 text-[#0A84FF]" strokeWidth={2} />
@@ -35,7 +39,7 @@ export function CalendarActionSheet({
         </button>
         <button
           type="button"
-          onClick={onSelectCreate}
+          onClick={() => onSelectCreate("scheduled")}
           className="flex w-full items-center gap-3 px-4 py-3.5 text-left text-[17px] text-white active:bg-white/5"
         >
           <CalendarPlus className="h-5 w-5 text-[#BF5AF2]" strokeWidth={2} />
@@ -122,18 +126,28 @@ export function AiAssistantSheet({
 
 export function CalendarModals({
   modal,
+  householdId,
   membershipId,
   membershipRole,
   householdName,
+  defaultDate,
   onClose,
+  onSelectCreate,
   onOpenReadonlyAlert,
+  onCreated,
+  onSessionLost,
 }: {
   modal: CalendarModalState;
+  householdId: string;
   membershipId: string;
   membershipRole: string;
   householdName?: string | null;
+  defaultDate: Date;
   onClose: () => void;
+  onSelectCreate: (mode: CreateTaskMode) => void;
   onOpenReadonlyAlert: () => void;
+  onCreated: () => void;
+  onSessionLost?: () => void;
 }) {
   return (
     <>
@@ -151,10 +165,23 @@ export function CalendarModals({
       <CalendarActionSheet
         open={modal.kind === "action-sheet"}
         onClose={onClose}
-        onSelectCreate={onOpenReadonlyAlert}
+        onSelectCreate={onSelectCreate}
       />
       <ReadonlyModeAlert open={modal.kind === "readonly-alert"} onClose={onClose} />
       <AiAssistantSheet open={modal.kind === "ai-sheet"} onClose={onClose} />
+      {modal.kind === "create" ? (
+        <TaskCreateSheet
+          open
+          mode={modal.mode}
+          householdId={householdId}
+          householdName={householdName}
+          membershipId={membershipId}
+          defaultDate={defaultDate}
+          onClose={onClose}
+          onCreated={onCreated}
+          onSessionLost={onSessionLost}
+        />
+      ) : null}
     </>
   );
 }
