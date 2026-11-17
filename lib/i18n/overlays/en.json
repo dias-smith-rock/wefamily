@@ -10,6 +10,7 @@
   "common": {
     "selectLanguage": "Select language",
     "close": "Close",
+    "done": "Done",
     "cancel": "Cancel",
     "ok": "OK",
     "gotIt": "Got it",
@@ -155,6 +156,10 @@
       "todoOverdueOnlyTitle": "Nothing due soon",
       "todoOverdueOnlyBody": "All open to-dos are overdue. Use the banner above to review them.",
       "todoNoDeadline": "No deadline",
+      "todoDueBy": "Due by {date}",
+      "todoOverdueCount": "{count} overdue",
+      "todoCompletedCount": "{count} completed",
+      "todoCompletedTitle": "Completed",
       "fieldDeadline": "Deadline"
     },
     "status": {
@@ -172,12 +177,36 @@
       "yearly": "Yearly"
     },
     "taskDetail": {
-      "reminderDefault": "15 minutes before",
+      "reminderDefault": "None",
       "budgetDefault": "None",
       "locationDefault": "Dongtian Liyuan",
       "emergencyDefault": "None",
       "descriptionPlaceholder": "Add expense details, payment method, etc.",
-      "notesEmpty": "No notes"
+      "notesEmpty": "No notes",
+      "attachments": "Attachments",
+      "addAttachment": "Add attachment",
+      "starts": "Starts",
+      "ends": "Ends",
+      "duration": "Duration",
+      "color": "Color",
+      "remind": "Remind",
+      "expenses": "Expenses",
+      "acceptTask": "Accept task",
+      "deleteTask": "Delete task",
+      "lastEditedHint": "Full edit history is available in the iOS app"
+    },
+    "todo": {
+      "segmentTodos": "To-Dos",
+      "segmentPlanner": "Planner",
+      "kindShopping": "Shopping",
+      "kindTrip": "Trip",
+      "kindCustom": "Custom",
+      "listsEmpty": "No lists yet",
+      "listsEmptyHint": "Create shopping or trip lists in the iOS app to see them here.",
+      "listItemsEmpty": "No items",
+      "checked": "Checked",
+      "checkedBy": "Checked by {name}",
+      "addItemPlaceholder": "Add an item"
     },
     "api": {
       "missingConfig": "Missing Supabase configuration",

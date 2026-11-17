@@ -10,6 +10,7 @@
   "common": {
     "selectLanguage": "选择语言",
     "close": "关闭",
+    "done": "完成",
     "cancel": "取消",
     "ok": "好",
     "gotIt": "知道了",
@@ -118,6 +119,10 @@
       "todoOverdueOnlyTitle": "暂无即将到期",
       "todoOverdueOnlyBody": "当前待办均已逾期，请点击上方横幅查看。",
       "todoNoDeadline": "未设截止日",
+      "todoDueBy": "截止 {date}",
+      "todoOverdueCount": "{count} 个已逾期",
+      "todoCompletedCount": "{count} 个已完成",
+      "todoCompletedTitle": "已完成",
       "fieldDeadline": "截止时间",
       "view3Day": "3 天",
       "viewWeek": "周",
@@ -172,12 +177,36 @@
       "yearly": "每年"
     },
     "taskDetail": {
-      "reminderDefault": "提前 15 分钟",
+      "reminderDefault": "无",
       "budgetDefault": "无",
       "locationDefault": "东田丽园",
       "emergencyDefault": "无",
       "descriptionPlaceholder": "可填写开支明细、支付方式等…",
-      "notesEmpty": "暂无备注"
+      "notesEmpty": "暂无备注",
+      "attachments": "附件",
+      "addAttachment": "添加附件",
+      "starts": "开始",
+      "ends": "结束",
+      "duration": "时长",
+      "color": "颜色",
+      "remind": "提醒",
+      "expenses": "开销",
+      "acceptTask": "接受任务",
+      "deleteTask": "删除任务",
+      "lastEditedHint": "最近编辑信息仅在 iOS 客户端完整展示"
+    },
+    "todo": {
+      "segmentTodos": "待办",
+      "segmentPlanner": "清单",
+      "kindShopping": "购物",
+      "kindTrip": "出行",
+      "kindCustom": "自定义",
+      "listsEmpty": "暂无清单",
+      "listsEmptyHint": "在 iOS 客户端创建购物清单或出行清单后，可在此查看。",
+      "listItemsEmpty": "暂无条目",
+      "checked": "已勾选",
+      "checkedBy": "由 {name} 勾选",
+      "addItemPlaceholder": "添加条目"
     },
     "api": {
       "missingConfig": "缺少 Supabase 配置",

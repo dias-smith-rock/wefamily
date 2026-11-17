@@ -43,6 +43,7 @@ import {
 
 type CalendarViewProps = {
   householdId: string;
+  householdName?: string | null;
   membershipId: string;
   membershipRole: string;
   profileId: string | null;
@@ -55,6 +56,7 @@ type CalendarViewProps = {
 
 export function CalendarView({
   householdId,
+  householdName,
   membershipId,
   membershipRole,
   profileId,
@@ -323,6 +325,7 @@ export function CalendarView({
         modal={modal}
         membershipId={membershipId}
         membershipRole={membershipRole}
+        householdName={householdName}
         onClose={closeModal}
         onOpenReadonlyAlert={() => setModal({ kind: "readonly-alert" })}
       />

@@ -1,375 +1,382 @@
 "use client";
 
-import type { CalendarEvent, CalendarPerson } from "../../calendar/types";
+import type { CalendarEvent } from "../../calendar/types";
 import {
+  formatEventDuration,
+  formatEventTime,
   isHouseholdWideBeneficiaries,
-  normalizeIdArray,
-  personIsInForWhomList,
 } from "../../calendar/utils";
 import {
   getTaskDetailFieldValues,
-  type TaskPrioritySegment,
 } from "../../calendar/task-detail-utils";
 import { canEditTask } from "../../lib/task-edit-access";
 import { useDictionary } from "@/lib/i18n/dictionary-provider";
+import { resolveClientLocale } from "@/lib/i18n/client-locale";
 import { OverlayRoot } from "../family/ios-overlays";
 import {
   Banknote,
   Bell,
-  Calendar,
+  CalendarDays,
   Check,
   ChevronRight,
+  Clock,
+  Flag,
+  Hourglass,
   MapPin,
+  MoreHorizontal,
+  Paperclip,
+  Phone,
+  Plus,
   Repeat,
   Tag,
   User,
-  UserRound,
   Users,
+  X,
 } from "lucide-react";
 
-function InsetCard({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <section
-      className={`mx-4 mb-4 overflow-hidden rounded-2xl bg-white shadow-sm ${className}`}
-    >
-      {children}
-    </section>
-  );
+function formatPillDate(date: Date): string {
+  return new Intl.DateTimeFormat(resolveClientLocale(), {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  }).format(date);
 }
 
-function CardSectionTitle({
-  children,
-  icon: Icon,
-}: {
-  children: React.ReactNode;
-  icon?: React.ComponentType<{ className?: string; strokeWidth?: number }>;
-}) {
-  return (
-    <div className="flex items-center gap-1.5 px-4 pb-2 pt-4 text-[13px] text-gray-400">
-      {Icon ? <Icon className="h-4 w-4 shrink-0" strokeWidth={2} /> : null}
-      <span>{children}</span>
-    </div>
-  );
-}
-
-function InfoRow({
+function DetailRow({
   icon: Icon,
   label,
-  value,
-  valueClassName = "text-[15px] text-gray-900",
+  children,
+  showChevron = false,
 }: {
   icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
   label: string;
-  value: string;
-  valueClassName?: string;
+  children: React.ReactNode;
+  showChevron?: boolean;
 }) {
   return (
-    <div className="flex items-center justify-between gap-3 px-4 py-3">
-      <div className="flex min-w-0 items-center gap-2.5">
-        <Icon className="h-[18px] w-[18px] shrink-0 text-gray-400" strokeWidth={2} />
-        <span className="text-[15px] text-gray-400">{label}</span>
-      </div>
-      <span className={`shrink-0 text-right ${valueClassName}`}>{value}</span>
-    </div>
-  );
-}
-
-function BeneficiaryAvatar({
-  person,
-  selected,
-  everyoneLabel,
-}: {
-  person: CalendarPerson | null;
-  selected: boolean;
-  everyoneLabel: string;
-}) {
-  if (!person) {
-    return (
-      <div className="flex w-[72px] shrink-0 flex-col items-center gap-1.5">
-        <div className="relative flex h-14 w-14 items-center justify-center rounded-full bg-gray-100">
-          <Users className="h-6 w-6 text-gray-400" strokeWidth={2} />
-        </div>
-        <span className="max-w-[72px] truncate text-center text-[11px] text-gray-400">
-          {everyoneLabel}
-        </span>
-      </div>
-    );
-  }
-
-  return (
-    <div className="flex w-[72px] shrink-0 flex-col items-center gap-1.5">
-      <div className="relative p-0.5">
-        {person.avatarUrl ? (
-          <img
-            src={person.avatarUrl}
-            alt=""
-            className={`h-14 w-14 rounded-full object-cover ring-1 ring-black/5 ${
-              selected ? "ring-2 ring-blue-500 ring-offset-2 ring-offset-white" : ""
-            }`}
+    <div className="flex min-h-[48px] items-center gap-3 px-3.5 py-2.5">
+      <Icon
+        className="h-[18px] w-[18px] shrink-0 text-[#A78BFA]"
+        strokeWidth={2}
+      />
+      <span className="min-w-0 flex-1 text-[15px] text-white/55">{label}</span>
+      <div className="flex max-w-[62%] shrink-0 items-center justify-end gap-1.5">
+        {children}
+        {showChevron ? (
+          <ChevronRight
+            className="h-4 w-4 shrink-0 text-white/25"
+            strokeWidth={2}
+            aria-hidden
           />
-        ) : (
-          <div
-            className={`flex h-14 w-14 items-center justify-center rounded-full text-sm font-semibold text-white ${person.avatarClass} ${
-              selected ? "ring-2 ring-blue-500 ring-offset-2 ring-offset-white" : ""
-            }`}
-          >
-            {person.initials}
-          </div>
-        )}
-        {selected ? (
-          <span className="absolute -bottom-0.5 -right-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-blue-500 ring-2 ring-white">
-            <Check className="h-3 w-3 text-white" strokeWidth={3} />
-          </span>
         ) : null}
       </div>
-      <span className="max-w-[72px] truncate text-center text-[11px] text-gray-400">
-        {person.name}
-      </span>
     </div>
   );
 }
 
-function PrioritySegment({
-  active,
-  priorityUrgent,
-  priorityNormal,
+function DateTimePills({ date, allDay }: { date: Date; allDay: boolean }) {
+  return (
+    <div className="flex flex-wrap items-center justify-end gap-1.5">
+      <span className="rounded-lg bg-white/10 px-2 py-1 text-[12px] font-medium tabular-nums text-white">
+        {formatPillDate(date)}
+      </span>
+      {!allDay ? (
+        <span className="rounded-lg bg-white/10 px-2 py-1 text-[12px] font-medium tabular-nums text-white">
+          {formatEventTime(date)}
+        </span>
+      ) : null}
+    </div>
+  );
+}
+
+function Chip({
+  icon: Icon,
+  label,
+  wide = false,
 }: {
-  active: TaskPrioritySegment;
-  priorityUrgent: string;
-  priorityNormal: string;
+  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
+  label: string;
+  wide?: boolean;
 }) {
   return (
-    <div className="flex rounded-xl bg-gray-100/80 p-1">
-      <div
-        className={`flex-1 rounded-lg py-2.5 text-center text-[15px] font-medium ${
-          active === "urgent"
-            ? "bg-blue-100 text-blue-500"
-            : "text-gray-400"
-        }`}
-      >
-        {priorityUrgent}
-      </div>
-      <div
-        className={`flex-1 rounded-lg py-2.5 text-center text-[15px] font-medium ${
-          active === "normal"
-            ? "bg-blue-100 text-blue-500"
-            : "text-gray-400"
-        }`}
-      >
-        {priorityNormal}
-      </div>
+    <div
+      className={`inline-flex items-center gap-1.5 rounded-full bg-[#2A2A2E] px-3 py-2 text-[13px] text-white/80 ${
+        wide ? "flex-1 justify-center" : ""
+      }`}
+    >
+      <Icon className="h-3.5 w-3.5 shrink-0 text-[#A78BFA]" strokeWidth={2} />
+      <span className="truncate">{label}</span>
     </div>
   );
 }
 
-function resolveForWhomDisplay(event: CalendarEvent): {
-  isEveryone: boolean;
-  people: CalendarPerson[];
-  forWhomIds: string[];
+function forWhomTrailing(event: CalendarEvent, everyoneLabel: string): string {
+  if (isHouseholdWideBeneficiaries(event)) return everyoneLabel;
+  const person = event.forPerson ?? event.beneficiaries[0];
+  return person?.name?.trim() || everyoneLabel;
+}
+
+function assigneeTrailing(event: CalendarEvent): {
+  kind: "count" | "label";
+  value: string;
 } {
-  const people = event.beneficiaries ?? [];
-  const forWhomIds = normalizeIdArray(event.forWhomIds);
-  if (isHouseholdWideBeneficiaries(event)) {
-    return { isEveryone: true, people: [], forWhomIds: [] };
+  if (event.assignees.length > 1) {
+    return { kind: "count", value: String(event.assignees.length) };
   }
-  return { isEveryone: false, people, forWhomIds };
+  if (event.assignees.length === 1) {
+    return { kind: "label", value: event.assignees[0]!.name };
+  }
+  return { kind: "label", value: event.assigneeLabel };
 }
 
 export function TaskDetailSheet({
   event,
   membershipId,
   membershipRole,
+  householdName,
   open,
   onClose,
+  onReadonlyAction,
 }: {
   event: CalendarEvent;
   membershipId: string;
   membershipRole: string;
+  householdName?: string | null;
   open: boolean;
   onClose: () => void;
+  onReadonlyAction?: () => void;
 }) {
   const { t } = useDictionary();
   const fields = getTaskDetailFieldValues(event);
   const labels = fields.labels;
-  const forWhom = resolveForWhomDisplay(event);
   const editable = canEditTask({
     creatorId: event.creatorId,
     membershipId,
     role: membershipRole,
   });
 
+  const duration =
+    formatEventDuration(event) ||
+    (event.isAllDay ? t("console.calendar.allDay") : "—");
+  const forWhomValue = forWhomTrailing(event, t("common.everyone"));
+  const assignee = assigneeTrailing(event);
+  const endAt = event.endAt ?? event.startAt;
+  const priorityUrgent = fields.prioritySegment === "urgent";
+  const groupName = householdName?.trim() || t("console.nav.group");
+
+  const guardEdit = () => {
+    if (!editable) onReadonlyAction?.();
+  };
+
   return (
     <OverlayRoot open={open} onClose={onClose} variant="sheet">
-        <div className="flex max-h-[min(92dvh,780px)] w-full flex-col overflow-hidden rounded-t-[20px] bg-[#F2F2F7] shadow-2xl">
-          <div className="flex justify-center pt-2.5 pb-1">
-            <div className="h-1 w-9 rounded-full bg-gray-300" aria-hidden />
+      <div className="flex max-h-[min(94dvh,820px)] w-full flex-col overflow-hidden rounded-t-[22px] bg-[#1C1C1E] shadow-2xl">
+        <div className="flex justify-center pt-2.5 pb-1">
+          <div className="h-1 w-9 rounded-full bg-white/20" aria-hidden />
+        </div>
+
+        <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
+          <header className="sticky top-0 z-10 flex items-center justify-between bg-[#1C1C1E]/95 py-2 backdrop-blur-md">
+            <button
+              type="button"
+              onClick={onClose}
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-[#0A84FF]/20 text-[#0A84FF] transition active:opacity-70"
+              aria-label={t("common.close")}
+            >
+              <X className="h-5 w-5" strokeWidth={2.5} />
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                if (!editable) {
+                  onReadonlyAction?.();
+                  return;
+                }
+                onClose();
+              }}
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-[#0A84FF]/20 text-[#0A84FF] transition active:opacity-70"
+              aria-label={t("common.done")}
+            >
+              <Check className="h-5 w-5" strokeWidth={2.5} />
+            </button>
+          </header>
+
+          <div className="pb-3 pt-1">
+            <p className="text-[28px] font-semibold leading-tight tracking-tight text-white">
+              {event.title}
+            </p>
           </div>
 
-          <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
-            <header className="relative sticky top-0 z-10 flex items-center justify-between bg-[#F2F2F7]/90 px-4 py-3 backdrop-blur-md">
+          {!editable ? (
+            <div className="mb-3 rounded-2xl border border-amber-400/30 bg-amber-400/10 px-3 py-2.5 text-[13px] leading-snug text-amber-100">
+              {t("console.calendar.readonlyDetailHint")}
+            </div>
+          ) : null}
+
+          <section className="overflow-hidden rounded-[18px] bg-[#2C2C2E]">
+            <DetailRow icon={CalendarDays} label={groupName}>
+              <span className="h-2.5 w-2.5 rounded-full bg-[#BF5AF2]" aria-hidden />
+            </DetailRow>
+            <div className="mx-3 h-px bg-white/[0.08]" />
+
+            <DetailRow
+              icon={Paperclip}
+              label={t("console.taskDetail.attachments")}
+              showChevron
+            >
               <button
                 type="button"
-                onClick={onClose}
-                className="min-w-[52px] text-left text-[17px] font-medium text-blue-600 active:opacity-70"
+                onClick={guardEdit}
+                className="text-[15px] text-[#0A84FF]"
               >
-                {t("common.close")}
+                {t("console.taskDetail.addAttachment")}
               </button>
-              <h2 className="pointer-events-none absolute left-1/2 -translate-x-1/2 text-[17px] font-bold text-gray-900">
-                {t("console.calendar.taskDetail")}
-              </h2>
-              <div className="min-w-[52px]" aria-hidden />
-            </header>
+            </DetailRow>
+            <div className="mx-3 h-px bg-white/[0.08]" />
 
-            <h1 className="px-4 pb-2 pt-4 text-4xl font-extrabold tracking-tight text-black">
-              {event.title}
-            </h1>
-
-            {!editable ? (
-              <div className="mx-4 mb-3 rounded-2xl border border-amber-200/80 bg-amber-50/90 px-3 py-2.5 text-[13px] leading-snug text-amber-950">
-                {t("console.calendar.readonlyDetailHint")}
-              </div>
-            ) : null}
-
-            <InsetCard className="divide-y divide-gray-100">
-              <InfoRow
-                icon={Calendar}
-                label={fields.timeLabel}
-                value={fields.timeValue}
-              />
-              <InfoRow icon={Repeat} label={labels.fieldRepeat} value={fields.repeatValue} />
-              <InfoRow icon={Bell} label={labels.fieldReminder} value={fields.reminderValue} />
-              <InfoRow
-                icon={User}
-                label={labels.fieldAssignee}
-                value={fields.assigneeValue}
-              />
-              <InfoRow
-                icon={Banknote}
-                label={labels.fieldBudget}
-                value={fields.budgetValue}
-              />
-              <InfoRow
-                icon={Tag}
-                label={labels.fieldStatus}
-                value={fields.statusValue}
-                valueClassName={
-                  fields.statusHighlight
-                    ? "text-[15px] font-medium text-blue-500"
-                    : "text-[15px] text-gray-900"
-                }
-              />
-            </InsetCard>
-
-            <InsetCard className="overflow-visible">
-              <CardSectionTitle icon={Users}>{labels.fieldForWhom}</CardSectionTitle>
-              <div className="flex gap-3 overflow-x-auto overflow-y-visible px-4 pb-5 pt-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                {forWhom.isEveryone ? (
-                  <BeneficiaryAvatar
-                    person={null}
-                    selected={false}
-                    everyoneLabel={t("common.everyone")}
-                  />
-                ) : (
-                  forWhom.people.map((person) => (
-                    <BeneficiaryAvatar
-                      key={person.id}
-                      person={person}
-                      selected={personIsInForWhomList(person, forWhom.forWhomIds)}
-                      everyoneLabel={t("common.everyone")}
-                    />
-                  ))
-                )}
-              </div>
-            </InsetCard>
-
-            <InsetCard>
-              <CardSectionTitle>{labels.fieldPriority}</CardSectionTitle>
-              <div className="px-4 pb-4">
-                <PrioritySegment
-                  active={fields.prioritySegment}
-                  priorityUrgent={fields.priorityUrgent}
-                  priorityNormal={fields.priorityNormal}
+            <DetailRow icon={Clock} label={t("console.calendar.allDay")}>
+              <span
+                className={`relative h-[28px] w-[48px] rounded-full transition ${
+                  event.isAllDay ? "bg-[#30D158]" : "bg-white/15"
+                }`}
+                aria-hidden
+              >
+                <span
+                  className={`absolute top-[2px] h-6 w-6 rounded-full bg-white shadow transition ${
+                    event.isAllDay ? "right-[2px]" : "left-[2px]"
+                  }`}
                 />
-              </div>
-            </InsetCard>
+              </span>
+            </DetailRow>
+            <div className="mx-3 h-px bg-white/[0.08]" />
 
-            <InsetCard>
-              <CardSectionTitle>{labels.fieldEmergency}</CardSectionTitle>
-              <div className="flex items-center justify-between px-4 pb-4">
-                <span className="text-[15px] text-gray-300">
-                  {fields.emergencyContactValue}
+            <DetailRow icon={CalendarDays} label={t("console.taskDetail.starts")}>
+              <DateTimePills date={event.startAt} allDay={event.isAllDay} />
+            </DetailRow>
+            <div className="mx-3 h-px bg-white/[0.08]" />
+
+            <DetailRow icon={CalendarDays} label={t("console.taskDetail.ends")}>
+              <DateTimePills date={endAt} allDay={event.isAllDay} />
+            </DetailRow>
+            <div className="mx-3 h-px bg-white/[0.08]" />
+
+            <DetailRow icon={Hourglass} label={t("console.taskDetail.duration")}>
+              <span className="text-[15px] text-white">{duration}</span>
+            </DetailRow>
+            <div className="mx-3 h-px bg-white/[0.08]" />
+
+            <DetailRow
+              icon={Tag}
+              label={t("console.taskDetail.color")}
+              showChevron
+            >
+              <span className="h-5 w-5 rounded-full bg-white" aria-hidden />
+            </DetailRow>
+            <div className="mx-3 h-px bg-white/[0.08]" />
+
+            <DetailRow
+              icon={Bell}
+              label={t("console.taskDetail.remind")}
+              showChevron
+            >
+              <span className="text-[15px] text-[#BF5AF2]">
+                {fields.reminderValue}
+              </span>
+            </DetailRow>
+            <div className="mx-3 h-px bg-white/[0.08]" />
+
+            <DetailRow
+              icon={User}
+              label={labels.fieldAssignee}
+              showChevron
+            >
+              {assignee.kind === "count" ? (
+                <span className="flex h-6 min-w-6 items-center justify-center rounded-full bg-[#BF5AF2] px-1.5 text-[12px] font-bold text-white">
+                  {assignee.value}
                 </span>
-                <UserRound
-                  className="h-5 w-5 text-gray-300"
-                  strokeWidth={2}
+              ) : (
+                <span className="truncate text-[15px] text-[#BF5AF2]">
+                  {assignee.value}
+                </span>
+              )}
+            </DetailRow>
+            <div className="mx-3 h-px bg-white/[0.08]" />
+
+            <DetailRow
+              icon={Users}
+              label={t("console.calendar.forWhomLabel")}
+              showChevron
+            >
+              <span className="truncate text-[15px] tabular-nums text-[#BF5AF2]">
+                {forWhomValue}
+              </span>
+            </DetailRow>
+            <div className="mx-3 h-px bg-white/[0.08]" />
+
+            <DetailRow
+              icon={Flag}
+              label={labels.fieldPriority}
+              showChevron
+            >
+              <span className="inline-flex items-center gap-1.5 text-[15px] text-white">
+                <span
+                  className={`h-2.5 w-2.5 rounded-full ${
+                    priorityUrgent ? "bg-[#FF453A]" : "bg-[#0A84FF]"
+                  }`}
                   aria-hidden
                 />
-              </div>
-            </InsetCard>
+                {priorityUrgent
+                  ? fields.priorityUrgent
+                  : fields.priorityNormal}
+              </span>
+            </DetailRow>
+          </section>
 
-            <InsetCard>
-              <CardSectionTitle>{labels.fieldLocation}</CardSectionTitle>
-              <div className="flex items-center gap-2 px-4 pb-4">
-                <MapPin
-                  className="h-[18px] w-[18px] shrink-0 text-gray-400"
-                  strokeWidth={2}
-                />
-                <span className="min-w-0 flex-1 text-[15px] text-gray-900">
-                  {fields.locationValue}
-                </span>
-                <ChevronRight
-                  className="h-5 w-5 shrink-0 text-gray-300"
-                  strokeWidth={2}
-                  aria-hidden
-                />
-              </div>
-            </InsetCard>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={guardEdit}
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-[#2A2A2E] text-[#A78BFA]"
+              aria-label={t("console.calendar.createNew")}
+            >
+              <Plus className="h-4 w-4" strokeWidth={2.5} />
+            </button>
+            <Chip icon={Repeat} label={labels.fieldRepeat} />
+            <Chip icon={MapPin} label={labels.fieldLocation} />
+            <Chip icon={MoreHorizontal} label={labels.fieldMoreDetails} />
+          </div>
 
-            <InsetCard>
-              <CardSectionTitle>{labels.fieldFinanceNotes}</CardSectionTitle>
-              <div className="px-4 pb-2">
-                <div className="flex items-center justify-between py-1">
-                  <span className="text-base font-bold text-gray-900">
-                    {labels.fieldBudget}
-                  </span>
-                  <span className="text-base text-gray-400">
-                    {fields.budgetValue}
-                  </span>
-                </div>
-              </div>
-              <div className="border-t border-gray-100 px-4 py-3">
-                <p className="text-[13px] text-gray-400">{labels.fieldDescription}</p>
-                {fields.descriptionValue ? (
-                  <p className="mt-2 text-[15px] leading-relaxed text-gray-700">
-                    {fields.descriptionValue}
-                  </p>
-                ) : (
-                  <p className="mt-2 text-[15px] leading-relaxed text-gray-300">
-                    {fields.descriptionPlaceholder ?? fields.notesEmptyLabel}
-                  </p>
-                )}
-              </div>
-            </InsetCard>
-
-            <InsetCard>
-              <CardSectionTitle>{labels.fieldMoreDetails}</CardSectionTitle>
-              <p className="px-4 pb-4 text-[15px] text-gray-300">
-                {fields.descriptionValue || fields.notesEmptyLabel}
-              </p>
-            </InsetCard>
-
-            <div
-              className="pb-[max(2rem,env(safe-area-inset-bottom))]"
-              aria-hidden
+          <div className="mt-2 flex gap-2">
+            <Chip icon={Banknote} label={t("console.taskDetail.expenses")} />
+            <Chip
+              icon={Phone}
+              label={labels.fieldEmergency}
+              wide
             />
           </div>
+
+          <p className="mt-4 text-center text-[11px] text-white/35">
+            {t("console.taskDetail.lastEditedHint")}
+          </p>
+
+          <div className="mt-3 grid grid-cols-2 gap-3 pb-2">
+            <button
+              type="button"
+              onClick={guardEdit}
+              className="rounded-2xl bg-[#2C2C2E] py-3.5 text-[16px] font-semibold text-[#FF9F0A] transition active:opacity-80"
+            >
+              {t("console.taskDetail.acceptTask")}
+            </button>
+            <button
+              type="button"
+              onClick={guardEdit}
+              className="rounded-2xl bg-[#2C2C2E] py-3.5 text-[16px] font-semibold text-white transition active:opacity-80"
+            >
+              {t("console.taskDetail.deleteTask")}
+            </button>
+          </div>
         </div>
+      </div>
     </OverlayRoot>
   );
 }

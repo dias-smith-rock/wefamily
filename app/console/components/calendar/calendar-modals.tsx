@@ -28,27 +28,27 @@ export function CalendarActionSheet({
         <button
           type="button"
           onClick={onSelectCreate}
-          className="flex w-full items-center gap-3 border-b border-gray-100 px-4 py-3.5 text-left text-[17px] text-gray-900 active:bg-gray-50"
+          className="flex w-full items-center gap-3 border-b border-white/[0.08] px-4 py-3.5 text-left text-[17px] text-white active:bg-white/5"
         >
-          <ListPlus className="h-5 w-5 text-blue-600" strokeWidth={2} />
+          <ListPlus className="h-5 w-5 text-[#0A84FF]" strokeWidth={2} />
           {t("console.calendar.newTask")}
         </button>
         <button
           type="button"
           onClick={onSelectCreate}
-          className="flex w-full items-center gap-3 px-4 py-3.5 text-left text-[17px] text-gray-900 active:bg-gray-50"
+          className="flex w-full items-center gap-3 px-4 py-3.5 text-left text-[17px] text-white active:bg-white/5"
         >
-          <CalendarPlus className="h-5 w-5 text-violet-600" strokeWidth={2} />
+          <CalendarPlus className="h-5 w-5 text-[#BF5AF2]" strokeWidth={2} />
           {t("console.calendar.newEvent")}
         </button>
-        <button
-          type="button"
-          onClick={onClose}
-          className="mt-2 w-full rounded-2xl bg-white/95 py-3.5 text-[17px] font-semibold text-blue-600 backdrop-blur-xl active:bg-gray-50"
-        >
-          {t("common.cancel")}
-        </button>
       </ActionSheetPanel>
+      <button
+        type="button"
+        onClick={onClose}
+        className="mt-2 w-full rounded-[18px] border border-white/10 bg-[#2C2C2E]/95 py-3.5 text-[17px] font-semibold text-[#0A84FF] backdrop-blur-xl active:bg-white/5"
+      >
+        {t("common.cancel")}
+      </button>
     </OverlayRoot>
   );
 }
@@ -65,18 +65,18 @@ export function ReadonlyModeAlert({
   return (
     <OverlayRoot open={open} onClose={onClose} variant="alert">
       <AlertPanel>
-        <div className="px-4 pb-3 pt-5 text-center">
-          <h2 className="text-[17px] font-semibold text-gray-900">
+        <div className="px-5 pb-4 pt-5 text-center">
+          <h2 className="text-[17px] font-semibold text-white">
             {t("console.calendar.readonlyTitle")}
           </h2>
-          <p className="mt-3 text-[13px] leading-relaxed text-gray-500">
+          <p className="mt-3 text-[13px] leading-relaxed text-white/55">
             {t("console.calendar.readonlyBody")}
           </p>
         </div>
         <button
           type="button"
           onClick={onClose}
-          className="w-full border-t border-gray-200/80 py-3.5 text-[17px] font-semibold text-blue-600 active:bg-gray-50"
+          className="w-full border-t border-white/[0.08] py-3.5 text-[17px] font-semibold text-[#0A84FF] active:bg-white/5"
         >
           {t("common.gotIt")}
         </button>
@@ -98,19 +98,19 @@ export function AiAssistantSheet({
     <OverlayRoot open={open} onClose={onClose} variant="sheet">
       <SheetPanel>
         <div className="px-6 pb-12 pt-4 text-center">
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 text-white shadow-lg">
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#0A84FF] text-white shadow-ios-fab">
             <Sparkles className="h-8 w-8" strokeWidth={2} fill="currentColor" />
           </div>
-          <h2 className="mt-5 text-xl font-bold text-gray-900">
+          <h2 className="mt-5 text-xl font-bold text-white">
             {t("console.calendar.aiTitle")}
           </h2>
-          <p className="mt-3 text-[14px] leading-relaxed text-gray-500">
+          <p className="mt-3 text-[14px] leading-relaxed text-white/55">
             {t("console.calendar.aiBody")}
           </p>
           <button
             type="button"
             onClick={onClose}
-            className="mt-8 w-full rounded-full bg-gray-200/80 py-3.5 text-[15px] font-semibold text-gray-600 active:bg-gray-300/80"
+            className="mt-8 w-full rounded-full bg-white/10 py-3.5 text-[15px] font-semibold text-white active:bg-white/15"
           >
             {t("common.close")}
           </button>
@@ -124,12 +124,14 @@ export function CalendarModals({
   modal,
   membershipId,
   membershipRole,
+  householdName,
   onClose,
   onOpenReadonlyAlert,
 }: {
   modal: CalendarModalState;
   membershipId: string;
   membershipRole: string;
+  householdName?: string | null;
   onClose: () => void;
   onOpenReadonlyAlert: () => void;
 }) {
@@ -140,8 +142,10 @@ export function CalendarModals({
           event={modal.event}
           membershipId={membershipId}
           membershipRole={membershipRole}
+          householdName={householdName}
           open
           onClose={onClose}
+          onReadonlyAction={onOpenReadonlyAlert}
         />
       ) : null}
       <CalendarActionSheet

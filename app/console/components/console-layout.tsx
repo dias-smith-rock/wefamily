@@ -70,6 +70,10 @@ export function ConsoleLayout({
               <CalendarView
                 key={householdId}
                 householdId={householdId}
+                householdName={
+                  householdOptions.find((o) => o.householdId === householdId)
+                    ?.householdName
+                }
                 membershipId={membershipId}
                 membershipRole={membershipRole}
                 profileId={profileId}
@@ -90,6 +94,10 @@ export function ConsoleLayout({
               <TodoView
                 key={householdId}
                 householdId={householdId}
+                householdName={
+                  householdOptions.find((o) => o.householdId === householdId)
+                    ?.householdName
+                }
                 membershipId={membershipId}
                 membershipRole={membershipRole}
                 enabled

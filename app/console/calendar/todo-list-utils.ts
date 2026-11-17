@@ -121,3 +121,33 @@ export function formatTodoDeadlineLabel(event: CalendarEvent): string {
   }
   return interpolate("Due {date}", { date: formatted });
 }
+
+/** 对齐 iOS 卡片副文案：Due by Tue, 17/11 */
+export function formatTodoDueByLabel(event: CalendarEvent): string {
+  const dictionary = getActiveDictionary();
+  const locale = resolveClientLocale();
+
+  if (!event.endAt) {
+    return dictionary.console.calendar.todoNoDeadline;
+  }
+
+  const weekday = new Intl.DateTimeFormat(locale, { weekday: "short" }).format(
+    event.endAt,
+  );
+  const day = String(event.endAt.getDate()).padStart(2, "0");
+  const month = String(event.endAt.getMonth() + 1).padStart(2, "0");
+  const datePart = `${weekday}, ${day}/${month}`;
+
+  const template =
+    (dictionary.console.calendar as { todoDueBy?: string }).todoDueBy ??
+    (locale.startsWith("zh") ? "截止 {date}" : "Due by {date}");
+  return interpolate(template, { date: datePart });
+}
+
+export function completedFlexibleTodos(events: CalendarEvent[]): CalendarEvent[] {
+  return events.filter((event) => {
+    if (!event.isFlexibleTodo) return false;
+    const s = event.status.trim().toLowerCase();
+    return s === "completed" || s === "done";
+  });
+}

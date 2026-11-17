@@ -31,18 +31,23 @@ export function OverlayRoot({
 
   if (!open) return null;
 
+  const alignClass =
+    variant === "alert"
+      ? "items-center justify-center px-6"
+      : "items-end justify-center";
+
   return (
-    <div className="fixed inset-0 z-[100] flex items-end justify-center sm:items-center">
+    <div className={`fixed inset-0 z-[100] flex ${alignClass}`}>
       <button
         type="button"
-        className="absolute inset-0 bg-black/40 backdrop-blur-md"
+        className="absolute inset-0 bg-black/55 backdrop-blur-md"
         aria-label={closeLabel}
         onClick={onClose}
       />
       <div
         className={`relative z-10 w-full max-w-lg transition-transform duration-300 ease-out ${
           variant === "alert"
-            ? "mx-4 flex items-center justify-center pb-0"
+            ? "flex items-center justify-center"
             : variant === "action-sheet"
               ? "px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]"
               : "px-0 pb-0"
@@ -66,10 +71,10 @@ export function SheetPanel({
 }) {
   return (
     <div
-      className={`max-h-[min(88dvh,720px)] overflow-y-auto rounded-t-[20px] bg-[#F2F2F7] shadow-2xl ${className}`}
+      className={`max-h-[min(88dvh,720px)] overflow-y-auto rounded-t-[20px] bg-[#1C1C1E] shadow-2xl ${className}`}
     >
       <div className="flex justify-center pt-2.5 pb-1">
-        <div className="h-1 w-9 rounded-full bg-gray-300" aria-hidden />
+        <div className="h-1 w-9 rounded-full bg-white/20" aria-hidden />
       </div>
       {children}
     </div>
@@ -78,7 +83,7 @@ export function SheetPanel({
 
 export function AlertPanel({ children }: { children: React.ReactNode }) {
   return (
-    <div className="w-full max-w-[270px] overflow-hidden rounded-2xl bg-white/95 backdrop-blur-xl">
+    <div className="w-full max-w-[300px] overflow-hidden rounded-[18px] border border-white/10 bg-[#2C2C2E]/95 shadow-ios-dock backdrop-blur-xl">
       {children}
     </div>
   );
@@ -87,7 +92,7 @@ export function AlertPanel({ children }: { children: React.ReactNode }) {
 export function ActionSheetPanel({ children }: { children: React.ReactNode }) {
   return (
     <div className="space-y-2">
-      <div className="overflow-hidden rounded-2xl bg-white/95 backdrop-blur-xl">
+      <div className="overflow-hidden rounded-[18px] border border-white/10 bg-[#2C2C2E]/95 backdrop-blur-xl">
         {children}
       </div>
     </div>

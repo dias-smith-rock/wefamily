@@ -1,5 +1,7 @@
 "use client";
 
+import { Menu, Printer } from "lucide-react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { fetchCalendarPageData } from "../calendar/api";
 import {
   reviveCalendarEvents,
@@ -9,17 +11,22 @@ import type { CalendarModalState } from "../calendar/types";
 import { openFlexibleTodoEvents } from "../calendar/utils";
 import { useCachedSupabase } from "../hooks/use-cached-supabase";
 import { LOCAL_CACHE_KEYS } from "../lib/local-cache";
+import { fetchHouseholdLists } from "../lists/api";
+import type { HouseholdListRow } from "../lists/types";
 import { useDictionary } from "@/lib/i18n/dictionary-provider";
 import { translateApiMessage } from "@/lib/i18n/translate-api-error";
-import { useMemo, useState, type ReactNode } from "react";
 import { CalendarModals } from "./calendar/calendar-modals";
 import { CalendarPageSkeleton } from "./calendar/calendar-skeleton";
-import { TodoListView } from "./calendar/todo-list-view";
-import { ConsoleTabHeader } from "./console-tab-header";
 import { CreateFab } from "./calendar/glass-chrome";
+import { TodoListView } from "./calendar/todo-list-view";
+import { ListDetailSheet } from "./todo/list-detail-sheet";
+import { PlannerListsView } from "./todo/planner-lists-view";
+
+type TodoSegment = "todos" | "planner";
 
 type TodoViewProps = {
   householdId: string;
+  householdName?: string | null;
   membershipId: string;
   membershipRole: string;
   enabled: boolean;
@@ -30,15 +37,22 @@ type TodoViewProps = {
 
 export function TodoView({
   householdId,
+  householdName,
   membershipId,
   membershipRole,
   enabled,
   onSessionLost,
-  onSignOut,
   householdSwitcher,
 }: TodoViewProps) {
   const { t } = useDictionary();
+  const [segment, setSegment] = useState<TodoSegment>("todos");
   const [modal, setModal] = useState<CalendarModalState>({ kind: "none" });
+  const [lists, setLists] = useState<HouseholdListRow[]>([]);
+  const [listsLoading, setListsLoading] = useState(false);
+  const [listsError, setListsError] = useState<string | null>(null);
+  const [selectedList, setSelectedList] = useState<HouseholdListRow | null>(
+    null,
+  );
 
   const {
     data: cachedEvents,
@@ -60,7 +74,34 @@ export function TodoView({
   });
 
   const events = useMemo(() => cachedEvents ?? [], [cachedEvents]);
-  const todoEvents = useMemo(() => openFlexibleTodoEvents(events), [events]);
+  const openTodos = useMemo(() => openFlexibleTodoEvents(events), [events]);
+  const allFlexibleTodos = useMemo(
+    () => events.filter((e) => e.isFlexibleTodo),
+    [events],
+  );
+
+  useEffect(() => {
+    if (!enabled || segment !== "planner") return;
+    let cancelled = false;
+    setListsLoading(true);
+    setListsError(null);
+    void fetchHouseholdLists(householdId).then((result) => {
+      if (cancelled) return;
+      setListsLoading(false);
+      if (!result.ok) {
+        if (result.reason === "expired" || result.reason === "no_session") {
+          onSessionLost();
+        }
+        setListsError(result.message);
+        setLists([]);
+        return;
+      }
+      setLists(result.data);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [enabled, segment, householdId, onSessionLost]);
 
   const closeModal = () => setModal({ kind: "none" });
 
@@ -92,20 +133,95 @@ export function TodoView({
 
   return (
     <>
-      <ConsoleTabHeader
-        title={t("console.calendar.viewTodo")}
-        onSignOut={onSignOut}
-        leading={householdSwitcher}
-      />
-      <TodoListView
-        todos={todoEvents}
-        onEventPress={(event) => setModal({ kind: "task", event })}
-      />
+      <header className="sticky top-0 z-40 px-4 pb-2 pt-[max(0.55rem,env(safe-area-inset-top))]">
+        <div className="flex items-center justify-between gap-3">
+          <div className="min-w-0">{householdSwitcher}</div>
+          <div className="glass-pill flex items-center gap-0.5 rounded-full p-1">
+            <button
+              type="button"
+              onClick={() => window.print()}
+              className="flex h-9 w-9 items-center justify-center rounded-full text-[#7CC4FF] transition active:bg-white/10"
+              aria-label="Print"
+            >
+              <Printer className="h-[18px] w-[18px]" strokeWidth={2} />
+            </button>
+            <button
+              type="button"
+              onClick={() => setModal({ kind: "action-sheet" })}
+              className="flex h-9 w-9 items-center justify-center rounded-full text-[#7CC4FF] transition active:bg-white/10"
+              aria-label={t("console.calendar.switchView")}
+            >
+              <Menu className="h-[18px] w-[18px]" strokeWidth={2} />
+            </button>
+          </div>
+        </div>
+
+        <div className="mt-3 flex justify-center">
+          <div className="glass-pill inline-flex rounded-full p-1">
+            <button
+              type="button"
+              onClick={() => setSegment("todos")}
+              className={`min-w-[96px] rounded-full px-4 py-1.5 text-[13px] font-semibold transition ${
+                segment === "todos"
+                  ? "bg-white/85 text-black"
+                  : "text-white/70"
+              }`}
+            >
+              {t("console.todo.segmentTodos")}
+            </button>
+            <button
+              type="button"
+              onClick={() => setSegment("planner")}
+              className={`min-w-[96px] rounded-full px-4 py-1.5 text-[13px] font-semibold transition ${
+                segment === "planner"
+                  ? "bg-white/85 text-black"
+                  : "text-white/70"
+              }`}
+            >
+              {t("console.todo.segmentPlanner")}
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {segment === "todos" ? (
+        <TodoListView
+          openTodos={openTodos}
+          allFlexibleTodos={allFlexibleTodos}
+          onEventPress={(event) => setModal({ kind: "task", event })}
+        />
+      ) : listsLoading ? (
+        <CalendarPageSkeleton />
+      ) : listsError ? (
+        <div className="px-4 pt-8">
+          <div className="glass-panel rounded-3xl p-6 text-center">
+            <p className="text-sm text-red-300">
+              {translateApiMessage(t, listsError)}
+            </p>
+          </div>
+        </div>
+      ) : (
+        <PlannerListsView
+          lists={lists}
+          householdName={householdName}
+          onOpenList={setSelectedList}
+        />
+      )}
+
       <CreateFab onClick={() => setModal({ kind: "action-sheet" })} />
+
+      <ListDetailSheet
+        list={selectedList}
+        open={selectedList != null}
+        onClose={() => setSelectedList(null)}
+        onReadonlyAction={() => setModal({ kind: "readonly-alert" })}
+      />
+
       <CalendarModals
         modal={modal}
         membershipId={membershipId}
         membershipRole={membershipRole}
+        householdName={householdName}
         onClose={closeModal}
         onOpenReadonlyAlert={() => setModal({ kind: "readonly-alert" })}
       />
