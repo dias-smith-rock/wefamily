@@ -79,7 +79,7 @@ export function ProductLogo({
       : tone === "onLight"
         ? "text-slate-900"
         : linkStyle
-          ? "text-[#007AFF]"
+          ? "text-[#FF6F4C]"
           : "text-slate-900";
 
   return (
@@ -95,8 +95,14 @@ export function formatCopyright(
   locale: Locale,
 ): string {
   const name = productName(locale);
+  // 中英文同名时只保留一个品牌名，避免 “Calendly (Calendly)”
+  if (PRODUCT_NAME_ZH === PRODUCT_NAME_EN) {
+    return copyrightTemplate
+      .replace(/\{productZh\}\s*\(\{productEn\}\)/, name)
+      .replace(/\{productZh\}/g, name)
+      .replace(/\{productEn\}/g, name);
+  }
   return copyrightTemplate
-    .replace(/\{productZh\}\s*\(\{productEn\}\)/, name)
     .replace(/\{productZh\}/g, PRODUCT_NAME_ZH)
     .replace(/\{productEn\}/g, PRODUCT_NAME_EN);
 }

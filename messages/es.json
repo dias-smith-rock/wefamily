@@ -70,7 +70,7 @@
     }
   },
   "footer": {
-    "copyright": "© 2026 {productZh} ({productEn}). Todos los derechos reservados.",
+    "copyright": "© 2026 {productEn}. Todos los derechos reservados.",
     "privacy": "Política de privacidad",
     "terms": "Términos de servicio",
     "contact": "Contáctanos"

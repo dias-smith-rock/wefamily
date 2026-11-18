@@ -92,24 +92,24 @@ export function HeroScreenshots({
   }, []);
 
   return (
-    <div className="relative mt-16 w-full rounded-[2.5rem] border border-gray-200/90 bg-gradient-to-br from-slate-100 via-white to-blue-50/80 py-8 shadow-2xl shadow-gray-200/60 sm:py-10 md:py-12">
+    <div className="relative mt-16 w-full rounded-[2.5rem] border border-[#FF6F4C]/15 bg-gradient-to-br from-[#FFF1EB] via-white to-[#FFE8D6]/80 py-8 shadow-2xl shadow-[#FF6F4C]/10 sm:py-10 md:py-12">
       <div
         className="pointer-events-none absolute inset-0 rounded-[2.5rem] opacity-60"
         aria-hidden
         style={{
           background:
-            "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(59,130,246,0.12), transparent 70%)",
+            "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255,111,76,0.14), transparent 70%)",
         }}
       />
 
       <div
-        className={`pointer-events-none absolute inset-y-8 start-0 z-10 w-12 rounded-s-[2.5rem] bg-gradient-to-r from-slate-50/95 to-transparent transition-opacity duration-300 sm:w-16 ${
+        className={`pointer-events-none absolute inset-y-8 start-0 z-10 w-12 rounded-s-[2.5rem] bg-gradient-to-r from-[#FFF1EB]/95 to-transparent transition-opacity duration-300 sm:w-16 ${
           canScrollPrev ? "opacity-100" : "opacity-0"
         }`}
         aria-hidden
       />
       <div
-        className={`pointer-events-none absolute inset-y-8 end-0 z-10 w-12 rounded-e-[2.5rem] bg-gradient-to-l from-blue-50/95 to-transparent transition-opacity duration-300 sm:w-16 ${
+        className={`pointer-events-none absolute inset-y-8 end-0 z-10 w-12 rounded-e-[2.5rem] bg-gradient-to-l from-[#FFE8D6]/95 to-transparent transition-opacity duration-300 sm:w-16 ${
           canScrollNext ? "opacity-100" : "opacity-0"
         }`}
         aria-hidden
@@ -181,8 +181,8 @@ export function HeroScreenshots({
               aria-current={index === activeIndex ? "true" : undefined}
               className={`h-2 rounded-full transition-all duration-300 ${
                 index === activeIndex
-                  ? "w-6 bg-blue-600"
-                  : "w-2 bg-slate-300 hover:bg-slate-400"
+                  ? "w-6 bg-[#FF6F4C]"
+                  : "w-2 bg-slate-300 hover:bg-[#FF6F4C]/50"
               }`}
             />
           ))}

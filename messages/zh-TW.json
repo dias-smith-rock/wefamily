@@ -20,7 +20,7 @@
   },
   "useCases": {
     "sectionTitle": "適用場景",
-    "sectionSubtitle": "凡是有協作需求的緊密小圈子——3 到 20 人、彼此信任、需要分事排期——都能用 Calendly理清瑣事。",
+    "sectionSubtitle": "凡是有協作需求的緊密小圈子——3 到 20 人、彼此信任、需要分事排期——都能用 Calendly 理清瑣事。",
     "items": {
       "family": {
         "title": "群組",
@@ -70,7 +70,7 @@
     }
   },
   "footer": {
-    "copyright": "© 2026 {productZh} ({productEn}). All rights reserved.",
+    "copyright": "© 2026 {productEn}. All rights reserved.",
     "privacy": "隱私政策",
     "terms": "服務條款",
     "contact": "聯絡我們"
