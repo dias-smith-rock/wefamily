@@ -1,29 +1,31 @@
 {
   "meta": {
-    "title": "Calendly — 让小圈子日程与待办同步",
-    "description": "日历、任务、成员档案一站搞定。适合家庭、旅行团、社团等紧密小圈子。轻量清晰，不必人人下载 App。"
+    "title": "Calendly — 让家庭日程与待办同步",
+    "description": "日历、任务、成员档案一站搞定——支持 Web 与 App。专为家庭设计。无需下载 App，打开网页即可创建和查看任务、管理成员。"
   },
   "nav": {
     "features": "功能",
     "howItWorks": "快速上手",
     "webConsole": "Web 控制台",
-    "getApp": "获取 App"
+    "getApp": "获取 App",
+    "console": "控制台"
   },
   "hero": {
     "eyebrow": "Calendly",
-    "title": "让小圈子日程与待办，真正同步",
-    "subtitle": "日历、任务、分工、成员档案——家庭、旅行团、社团小组都能用。界面清晰，主理人可代管未安装 App 的成员。",
+    "title": "让家庭日程与待办，真正同步",
+    "subtitle": "日历、任务、分工、成员档案——专为家庭打造。也可直接使用免费 Web 控制台：在浏览器里创建和查看任务、管理成员，不必先下载 App。",
     "downloadAppStore": "在 App Store 下载",
     "exploreWeb": "打开 Web 控制台",
+    "webNote": "更想用网页？任务、日程与家庭成员均可在浏览器完成——装 App 纯属可选。",
     "imageBrief": "首屏合成图：左侧/主视觉为日历周视图（多成员彩色日程块），右下角叠放手机 App 首页（日历 / 待办入口可见）。类似设备叠放，不要带额外角标文案。"
   },
   "guide": {
     "title": "快速上手",
-    "subtitle": "几步理清圈子日程与待办，马上开始协作。",
+    "subtitle": "从 Web 或 App 开始均可——几步理清家庭日程与待办。",
     "steps": [
       {
-        "title": "创建圈子并邀请成员",
-        "description": "建好家庭或小组，把需要协作的人拉进来。"
+        "title": "创建家庭并邀请成员",
+        "description": "在 Web 控制台或 App 中建好家庭空间，把需要协作的人拉进来。"
       },
       {
         "title": "为未装 App 的人建档",
@@ -31,58 +33,64 @@
       },
       {
         "title": "添加日程与任务",
-        "description": "公共待办与个人任务分开，责任到人、进度可查。"
+        "description": "在网页或手机上创建、查看公共待办——责任到人、进度可查。"
       }
     ],
-    "imageBrief": "快速上手示意：Web 或 App 中「圈子成员列表 + 邀请/建档」界面，能看清成员头像与角色。"
+    "imageBrief": "快速上手示意：Web 或 App 中「家庭成员列表 + 邀请/建档」界面，能看清成员头像与角色。"
   },
   "showcases": {
     "calendar": {
       "title": "多视图日历",
-      "description": "在日、周、月视图间切换，匹配家庭与小团队的不同节奏。谁有什么安排，一眼看清。",
+      "description": "在日、周、月视图间切换，匹配家庭的不同节奏。网页与手机都能一眼看清谁有什么安排。",
       "imageBrief": "日历多视图截图：优先周视图或月视图，带多成员彩色事件块；可叠一张手机日视图。"
     },
     "tasks": {
       "title": "任务与清单",
-      "description": "公共待办与个人任务分开管理。采购、值班、活动筹备——责任到人，进度可追踪。",
+      "description": "无需安装，打开浏览器即可创建和查看公共待办。采购、值班、活动筹备——责任到人，进度可追踪。",
       "imageBrief": "待办/清单界面：可见多个清单或任务卡片，带完成状态与负责人；平板+手机叠放更佳。"
     },
     "members": {
       "title": "成员档案",
-      "description": "不必强制人人下载 App。主理人可为长辈、儿童或外部协作者建立档案，一人统筹全圈子。",
-      "imageBrief": "成员/群组管理界面：成员列表、档案卡或「相关成员」选择器，突出免下载代管能力。"
+      "description": "在 Web 控制台管理家庭成员。主理人可为长辈、儿童或未安装 App 的人建立档案，一人统筹全家。",
+      "imageBrief": "成员/家庭管理界面：成员列表、档案卡或「相关成员」选择器，突出免下载代管能力。"
     },
     "sync": {
-      "title": "多端实时同步",
-      "description": "手机随时查看，电脑上用 Web 控制台统筹行程与进度，全平台保持一致。",
+      "title": "Web + App，始终同步",
+      "description": "电脑上用 Web 控制台统筹，手机随时查看——创建任务、查看日程、管理成员，随时随地都能做。",
       "imageBrief": "多端同屏：左边 Web 控制台日历，右边手机 App 同一日程，体现实时同步。"
     }
   },
+  "webPromo": {
+    "title": "完整 Web 版，无需下载 App",
+    "description": "打开浏览器即可创建和查看家庭任务、管理成员、梳理全家日程。适合在电脑上统筹，也方便不想装 App 的人直接使用。",
+    "cta": "打开 Web 控制台",
+    "imageBrief": "桌面 Web 控制台：日历或任务视图，带成员侧栏；优先宽屏浏览器框构图。"
+  },
   "appPromo": {
     "title": "免费移动 App",
-    "description": "出门在外也能管理圈子日程与待办，Calendly 随时在手边。",
+    "description": "出门在外更想用手机？App 与 Web 控制台实时同步，家庭任务与日程始终最新。",
     "cta": "在 App Store 下载",
     "imageBrief": "手机 App 竖屏精选界面 1–2 张（日历首页或待办页），干净无边框也可，便于放进手机框。"
   },
   "capabilities": {
-    "sectionTitle": "为小圈子协作而生",
-    "sectionSubtitle": "把散落在群聊里的安排，收进一套清晰工具。",
+    "sectionTitle": "为家庭协作而生",
+    "sectionSubtitle": "把散落在群聊里的安排，收进一套清晰工具——Web 与 App 都可用。",
     "items": {
       "members": {
         "title": "成员分类",
         "description": "每位成员有专属标识，日程归属一目了然。"
       },
       "sync": {
-        "title": "多端同步",
-        "description": "App 与 Web 控制台实时互通，避免信息分叉。"
+        "title": "自带 Web 控制台",
+        "description": "在浏览器创建任务、查看日程、管理成员——不必先装 App。"
       },
       "lists": {
         "title": "自定义清单",
-        "description": "任务、采购、筹备事项分组管理，全家/全组可见。"
+        "description": "任务、采购、筹备事项分组管理，全家可见。"
       },
       "privacy": {
         "title": "隐私保护",
-        "description": "Apple 登录与现代云架构，圈子数据妥善守护。"
+        "description": "Apple 登录与现代云架构，家庭数据妥善守护。"
       }
     }
   },

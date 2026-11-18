@@ -22,10 +22,11 @@ export function middleware(req: NextRequest) {
   const hostname = req.headers.get("host") || "";
   const pathname = url.pathname;
 
-  // public/ 静态资源（如 /brand/*）不应加 locale 前缀
+  // public/ 静态资源（如 /brand/*、/marketing/*）不应加 locale 前缀
   if (
     pathname.startsWith("/brand/") ||
     pathname.startsWith("/screenshots/") ||
+    pathname.startsWith("/marketing/") ||
     pathname === "/icon.png" ||
     pathname === "/favicon.ico"
   ) {
@@ -71,7 +72,7 @@ export function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!api|_next/static|_next/image|favicon.ico|icon.png|brand|screenshots).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|icon.png|brand|screenshots|marketing).*)",
     "/",
   ],
 };

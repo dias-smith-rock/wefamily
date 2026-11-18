@@ -1,29 +1,31 @@
 {
   "meta": {
-    "title": "Calendly — Keep Your Circle’s Schedule in Sync",
-    "description": "Calendar, tasks, and member profiles in one place. Built for families, travel groups, and small teams. Lightweight — not everyone needs the app."
+    "title": "Calendly — Keep Your Family’s Schedule in Sync",
+    "description": "Calendar, tasks, and member profiles in one place — on the web or in the app. Built for families. Create and view tasks or manage members in the browser without downloading an app."
   },
   "nav": {
     "features": "Features",
     "howItWorks": "Get Started",
     "webConsole": "Web Console",
-    "getApp": "Get the App"
+    "getApp": "Get the App",
+    "console": "Console"
   },
   "hero": {
     "eyebrow": "Calendly",
-    "title": "The simplest way to keep your circle in sync",
-    "subtitle": "Calendar, tasks, assignments, and member profiles — for families, travel groups, and clubs. Clear and light, with organizer-managed profiles for people who don’t install the app.",
+    "title": "The simplest way to keep your family in sync",
+    "subtitle": "Calendar, tasks, assignments, and member profiles — built for families. Use the free web console to create and view tasks or manage members in your browser — no app download required.",
     "downloadAppStore": "Download on the App Store",
     "exploreWeb": "Open Web Console",
+    "webNote": "Prefer the browser? Full web access for tasks, schedules, and family members — install the app only if you want.",
     "imageBrief": "Hero composite: main calendar week view with multi-member colored events, phone app home overlapping bottom-right (calendar / todos visible). Device stack only — no extra badges."
   },
   "guide": {
     "title": "Get started fast",
-    "subtitle": "A few steps to organize your circle’s schedule and to-dos.",
+    "subtitle": "Start on the web or in the app — a few steps to organize your family’s schedule and to-dos.",
     "steps": [
       {
-        "title": "Create a circle and invite members",
-        "description": "Set up your family or group and bring collaborators in."
+        "title": "Create a family and invite members",
+        "description": "Set up your household on the web console or in the app, then bring everyone in."
       },
       {
         "title": "Add profiles for people without the app",
@@ -31,58 +33,64 @@
       },
       {
         "title": "Add events and tasks",
-        "description": "Separate shared to-dos from personal tasks — clear owners, trackable progress."
+        "description": "Create and review shared to-dos from the browser or phone — clear owners, trackable progress."
       }
     ],
-    "imageBrief": "Onboarding visual: circle member list + invite/profile UI with avatars and roles clearly visible."
+    "imageBrief": "Onboarding visual: family member list + invite/profile UI with avatars and roles clearly visible."
   },
   "showcases": {
     "calendar": {
       "title": "Flexible calendar views",
-      "description": "Switch between day, week, and month to match your circle’s rhythm. See who’s busy at a glance.",
+      "description": "Switch between day, week, and month to match your family’s rhythm. See who’s busy at a glance — on the web or on mobile.",
       "imageBrief": "Calendar multi-view screenshot: prefer week or month with multi-member colored blocks; optional phone day view overlay."
     },
     "tasks": {
       "title": "Tasks & lists",
-      "description": "Keep shared to-dos and personal tasks separate. Shopping, rotations, event prep — every item has an owner.",
+      "description": "Create and view shared to-dos in the browser without installing anything. Shopping, rotations, event prep — every item has an owner.",
       "imageBrief": "Tasks/lists UI with multiple lists or cards, completion state and assignees; tablet + phone stack preferred."
     },
     "members": {
       "title": "Member profiles",
-      "description": "No need for everyone to install the app. Organizers can create profiles for elders, children, or external collaborators.",
-      "imageBrief": "Members/group management: member list, profile cards, or assignee picker highlighting no-download profiles."
+      "description": "Manage family members from the web console. Organizers can create profiles for elders, children, or anyone who doesn’t install the app.",
+      "imageBrief": "Members/family management: member list, profile cards, or assignee picker highlighting no-download profiles."
     },
     "sync": {
-      "title": "Sync across devices",
-      "description": "Check on the go from mobile, plan from the web console — everything stays in sync.",
+      "title": "Web + app, always in sync",
+      "description": "Plan on the desktop web console, check in on mobile — create tasks, view schedules, and manage members wherever you are.",
       "imageBrief": "Multi-device shot: web console calendar on the left, phone app showing the same schedule on the right."
     }
   },
+  "webPromo": {
+    "title": "Full web console — no download needed",
+    "description": "Open your browser to create and view family tasks, manage members, and keep the household schedule clear. Ideal at a desk — and for anyone who prefers not to install an app.",
+    "cta": "Open Web Console",
+    "imageBrief": "Desktop web console: calendar or tasks view with member sidebar, wide browser frame preferred."
+  },
   "appPromo": {
     "title": "Free mobile app",
-    "description": "Manage your circle’s schedule and to-dos anywhere — Calendly stays with you.",
+    "description": "Prefer your phone on the go? The app stays in sync with the web console so family tasks and schedules are always up to date.",
     "cta": "Download on the App Store",
     "imageBrief": "1–2 clean phone screens (calendar home or todos). Frameless OK for inserting into a phone mockup."
   },
   "capabilities": {
-    "sectionTitle": "Built for small-circle collaboration",
-    "sectionSubtitle": "Bring plans that live in chat into one clear toolkit.",
+    "sectionTitle": "Built for family collaboration",
+    "sectionSubtitle": "Bring plans that live in chat into one clear toolkit — on the web and in the app.",
     "items": {
       "members": {
         "title": "Member categories",
         "description": "Give each member a clear identity so schedules are easy to read."
       },
       "sync": {
-        "title": "Cross-device sync",
-        "description": "App and web console stay in sync — no forked information."
+        "title": "Web console included",
+        "description": "Create tasks, view schedules, and manage members in the browser — no app required."
       },
       "lists": {
         "title": "Custom lists",
-        "description": "Group tasks, shopping, and prep items for the whole circle."
+        "description": "Group tasks, shopping, and prep items for the whole family."
       },
       "privacy": {
         "title": "Privacy first",
-        "description": "Apple Sign In and modern cloud architecture to protect circle data."
+        "description": "Apple Sign In and modern cloud architecture to protect family data."
       }
     }
   },
