@@ -1,72 +1,89 @@
 {
   "meta": {
-    "title": "Calendly — Lightweight Hub for Small-Group Collaboration",
-    "description": "Task assignment, schedule sync, and member profiles for groups, travel groups, clubs, and other tight-knit teams. Lightweight and clear — no need for everyone to download the app."
+    "title": "Calendly — Keep Your Circle’s Schedule in Sync",
+    "description": "Calendar, tasks, and member profiles in one place. Built for families, travel groups, and small teams. Lightweight — not everyone needs the app."
   },
   "nav": {
+    "features": "Features",
+    "howItWorks": "Get Started",
     "webConsole": "Web Console",
     "getApp": "Get the App"
   },
   "hero": {
-    "titleLine1": "Help small groups collaborate",
-    "titleLine2": "without relying on chaotic group chats",
-    "subtitle": "Tasks, schedules, assignments, and member profiles — for groups, travel groups, clubs, and more. Lightweight and clear, with no need for everyone to install the app.",
+    "eyebrow": "Calendly",
+    "title": "The simplest way to keep your circle in sync",
+    "subtitle": "Calendar, tasks, assignments, and member profiles — for families, travel groups, and clubs. Clear and light, with organizer-managed profiles for people who don’t install the app.",
     "downloadAppStore": "Download on the App Store",
-    "exploreWeb": "Explore Web Features",
-    "screenshotAlt": "Calendly app screenshot",
-    "screenshotScrollHint": "Swipe or use arrows to browse screens",
-    "screenshotPrev": "Previous screenshot",
-    "screenshotNext": "Next screenshot"
+    "exploreWeb": "Open Web Console",
+    "imageBrief": "Hero composite: main calendar week view with multi-member colored events, phone app home overlapping bottom-right (calendar / todos visible). Device stack only — no extra badges."
   },
-  "useCases": {
-    "sectionTitle": "Use Cases",
-    "sectionSubtitle": "Any tight-knit circle of 3–20 people who trust each other and need to divide work and schedule events can use Calendly to stay organized.",
-    "items": {
-      "family": {
-        "title": "Group",
-        "pain": "School pickups, groceries, and medication reminders get lost in group chats.",
-        "solution": "The organizer manages profiles and tasks — everyone knows who is responsible, and the whole group schedule is visible at a glance."
+  "guide": {
+    "title": "Get started fast",
+    "subtitle": "A few steps to organize your circle’s schedule and to-dos.",
+    "steps": [
+      {
+        "title": "Create a circle and invite members",
+        "description": "Set up your family or group and bring collaborators in."
       },
-      "travel": {
-        "title": "Travel Group",
-        "pain": "Bookings, meeting times, IDs, and luggage details scroll past in the chat.",
-        "solution": "Trips go on the calendar with clear \"who handles what\" assignments — not everyone needs the app."
+      {
+        "title": "Add profiles for people without the app",
+        "description": "Include elders, kids, or temporary companions in one shared schedule."
       },
-      "club": {
-        "title": "Club / Class Committee",
-        "pain": "Event prep involves many tasks, uneven participation, and hard-to-track progress.",
-        "solution": "Separate shared to-dos from personal tasks so preparation roles are crystal clear."
-      },
-      "roommates": {
-        "title": "Roommates",
-        "pain": "Utilities, cleaning rotations, and shared shopping rely on verbal agreements that are easily forgotten.",
-        "solution": "Recurring tasks with reminders — every roommate assignment is recorded with a clear owner."
-      },
-      "startup": {
-        "title": "Startup Team",
-        "pain": "You don't want enterprise tools, but you still need lightweight task and schedule coordination.",
-        "solution": "Manage progress from the web console, check in on mobile — just the right size for a small team."
+      {
+        "title": "Add events and tasks",
+        "description": "Separate shared to-dos from personal tasks — clear owners, trackable progress."
       }
-    }
+    ],
+    "imageBrief": "Onboarding visual: circle member list + invite/profile UI with avatars and roles clearly visible."
   },
-  "features": {
-    "sectionTitle": "Simplified for Small Groups",
-    "sectionSubtitle": "Uneven participation? That's where we started designing the product.",
-    "profile": {
-      "title": "No-Download Member Profiles",
-      "description": "No need to force every member to install the app. Organizers can create profiles for people who don't use the app — grandparents, children, temporary travel companions, or external collaborators. One person can manage the whole circle's schedule and to-dos, removing participation barriers entirely."
+  "showcases": {
+    "calendar": {
+      "title": "Flexible calendar views",
+      "description": "Switch between day, week, and month to match your circle’s rhythm. See who’s busy at a glance.",
+      "imageBrief": "Calendar multi-view screenshot: prefer week or month with multi-member colored blocks; optional phone day view overlay."
     },
     "tasks": {
-      "title": "Dedicated Task Flow",
-      "description": "Clearly separate shared to-dos from personal tasks. Book hotels, bring documents, prepare materials, rotate shifts — every item has an owner and trackable progress."
+      "title": "Tasks & lists",
+      "description": "Keep shared to-dos and personal tasks separate. Shopping, rotations, event prep — every item has an owner.",
+      "imageBrief": "Tasks/lists UI with multiple lists or cards, completion state and assignees; tablet + phone stack preferred."
     },
-    "privacy": {
-      "title": "Enterprise-Grade Privacy",
-      "description": "Deep integration with Apple native sign-in. Built on modern cloud-native architecture with end-to-end encryption for your circle's data."
+    "members": {
+      "title": "Member profiles",
+      "description": "No need for everyone to install the app. Organizers can create profiles for elders, children, or external collaborators.",
+      "imageBrief": "Members/group management: member list, profile cards, or assignee picker highlighting no-download profiles."
     },
     "sync": {
-      "title": "Seamless Multi-Device Console",
-      "description": "Smooth on mobile, plus a full web console. Plan trips, organize events, or track team progress from your desktop — everything stays in sync across platforms."
+      "title": "Sync across devices",
+      "description": "Check on the go from mobile, plan from the web console — everything stays in sync.",
+      "imageBrief": "Multi-device shot: web console calendar on the left, phone app showing the same schedule on the right."
+    }
+  },
+  "appPromo": {
+    "title": "Free mobile app",
+    "description": "Manage your circle’s schedule and to-dos anywhere — Calendly stays with you.",
+    "cta": "Download on the App Store",
+    "imageBrief": "1–2 clean phone screens (calendar home or todos). Frameless OK for inserting into a phone mockup."
+  },
+  "capabilities": {
+    "sectionTitle": "Built for small-circle collaboration",
+    "sectionSubtitle": "Bring plans that live in chat into one clear toolkit.",
+    "items": {
+      "members": {
+        "title": "Member categories",
+        "description": "Give each member a clear identity so schedules are easy to read."
+      },
+      "sync": {
+        "title": "Cross-device sync",
+        "description": "App and web console stay in sync — no forked information."
+      },
+      "lists": {
+        "title": "Custom lists",
+        "description": "Group tasks, shopping, and prep items for the whole circle."
+      },
+      "privacy": {
+        "title": "Privacy first",
+        "description": "Apple Sign In and modern cloud architecture to protect circle data."
+      }
     }
   },
   "footer": {

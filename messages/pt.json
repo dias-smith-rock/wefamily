@@ -1,79 +1,96 @@
 {
   "meta": {
-    "title": "Calendly — Hub leve de colaboração para pequenos grupos",
-    "description": "Atribuição de tarefas, sincronização de calendários e perfis de membros para grupos, grupos de viagem, clubes e outras equipas unidas. Leve e claro — não é preciso que todos descarreguem a app."
+    "title": "Calendly — Keep Your Circle’s Schedule in Sync",
+    "description": "Calendar, tasks, and member profiles in one place. Built for families, travel groups, and small teams. Lightweight — not everyone needs the app."
   },
   "nav": {
-    "webConsole": "Consola Web",
-    "getApp": "Obter a App"
+    "features": "Features",
+    "howItWorks": "Get Started",
+    "webConsole": "Web Console",
+    "getApp": "Get the App"
   },
   "hero": {
-    "titleLine1": "Faça pequenos grupos colaborarem",
-    "titleLine2": "sem depender de chats caóticos",
-    "subtitle": "Tarefas, calendários, atribuições e perfis de membros — para grupos, grupos de viagem, clubes e mais. Leve e claro, sem necessidade de todos instalarem a app.",
-    "downloadAppStore": "Descarregar na App Store",
-    "exploreWeb": "Explorar funcionalidades Web",
-    "screenshotAlt": "Captura de ecrã da app Calendly",
-    "screenshotScrollHint": "Deslize ou use as setas para ver mais",
-    "screenshotPrev": "Captura anterior",
-    "screenshotNext": "Captura seguinte"
+    "eyebrow": "Calendly",
+    "title": "The simplest way to keep your circle in sync",
+    "subtitle": "Calendar, tasks, assignments, and member profiles — for families, travel groups, and clubs. Clear and light, with organizer-managed profiles for people who don’t install the app.",
+    "downloadAppStore": "Download on the App Store",
+    "exploreWeb": "Open Web Console",
+    "imageBrief": "Hero composite: main calendar week view with multi-member colored events, phone app home overlapping bottom-right (calendar / todos visible). Device stack only — no extra badges."
   },
-  "useCases": {
-    "sectionTitle": "Casos de uso",
-    "sectionSubtitle": "Qualquer grupo unido de 3 a 20 pessoas que confie uns nos outros e precise de dividir tarefas e planear pode usar o Calendly para se organizar.",
+  "guide": {
+    "title": "Get started fast",
+    "subtitle": "A few steps to organize your circle’s schedule and to-dos.",
+    "steps": [
+      {
+        "title": "Create a circle and invite members",
+        "description": "Set up your family or group and bring collaborators in."
+      },
+      {
+        "title": "Add profiles for people without the app",
+        "description": "Include elders, kids, or temporary companions in one shared schedule."
+      },
+      {
+        "title": "Add events and tasks",
+        "description": "Separate shared to-dos from personal tasks — clear owners, trackable progress."
+      }
+    ],
+    "imageBrief": "Onboarding visual: circle member list + invite/profile UI with avatars and roles clearly visible."
+  },
+  "showcases": {
+    "calendar": {
+      "title": "Flexible calendar views",
+      "description": "Switch between day, week, and month to match your circle’s rhythm. See who’s busy at a glance.",
+      "imageBrief": "Calendar multi-view screenshot: prefer week or month with multi-member colored blocks; optional phone day view overlay."
+    },
+    "tasks": {
+      "title": "Tasks & lists",
+      "description": "Keep shared to-dos and personal tasks separate. Shopping, rotations, event prep — every item has an owner.",
+      "imageBrief": "Tasks/lists UI with multiple lists or cards, completion state and assignees; tablet + phone stack preferred."
+    },
+    "members": {
+      "title": "Member profiles",
+      "description": "No need for everyone to install the app. Organizers can create profiles for elders, children, or external collaborators.",
+      "imageBrief": "Members/group management: member list, profile cards, or assignee picker highlighting no-download profiles."
+    },
+    "sync": {
+      "title": "Sync across devices",
+      "description": "Check on the go from mobile, plan from the web console — everything stays in sync.",
+      "imageBrief": "Multi-device shot: web console calendar on the left, phone app showing the same schedule on the right."
+    }
+  },
+  "appPromo": {
+    "title": "Free mobile app",
+    "description": "Manage your circle’s schedule and to-dos anywhere — Calendly stays with you.",
+    "cta": "Download on the App Store",
+    "imageBrief": "1–2 clean phone screens (calendar home or todos). Frameless OK for inserting into a phone mockup."
+  },
+  "capabilities": {
+    "sectionTitle": "Built for small-circle collaboration",
+    "sectionSubtitle": "Bring plans that live in chat into one clear toolkit.",
     "items": {
-      "family": {
-        "title": "Grupo",
-        "pain": "Buscas escolares, compras e lembretes de medicação perdem-se nos chats de grupo.",
-        "solution": "O organizador gere perfis e tarefas — todos sabem quem é responsável e o calendário do grupo é visível num relance."
+      "members": {
+        "title": "Member categories",
+        "description": "Give each member a clear identity so schedules are easy to read."
       },
-      "travel": {
-        "title": "Grupo de viagem",
-        "pain": "Reservas, horários de encontro, documentos e bagagem passam no chat.",
-        "solution": "As viagens vão para o calendário com atribuições claras — nem todos precisam da app."
+      "sync": {
+        "title": "Cross-device sync",
+        "description": "App and web console stay in sync — no forked information."
       },
-      "club": {
-        "title": "Clube / Comité de turma",
-        "pain": "Preparar eventos envolve muitas tarefas, participação desigual e progresso difícil de acompanhar.",
-        "solution": "Separe tarefas partilhadas de tarefas pessoais para que os papéis fiquem claros."
+      "lists": {
+        "title": "Custom lists",
+        "description": "Group tasks, shopping, and prep items for the whole circle."
       },
-      "roommates": {
-        "title": "Colegas de casa",
-        "pain": "Contas, rodízios de limpeza e compras partilhadas dependem de acordos verbais facilmente esquecidos.",
-        "solution": "Tarefas recorrentes com lembretes — cada colega tem um papel registado e um responsável claro."
-      },
-      "startup": {
-        "title": "Equipa empreendedora",
-        "pain": "Não quer ferramentas empresariais, mas precisa de coordenação leve de tarefas e calendários.",
-        "solution": "Gira o progresso na consola Web, consulte no telemóvel — o tamanho certo para uma equipa pequena."
+      "privacy": {
+        "title": "Privacy first",
+        "description": "Apple Sign In and modern cloud architecture to protect circle data."
       }
     }
   },
-  "features": {
-    "sectionTitle": "Simplificado para pequenos grupos",
-    "sectionSubtitle": "Participação desigual? Foi daí que começámos a desenhar o produto.",
-    "profile": {
-      "title": "Perfis de membros sem descarga",
-      "description": "Não é preciso obrigar cada membro a instalar a app. O organizador pode criar perfis para quem não a usa — avós, crianças, companheiros de viagem temporários ou colaboradores externos. Uma pessoa pode gerir o calendário e as tarefas de todo o grupo."
-    },
-    "tasks": {
-      "title": "Fluxo de tarefas dedicado",
-      "description": "Distinção clara entre tarefas partilhadas e pessoais. Reservar hotéis, levar documentos, preparar materiais, turnos — cada tarefa tem um responsável e progresso rastreável."
-    },
-    "privacy": {
-      "title": "Privacidade de nível empresarial",
-      "description": "Integração profunda com início de sessão nativo Apple. Arquitetura cloud-native moderna com encriptação de ponta a ponta para os dados do seu grupo."
-    },
-    "sync": {
-      "title": "Consola sincronizada multiplataforma",
-      "description": "Fluido no telemóvel, com consola Web completa. Planeie viagens, organize eventos ou acompanhe o progresso no computador — tudo sincronizado em tempo real."
-    }
-  },
   "footer": {
-    "copyright": "© 2026 {productEn}. Todos os direitos reservados.",
-    "privacy": "Política de privacidade",
-    "terms": "Termos de serviço",
-    "contact": "Contacte-nos"
+    "copyright": "© 2026 {productEn}. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "contact": "Contact Us"
   },
   "legal": {
     "privacyTitle": "Privacy Policy",

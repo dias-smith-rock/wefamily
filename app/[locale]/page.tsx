@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { HeroScreenshots } from "@/components/hero-screenshots";
+import { ImagePlaceholder } from "@/components/image-placeholder";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { MARKETING_ASSETS } from "@/lib/brand/marketing-assets";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import {
   isLocale,
@@ -10,26 +11,32 @@ import {
   type Locale,
 } from "@/lib/i18n/config";
 import {
-  BrandMark,
   formatCopyright,
   ProductLogo,
 } from "@/lib/i18n/product-brand";
 import {
-  USE_CASE_ICONS,
-  USE_CASE_KEYS,
+  CAPABILITY_ICONS,
+  CAPABILITY_KEYS,
+  SHOWCASE_KEYS,
 } from "@/lib/i18n/types";
 import {
   APP_STORE_HREF,
   COMPANY_NAME_EN,
   COMPANY_NAME_ZH,
   CONTACT_EMAIL,
-  PRODUCT_NAME_EN,
   WEB_CONSOLE_HREF,
 } from "@/lib/site-urls";
 
 type HomePageProps = {
   params: Promise<{ locale: string }>;
 };
+
+const SHOWCASE_ASSETS = {
+  calendar: MARKETING_ASSETS.featureCalendar,
+  tasks: MARKETING_ASSETS.featureTasks,
+  members: MARKETING_ASSETS.featureMembers,
+  sync: MARKETING_ASSETS.featureSync,
+} as const;
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -47,41 +54,39 @@ export default async function HomePage({ params }: HomePageProps) {
 
   return (
     <div
-      className="min-h-screen bg-[#FFF8F4] font-sans text-slate-900 selection:bg-[#FF6F4C]/25"
+      className="min-h-screen bg-white font-sans text-slate-900 selection:bg-[#FF6F4C]/25"
       dir={isRtl ? "rtl" : "ltr"}
     >
-      <div
-        aria-hidden
-        className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_rgba(255,111,76,0.16),_transparent_55%),radial-gradient(ellipse_at_bottom_right,_rgba(255,159,10,0.12),_transparent_50%)]"
-      />
-      <header className="fixed top-0 z-50 w-full border-b border-[#FF6F4C]/10 bg-white/70 backdrop-blur-md backdrop-saturate-150">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-6">
+      <header className="fixed top-0 z-50 w-full border-b border-black/5 bg-white/85 backdrop-blur-md backdrop-saturate-150">
+        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-6">
           <Link
             href={`/${locale}`}
-            className="shrink-0 text-[22px] transition-opacity hover:opacity-80"
+            className="shrink-0 text-[20px] transition-opacity hover:opacity-80"
           >
-            <ProductLogo locale={locale} iconSize={36} className="gap-2.5" />
+            <ProductLogo locale={locale} iconSize={34} className="gap-2.5" />
           </Link>
+          <nav className="hidden items-center gap-8 text-sm font-medium text-slate-600 md:flex">
+            <a href="#features" className="transition-colors hover:text-slate-900">
+              {dict.nav.features}
+            </a>
+            <a href="#guide" className="transition-colors hover:text-slate-900">
+              {dict.nav.howItWorks}
+            </a>
+            <Link
+              href={WEB_CONSOLE_HREF}
+              className="transition-colors hover:text-slate-900"
+            >
+              {dict.nav.webConsole}
+            </Link>
+          </nav>
           <div className="flex items-center gap-3 sm:gap-4">
             <LanguageSwitcher
               currentLocale={locale}
               selectLanguageLabel={dict.common.selectLanguage}
             />
-            <Link
-              href={WEB_CONSOLE_HREF}
-              className="rounded-full bg-[#FF6F4C] px-4 py-2 text-sm font-medium text-white shadow-lg shadow-[#FF6F4C]/25 transition hover:bg-[#F45A3A] sm:hidden"
-            >
-              {dict.nav.webConsole}
-            </Link>
-            <Link
-              href={WEB_CONSOLE_HREF}
-              className="hidden text-sm font-medium text-slate-500 transition-colors hover:text-slate-900 sm:inline"
-            >
-              {dict.nav.webConsole}
-            </Link>
             <a
               href={APP_STORE_HREF}
-              className="hidden rounded-full bg-[#FF6F4C] px-5 py-2 text-sm font-medium text-white shadow-lg shadow-[#FF6F4C]/25 transition hover:bg-[#F45A3A] sm:inline-flex"
+              className="rounded-full bg-[#FF6F4C] px-4 py-2 text-sm font-medium text-white shadow-lg shadow-[#FF6F4C]/25 transition hover:bg-[#F45A3A] sm:px-5"
             >
               {dict.nav.getApp}
             </a>
@@ -89,149 +94,175 @@ export default async function HomePage({ params }: HomePageProps) {
         </div>
       </header>
 
-      <main className="pb-20 pt-32">
-        <section className="mx-auto max-w-5xl space-y-7 px-6 text-center">
-          <div className="mx-auto flex flex-col items-center gap-5">
-            <BrandMark
-              size={88}
-              className="rounded-[22px] shadow-[0_18px_48px_rgba(255,111,76,0.32)] ring-1 ring-white/70"
-            />
-            <p className="text-[48px] font-extrabold leading-none tracking-tight text-slate-900 md:text-[64px]">
-              {PRODUCT_NAME_EN}
-            </p>
-          </div>
-          <h1 className="mx-auto max-w-3xl text-balance text-2xl font-semibold leading-snug tracking-tight text-slate-700 md:text-4xl">
-            {dict.hero.titleLine1}
-            <br />
-            <span className="bg-gradient-to-r from-[#FF6F4C] to-[#FF9F0A] bg-clip-text text-transparent">
-              {dict.hero.titleLine2}
-            </span>
-          </h1>
-          <p className="mx-auto max-w-2xl text-pretty text-base leading-relaxed text-slate-500 md:text-lg">
-            {dict.hero.subtitle}
-          </p>
-          <div className="flex flex-col items-center justify-center gap-4 pt-2 sm:flex-row">
-            <a
-              href={APP_STORE_HREF}
-              className="w-full rounded-full bg-[#FF6F4C] px-8 py-4 text-center text-lg font-semibold text-white shadow-xl shadow-[#FF6F4C]/30 transition hover:scale-[1.02] hover:bg-[#F45A3A] active:scale-[0.99] sm:w-auto"
-            >
-              {dict.hero.downloadAppStore}
-            </a>
-            <Link
-              href={WEB_CONSOLE_HREF}
-              className="w-full rounded-full border border-[#FF6F4C]/25 bg-white/80 px-8 py-4 text-center text-lg font-semibold text-slate-900 shadow-sm backdrop-blur-sm transition hover:border-[#FF6F4C]/45 hover:bg-white sm:w-auto"
-            >
-              {dict.hero.exploreWeb}
-            </Link>
-          </div>
-
-          <HeroScreenshots
-            alt={dict.hero.screenshotAlt}
-            scrollHint={dict.hero.screenshotScrollHint}
-            prevLabel={dict.hero.screenshotPrev}
-            nextLabel={dict.hero.screenshotNext}
+      <main>
+        {/* Hero — 参考 myecalendar：色带首屏 + 文案左 / 产品图右 */}
+        <section className="relative overflow-hidden bg-gradient-to-br from-[#FF6F4C] via-[#FF7A3D] to-[#FF9F0A] pt-28 pb-16 md:pt-32 md:pb-24">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 opacity-30 [background-image:radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.35),transparent_45%),radial-gradient(circle_at_80%_70%,rgba(255,255,255,0.2),transparent_40%)]"
           />
+          <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-6 lg:grid-cols-2 lg:gap-16">
+            <div className="space-y-6 text-white">
+              <p className="text-sm font-semibold tracking-[0.18em] text-white/85 uppercase">
+                {dict.hero.eyebrow}
+              </p>
+              <h1 className="text-balance text-4xl font-extrabold leading-[1.12] tracking-tight md:text-5xl lg:text-[3.25rem]">
+                {dict.hero.title}
+              </h1>
+              <p className="max-w-xl text-pretty text-base leading-relaxed text-white/90 md:text-lg">
+                {dict.hero.subtitle}
+              </p>
+              <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center">
+                <a
+                  href={APP_STORE_HREF}
+                  className="inline-flex items-center justify-center rounded-full bg-white px-7 py-3.5 text-base font-semibold text-[#FF6F4C] shadow-xl shadow-black/10 transition hover:scale-[1.02] active:scale-[0.99]"
+                >
+                  {dict.hero.downloadAppStore}
+                </a>
+                <Link
+                  href={WEB_CONSOLE_HREF}
+                  className="inline-flex items-center justify-center rounded-full border border-white/45 bg-white/10 px-7 py-3.5 text-base font-semibold text-white backdrop-blur-sm transition hover:bg-white/20"
+                >
+                  {dict.hero.exploreWeb}
+                </Link>
+              </div>
+            </div>
+            <ImagePlaceholder
+              assetPath={MARKETING_ASSETS.heroDevices}
+              brief={dict.hero.imageBrief}
+              sizeHint="建议 1600×1200，PNG/WebP，透明或浅色底"
+              aspectClassName="aspect-[5/4] lg:aspect-[4/3]"
+              className="border-white/40 bg-white/15 shadow-[0_24px_64px_rgba(0,0,0,0.18)]"
+            />
+          </div>
         </section>
 
-        <section className="mx-auto mt-32 max-w-7xl px-6">
-          <div className="mb-12 text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">
-              {dict.useCases.sectionTitle}
-            </h2>
-            <p className="mt-4 text-slate-500">{dict.useCases.sectionSubtitle}</p>
+        {/* Guide — 参考 Operation Guide */}
+        <section id="guide" className="scroll-mt-24 py-20 md:py-28">
+          <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 lg:grid-cols-2 lg:gap-16">
+            <div>
+              <div className="mb-4 h-1.5 w-12 rounded-full bg-gradient-to-r from-[#FF6F4C] to-[#FF9F0A]" />
+              <h2 className="text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">
+                {dict.guide.title}
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-slate-500 md:text-lg">
+                {dict.guide.subtitle}
+              </p>
+              <ol className="mt-8 space-y-5">
+                {dict.guide.steps.map((step, index) => (
+                  <li key={step.title} className="flex gap-4">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#FF6F4C]/12 text-sm font-bold text-[#FF6F4C]">
+                      {index + 1}
+                    </span>
+                    <div>
+                      <p className="font-semibold text-slate-900">{step.title}</p>
+                      <p className="mt-1 text-sm leading-relaxed text-slate-500">
+                        {step.description}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+            <ImagePlaceholder
+              assetPath={MARKETING_ASSETS.guideOverview}
+              brief={dict.guide.imageBrief}
+              sizeHint="建议 1400×1050"
+            />
           </div>
+        </section>
 
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {USE_CASE_KEYS.map((key) => {
-              const item = dict.useCases.items[key];
+        {/* Feature showcases — 左右交替 */}
+        <section id="features" className="scroll-mt-24 bg-[#FFF8F4] py-8 md:py-12">
+          <div className="mx-auto max-w-6xl space-y-8 px-6 md:space-y-4">
+            {SHOWCASE_KEYS.map((key, index) => {
+              const item = dict.showcases[key];
+              const imageFirst = index % 2 === 0;
               return (
                 <div
                   key={key}
-                  className="flex flex-col rounded-3xl border border-gray-100 bg-white/90 p-8 shadow-sm backdrop-blur-sm transition hover:border-gray-200/80 hover:shadow-md"
+                  className="grid items-center gap-10 py-12 md:py-16 lg:grid-cols-2 lg:gap-16"
                 >
-                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-100/90 text-xl">
-                    {USE_CASE_ICONS[key]}
+                  <div className={imageFirst ? "lg:order-1" : "lg:order-2"}>
+                    <ImagePlaceholder
+                      assetPath={SHOWCASE_ASSETS[key]}
+                      brief={item.imageBrief}
+                      sizeHint="建议 1400×1050，设备叠放或单屏精修均可"
+                    />
                   </div>
-                  <h3 className="mb-3 text-xl font-bold text-slate-900">
-                    {item.title}
-                  </h3>
-                  <p className="mb-3 text-sm leading-relaxed text-slate-400">
-                    {item.pain}
-                  </p>
-                  <p className="mt-auto text-sm leading-relaxed text-slate-600">
-                    {item.solution}
-                  </p>
+                  <div className={imageFirst ? "lg:order-2" : "lg:order-1"}>
+                    <div className="mb-4 h-1.5 w-12 rounded-full bg-gradient-to-r from-[#FF6F4C] to-[#FF9F0A]" />
+                    <h2 className="text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">
+                      {item.title}
+                    </h2>
+                    <p className="mt-4 max-w-md text-base leading-relaxed text-slate-500 md:text-lg">
+                      {item.description}
+                    </p>
+                  </div>
                 </div>
               );
             })}
           </div>
         </section>
 
-        <section className="mx-auto mt-32 max-w-7xl px-6">
-          <div className="mb-16 text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">
-              {dict.features.sectionTitle}
-            </h2>
-            <p className="mt-4 text-slate-500">{dict.features.sectionSubtitle}</p>
+        {/* App promo */}
+        <section className="py-20 md:py-28">
+          <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 lg:grid-cols-2 lg:gap-16">
+            <div>
+              <div className="mb-4 h-1.5 w-12 rounded-full bg-gradient-to-r from-[#FF6F4C] to-[#FF9F0A]" />
+              <h2 className="text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">
+                {dict.appPromo.title}
+              </h2>
+              <p className="mt-4 max-w-md text-base leading-relaxed text-slate-500 md:text-lg">
+                {dict.appPromo.description}
+              </p>
+              <a
+                href={APP_STORE_HREF}
+                className="mt-8 inline-flex items-center justify-center rounded-full bg-[#FF6F4C] px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-[#FF6F4C]/25 transition hover:bg-[#F45A3A]"
+              >
+                {dict.appPromo.cta}
+              </a>
+            </div>
+            <ImagePlaceholder
+              assetPath={MARKETING_ASSETS.appPromo}
+              brief={dict.appPromo.imageBrief}
+              sizeHint="建议竖图 900×1600 或带手机框 1200×1600"
+              aspectClassName="aspect-[3/4] max-w-md mx-auto w-full"
+            />
           </div>
+        </section>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            <div className="rounded-3xl border border-gray-100 bg-white/90 p-10 shadow-sm backdrop-blur-sm transition hover:border-gray-200/80 hover:shadow-md md:col-span-2">
-              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#FF6F4C]/15 text-2xl text-[#FF6F4C] backdrop-blur-sm">
-                👤
-              </div>
-              <h3 className="mb-3 text-2xl font-bold text-slate-900">
-                {dict.features.profile.title}
-              </h3>
-              <p className="text-lg leading-relaxed text-slate-500">
-                {dict.features.profile.description}
-              </p>
+        {/* Capabilities grid */}
+        <section className="border-t border-[#FF6F4C]/10 bg-[#FFF8F4] py-20 md:py-28">
+          <div className="mx-auto max-w-6xl px-6">
+            <div className="mx-auto max-w-2xl text-center">
+              <h2 className="text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">
+                {dict.capabilities.sectionTitle}
+              </h2>
+              <p className="mt-4 text-slate-500">{dict.capabilities.sectionSubtitle}</p>
             </div>
-
-            <div className="rounded-3xl border border-gray-100 bg-white/90 p-10 shadow-sm backdrop-blur-sm transition hover:border-gray-200/80 hover:shadow-md">
-              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#FF9F0A]/15 text-2xl text-[#FF9F0A] backdrop-blur-sm">
-                🎯
-              </div>
-              <h3 className="mb-3 text-xl font-bold text-slate-900">
-                {dict.features.tasks.title}
-              </h3>
-              <p className="leading-relaxed text-slate-500">
-                {dict.features.tasks.description}
-              </p>
-            </div>
-
-            <div className="rounded-3xl border border-gray-100 bg-white/90 p-10 shadow-sm backdrop-blur-sm transition hover:border-gray-200/80 hover:shadow-md">
-              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-100/90 text-2xl text-slate-800 backdrop-blur-sm">
-                🔒
-              </div>
-              <h3 className="mb-3 text-xl font-bold text-slate-900">
-                {dict.features.privacy.title}
-              </h3>
-              <p className="leading-relaxed text-slate-500">
-                {dict.features.privacy.description}
-              </p>
-            </div>
-
-            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900 to-black p-10 shadow-lg shadow-gray-300/30 md:col-span-2">
-              <div className="relative z-10">
-                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/15 text-2xl backdrop-blur-sm">
-                  💻
-                </div>
-                <h3 className="mb-3 text-2xl font-bold text-white">
-                  {dict.features.sync.title}
-                </h3>
-                <p className="max-w-md text-lg leading-relaxed text-slate-300">
-                  {dict.features.sync.description}
-                </p>
-              </div>
-              <div className="pointer-events-none absolute -bottom-20 -end-20 h-64 w-64 rounded-full bg-[#FF6F4C] opacity-25 blur-3xl" />
+            <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {CAPABILITY_KEYS.map((key) => {
+                const item = dict.capabilities.items[key];
+                return (
+                  <div key={key} className="rounded-[24px] bg-white p-7 shadow-sm ring-1 ring-black/5">
+                    <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#FF6F4C]/12 text-xl">
+                      {CAPABILITY_ICONS[key]}
+                    </div>
+                    <h3 className="text-lg font-bold text-slate-900">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-500">
+                      {item.description}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="mt-20 border-t border-[#FF6F4C]/10 bg-white/80 py-12 backdrop-blur-sm">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 md:flex-row">
+      <footer className="border-t border-black/5 bg-white py-12">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-8 px-6 md:flex-row md:items-start">
           <div className="flex flex-col items-center gap-2 md:items-start">
             <ProductLogo locale={locale} iconSize={28} className="gap-2 text-[15px]" />
             <p className="text-sm text-slate-400">{copyright}</p>
@@ -263,6 +294,12 @@ export default async function HomePage({ params }: HomePageProps) {
               className="transition-colors hover:text-slate-900"
             >
               {dict.footer.contact}
+            </a>
+            <a
+              href={APP_STORE_HREF}
+              className="transition-colors hover:text-slate-900"
+            >
+              {dict.nav.getApp}
             </a>
           </nav>
         </div>

@@ -1,72 +1,89 @@
 {
   "meta": {
-    "title": "Calendly — 小圈子轻量协作中枢",
-    "description": "任务分工、日程同步、成员档案。适用于群组、旅行团、社团小组等紧密小团队。轻量清晰，不需要全员下载 App。"
+    "title": "Calendly — 让小圈子日程与待办同步",
+    "description": "日历、任务、成员档案一站搞定。适合家庭、旅行团、社团等紧密小圈子。轻量清晰，不必人人下载 App。"
   },
   "nav": {
+    "features": "功能",
+    "howItWorks": "快速上手",
     "webConsole": "Web 控制台",
     "getApp": "获取 App"
   },
   "hero": {
-    "titleLine1": "让小圈子协作，",
-    "titleLine2": "不再靠群聊硬撑",
-    "subtitle": "任务、日程、分工、成员档案——群组、旅行团、社团小组都能用。轻量清晰，不需要全员下载 App。",
+    "eyebrow": "Calendly",
+    "title": "让小圈子日程与待办，真正同步",
+    "subtitle": "日历、任务、分工、成员档案——家庭、旅行团、社团小组都能用。界面清晰，主理人可代管未安装 App 的成员。",
     "downloadAppStore": "在 App Store 下载",
-    "exploreWeb": "探索 Web 端功能",
-    "screenshotAlt": "Calendly App 界面截图",
-    "screenshotScrollHint": "左右滑动或点击箭头查看更多界面",
-    "screenshotPrev": "上一张截图",
-    "screenshotNext": "下一张截图"
+    "exploreWeb": "打开 Web 控制台",
+    "imageBrief": "首屏合成图：左侧/主视觉为日历周视图（多成员彩色日程块），右下角叠放手机 App 首页（日历 / 待办入口可见）。类似设备叠放，不要带额外角标文案。"
   },
-  "useCases": {
-    "sectionTitle": "适用场景",
-    "sectionSubtitle": "凡是有协作需求的紧密小圈子——3 到 20 人、彼此信任、需要分事排期——都能用 Calendly 理清琐事。",
-    "items": {
-      "family": {
-        "title": "群组",
-        "pain": "接送、采购、老人用药散在群聊里，容易遗漏。",
-        "solution": "主理人建档代管，任务责任到人，全群日程一眼可见。"
+  "guide": {
+    "title": "快速上手",
+    "subtitle": "几步理清圈子日程与待办，马上开始协作。",
+    "steps": [
+      {
+        "title": "创建圈子并邀请成员",
+        "description": "建好家庭或小组，把需要协作的人拉进来。"
       },
-      "travel": {
-        "title": "旅行团",
-        "pain": "订票订房、集合时间、证件行李，信息总在群里刷过。",
-        "solution": "行程排进日历，「谁去办」分工清楚，同行成员不必人人装 App。"
+      {
+        "title": "为未装 App 的人建档",
+        "description": "长辈、孩子或临时同行者也可纳入统一日程。"
       },
-      "club": {
-        "title": "社团 / 班委",
-        "pain": "活动筹备事项多，成员参与不均，进度难追踪。",
-        "solution": "公共待办与个人任务分开管理，筹备分工一目了然。"
-      },
-      "roommates": {
-        "title": "合租 / 室友",
-        "pain": "水电缴费、清洁轮换、共同采购，口头约定容易忘。",
-        "solution": "周期性任务加提醒，室友分工有记录、有责任人。"
-      },
-      "startup": {
-        "title": "创业小组",
-        "pain": "不想上飞书钉钉，但又需要轻量的任务与日程协同。",
-        "solution": "Web 控制台统筹进度，移动端随时查看，体量刚好够用。"
+      {
+        "title": "添加日程与任务",
+        "description": "公共待办与个人任务分开，责任到人、进度可查。"
       }
-    }
+    ],
+    "imageBrief": "快速上手示意：Web 或 App 中「圈子成员列表 + 邀请/建档」界面，能看清成员头像与角色。"
   },
-  "features": {
-    "sectionTitle": "化繁为简，为小圈子而生",
-    "sectionSubtitle": "成员参与门槛不一？我们以此为起点设计产品。",
-    "profile": {
-      "title": "首创「免下载」成员档案机制",
-      "description": "无需强制每位成员都下载注册 App。主理人可为不参与 App 的人建立专属档案——长辈、儿童、临时同行者或外部协作者均可纳入。一人即可统筹全圈子的日程与待办，彻底扫除参与门槛。"
+  "showcases": {
+    "calendar": {
+      "title": "多视图日历",
+      "description": "在日、周、月视图间切换，匹配家庭与小团队的不同节奏。谁有什么安排，一眼看清。",
+      "imageBrief": "日历多视图截图：优先周视图或月视图，带多成员彩色事件块；可叠一张手机日视图。"
     },
     "tasks": {
-      "title": "专属任务流转",
-      "description": "清晰区分「公共待办」与「个人专属任务」。订酒店、带证件、准备物料、值班轮换——责任到人，进度可查。"
+      "title": "任务与清单",
+      "description": "公共待办与个人任务分开管理。采购、值班、活动筹备——责任到人，进度可追踪。",
+      "imageBrief": "待办/清单界面：可见多个清单或任务卡片，带完成状态与负责人；平板+手机叠放更佳。"
     },
-    "privacy": {
-      "title": "企业级隐私保护",
-      "description": "深度集成 Apple 原生安全登录。基于现代云原生架构，圈子数据享受端到端加密防护。"
+    "members": {
+      "title": "成员档案",
+      "description": "不必强制人人下载 App。主理人可为长辈、儿童或外部协作者建立档案，一人统筹全圈子。",
+      "imageBrief": "成员/群组管理界面：成员列表、档案卡或「相关成员」选择器，突出免下载代管能力。"
     },
     "sync": {
-      "title": "多端无缝同步控制台",
-      "description": "不仅在手机上丝滑操作，更提供 Web 网页控制台。在电脑前统筹旅行行程、活动筹备或小组进度，全平台实时互通。"
+      "title": "多端实时同步",
+      "description": "手机随时查看，电脑上用 Web 控制台统筹行程与进度，全平台保持一致。",
+      "imageBrief": "多端同屏：左边 Web 控制台日历，右边手机 App 同一日程，体现实时同步。"
+    }
+  },
+  "appPromo": {
+    "title": "免费移动 App",
+    "description": "出门在外也能管理圈子日程与待办，Calendly 随时在手边。",
+    "cta": "在 App Store 下载",
+    "imageBrief": "手机 App 竖屏精选界面 1–2 张（日历首页或待办页），干净无边框也可，便于放进手机框。"
+  },
+  "capabilities": {
+    "sectionTitle": "为小圈子协作而生",
+    "sectionSubtitle": "把散落在群聊里的安排，收进一套清晰工具。",
+    "items": {
+      "members": {
+        "title": "成员分类",
+        "description": "每位成员有专属标识，日程归属一目了然。"
+      },
+      "sync": {
+        "title": "多端同步",
+        "description": "App 与 Web 控制台实时互通，避免信息分叉。"
+      },
+      "lists": {
+        "title": "自定义清单",
+        "description": "任务、采购、筹备事项分组管理，全家/全组可见。"
+      },
+      "privacy": {
+        "title": "隐私保护",
+        "description": "Apple 登录与现代云架构，圈子数据妥善守护。"
+      }
     }
   },
   "footer": {

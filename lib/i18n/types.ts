@@ -3,20 +3,27 @@ import type overlay from "@/lib/i18n/overlays/zh-CN.json";
 
 export type Dictionary = typeof zhCN & typeof overlay;
 
-export type UseCaseKey = keyof Dictionary["useCases"]["items"];
+export type ShowcaseKey = keyof Dictionary["showcases"];
 
-export const USE_CASE_KEYS: UseCaseKey[] = [
-  "family",
-  "travel",
-  "club",
-  "roommates",
-  "startup",
+export const SHOWCASE_KEYS: ShowcaseKey[] = [
+  "calendar",
+  "tasks",
+  "members",
+  "sync",
 ];
 
-export const USE_CASE_ICONS: Record<UseCaseKey, string> = {
-  family: "👥",
-  travel: "✈️",
-  club: "🎓",
-  roommates: "🏡",
-  startup: "🚀",
+export type CapabilityKey = keyof Dictionary["capabilities"]["items"];
+
+export const CAPABILITY_KEYS: CapabilityKey[] = [
+  "members",
+  "sync",
+  "lists",
+  "privacy",
+];
+
+export const CAPABILITY_ICONS: Record<CapabilityKey, string> = {
+  members: "👥",
+  sync: "🔄",
+  lists: "☑️",
+  privacy: "🔒",
 };

@@ -1,79 +1,96 @@
 {
   "meta": {
-    "title": "Calendly — مركز تعاون خفيف للمجموعات الصغيرة",
-    "description": "توزيع المهام ومزامنة الجداول وملفات الأعضاء للمجموعات ومجموعات السفر والأندية والفرق المترابطة. خفيف وواضح — لا حاجة لتحميل التطبيق من الجميع."
+    "title": "Calendly — Keep Your Circle’s Schedule in Sync",
+    "description": "Calendar, tasks, and member profiles in one place. Built for families, travel groups, and small teams. Lightweight — not everyone needs the app."
   },
   "nav": {
-    "webConsole": "وحدة التحكم على الويب",
-    "getApp": "احصل على التطبيق"
+    "features": "Features",
+    "howItWorks": "Get Started",
+    "webConsole": "Web Console",
+    "getApp": "Get the App"
   },
   "hero": {
-    "titleLine1": "اجعل المجموعات الصغيرة تتعاون",
-    "titleLine2": "دون الاعتماد على محادثات المجموعة",
-    "subtitle": "المهام والجداول والتوزيع وملفات الأعضاء — للمجموعات ومجموعات السفر والأندية وغيرها. خفيف وواضح، دون الحاجة لتثبيت التطبيق على الجميع.",
-    "downloadAppStore": "تنزيل من App Store",
-    "exploreWeb": "استكشف ميزات الويب",
-    "screenshotAlt": "لقطة شاشة لتطبيق Calendly",
-    "screenshotScrollHint": "اسحب أو استخدم الأسهم لعرض المزيد",
-    "screenshotPrev": "لقطة الشاشة السابقة",
-    "screenshotNext": "لقطة الشاشة التالية"
+    "eyebrow": "Calendly",
+    "title": "The simplest way to keep your circle in sync",
+    "subtitle": "Calendar, tasks, assignments, and member profiles — for families, travel groups, and clubs. Clear and light, with organizer-managed profiles for people who don’t install the app.",
+    "downloadAppStore": "Download on the App Store",
+    "exploreWeb": "Open Web Console",
+    "imageBrief": "Hero composite: main calendar week view with multi-member colored events, phone app home overlapping bottom-right (calendar / todos visible). Device stack only — no extra badges."
   },
-  "useCases": {
-    "sectionTitle": "حالات الاستخدام",
-    "sectionSubtitle": "أي مجموعة مترابطة من 3 إلى 20 شخصًا يثقون ببعضهم ويحتاجون لتوزيع المهام والجدولة يمكنها استخدام Calendly للتنظيم.",
+  "guide": {
+    "title": "Get started fast",
+    "subtitle": "A few steps to organize your circle’s schedule and to-dos.",
+    "steps": [
+      {
+        "title": "Create a circle and invite members",
+        "description": "Set up your family or group and bring collaborators in."
+      },
+      {
+        "title": "Add profiles for people without the app",
+        "description": "Include elders, kids, or temporary companions in one shared schedule."
+      },
+      {
+        "title": "Add events and tasks",
+        "description": "Separate shared to-dos from personal tasks — clear owners, trackable progress."
+      }
+    ],
+    "imageBrief": "Onboarding visual: circle member list + invite/profile UI with avatars and roles clearly visible."
+  },
+  "showcases": {
+    "calendar": {
+      "title": "Flexible calendar views",
+      "description": "Switch between day, week, and month to match your circle’s rhythm. See who’s busy at a glance.",
+      "imageBrief": "Calendar multi-view screenshot: prefer week or month with multi-member colored blocks; optional phone day view overlay."
+    },
+    "tasks": {
+      "title": "Tasks & lists",
+      "description": "Keep shared to-dos and personal tasks separate. Shopping, rotations, event prep — every item has an owner.",
+      "imageBrief": "Tasks/lists UI with multiple lists or cards, completion state and assignees; tablet + phone stack preferred."
+    },
+    "members": {
+      "title": "Member profiles",
+      "description": "No need for everyone to install the app. Organizers can create profiles for elders, children, or external collaborators.",
+      "imageBrief": "Members/group management: member list, profile cards, or assignee picker highlighting no-download profiles."
+    },
+    "sync": {
+      "title": "Sync across devices",
+      "description": "Check on the go from mobile, plan from the web console — everything stays in sync.",
+      "imageBrief": "Multi-device shot: web console calendar on the left, phone app showing the same schedule on the right."
+    }
+  },
+  "appPromo": {
+    "title": "Free mobile app",
+    "description": "Manage your circle’s schedule and to-dos anywhere — Calendly stays with you.",
+    "cta": "Download on the App Store",
+    "imageBrief": "1–2 clean phone screens (calendar home or todos). Frameless OK for inserting into a phone mockup."
+  },
+  "capabilities": {
+    "sectionTitle": "Built for small-circle collaboration",
+    "sectionSubtitle": "Bring plans that live in chat into one clear toolkit.",
     "items": {
-      "family": {
-        "title": "مجموعة",
-        "pain": "التوصيل من المدرسة والتسوق وتذكيرات الأدوية تضيع في محادثات المجموعة.",
-        "solution": "المنسق يدير الملفات والمهام — الجميع يعرف المسؤول، وجدول المجموعة مرئي بنظرة واحدة."
+      "members": {
+        "title": "Member categories",
+        "description": "Give each member a clear identity so schedules are easy to read."
       },
-      "travel": {
-        "title": "مجموعة سفر",
-        "pain": "الحجوزات وأوقات اللقاء والوثائق والأمتعة تمر في المحادثة.",
-        "solution": "الرحلات في التقويم مع توزيع واضح لـ «من يفعل ماذا» — ليس الجميع بحاجة للتطبيق."
+      "sync": {
+        "title": "Cross-device sync",
+        "description": "App and web console stay in sync — no forked information."
       },
-      "club": {
-        "title": "نادي / لجنة صف",
-        "pain": "تحضير الفعاليات يتضمن مهامًا كثيرة ومشاركة غير متساوية وتتبعًا صعبًا.",
-        "solution": "افصل المهام المشتركة عن الشخصية — أدوار التحضير واضحة."
+      "lists": {
+        "title": "Custom lists",
+        "description": "Group tasks, shopping, and prep items for the whole circle."
       },
-      "roommates": {
-        "title": "زملاء السكن",
-        "pain": "الفواتير ودورات التنظيف والتسوق المشترك تعتمد على اتفاقات شفهية تُنسى بسهولة.",
-        "solution": "مهام متكررة مع تذكيرات — لكل زميل دور مسجل ومسؤول واضح."
-      },
-      "startup": {
-        "title": "فريق ناشئ",
-        "pain": "لا تريد أدوات المؤسسات، لكنك تحتاج تنسيقًا خفيفًا للمهام والجداول.",
-        "solution": "أدر التقدم من وحدة التحكم على الويب، راجع على الهاتف — الحجم المناسب لفريق صغير."
+      "privacy": {
+        "title": "Privacy first",
+        "description": "Apple Sign In and modern cloud architecture to protect circle data."
       }
     }
   },
-  "features": {
-    "sectionTitle": "مبسّط للمجموعات الصغيرة",
-    "sectionSubtitle": "مشاركة غير متساوية؟ من هنا بدأنا تصميم المنتج.",
-    "profile": {
-      "title": "ملفات أعضاء دون تحميل",
-      "description": "لا حاجة لإجبار كل عضو على تثبيت التطبيق. يمكن للمنسق إنشاء ملفات لمن لا يستخدم التطبيق — كبار السن والأطفال ورفاق السفر المؤقتين أو المتعاونين الخارجيين. شخص واحد يمكنه إدارة جدول ومهام المجموعة بأكملها."
-    },
-    "tasks": {
-      "title": "تدفق مهام مخصص",
-      "description": "تمييز واضح بين المهام المشتركة والشخصية. حجز الفنادق وإحضار الوثائق وتحضير المواد والورديات — كل مهمة لها مسؤول وتقدم قابل للتتبع."
-    },
-    "privacy": {
-      "title": "خصوصية على مستوى المؤسسات",
-      "description": "تكامل عميق مع تسجيل الدخول الأصلي من Apple. بنية سحابية حديثة مع تشفير من طرف إلى طرف لبيانات مجموعتك."
-    },
-    "sync": {
-      "title": "وحدة تحكم متزامنة متعددة الأجهزة",
-      "description": "سلس على الهاتف، مع وحدة تحكم ويب كاملة. خطط للرحلات ونظم الفعاليات أو تتبع التقدم من الحاسوب — كل شيء متزامن في الوقت الفعلي."
-    }
-  },
   "footer": {
-    "copyright": "© 2026 {productEn}. جميع الحقوق محفوظة.",
-    "privacy": "سياسة الخصوصية",
-    "terms": "شروط الخدمة",
-    "contact": "اتصل بنا"
+    "copyright": "© 2026 {productEn}. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "contact": "Contact Us"
   },
   "legal": {
     "privacyTitle": "Privacy Policy",
