@@ -56,7 +56,7 @@
     "membership": {
       "loadFailedTitle": "Não foi possível carregar o grupo",
       "noMembershipTitle": "Sem grupo",
-      "noMembershipBody": "Ainda não entrou em nenhum grupo ou o pedido está pendente. Crie ou entre num grupo na app WeFamily iOS."
+      "noMembershipBody": "Ainda não entrou em nenhum grupo ou o pedido está pendente. Crie ou entre num grupo na app Calendly iOS."
     },
     "nav": {
       "main": "Navegação principal",
@@ -70,7 +70,7 @@
     "me": {
       "title": "Eu",
       "accountSettings": "Conta e definições",
-      "settingsHint": "Definições completas na app WeFamily iOS."
+      "settingsHint": "Definições completas na app Calendly iOS."
     },
     "group": {
       "title": "Grupo",
@@ -82,7 +82,7 @@
       "showPhone": "Mostrar teléfono",
       "createdAt": "Creado el {date}",
       "memberCount": "{total} miembros",
-      "editGroupHint": "Para renomear ou dissolver o grupo, use a app WeFamily iOS.",
+      "editGroupHint": "Para renomear ou dissolver o grupo, use a app Calendly iOS.",
       "phone": "Teléfono",
       "email": "Correo",
       "noContact": "Sin contacto",
@@ -93,7 +93,7 @@
       "inviteMember": "Invitar miembro",
       "createProfile": "Crear perfil sin app",
       "securityLimitTitle": "Seguridad multidispositivo",
-      "securityLimitBody": "Use a app WeFamily iOS para ler um QR ou enviar um link de convite."
+      "securityLimitBody": "Use a app Calendly iOS para ler um QR ou enviar um link de convite."
     },
     "calendar": {
       "switchView": "Switch view",
@@ -113,7 +113,7 @@
       "newTask": "New task",
       "newEvent": "New event",
       "readonlyTitle": "Modo solo lectura",
-      "readonlyBody": "Algumas ações só estão disponíveis na app WeFamily iOS.",
+      "readonlyBody": "Algumas ações só estão disponíveis na app Calendly iOS.",
       "aiTitle": "Asistente Hermes AI listo",
       "aiBody": "Voz y planificación inteligente solo en iOS.",
       "taskDetail": "Detalles de la tarea",
@@ -206,219 +206,219 @@
     "privacyTitle": "Política de privacidade",
     "termsTitle": "Termos de serviço",
     "lastUpdated": "Última atualização: {date}",
-    "privacyMetaDescription": "How WeFamily collects, uses, and protects your information when you use our website and mobile app.",
-    "termsMetaDescription": "Terms governing your access to and use of the WeFamily website and mobile app.",
+    "privacyMetaDescription": "Como o Calendly coleta, usa e protege suas informações ao usar nosso site e aplicativo móvel.",
+    "termsMetaDescription": "Termos que regem seu acesso e uso do site e do aplicativo móvel Calendly.",
     "privacy": {
-      "intro": "Welcome to WeFamily. Your group's privacy and data security are our highest priorities. This Privacy Policy explains how we collect, use, and protect your information when you use our website and mobile application. It is intended to align with the privacy disclosures we provide in the Apple App Store.",
+      "intro": "Bem-vindo ao Calendly. A privacidade e a segurança dos dados do seu grupo são nossas maiores prioridades. Esta Política de Privacidade explica como coletamos, usamos e protegemos suas informações quando você usa nosso site e aplicativo móvel. Ela está alinhada às divulgações de privacidade que fornecemos na Apple App Store.",
       "sections": [
         {
-          "heading": "1. Information We Collect",
-          "lead": "We collect information necessary to provide group collaboration features. The categories below include the types of data we disclose in the App Store privacy nutrition labels (User Content, linked to your identity, for app functionality):",
+          "heading": "1. Informações que coletamos",
+          "lead": "Coletamos as informações necessárias para oferecer recursos de colaboração em grupo. As categorias abaixo incluem os tipos de dados que divulgamos nos rótulos de privacidade da App Store (Conteúdo do Usuário, vinculado à sua identidade, para a funcionalidade do app):",
           "items": [
             {
-              "term": "Account Information:",
-              "body": "When you sign in using Sign in with Apple or Google (web console), we collect the name and email address provided by the identity provider to create and secure your account. This information is linked to your identity."
+              "term": "Informações da conta:",
+              "body": "Quando você entra com Sign in with Apple ou Google (console web), coletamos o nome e o e-mail fornecidos pelo provedor de identidade para criar e proteger sua conta. Essas informações estão vinculadas à sua identidade."
             },
             {
-              "term": "Emails or Text Messages:",
-              "body": "To operate core features, we process email addresses, phone numbers you optionally add to member profiles, invitation-related text, and other text you enter in tasks, feedback, or group communications. This data is linked to your account and used only for app functionality—not for advertising or cross-app tracking."
+              "term": "E-mails ou mensagens de texto:",
+              "body": "Para operar os recursos principais, processamos endereços de e-mail, números de telefone que você opcionalmente adiciona aos perfis, texto relacionado a convites e outros textos que você digita em tarefas, feedback ou comunicações do grupo. Esses dados estão vinculados à sua conta e são usados apenas para a funcionalidade do app — não para publicidade nem rastreamento entre apps."
             },
             {
-              "term": "Photos or Videos:",
-              "body": "If you choose to upload a profile avatar or attach photos or videos to tasks, feedback, or related group content, we store and display that media within your group. Such content is linked to your identity and used only to provide the service."
+              "term": "Fotos ou vídeos:",
+              "body": "Se você enviar um avatar de perfil ou anexar fotos ou vídeos a tarefas, feedback ou conteúdo do grupo, armazenamos e exibimos essa mídia dentro do seu grupo. Esse conteúdo está vinculado à sua identidade e é usado apenas para prestar o serviço."
             },
             {
-              "term": "Other User Content:",
-              "body": "We store collaboration data you and your group create, including task and schedule details, group names and descriptions, managed member profiles, comments, attachments metadata, and similar content. This information is linked to your account or the profiles you manage and is used only for group collaboration features."
+              "term": "Outro conteúdo do usuário:",
+              "body": "Armazenamos dados de colaboração que você e seu grupo criam, incluindo detalhes de tarefas e agendas, nomes e descrições do grupo, perfis gerenciados, comentários, metadados de anexos e conteúdo semelhante. Essas informações estão vinculadas à sua conta ou aos perfis que você gerencia e são usadas apenas para recursos de colaboração."
             },
             {
-              "term": "Managed Profiles:",
-              "body": "If you create profiles for group members who do not have their own accounts (such as children or elders), you confirm that you have the right to provide their basic identifying information (such as names, nicknames, or optional contact details) for group management purposes."
+              "term": "Perfis gerenciados:",
+              "body": "Se você criar perfis para membros do grupo sem conta própria (como crianças ou idosos), confirma que tem o direito de fornecer informações identificadoras básicas (nomes, apelidos ou contatos opcionais) para fins de gestão do grupo."
             },
             {
-              "term": "Technical Data:",
-              "body": "We may collect non-personally identifiable information such as device type, app crash logs, and usage metrics to ensure the stability of the App. This data is not used for advertising."
+              "term": "Dados técnicos:",
+              "body": "Podemos coletar informações não pessoalmente identificáveis, como tipo de dispositivo, logs de falha e métricas de uso, para garantir a estabilidade do App. Esses dados não são usados para publicidade."
             }
           ],
           "paragraphs": []
         },
         {
-          "heading": "2. How We Use Your Information",
-          "lead": "We use the information described above solely for app functionality, including:",
+          "heading": "2. Como usamos suas informações",
+          "lead": "Usamos as informações descritas acima apenas para a funcionalidade do app, incluindo:",
           "items": [
             {
               "term": "",
-              "body": "Providing, syncing, and displaying tasks, schedules, group roles, profiles, and user-generated content across authorized group members and your devices."
+              "body": "Fornecer, sincronizar e exibir tarefas, agendas, papéis do grupo, perfis e conteúdo gerado por usuários entre membros autorizados e seus dispositivos."
             },
             {
               "term": "",
-              "body": "Authenticating your identity and enforcing access controls so only members of your group can view that group's data."
+              "body": "Autenticar sua identidade e aplicar controles de acesso para que apenas membros do seu grupo possam ver os dados desse grupo."
             },
             {
               "term": "",
-              "body": "Storing and delivering photos, videos, and text you choose to share within the service."
+              "body": "Armazenar e entregar fotos, vídeos e texto que você escolher compartilhar no serviço."
             },
             {
               "term": "",
-              "body": "Providing customer support, fixing errors, and improving reliability."
+              "body": "Prestar suporte ao cliente, corrigir erros e melhorar a confiabilidade."
             }
           ],
           "paragraphs": [
-            "We do not use your personal data for third-party advertising, and we do not sell your data. Data identified in the App Store as linked to you is associated with your account or profile for the purposes stated above."
+            "Não usamos seus dados pessoais para publicidade de terceiros e não vendemos seus dados. Os dados identificados na App Store como vinculados a você estão associados à sua conta ou perfil para as finalidades acima."
           ]
         },
         {
-          "heading": "3. Data Storage & Security",
+          "heading": "3. Armazenamento e segurança dos dados",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "We utilize enterprise-grade cloud infrastructure (including Supabase) to store your data securely. Your data is encrypted in transit and at rest. We employ strict Row-Level Security (RLS) database policies to ensure that your group data is completely isolated and only accessible to authorized members of your specific group."
+            "Utilizamos infraestrutura em nuvem de nível empresarial (incluindo Supabase) para armazenar seus dados com segurança. Seus dados são criptografados em trânsito e em repouso. Aplicamos políticas rigorosas de Row-Level Security (RLS) para isolar completamente os dados do seu grupo, acessíveis apenas a membros autorizados desse grupo."
           ]
         },
         {
-          "heading": "4. Information Sharing",
+          "heading": "4. Compartilhamento de informações",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "We do not, and will never, sell your personal data to third parties. We only share information with trusted service providers (such as secure cloud hosting) strictly for the purpose of operating our service. We may also disclose information if required by law."
+            "Não vendemos e nunca venderemos seus dados pessoais a terceiros. Só compartilhamos informações com provedores de serviços confiáveis (como hospedagem em nuvem segura) estritamente para operar o serviço. Também podemos divulgar informações se exigido por lei."
           ]
         },
         {
-          "heading": "5. Your Rights and Data Deletion",
+          "heading": "5. Seus direitos e exclusão de dados",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "You have full control over your data. You can edit your profile, delete specific tasks, remove attachments, or remove group members at any time within the App. You may also permanently delete your entire account and all associated user content via the account deletion options in the App's settings. Once deleted, this action is irreversible."
+            "Você tem controle total sobre seus dados. Pode editar o perfil, excluir tarefas específicas, remover anexos ou remover membros do grupo a qualquer momento no App. Também pode excluir permanentemente toda a conta e o conteúdo de usuário associado pelas opções de exclusão de conta nas configurações do App. Após a exclusão, a ação é irreversível."
           ]
         },
         {
-          "heading": "6. Contact Us",
+          "heading": "6. Fale conosco",
           "lead": "",
           "items": [],
           "paragraphs": []
         }
       ],
-      "contactLead": "If you have any questions about this Privacy Policy, please contact us at: jimo.cgg@gmail.com"
+      "contactLead": "Se tiver dúvidas sobre esta Política de Privacidade, contate-nos em: jimo.cgg@gmail.com"
     },
     "terms": {
-      "intro": "These Terms of Service (\"Terms\") govern your access to and use of the WeFamily website and mobile application. By using our service, you agree to be bound by these Terms.",
+      "intro": "Estes Termos de Serviço («Termos») regem seu acesso e uso do site e do aplicativo móvel Calendly. Ao usar nosso serviço, você concorda em ficar vinculado a estes Termos.",
       "sections": [
         {
-          "heading": "1. Description of Service",
+          "heading": "1. Descrição do serviço",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "WeFamily is a group collaboration and productivity tool designed to help groups manage tasks, schedules, and member profiles. The service is provided \"as is\" and we reserve the right to modify, update, or discontinue features at our discretion."
+            "Calendly é uma ferramenta de colaboração e produtividade para grupos, projetada para ajudar a gerenciar tarefas, agendas e perfis de membros. O serviço é fornecido «como está» e reservamo-nos o direito de modificar, atualizar ou descontinuar recursos a nosso critério."
           ]
         },
         {
-          "heading": "2. User Accounts & Security",
+          "heading": "2. Contas de usuário e segurança",
           "lead": "",
           "items": [
             {
               "term": "",
-              "body": "You must provide accurate information when creating an account (e.g., via Apple ID)."
+              "body": "Você deve fornecer informações precisas ao criar uma conta (p. ex., via Apple ID)."
             },
             {
               "term": "",
-              "body": "You are responsible for maintaining the security of your account and any devices you use to access WeFamily."
+              "body": "Você é responsável por manter a segurança da sua conta e de quaisquer dispositivos usados para acessar o Calendly."
             },
             {
               "term": "",
-              "body": "You must promptly notify us of any unauthorized use of your account."
+              "body": "Você deve nos notificar prontamente sobre qualquer uso não autorizado da sua conta."
             }
           ],
           "paragraphs": []
         },
         {
-          "heading": "3. Group Administration",
+          "heading": "3. Administração do grupo",
           "lead": "",
           "items": [
             {
               "term": "",
-              "body": "When you create a \"Group\" within the App, you act as the Administrator."
+              "body": "Ao criar um «Grupo» no App, você atua como Administrador."
             },
             {
               "term": "",
-              "body": "You are solely responsible for the data you input regarding other group members, including virtual profiles created for individuals without active accounts."
+              "body": "Você é o único responsável pelos dados que inserir sobre outros membros do grupo, incluindo perfis virtuais criados para pessoas sem contas ativas."
             },
             {
               "term": "",
-              "body": "You are responsible for managing who is invited to join your group and for removing members when necessary."
+              "body": "Você é responsável por gerenciar quem é convidado a entrar no grupo e por remover membros quando necessário."
             }
           ],
           "paragraphs": []
         },
         {
-          "heading": "4. User Content",
+          "heading": "4. Conteúdo do usuário",
           "lead": "",
           "items": [
             {
               "term": "",
-              "body": "You retain ownership of the photos, videos, text, and other content you submit. By submitting content, you grant us a limited license to host, store, display, and transmit that content solely to operate the service for your group."
+              "body": "Você mantém a propriedade das fotos, vídeos, textos e outros conteúdos que enviar. Ao enviar conteúdo, você nos concede uma licença limitada para hospedar, armazenar, exibir e transmitir esse conteúdo apenas para operar o serviço para o seu grupo."
             },
             {
               "term": "",
-              "body": "You represent that you have the necessary rights to upload and share any content you provide, including images and videos, and that doing so does not violate the privacy or rights of others."
+              "body": "Você declara ter os direitos necessários para enviar e compartilhar qualquer conteúdo que fornecer, incluindo imagens e vídeos, e que isso não viola a privacidade ou os direitos de terceiros."
             },
             {
               "term": "",
-              "body": "You are responsible for the accuracy and legality of content you or your group administrators add, including contact information stored in member profiles."
+              "body": "Você é responsável pela precisão e legalidade do conteúdo que você ou os administradores do grupo adicionarem, incluindo informações de contato armazenadas nos perfis dos membros."
             }
           ],
           "paragraphs": []
         },
         {
-          "heading": "5. Acceptable Use",
-          "lead": "You agree not to use WeFamily to:",
+          "heading": "5. Uso aceitável",
+          "lead": "Você concorda em não usar o Calendly para:",
           "items": [
             {
               "term": "",
-              "body": "Upload, post, or transmit any content that is illegal, abusive, harassing, or violates the privacy of others, including unauthorized photos or videos of other people."
+              "body": "Enviar, publicar ou transmitir conteúdo ilegal, abusivo, assediador ou que viole a privacidade de outras pessoas, incluindo fotos ou vídeos não autorizados de terceiros."
             },
             {
               "term": "",
-              "body": "Attempt to hack, disrupt, or compromise the security of the App, our servers, or our database structure."
+              "body": "Tentar invadir, interromper ou comprometer a segurança do App, de nossos servidores ou da estrutura do banco de dados."
             },
             {
               "term": "",
-              "body": "Reproduce, duplicate, copy, or resell any part of the Service without our express written permission."
+              "body": "Reproduzir, duplicar, copiar ou revender qualquer parte do Serviço sem nossa permissão escrita expressa."
             }
           ],
           "paragraphs": []
         },
         {
-          "heading": "6. Limitation of Liability",
+          "heading": "6. Limitação de responsabilidade",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "To the maximum extent permitted by law, WeFamily and its creators shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, resulting from (a) your access to or use of or inability to access or use the Service; (b) any conduct or content of any third party on the Service."
+            "Na máxima extensão permitida por lei, o Calendly e seus criadores não serão responsáveis por quaisquer danos indiretos, incidentais, especiais, consequenciais ou punitivos, nem por perda de lucros ou receitas, incorridos direta ou indiretamente, resultantes de (a) seu acesso, uso ou incapacidade de acessar ou usar o Serviço; (b) qualquer conduta ou conteúdo de terceiros no Serviço."
           ]
         },
         {
-          "heading": "7. Governing Law",
+          "heading": "7. Lei aplicável",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "These Terms shall be governed and construed in accordance with the laws of the Hong Kong Special Administrative Region, without regard to its conflict of law provisions."
+            "Estes Termos serão regidos e interpretados de acordo com as leis da Região Administrativa Especial de Hong Kong, sem considerar suas disposições sobre conflito de leis."
           ]
         },
         {
-          "heading": "8. Changes to Terms",
+          "heading": "8. Alterações nos Termos",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "We reserve the right to modify these Terms at any time. We will notify users of any significant changes by updating the \"Last Updated\" date at the top of this page. Your continued use of the Service after such changes constitutes acceptance of the new Terms."
+            "Reservamo-nos o direito de modificar estes Termos a qualquer momento. Notificaremos os usuários sobre mudanças significativas atualizando a data de «Última atualização» no topo desta página. O uso contínuo do Serviço após tais mudanças constitui aceitação dos novos Termos."
           ]
         },
         {
-          "heading": "9. Contact Information",
+          "heading": "9. Informações de contato",
           "lead": "",
           "items": [],
           "paragraphs": []
         }
       ],
-      "contactLead": "For any questions regarding these Terms, please contact: jimo.cgg@gmail.com"
+      "contactLead": "Para quaisquer dúvidas sobre estes Termos, contate: jimo.cgg@gmail.com"
     }
   }
 }

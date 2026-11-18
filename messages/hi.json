@@ -1,108 +1,108 @@
 {
   "meta": {
-    "title": "WeFamily — Keep Your Family’s Schedule in Sync",
-    "description": "Calendar, tasks, and member profiles in one place — on the web or in the app. Built for families. Create and view tasks or manage members in the browser without downloading an app."
+    "title": "Calendly — परिवार का शेड्यूल सिंक रखें",
+    "description": "परिवार का कैलेंडर और कार्य वेब या ऐप पर सिंक — डाउनलोड ज़रूरी नहीं।"
   },
   "nav": {
-    "features": "Features",
-    "howItWorks": "Get Started",
-    "webConsole": "Web Console",
-    "getApp": "Get the App",
-    "console": "Console"
+    "features": "सुविधाएँ",
+    "howItWorks": "शुरू करें",
+    "webConsole": "वेब कंसोल",
+    "getApp": "ऐप प्राप्त करें",
+    "console": "कंसोल"
   },
   "hero": {
-    "eyebrow": "WeFamily",
-    "title": "The simplest way to keep your family in sync",
-    "subtitle": "Calendar, tasks, assignments, and member profiles — built for families. Use the free web console to create and view tasks or manage members in your browser — no app download required.",
-    "downloadAppStore": "Download on the App Store",
-    "exploreWeb": "Open Web Console",
-    "webNote": "Prefer the browser? Full web access for tasks, schedules, and family members — install the app only if you want.",
+    "eyebrow": "Calendly",
+    "title": "परिवार को सिंक रखने का सबसे सरल तरीका",
+    "subtitle": "कैलेंडर, कार्य, ज़िम्मेदारियाँ और सदस्य प्रोफ़ाइल — परिवारों के लिए। मुफ़्त वेब कंसोल से ब्राउज़र में कार्य बनाएँ/देखें या सदस्य प्रबंधित करें — ऐप डाउनलोड की ज़रूरत नहीं।",
+    "downloadAppStore": "App Store से डाउनलोड करें",
+    "exploreWeb": "वेब कंसोल खोलें",
+    "webNote": "ब्राउज़र पसंद है? कार्य, शेड्यूल और सदस्यों तक पूरा वेब एक्सेस — ऐप वैकल्पिक है।",
     "imageBrief": "Hero composite: main calendar week view with multi-member colored events, phone app home overlapping bottom-right (calendar / todos visible). Device stack only — no extra badges."
   },
   "guide": {
-    "title": "Get started fast",
-    "subtitle": "Start on the web or in the app — a few steps to organize your family’s schedule and to-dos.",
+    "title": "जल्दी शुरू करें",
+    "subtitle": "वेब या ऐप से — कुछ कदमों में परिवार का शेड्यूल और टू-डू व्यवस्थित करें।",
     "steps": [
       {
-        "title": "Create a family and invite members",
-        "description": "Set up your household on the web console or in the app, then bring everyone in."
+        "title": "परिवार बनाएँ और सदस्यों को आमंत्रित करें",
+        "description": "वेब कंसोल या ऐप में घर सेट करें, फिर सभी को जोड़ें।"
       },
       {
-        "title": "Add profiles for people without the app",
-        "description": "Include elders, kids, or temporary companions in one shared schedule."
+        "title": "बिना ऐप वाले लोगों की प्रोफ़ाइल जोड़ें",
+        "description": "बुजुर्गों, बच्चों या अस्थायी साथियों को भी साझा शेड्यूल में शामिल करें।"
       },
       {
-        "title": "Add events and tasks",
-        "description": "Create and review shared to-dos from the browser or phone — clear owners, trackable progress."
+        "title": "इवेंट और कार्य जोड़ें",
+        "description": "ब्राउज़र या फ़ोन से साझा टू-डू बनाएँ और देखें — स्पष्ट ज़िम्मेदार, ट्रैक करने योग्य प्रगति।"
       }
     ],
     "imageBrief": "Onboarding visual: family member list + invite/profile UI with avatars and roles clearly visible."
   },
   "showcases": {
     "calendar": {
-      "title": "Flexible calendar views",
-      "description": "Switch between day, week, and month to match your family’s rhythm. See who’s busy at a glance — on the web or on mobile.",
+      "title": "लचीले कैलेंडर व्यू",
+      "description": "दिन, सप्ताह और महीने के बीच स्विच करें। एक नज़र में देखें कौन व्यस्त है — वेब या मोबाइल पर।",
       "imageBrief": "Calendar multi-view screenshot: prefer week or month with multi-member colored blocks; optional phone day view overlay."
     },
     "tasks": {
-      "title": "Tasks & lists",
-      "description": "Create and view shared to-dos in the browser without installing anything. Shopping, rotations, event prep — every item has an owner.",
+      "title": "कार्य और सूचियाँ",
+      "description": "बिना इंस्टॉल किए ब्राउज़र में साझा टू-डू बनाएँ और देखें। खरीदारी, ड्यूटी रोटेशन, इवेंट तैयारी — हर आइटम का एक मालिक।",
       "imageBrief": "Tasks/lists UI with multiple lists or cards, completion state and assignees; tablet + phone stack preferred."
     },
     "members": {
-      "title": "Member profiles",
-      "description": "Manage family members from the web console. Organizers can create profiles for elders, children, or anyone who doesn’t install the app.",
+      "title": "सदस्य प्रोफ़ाइल",
+      "description": "वेब कंसोल से परिवार प्रबंधित करें। आयोजक बुजुर्गों, बच्चों या बिना ऐप वाले लोगों के लिए प्रोफ़ाइल बना सकते हैं।",
       "imageBrief": "Members/family management: member list, profile cards, or assignee picker highlighting no-download profiles."
     },
     "sync": {
-      "title": "Web + app, always in sync",
-      "description": "Plan on the desktop web console, check in on mobile — create tasks, view schedules, and manage members wherever you are.",
+      "title": "वेब + ऐप, हमेशा सिंक",
+      "description": "डेस्कटॉप वेब कंसोल पर प्लान करें, मोबाइल पर चेक करें — कार्य बनाएँ, शेड्यूल देखें और जहाँ हों सदस्यों को प्रबंधित करें।",
       "imageBrief": "Multi-device shot: web console calendar on the left, phone app showing the same schedule on the right."
     }
   },
   "webPromo": {
-    "title": "Full web console — no download needed",
-    "description": "Open your browser to create and view family tasks, manage members, and keep the household schedule clear. Ideal at a desk — and for anyone who prefers not to install an app.",
-    "cta": "Open Web Console",
+    "title": "पूरा वेब कंसोल — डाउनलोड की ज़रूरत नहीं",
+    "description": "ब्राउज़र खोलकर पारिवारिक कार्य बनाएँ/देखें, सदस्य प्रबंधित करें और घर का शेड्यूल साफ़ रखें। डेस्क पर आदर्श — और उन लोगों के लिए जो ऐप इंस्टॉल नहीं करना चाहते।",
+    "cta": "वेब कंसोल खोलें",
     "imageBrief": "Desktop web console: calendar or tasks view with member sidebar, wide browser frame preferred."
   },
   "appPromo": {
-    "title": "Free mobile app",
-    "description": "Prefer your phone on the go? The app stays in sync with the web console so family tasks and schedules are always up to date.",
-    "cta": "Download on the App Store",
+    "title": "मुफ़्त मोबाइल ऐप",
+    "description": "बाहर फ़ोन पसंद है? ऐप वेब कंसोल से सिंक रहता है ताकि पारिवारिक कार्य और शेड्यूल हमेशा अपडेट रहें।",
+    "cta": "App Store से डाउनलोड करें",
     "imageBrief": "1–2 clean phone screens (calendar home or todos). Frameless OK for inserting into a phone mockup."
   },
   "capabilities": {
-    "sectionTitle": "Built for family collaboration",
-    "sectionSubtitle": "Bring plans that live in chat into one clear toolkit — on the web and in the app.",
+    "sectionTitle": "पारिवारिक सहयोग के लिए बनाया गया",
+    "sectionSubtitle": "चैट में बिखरी योजनाओं को एक स्पष्ट टूलकिट में लाएँ — वेब और ऐप दोनों पर।",
     "items": {
       "members": {
-        "title": "Member categories",
-        "description": "Give each member a clear identity so schedules are easy to read."
+        "title": "सदस्य श्रेणियाँ",
+        "description": "हर सदस्य को स्पष्ट पहचान दें ताकि शेड्यूल आसानी से पढ़ा जा सके।"
       },
       "sync": {
-        "title": "Web console included",
-        "description": "Create tasks, view schedules, and manage members in the browser — no app required."
+        "title": "वेब कंसोल शामिल",
+        "description": "ब्राउज़र में कार्य बनाएँ, शेड्यूल देखें और सदस्य प्रबंधित करें — ऐप ज़रूरी नहीं।"
       },
       "lists": {
-        "title": "Custom lists",
-        "description": "Group tasks, shopping, and prep items for the whole family."
+        "title": "कस्टम सूचियाँ",
+        "description": "पूरे परिवार के लिए कार्य, खरीदारी और तैयारी समूहित करें।"
       },
       "privacy": {
-        "title": "Privacy first",
-        "description": "Apple Sign In and modern cloud architecture to protect family data."
+        "title": "गोपनीयता पहले",
+        "description": "Apple Sign In और आधुनिक क्लाउड आर्किटेक्चर से पारिवारिक डेटा सुरक्षित।"
       }
     }
   },
   "footer": {
-    "copyright": "© 2026 {productEn}. All rights reserved.",
-    "privacy": "Privacy Policy",
-    "terms": "Terms of Service",
-    "contact": "Contact Us"
+    "copyright": "© 2026 {productEn}. सर्वाधिकार सुरक्षित।",
+    "privacy": "गोपनीयता नीति",
+    "terms": "सेवा की शर्तें",
+    "contact": "संपर्क करें"
   },
   "legal": {
-    "privacyTitle": "Privacy Policy",
-    "termsTitle": "Terms of Service",
-    "lastUpdated": "Last Updated: {date}"
+    "privacyTitle": "गोपनीयता नीति",
+    "termsTitle": "सेवा की शर्तें",
+    "lastUpdated": "अंतिम अपडेट: {date}"
   }
 }

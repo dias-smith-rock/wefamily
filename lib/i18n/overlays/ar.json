@@ -56,7 +56,7 @@
     "membership": {
       "loadFailedTitle": "تعذر تحميل معلومات المجموعة",
       "noMembershipTitle": "لا عضوية بعد",
-      "noMembershipBody": "لم تنضم إلى أي مجموعة أو طلبك قيد المراجعة. أنشئ أو انضم عبر تطبيق WeFamily لـ iOS."
+      "noMembershipBody": "لم تنضم إلى أي مجموعة أو طلبك قيد المراجعة. أنشئ أو انضم عبر تطبيق Calendly لـ iOS."
     },
     "nav": {
       "main": "التنقل الرئيسي",
@@ -70,7 +70,7 @@
     "me": {
       "title": "أنا",
       "accountSettings": "الحساب والإعدادات",
-      "settingsHint": "إدارة الإعدادات الكاملة في تطبيق WeFamily لـ iOS."
+      "settingsHint": "إدارة الإعدادات الكاملة في تطبيق Calendly لـ iOS."
     },
     "group": {
       "title": "المجموعة",
@@ -82,7 +82,7 @@
       "showPhone": "إظهار الهاتف",
       "createdAt": "أُنشئ في {date}",
       "memberCount": "{total} أعضاء",
-      "editGroupHint": "لإعادة التسمية أو حل المجموعة، استخدم تطبيق WeFamily لـ iOS.",
+      "editGroupHint": "لإعادة التسمية أو حل المجموعة، استخدم تطبيق Calendly لـ iOS.",
       "phone": "الهاتف",
       "email": "البريد",
       "noContact": "لا معلومات اتصال",
@@ -93,7 +93,7 @@
       "inviteMember": "دعوة عضو",
       "createProfile": "إنشاء ملف بدون تطبيق",
       "securityLimitTitle": "أمان متعدد الأجهزة",
-      "securityLimitBody": "استخدم تطبيق WeFamily لـ iOS لمسح QR أو إرسال رابط دعوة."
+      "securityLimitBody": "استخدم تطبيق Calendly لـ iOS لمسح QR أو إرسال رابط دعوة."
     },
     "calendar": {
       "switchView": "Switch view",
@@ -113,7 +113,7 @@
       "newTask": "New task",
       "newEvent": "New event",
       "readonlyTitle": "وضع القراءة فقط",
-      "readonlyBody": "بعض الإجراءات متاحة فقط في تطبيق WeFamily على iOS.",
+      "readonlyBody": "بعض الإجراءات متاحة فقط في تطبيق Calendly على iOS.",
       "aiTitle": "مساعد Hermes AI جاهز",
       "aiBody": "الإدخال الصوتي والجدولة الذكية على iOS فقط.",
       "taskDetail": "تفاصيل المهمة",
@@ -206,219 +206,219 @@
     "privacyTitle": "سياسة الخصوصية",
     "termsTitle": "شروط الخدمة",
     "lastUpdated": "آخر تحديث: {date}",
-    "privacyMetaDescription": "How WeFamily collects, uses, and protects your information when you use our website and mobile app.",
-    "termsMetaDescription": "Terms governing your access to and use of the WeFamily website and mobile app.",
+    "privacyMetaDescription": "كيف يجمع Calendly معلوماتك ويستخدمها ويحميها عند استخدام موقعنا وتطبيقنا للجوال.",
+    "termsMetaDescription": "الشروط التي تحكم وصولك إلى موقع وتطبيق Calendly للجوال واستخدامهما.",
     "privacy": {
-      "intro": "Welcome to WeFamily. Your group's privacy and data security are our highest priorities. This Privacy Policy explains how we collect, use, and protect your information when you use our website and mobile application. It is intended to align with the privacy disclosures we provide in the Apple App Store.",
+      "intro": "مرحبًا بك في Calendly. خصوصية مجموعتك وأمان بياناتها من أعلى أولوياتنا. توضح سياسة الخصوصية هذه كيف نجمع معلوماتك ونستخدمها ونحميها عند استخدام موقعنا وتطبيقنا للجوال. وهي متوافقة مع إفصاحات الخصوصية التي نقدّمها في متجر تطبيقات Apple.",
       "sections": [
         {
-          "heading": "1. Information We Collect",
-          "lead": "We collect information necessary to provide group collaboration features. The categories below include the types of data we disclose in the App Store privacy nutrition labels (User Content, linked to your identity, for app functionality):",
+          "heading": "1. المعلومات التي نجمعها",
+          "lead": "نجمع المعلومات اللازمة لتوفير ميزات التعاون الجماعي. تشمل الفئات أدناه أنواع البيانات التي نفصح عنها في ملصقات خصوصية App Store (محتوى المستخدم، مرتبط بهويتك، لوظائف التطبيق):",
           "items": [
             {
-              "term": "Account Information:",
-              "body": "When you sign in using Sign in with Apple or Google (web console), we collect the name and email address provided by the identity provider to create and secure your account. This information is linked to your identity."
+              "term": "معلومات الحساب:",
+              "body": "عند تسجيل الدخول عبر تسجيل الدخول باستخدام Apple أو Google (وحدة تحكم الويب)، نجمع الاسم وعنوان البريد الإلكتروني اللذين يقدمهما مزود الهوية لإنشاء حسابك وتأمينه. هذه المعلومات مرتبطة بهويتك."
             },
             {
-              "term": "Emails or Text Messages:",
-              "body": "To operate core features, we process email addresses, phone numbers you optionally add to member profiles, invitation-related text, and other text you enter in tasks, feedback, or group communications. This data is linked to your account and used only for app functionality—not for advertising or cross-app tracking."
+              "term": "رسائل البريد الإلكتروني أو الرسائل النصية:",
+              "body": "لتشغيل الميزات الأساسية، نعالج عناوين البريد الإلكتروني وأرقام الهاتف التي تضيفها اختياريًا إلى الملفات الشخصية والنص المتعلق بالدعوات وأي نص تدخله في المهام أو الملاحظات أو اتصالات المجموعة. ترتبط هذه البيانات بحسابك وتُستخدم فقط لوظائف التطبيق—وليس للإعلان أو التتبع عبر التطبيقات."
             },
             {
-              "term": "Photos or Videos:",
-              "body": "If you choose to upload a profile avatar or attach photos or videos to tasks, feedback, or related group content, we store and display that media within your group. Such content is linked to your identity and used only to provide the service."
+              "term": "الصور أو مقاطع الفيديو:",
+              "body": "إذا رفعت صورة ملف شخصي أو أرفقت صورًا أو مقاطع فيديو بالمهام أو الملاحظات أو محتوى المجموعة، نخزّن تلك الوسائط ونعرضها داخل مجموعتك. يرتبط هذا المحتوى بهويتك ويُستخدم فقط لتقديم الخدمة."
             },
             {
-              "term": "Other User Content:",
-              "body": "We store collaboration data you and your group create, including task and schedule details, group names and descriptions, managed member profiles, comments, attachments metadata, and similar content. This information is linked to your account or the profiles you manage and is used only for group collaboration features."
+              "term": "محتوى مستخدم آخر:",
+              "body": "نخزّن بيانات التعاون التي تنشئها أنت ومجموعتك، بما في ذلك تفاصيل المهام والجداول وأسماء المجموعات وأوصافها والملفات الشخصية المُدارة والتعليقات وبيانات المرفقات وما شابه. ترتبط هذه المعلومات بحسابك أو بالملفات التي تديرها وتُستخدم فقط لميزات التعاون الجماعي."
             },
             {
-              "term": "Managed Profiles:",
-              "body": "If you create profiles for group members who do not have their own accounts (such as children or elders), you confirm that you have the right to provide their basic identifying information (such as names, nicknames, or optional contact details) for group management purposes."
+              "term": "الملفات الشخصية المُدارة:",
+              "body": "إذا أنشأت ملفات لأعضاء بلا حسابات خاصة (مثل الأطفال أو كبار السن)، فإنك تؤكد أن لديك الحق في تقديم معلوماتهم التعريفية الأساسية (الأسماء أو الألقاب أو تفاصيل الاتصال الاختيارية) لأغراض إدارة المجموعة."
             },
             {
-              "term": "Technical Data:",
-              "body": "We may collect non-personally identifiable information such as device type, app crash logs, and usage metrics to ensure the stability of the App. This data is not used for advertising."
+              "term": "البيانات التقنية:",
+              "body": "قد نجمع معلومات غير شخصية مثل نوع الجهاز وسجلات الأعطال ومقاييس الاستخدام لضمان استقرار التطبيق. لا تُستخدم هذه البيانات للإعلان."
             }
           ],
           "paragraphs": []
         },
         {
-          "heading": "2. How We Use Your Information",
-          "lead": "We use the information described above solely for app functionality, including:",
+          "heading": "2. كيف نستخدم معلوماتك",
+          "lead": "نستخدم المعلومات الموضحة أعلاه فقط لوظائف التطبيق، بما في ذلك:",
           "items": [
             {
               "term": "",
-              "body": "Providing, syncing, and displaying tasks, schedules, group roles, profiles, and user-generated content across authorized group members and your devices."
+              "body": "توفير ومزامنة وعرض المهام والجداول وأدوار المجموعة والملفات الشخصية والمحتوى الذي ينشئه المستخدمون عبر الأعضاء المصرح لهم وأجهزتك."
             },
             {
               "term": "",
-              "body": "Authenticating your identity and enforcing access controls so only members of your group can view that group's data."
+              "body": "المصادقة على هويتك وفرض ضوابط الوصول بحيث لا يرى بيانات المجموعة إلا أعضاؤها."
             },
             {
               "term": "",
-              "body": "Storing and delivering photos, videos, and text you choose to share within the service."
+              "body": "تخزين وتسليم الصور ومقاطع الفيديو والنصوص التي تختار مشاركتها داخل الخدمة."
             },
             {
               "term": "",
-              "body": "Providing customer support, fixing errors, and improving reliability."
+              "body": "تقديم دعم العملاء وإصلاح الأخطاء وتحسين الموثوقية."
             }
           ],
           "paragraphs": [
-            "We do not use your personal data for third-party advertising, and we do not sell your data. Data identified in the App Store as linked to you is associated with your account or profile for the purposes stated above."
+            "لا نستخدم بياناتك الشخصية للإعلان من طرف ثالث ولا نبيع بياناتك. البيانات المحددة في App Store بأنها مرتبطة بك ترتبط بحسابك أو ملفك للأغراض المذكورة أعلاه."
           ]
         },
         {
-          "heading": "3. Data Storage & Security",
+          "heading": "3. تخزين البيانات والأمان",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "We utilize enterprise-grade cloud infrastructure (including Supabase) to store your data securely. Your data is encrypted in transit and at rest. We employ strict Row-Level Security (RLS) database policies to ensure that your group data is completely isolated and only accessible to authorized members of your specific group."
+            "نستخدم بنية تحتية سحابية بمستوى المؤسسات (بما في ذلك Supabase) لتخزين بياناتك بأمان. تُشفَّر بياناتك أثناء النقل وفي حالة السكون. نطبّق سياسات أمان صارمة على مستوى الصف (RLS) لضمان عزل بيانات مجموعتك تمامًا وإتاحتها فقط للأعضاء المصرح لهم في تلك المجموعة."
           ]
         },
         {
-          "heading": "4. Information Sharing",
+          "heading": "4. مشاركة المعلومات",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "We do not, and will never, sell your personal data to third parties. We only share information with trusted service providers (such as secure cloud hosting) strictly for the purpose of operating our service. We may also disclose information if required by law."
+            "لا نبيع ولن نبيع بياناتك الشخصية لأطراف ثالثة. نشارك المعلومات فقط مع مزودي خدمات موثوقين (مثل الاستضافة السحابية الآمنة) لغرض تشغيل خدمتنا حصرًا. وقد نفصح عن المعلومات إذا اقتضى القانون ذلك."
           ]
         },
         {
-          "heading": "5. Your Rights and Data Deletion",
+          "heading": "5. حقوقك وحذف البيانات",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "You have full control over your data. You can edit your profile, delete specific tasks, remove attachments, or remove group members at any time within the App. You may also permanently delete your entire account and all associated user content via the account deletion options in the App's settings. Once deleted, this action is irreversible."
+            "لديك السيطرة الكاملة على بياناتك. يمكنك تعديل ملفك الشخصي أو حذف مهام محددة أو إزالة مرفقات أو إزالة أعضاء المجموعة في أي وقت داخل التطبيق. يمكنك أيضًا حذف حسابك بالكامل وكل محتوى المستخدم المرتبط نهائيًا عبر خيارات حذف الحساب في إعدادات التطبيق. بمجرد الحذف يكون الإجراء غير قابل للعكس."
           ]
         },
         {
-          "heading": "6. Contact Us",
+          "heading": "6. اتصل بنا",
           "lead": "",
           "items": [],
           "paragraphs": []
         }
       ],
-      "contactLead": "If you have any questions about this Privacy Policy, please contact us at: jimo.cgg@gmail.com"
+      "contactLead": "إذا كانت لديك أسئلة حول سياسة الخصوصية هذه، فاتصل بنا على: jimo.cgg@gmail.com"
     },
     "terms": {
-      "intro": "These Terms of Service (\"Terms\") govern your access to and use of the WeFamily website and mobile application. By using our service, you agree to be bound by these Terms.",
+      "intro": "تحكم شروط الخدمة هذه («الشروط») وصولك إلى موقع وتطبيق Calendly للجوال واستخدامهما. باستخدامك خدمتنا، فإنك توافق على الالتزام بهذه الشروط.",
       "sections": [
         {
-          "heading": "1. Description of Service",
+          "heading": "1. وصف الخدمة",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "WeFamily is a group collaboration and productivity tool designed to help groups manage tasks, schedules, and member profiles. The service is provided \"as is\" and we reserve the right to modify, update, or discontinue features at our discretion."
+            "Calendly أداة تعاون وإنتاجية جماعية مصممة لمساعدة المجموعات على إدارة المهام والجداول وملفات الأعضاء. تُقدَّم الخدمة «كما هي» ونحتفظ بالحق في تعديل الميزات أو تحديثها أو إيقافها وفق تقديرنا."
           ]
         },
         {
-          "heading": "2. User Accounts & Security",
+          "heading": "2. حسابات المستخدمين والأمان",
           "lead": "",
           "items": [
             {
               "term": "",
-              "body": "You must provide accurate information when creating an account (e.g., via Apple ID)."
+              "body": "يجب تقديم معلومات دقيقة عند إنشاء حساب (مثلًا عبر Apple ID)."
             },
             {
               "term": "",
-              "body": "You are responsible for maintaining the security of your account and any devices you use to access WeFamily."
+              "body": "أنت مسؤول عن الحفاظ على أمان حسابك وأي أجهزة تستخدمها للوصول إلى Calendly."
             },
             {
               "term": "",
-              "body": "You must promptly notify us of any unauthorized use of your account."
+              "body": "يجب إبلاغنا فورًا بأي استخدام غير مصرح به لحسابك."
             }
           ],
           "paragraphs": []
         },
         {
-          "heading": "3. Group Administration",
+          "heading": "3. إدارة المجموعة",
           "lead": "",
           "items": [
             {
               "term": "",
-              "body": "When you create a \"Group\" within the App, you act as the Administrator."
+              "body": "عند إنشاء «مجموعة» داخل التطبيق، تعمل بصفتك المسؤول."
             },
             {
               "term": "",
-              "body": "You are solely responsible for the data you input regarding other group members, including virtual profiles created for individuals without active accounts."
+              "body": "أنت وحدك مسؤول عن البيانات التي تدخلها بخصوص أعضاء المجموعة الآخرين، بما في ذلك الملفات الافتراضية لمن بلا حسابات نشطة."
             },
             {
               "term": "",
-              "body": "You are responsible for managing who is invited to join your group and for removing members when necessary."
+              "body": "أنت مسؤول عن إدارة من يُدعى للانضمام إلى مجموعتك وعن إزالة الأعضاء عند الحاجة."
             }
           ],
           "paragraphs": []
         },
         {
-          "heading": "4. User Content",
+          "heading": "4. محتوى المستخدم",
           "lead": "",
           "items": [
             {
               "term": "",
-              "body": "You retain ownership of the photos, videos, text, and other content you submit. By submitting content, you grant us a limited license to host, store, display, and transmit that content solely to operate the service for your group."
+              "body": "تحتفظ بملكية الصور ومقاطع الفيديو والنصوص والمحتوى الآخر الذي ترسله. بإرسال المحتوى، تمنحنا ترخيصًا محدودًا لاستضافته وتخزينه وعرضه ونقله فقط لتشغيل الخدمة لمجموعتك."
             },
             {
               "term": "",
-              "body": "You represent that you have the necessary rights to upload and share any content you provide, including images and videos, and that doing so does not violate the privacy or rights of others."
+              "body": "تقر بأن لديك الحقوق اللازمة لرفع ومشاركة أي محتوى تقدمه، بما في ذلك الصور ومقاطع الفيديو، وأن ذلك لا ينتهك خصوصية الآخرين أو حقوقهم."
             },
             {
               "term": "",
-              "body": "You are responsible for the accuracy and legality of content you or your group administrators add, including contact information stored in member profiles."
+              "body": "أنت مسؤول عن دقة وقانونية المحتوى الذي تضيفه أنت أو مسؤولو مجموعتك، بما في ذلك معلومات الاتصال المخزنة في ملفات الأعضاء."
             }
           ],
           "paragraphs": []
         },
         {
-          "heading": "5. Acceptable Use",
-          "lead": "You agree not to use WeFamily to:",
+          "heading": "5. الاستخدام المقبول",
+          "lead": "توافق على عدم استخدام Calendly من أجل:",
           "items": [
             {
               "term": "",
-              "body": "Upload, post, or transmit any content that is illegal, abusive, harassing, or violates the privacy of others, including unauthorized photos or videos of other people."
+              "body": "رفع أو نشر أو نقل أي محتوى غير قانوني أو مسيء أو مضايق أو ينتهك خصوصية الآخرين، بما في ذلك صور أو مقاطع فيديو غير مصرح بها لأشخاص آخرين."
             },
             {
               "term": "",
-              "body": "Attempt to hack, disrupt, or compromise the security of the App, our servers, or our database structure."
+              "body": "محاولة اختراق التطبيق أو خوادمنا أو بنية قاعدة البيانات أو تعطيلها أو المساس بأمانها."
             },
             {
               "term": "",
-              "body": "Reproduce, duplicate, copy, or resell any part of the Service without our express written permission."
+              "body": "إعادة إنتاج أو نسخ أو بيع أي جزء من الخدمة دون إذن كتابي صريح منا."
             }
           ],
           "paragraphs": []
         },
         {
-          "heading": "6. Limitation of Liability",
+          "heading": "6. تحديد المسؤولية",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "To the maximum extent permitted by law, WeFamily and its creators shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, resulting from (a) your access to or use of or inability to access or use the Service; (b) any conduct or content of any third party on the Service."
+            "إلى أقصى حد يسمح به القانون، لا يتحمل Calendly ومنشئوه المسؤولية عن أي أضرار غير مباشرة أو عرضية أو خاصة أو تبعية أو عقابية، أو أي خسارة في الأرباح أو الإيرادات، سواء حدثت مباشرة أو غير مباشرة، ناتجة عن (أ) وصولك إلى الخدمة أو استخدامها أو عدم القدرة على الوصول إليها أو استخدامها؛ (ب) أي سلوك أو محتوى لأي طرف ثالث على الخدمة."
           ]
         },
         {
-          "heading": "7. Governing Law",
+          "heading": "7. القانون الحاكم",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "These Terms shall be governed and construed in accordance with the laws of the Hong Kong Special Administrative Region, without regard to its conflict of law provisions."
+            "تُحكم هذه الشروط وتُفسَّر وفقًا لقوانين منطقة هونغ كونغ الإدارية الخاصة، دون اعتبار لأحكام تنازع القوانين."
           ]
         },
         {
-          "heading": "8. Changes to Terms",
+          "heading": "8. تغييرات الشروط",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "We reserve the right to modify these Terms at any time. We will notify users of any significant changes by updating the \"Last Updated\" date at the top of this page. Your continued use of the Service after such changes constitutes acceptance of the new Terms."
+            "نحتفظ بالحق في تعديل هذه الشروط في أي وقت. سنُخطر المستخدمين بأي تغييرات جوهرية عبر تحديث تاريخ «آخر تحديث» أعلى هذه الصفحة. استمرارك في استخدام الخدمة بعد هذه التغييرات يُعد قبولًا للشروط الجديدة."
           ]
         },
         {
-          "heading": "9. Contact Information",
+          "heading": "9. معلومات الاتصال",
           "lead": "",
           "items": [],
           "paragraphs": []
         }
       ],
-      "contactLead": "For any questions regarding these Terms, please contact: jimo.cgg@gmail.com"
+      "contactLead": "لأي أسئلة حول هذه الشروط، يرجى التواصل: jimo.cgg@gmail.com"
     }
   }
 }

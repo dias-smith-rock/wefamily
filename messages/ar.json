@@ -1,108 +1,108 @@
 {
   "meta": {
-    "title": "WeFamily — Keep Your Family’s Schedule in Sync",
-    "description": "Calendar, tasks, and member profiles in one place — on the web or in the app. Built for families. Create and view tasks or manage members in the browser without downloading an app."
+    "title": "Calendly — حافظ على مزامنة جدول العائلة",
+    "description": "تقويم العائلة ومهامها متزامنة على الويب أو التطبيق — دون الحاجة إلى تنزيل."
   },
   "nav": {
-    "features": "Features",
-    "howItWorks": "Get Started",
-    "webConsole": "Web Console",
-    "getApp": "Get the App",
-    "console": "Console"
+    "features": "الميزات",
+    "howItWorks": "ابدأ",
+    "webConsole": "وحدة تحكم الويب",
+    "getApp": "احصل على التطبيق",
+    "console": "وحدة التحكم"
   },
   "hero": {
-    "eyebrow": "WeFamily",
-    "title": "The simplest way to keep your family in sync",
-    "subtitle": "Calendar, tasks, assignments, and member profiles — built for families. Use the free web console to create and view tasks or manage members in your browser — no app download required.",
-    "downloadAppStore": "Download on the App Store",
-    "exploreWeb": "Open Web Console",
-    "webNote": "Prefer the browser? Full web access for tasks, schedules, and family members — install the app only if you want.",
+    "eyebrow": "Calendly",
+    "title": "أبسط طريقة لإبقاء عائلتك متزامنة",
+    "subtitle": "تقويم ومهام ومسؤوليات وملفات أعضاء — مصمّم للعائلات. استخدم وحدة تحكم الويب المجانية لإنشاء المهام وعرضها أو إدارة الأعضاء في المتصفح — دون تنزيل التطبيق.",
+    "downloadAppStore": "التنزيل من App Store",
+    "exploreWeb": "فتح وحدة تحكم الويب",
+    "webNote": "تفضل المتصفح؟ وصول ويب كامل للمهام والجداول والأعضاء — تثبيت التطبيق اختياري.",
     "imageBrief": "Hero composite: main calendar week view with multi-member colored events, phone app home overlapping bottom-right (calendar / todos visible). Device stack only — no extra badges."
   },
   "guide": {
-    "title": "Get started fast",
-    "subtitle": "Start on the web or in the app — a few steps to organize your family’s schedule and to-dos.",
+    "title": "ابدأ بسرعة",
+    "subtitle": "على الويب أو في التطبيق — بضع خطوات لتنظيم جدول العائلة ومهامها.",
     "steps": [
       {
-        "title": "Create a family and invite members",
-        "description": "Set up your household on the web console or in the app, then bring everyone in."
+        "title": "أنشئ عائلة وادعُ الأعضاء",
+        "description": "أعدّ أسرتك في وحدة تحكم الويب أو التطبيق، ثم أضِف الجميع."
       },
       {
-        "title": "Add profiles for people without the app",
-        "description": "Include elders, kids, or temporary companions in one shared schedule."
+        "title": "أضِف ملفات لمن بلا تطبيق",
+        "description": "ضمّن كبار السن أو الأطفال أو المرافقين المؤقتين في جدول مشترك واحد."
       },
       {
-        "title": "Add events and tasks",
-        "description": "Create and review shared to-dos from the browser or phone — clear owners, trackable progress."
+        "title": "أضِف أحداثًا ومهامًا",
+        "description": "أنشئ وراجع المهام المشتركة من المتصفح أو الهاتف — مسؤولون واضحون وتقدّم قابل للتتبع."
       }
     ],
     "imageBrief": "Onboarding visual: family member list + invite/profile UI with avatars and roles clearly visible."
   },
   "showcases": {
     "calendar": {
-      "title": "Flexible calendar views",
-      "description": "Switch between day, week, and month to match your family’s rhythm. See who’s busy at a glance — on the web or on mobile.",
+      "title": "طرق عرض تقويم مرنة",
+      "description": "تنقّل بين اليوم والأسبوع والشهر وفق إيقاع العائلة. اعرف من المشغول بنظرة واحدة — على الويب أو الجوال.",
       "imageBrief": "Calendar multi-view screenshot: prefer week or month with multi-member colored blocks; optional phone day view overlay."
     },
     "tasks": {
-      "title": "Tasks & lists",
-      "description": "Create and view shared to-dos in the browser without installing anything. Shopping, rotations, event prep — every item has an owner.",
+      "title": "المهام والقوائم",
+      "description": "أنشئ واعرض المهام المشتركة في المتصفح دون تثبيت أي شيء. تسوق، مناوبات، تحضير مناسبات — لكل عنصر مسؤول.",
       "imageBrief": "Tasks/lists UI with multiple lists or cards, completion state and assignees; tablet + phone stack preferred."
     },
     "members": {
-      "title": "Member profiles",
-      "description": "Manage family members from the web console. Organizers can create profiles for elders, children, or anyone who doesn’t install the app.",
+      "title": "ملفات الأعضاء",
+      "description": "أدِر العائلة من وحدة تحكم الويب. يمكن للمنظمين إنشاء ملفات لكبار السن أو الأطفال أو من لا يثبت التطبيق.",
       "imageBrief": "Members/family management: member list, profile cards, or assignee picker highlighting no-download profiles."
     },
     "sync": {
-      "title": "Web + app, always in sync",
-      "description": "Plan on the desktop web console, check in on mobile — create tasks, view schedules, and manage members wherever you are.",
+      "title": "ويب + تطبيق، دائمًا متزامنان",
+      "description": "خطّط على وحدة تحكم الويب للحاسوب وتحقق من الجوال — أنشئ مهامًا واعرض الجداول وأدِر الأعضاء أينما كنت.",
       "imageBrief": "Multi-device shot: web console calendar on the left, phone app showing the same schedule on the right."
     }
   },
   "webPromo": {
-    "title": "Full web console — no download needed",
-    "description": "Open your browser to create and view family tasks, manage members, and keep the household schedule clear. Ideal at a desk — and for anyone who prefers not to install an app.",
-    "cta": "Open Web Console",
+    "title": "وحدة تحكم ويب كاملة — بلا تنزيل",
+    "description": "افتح المتصفح لإنشاء مهام العائلة وعرضها وإدارة الأعضاء وتنظيم جدول المنزل. مثالي على المكتب — ولمن يفضل عدم تثبيت تطبيق.",
+    "cta": "فتح وحدة تحكم الويب",
     "imageBrief": "Desktop web console: calendar or tasks view with member sidebar, wide browser frame preferred."
   },
   "appPromo": {
-    "title": "Free mobile app",
-    "description": "Prefer your phone on the go? The app stays in sync with the web console so family tasks and schedules are always up to date.",
-    "cta": "Download on the App Store",
+    "title": "تطبيق جوال مجاني",
+    "description": "تفضل الهاتف وأنت في الخارج؟ يبقى التطبيق متزامنًا مع وحدة تحكم الويب لتظل مهام العائلة وجداولها محدّثة.",
+    "cta": "التنزيل من App Store",
     "imageBrief": "1–2 clean phone screens (calendar home or todos). Frameless OK for inserting into a phone mockup."
   },
   "capabilities": {
-    "sectionTitle": "Built for family collaboration",
-    "sectionSubtitle": "Bring plans that live in chat into one clear toolkit — on the web and in the app.",
+    "sectionTitle": "مصمّم للتعاون العائلي",
+    "sectionSubtitle": "اجمع الخطط المتناثرة في الدردشة في أدوات واضحة — على الويب وفي التطبيق.",
     "items": {
       "members": {
-        "title": "Member categories",
-        "description": "Give each member a clear identity so schedules are easy to read."
+        "title": "تصنيفات الأعضاء",
+        "description": "امنح كل عضو هوية واضحة ليسهل قراءة الجدول."
       },
       "sync": {
-        "title": "Web console included",
-        "description": "Create tasks, view schedules, and manage members in the browser — no app required."
+        "title": "وحدة تحكم ويب مضمّنة",
+        "description": "أنشئ مهامًا واعرض الجداول وأدِر الأعضاء في المتصفح — دون تطبيق."
       },
       "lists": {
-        "title": "Custom lists",
-        "description": "Group tasks, shopping, and prep items for the whole family."
+        "title": "قوائم مخصصة",
+        "description": "جمّع المهام والتسوق والتحضيرات لجميع أفراد العائلة."
       },
       "privacy": {
-        "title": "Privacy first",
-        "description": "Apple Sign In and modern cloud architecture to protect family data."
+        "title": "الخصوصية أولًا",
+        "description": "تسجيل الدخول عبر Apple وبنية سحابية حديثة لحماية بيانات العائلة."
       }
     }
   },
   "footer": {
-    "copyright": "© 2026 {productEn}. All rights reserved.",
-    "privacy": "Privacy Policy",
-    "terms": "Terms of Service",
-    "contact": "Contact Us"
+    "copyright": "© 2026 {productEn}. جميع الحقوق محفوظة.",
+    "privacy": "سياسة الخصوصية",
+    "terms": "شروط الخدمة",
+    "contact": "اتصل بنا"
   },
   "legal": {
-    "privacyTitle": "Privacy Policy",
-    "termsTitle": "Terms of Service",
-    "lastUpdated": "Last Updated: {date}"
+    "privacyTitle": "سياسة الخصوصية",
+    "termsTitle": "شروط الخدمة",
+    "lastUpdated": "آخر تحديث: {date}"
   }
 }

@@ -1,108 +1,108 @@
 {
   "meta": {
-    "title": "WeFamily — Keep Your Family’s Schedule in Sync",
-    "description": "Calendar, tasks, and member profiles in one place — on the web or in the app. Built for families. Create and view tasks or manage members in the browser without downloading an app."
+    "title": "Calendly — குடும்ப அட்டவணையை ஒத்திசைவில் வைத்திருங்கள்",
+    "description": "குடும்ப நாட்காட்டி மற்றும் பணிகள் வலை அல்லது ஆப்பில் ஒத்திசைவு — பதிவிறக்கம் தேவையில்லை."
   },
   "nav": {
-    "features": "Features",
-    "howItWorks": "Get Started",
-    "webConsole": "Web Console",
-    "getApp": "Get the App",
-    "console": "Console"
+    "features": "அம்சங்கள்",
+    "howItWorks": "தொடங்குங்கள்",
+    "webConsole": "வலை கன்சோல்",
+    "getApp": "ஆப்பைப் பெறுங்கள்",
+    "console": "கன்சோல்"
   },
   "hero": {
-    "eyebrow": "WeFamily",
-    "title": "The simplest way to keep your family in sync",
-    "subtitle": "Calendar, tasks, assignments, and member profiles — built for families. Use the free web console to create and view tasks or manage members in your browser — no app download required.",
-    "downloadAppStore": "Download on the App Store",
-    "exploreWeb": "Open Web Console",
-    "webNote": "Prefer the browser? Full web access for tasks, schedules, and family members — install the app only if you want.",
+    "eyebrow": "Calendly",
+    "title": "குடும்பத்தை ஒத்திசைவில் வைக்க எளிய வழி",
+    "subtitle": "நாட்காட்டி, பணிகள், பொறுப்புகள் மற்றும் உறுப்பினர் சுயவிவரங்கள் — குடும்பங்களுக்காக. இலவச வலை கன்சோலில் உலாவியில் பணிகளை உருவாக்க/பார்க்க அல்லது உறுப்பினர்களை நிர்வகிக்கவும் — ஆப் பதிவிறக்கம் தேவையில்லை.",
+    "downloadAppStore": "App Store-இல் பதிவிறக்கவும்",
+    "exploreWeb": "வலை கன்சோலைத் திறக்கவும்",
+    "webNote": "உலாவியை விரும்புகிறீர்களா? பணிகள், அட்டவணைகள் மற்றும் உறுப்பினர்களுக்கு முழு வலை அணுகல் — ஆப் விருப்பத்தேர்வு மட்டுமே.",
     "imageBrief": "Hero composite: main calendar week view with multi-member colored events, phone app home overlapping bottom-right (calendar / todos visible). Device stack only — no extra badges."
   },
   "guide": {
-    "title": "Get started fast",
-    "subtitle": "Start on the web or in the app — a few steps to organize your family’s schedule and to-dos.",
+    "title": "விரைவாகத் தொடங்குங்கள்",
+    "subtitle": "வலை அல்லது ஆப்பில் — சில படிகளில் குடும்ப அட்டவணை மற்றும் செய்யவேண்டியவற்றை ஒழுங்குபடுத்துங்கள்.",
     "steps": [
       {
-        "title": "Create a family and invite members",
-        "description": "Set up your household on the web console or in the app, then bring everyone in."
+        "title": "குடும்பத்தை உருவாக்கி உறுப்பினர்களை அழைக்கவும்",
+        "description": "வலை கன்சோல் அல்லது ஆப்பில் வீட்டை அமைத்து அனைவரையும் சேர்க்கவும்."
       },
       {
-        "title": "Add profiles for people without the app",
-        "description": "Include elders, kids, or temporary companions in one shared schedule."
+        "title": "ஆப் இல்லாதவர்களுக்கு சுயவிவரம் சேர்க்கவும்",
+        "description": "மூத்தோர், குழந்தைகள் அல்லது தற்காலிக துணையாளர்களையும் பகிரப்பட்ட அட்டவணையில் சேர்க்கவும்."
       },
       {
-        "title": "Add events and tasks",
-        "description": "Create and review shared to-dos from the browser or phone — clear owners, trackable progress."
+        "title": "நிகழ்வுகள் மற்றும் பணிகளைச் சேர்க்கவும்",
+        "description": "உலாவி அல்லது போனில் பகிரப்பட்ட செய்யவேண்டியவற்றை உருவாக்கி பாருங்கள் — தெளிவான பொறுப்பாளர்கள், கண்காணிக்கக்கூடிய முன்னேற்றம்."
       }
     ],
     "imageBrief": "Onboarding visual: family member list + invite/profile UI with avatars and roles clearly visible."
   },
   "showcases": {
     "calendar": {
-      "title": "Flexible calendar views",
-      "description": "Switch between day, week, and month to match your family’s rhythm. See who’s busy at a glance — on the web or on mobile.",
+      "title": "நெகிழ்வான நாட்காட்டி காட்சிகள்",
+      "description": "நாள், வாரம், மாதம் இடையே மாறுங்கள். யார் பிசியாக இருக்கிறார்கள் என்பதை ஒரு பார்வையில் பாருங்கள் — வலை அல்லது மொபைலில்.",
       "imageBrief": "Calendar multi-view screenshot: prefer week or month with multi-member colored blocks; optional phone day view overlay."
     },
     "tasks": {
-      "title": "Tasks & lists",
-      "description": "Create and view shared to-dos in the browser without installing anything. Shopping, rotations, event prep — every item has an owner.",
+      "title": "பணிகள் & பட்டியல்கள்",
+      "description": "எதையும் நிறுவாமல் உலாவியில் பகிரப்பட்ட செய்யவேண்டியவற்றை உருவாக்கி பாருங்கள். வாங்குதல், ரோட்டேஷன், நிகழ்வு தயாரிப்பு — ஒவ்வொன்றிற்கும் ஒரு பொறுப்பாளர்.",
       "imageBrief": "Tasks/lists UI with multiple lists or cards, completion state and assignees; tablet + phone stack preferred."
     },
     "members": {
-      "title": "Member profiles",
-      "description": "Manage family members from the web console. Organizers can create profiles for elders, children, or anyone who doesn’t install the app.",
+      "title": "உறுப்பினர் சுயவிவரங்கள்",
+      "description": "வலை கன்சோலில் குடும்பத்தை நிர்வகியுங்கள். ஏற்பாட்டாளர்கள் மூத்தோர், குழந்தைகள் அல்லது ஆப் நிறுவாதவர்களுக்கு சுயவிவரம் உருவாக்கலாம்.",
       "imageBrief": "Members/family management: member list, profile cards, or assignee picker highlighting no-download profiles."
     },
     "sync": {
-      "title": "Web + app, always in sync",
-      "description": "Plan on the desktop web console, check in on mobile — create tasks, view schedules, and manage members wherever you are.",
+      "title": "வலை + ஆப், எப்போதும் ஒத்திசைவு",
+      "description": "டெஸ்க்டாப் வலை கன்சோலில் திட்டமிடுங்கள், மொபைலில் பாருங்கள் — பணிகள் உருவாக்க, அட்டவணை பார்க்க, உறுப்பினர்களை எங்கே இருந்தாலும் நிர்வகிக்க.",
       "imageBrief": "Multi-device shot: web console calendar on the left, phone app showing the same schedule on the right."
     }
   },
   "webPromo": {
-    "title": "Full web console — no download needed",
-    "description": "Open your browser to create and view family tasks, manage members, and keep the household schedule clear. Ideal at a desk — and for anyone who prefers not to install an app.",
-    "cta": "Open Web Console",
+    "title": "முழு வலை கன்சோல் — பதிவிறக்கம் தேவையில்லை",
+    "description": "உலாவியைத் திறந்து குடும்ப பணிகளை உருவாக்க/பார்க்க, உறுப்பினர்களை நிர்வகிக்க, வீட்டு அட்டவணையை தெளிவாக வைத்திருக்க. மேசையில் சிறந்தது — ஆப் நிறுவ விரும்பாதவர்களுக்கும்.",
+    "cta": "வலை கன்சோலைத் திறக்கவும்",
     "imageBrief": "Desktop web console: calendar or tasks view with member sidebar, wide browser frame preferred."
   },
   "appPromo": {
-    "title": "Free mobile app",
-    "description": "Prefer your phone on the go? The app stays in sync with the web console so family tasks and schedules are always up to date.",
-    "cta": "Download on the App Store",
+    "title": "இலவச மொபைல் ஆப்",
+    "description": "வெளியில் போன் விருப்பமா? ஆப் வலை கன்சோலுடன் ஒத்திசைவில் இருப்பதால் குடும்ப பணிகளும் அட்டவணைகளும் எப்போதும் புதுப்பிக்கப்படும்.",
+    "cta": "App Store-இல் பதிவிறக்கவும்",
     "imageBrief": "1–2 clean phone screens (calendar home or todos). Frameless OK for inserting into a phone mockup."
   },
   "capabilities": {
-    "sectionTitle": "Built for family collaboration",
-    "sectionSubtitle": "Bring plans that live in chat into one clear toolkit — on the web and in the app.",
+    "sectionTitle": "குடும்ப ஒத்துழைப்புக்காக உருவாக்கப்பட்டது",
+    "sectionSubtitle": "அரட்டையில் சிதறிய திட்டங்களை ஒரே தெளிவான கருவித்தொகுப்பிற்கு கொண்டு வாருங்கள் — வலை மற்றும் ஆப்பில்.",
     "items": {
       "members": {
-        "title": "Member categories",
-        "description": "Give each member a clear identity so schedules are easy to read."
+        "title": "உறுப்பினர் வகைகள்",
+        "description": "ஒவ்வொரு உறுப்பினருக்கும் தெளிவான அடையாளம் கொடுங்கள் — அட்டவணை எளிதாகப் படிக்க."
       },
       "sync": {
-        "title": "Web console included",
-        "description": "Create tasks, view schedules, and manage members in the browser — no app required."
+        "title": "வலை கன்சோல் அடங்கும்",
+        "description": "உலாவியில் பணிகள் உருவாக்க, அட்டவணை பார்க்க, உறுப்பினர்களை நிர்வகிக்க — ஆப் தேவையில்லை."
       },
       "lists": {
-        "title": "Custom lists",
-        "description": "Group tasks, shopping, and prep items for the whole family."
+        "title": "தனிப்பயன் பட்டியல்கள்",
+        "description": "முழு குடும்பத்திற்கும் பணிகள், வாங்குதல், தயாரிப்புகளை குழுவாக்குங்கள்."
       },
       "privacy": {
-        "title": "Privacy first",
-        "description": "Apple Sign In and modern cloud architecture to protect family data."
+        "title": "தனியுரிமை முதலில்",
+        "description": "Apple Sign In மற்றும் நவீன கிளவுட் கட்டமைப்பு குடும்பத் தரவைப் பாதுகாக்கும்."
       }
     }
   },
   "footer": {
-    "copyright": "© 2026 {productEn}. All rights reserved.",
-    "privacy": "Privacy Policy",
-    "terms": "Terms of Service",
-    "contact": "Contact Us"
+    "copyright": "© 2026 {productEn}. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.",
+    "privacy": "தனியுரிமைக் கொள்கை",
+    "terms": "சேவை விதிமுறைகள்",
+    "contact": "எங்களைத் தொடர்புகொள்ளுங்கள்"
   },
   "legal": {
-    "privacyTitle": "Privacy Policy",
-    "termsTitle": "Terms of Service",
-    "lastUpdated": "Last Updated: {date}"
+    "privacyTitle": "தனியுரிமைக் கொள்கை",
+    "termsTitle": "சேவை விதிமுறைகள்",
+    "lastUpdated": "கடைசியாகப் புதுப்பிக்கப்பட்டது: {date}"
   }
 }

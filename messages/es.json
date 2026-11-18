@@ -1,108 +1,108 @@
 {
   "meta": {
-    "title": "WeFamily — Keep Your Family’s Schedule in Sync",
-    "description": "Calendar, tasks, and member profiles in one place — on the web or in the app. Built for families. Create and view tasks or manage members in the browser without downloading an app."
+    "title": "Calendly — Mantén sincronizada la agenda familiar",
+    "description": "Calendario y tareas familiares sincronizados en la web o la app — sin necesidad de descargar."
   },
   "nav": {
-    "features": "Features",
-    "howItWorks": "Get Started",
-    "webConsole": "Web Console",
-    "getApp": "Get the App",
-    "console": "Console"
+    "features": "Funciones",
+    "howItWorks": "Empezar",
+    "webConsole": "Consola web",
+    "getApp": "Obtener la app",
+    "console": "Consola"
   },
   "hero": {
-    "eyebrow": "WeFamily",
-    "title": "The simplest way to keep your family in sync",
-    "subtitle": "Calendar, tasks, assignments, and member profiles — built for families. Use the free web console to create and view tasks or manage members in your browser — no app download required.",
-    "downloadAppStore": "Download on the App Store",
-    "exploreWeb": "Open Web Console",
-    "webNote": "Prefer the browser? Full web access for tasks, schedules, and family members — install the app only if you want.",
+    "eyebrow": "Calendly",
+    "title": "La forma más sencilla de sincronizar a tu familia",
+    "subtitle": "Calendario, tareas, asignaciones y perfiles de miembros — pensado para familias. Usa la consola web gratuita para crear y ver tareas o gestionar miembros en el navegador — sin descargar la app.",
+    "downloadAppStore": "Descargar en el App Store",
+    "exploreWeb": "Abrir consola web",
+    "webNote": "¿Prefieres el navegador? Acceso web completo a tareas, agendas y miembros — instalar la app es opcional.",
     "imageBrief": "Hero composite: main calendar week view with multi-member colored events, phone app home overlapping bottom-right (calendar / todos visible). Device stack only — no extra badges."
   },
   "guide": {
-    "title": "Get started fast",
-    "subtitle": "Start on the web or in the app — a few steps to organize your family’s schedule and to-dos.",
+    "title": "Empieza enseguida",
+    "subtitle": "En la web o en la app — unos pasos para organizar la agenda y las tareas de la familia.",
     "steps": [
       {
-        "title": "Create a family and invite members",
-        "description": "Set up your household on the web console or in the app, then bring everyone in."
+        "title": "Crea una familia e invita a miembros",
+        "description": "Configura tu hogar en la consola web o en la app y trae a todos."
       },
       {
-        "title": "Add profiles for people without the app",
-        "description": "Include elders, kids, or temporary companions in one shared schedule."
+        "title": "Añade perfiles para quien no tenga la app",
+        "description": "Incluye mayores, niños o acompañantes temporales en una agenda compartida."
       },
       {
-        "title": "Add events and tasks",
-        "description": "Create and review shared to-dos from the browser or phone — clear owners, trackable progress."
+        "title": "Añade eventos y tareas",
+        "description": "Crea y revisa tareas compartidas desde el navegador o el teléfono — responsables claros y progreso visible."
       }
     ],
     "imageBrief": "Onboarding visual: family member list + invite/profile UI with avatars and roles clearly visible."
   },
   "showcases": {
     "calendar": {
-      "title": "Flexible calendar views",
-      "description": "Switch between day, week, and month to match your family’s rhythm. See who’s busy at a glance — on the web or on mobile.",
+      "title": "Vistas de calendario flexibles",
+      "description": "Cambia entre día, semana y mes según el ritmo familiar. Ve quién está ocupado de un vistazo — en la web o en el móvil.",
       "imageBrief": "Calendar multi-view screenshot: prefer week or month with multi-member colored blocks; optional phone day view overlay."
     },
     "tasks": {
-      "title": "Tasks & lists",
-      "description": "Create and view shared to-dos in the browser without installing anything. Shopping, rotations, event prep — every item has an owner.",
+      "title": "Tareas y listas",
+      "description": "Crea y consulta tareas compartidas en el navegador sin instalar nada. Compras, turnos, preparación de eventos — cada ítem tiene un responsable.",
       "imageBrief": "Tasks/lists UI with multiple lists or cards, completion state and assignees; tablet + phone stack preferred."
     },
     "members": {
-      "title": "Member profiles",
-      "description": "Manage family members from the web console. Organizers can create profiles for elders, children, or anyone who doesn’t install the app.",
+      "title": "Perfiles de miembros",
+      "description": "Gestiona a la familia desde la consola web. Los organizadores pueden crear perfiles para mayores, niños o quien no instale la app.",
       "imageBrief": "Members/family management: member list, profile cards, or assignee picker highlighting no-download profiles."
     },
     "sync": {
-      "title": "Web + app, always in sync",
-      "description": "Plan on the desktop web console, check in on mobile — create tasks, view schedules, and manage members wherever you are.",
+      "title": "Web + app, siempre sincronizados",
+      "description": "Planifica en la consola web del escritorio y consulta en el móvil — crea tareas, ve agendas y gestiona miembros donde estés.",
       "imageBrief": "Multi-device shot: web console calendar on the left, phone app showing the same schedule on the right."
     }
   },
   "webPromo": {
-    "title": "Full web console — no download needed",
-    "description": "Open your browser to create and view family tasks, manage members, and keep the household schedule clear. Ideal at a desk — and for anyone who prefers not to install an app.",
-    "cta": "Open Web Console",
+    "title": "Consola web completa — sin descarga",
+    "description": "Abre el navegador para crear y ver tareas familiares, gestionar miembros y aclarar la agenda del hogar. Ideal en el escritorio — y para quien prefiera no instalar una app.",
+    "cta": "Abrir consola web",
     "imageBrief": "Desktop web console: calendar or tasks view with member sidebar, wide browser frame preferred."
   },
   "appPromo": {
-    "title": "Free mobile app",
-    "description": "Prefer your phone on the go? The app stays in sync with the web console so family tasks and schedules are always up to date.",
-    "cta": "Download on the App Store",
+    "title": "App móvil gratuita",
+    "description": "¿Prefieres el teléfono fuera de casa? La app se mantiene sincronizada con la consola web para que tareas y agendas estén al día.",
+    "cta": "Descargar en el App Store",
     "imageBrief": "1–2 clean phone screens (calendar home or todos). Frameless OK for inserting into a phone mockup."
   },
   "capabilities": {
-    "sectionTitle": "Built for family collaboration",
-    "sectionSubtitle": "Bring plans that live in chat into one clear toolkit — on the web and in the app.",
+    "sectionTitle": "Hecho para la colaboración familiar",
+    "sectionSubtitle": "Lleva los planes del chat a un conjunto de herramientas claro — en la web y en la app.",
     "items": {
       "members": {
-        "title": "Member categories",
-        "description": "Give each member a clear identity so schedules are easy to read."
+        "title": "Categorías de miembros",
+        "description": "Da a cada miembro una identidad clara para leer la agenda con facilidad."
       },
       "sync": {
-        "title": "Web console included",
-        "description": "Create tasks, view schedules, and manage members in the browser — no app required."
+        "title": "Consola web incluida",
+        "description": "Crea tareas, consulta agendas y gestiona miembros en el navegador — sin app."
       },
       "lists": {
-        "title": "Custom lists",
-        "description": "Group tasks, shopping, and prep items for the whole family."
+        "title": "Listas personalizadas",
+        "description": "Agrupa tareas, compras y preparativos para toda la familia."
       },
       "privacy": {
-        "title": "Privacy first",
-        "description": "Apple Sign In and modern cloud architecture to protect family data."
+        "title": "Privacidad primero",
+        "description": "Inicio de sesión con Apple y arquitectura en la nube moderna para proteger los datos familiares."
       }
     }
   },
   "footer": {
-    "copyright": "© 2026 {productEn}. All rights reserved.",
-    "privacy": "Privacy Policy",
-    "terms": "Terms of Service",
-    "contact": "Contact Us"
+    "copyright": "© 2026 {productEn}. Todos los derechos reservados.",
+    "privacy": "Política de privacidad",
+    "terms": "Términos de servicio",
+    "contact": "Contáctanos"
   },
   "legal": {
-    "privacyTitle": "Privacy Policy",
-    "termsTitle": "Terms of Service",
-    "lastUpdated": "Last Updated: {date}"
+    "privacyTitle": "Política de privacidad",
+    "termsTitle": "Términos de servicio",
+    "lastUpdated": "Última actualización: {date}"
   }
 }

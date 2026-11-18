@@ -56,7 +56,7 @@
     "membership": {
       "loadFailedTitle": "समूह जानकारी लोड नहीं हो सकी",
       "noMembershipTitle": "अभी कोई समूह नहीं",
-      "noMembershipBody": "आप किसी समूह में नहीं हैं या अनुरोध लंबित है। WeFamily iOS ऐप में समूह बनाएं या शामिल हों।"
+      "noMembershipBody": "आप किसी समूह में नहीं हैं या अनुरोध लंबित है। Calendly iOS ऐप में समूह बनाएं या शामिल हों।"
     },
     "nav": {
       "main": "मुख्य नेविगेशन",
@@ -70,7 +70,7 @@
     "me": {
       "title": "मैं",
       "accountSettings": "खाता और सेटिंग",
-      "settingsHint": "पूर्ण सेटिंग WeFamily iOS ऐप में प्रबंधित करें।"
+      "settingsHint": "पूर्ण सेटिंग Calendly iOS ऐप में प्रबंधित करें।"
     },
     "group": {
       "title": "समूह",
@@ -82,7 +82,7 @@
       "showPhone": "फ़ोन दिखाएँ",
       "createdAt": "{date} को बनाया गया",
       "memberCount": "{total} सदस्य",
-      "editGroupHint": "समूह का नाम बदलने या समाप्त करने के लिए WeFamily iOS ऐप का उपयोग करें।",
+      "editGroupHint": "समूह का नाम बदलने या समाप्त करने के लिए Calendly iOS ऐप का उपयोग करें।",
       "phone": "फ़ोन",
       "email": "ईमेल",
       "noContact": "कोई संपर्क नहीं",
@@ -93,7 +93,7 @@
       "inviteMember": "सदस्य आमंत्रित करें",
       "createProfile": "बिना ऐप प्रोफ़ाइल बनाएँ",
       "securityLimitTitle": "बहु-उपकरण सुरक्षा",
-      "securityLimitBody": "QR स्कैन या निमंत्रण लिंक के लिए WeFamily iOS ऐप का उपयोग करें।"
+      "securityLimitBody": "QR स्कैन या निमंत्रण लिंक के लिए Calendly iOS ऐप का उपयोग करें।"
     },
     "calendar": {
       "switchView": "Switch view",
@@ -113,7 +113,7 @@
       "newTask": "New task",
       "newEvent": "New event",
       "readonlyTitle": "केवल-पढ़ने मोड",
-      "readonlyBody": "कुछ क्रियाएँ केवल WeFamily iOS ऐप में उपलब्ध हैं।",
+      "readonlyBody": "कुछ क्रियाएँ केवल Calendly iOS ऐप में उपलब्ध हैं।",
       "aiTitle": "Hermes AI सहायक तैयार",
       "aiBody": "वॉयस इनपुट और स्मार्ट शेड्यूलिंग केवल iOS पर।",
       "taskDetail": "कार्य विवरण",
@@ -206,219 +206,219 @@
     "privacyTitle": "गोपनीयता नीति",
     "termsTitle": "सेवा की शर्तें",
     "lastUpdated": "अंतिम अपडेट: {date}",
-    "privacyMetaDescription": "How WeFamily collects, uses, and protects your information when you use our website and mobile app.",
-    "termsMetaDescription": "Terms governing your access to and use of the WeFamily website and mobile app.",
+    "privacyMetaDescription": "Calendly वेबसाइट और मोबाइल ऐप उपयोग करते समय आपकी जानकारी कैसे एकत्र, उपयोग और सुरक्षित करता है।",
+    "termsMetaDescription": "Calendly वेबसाइट और मोबाइल ऐप तक आपकी पहुँच और उपयोग को नियंत्रित करने वाली शर्तें।",
     "privacy": {
-      "intro": "Welcome to WeFamily. Your group's privacy and data security are our highest priorities. This Privacy Policy explains how we collect, use, and protect your information when you use our website and mobile application. It is intended to align with the privacy disclosures we provide in the Apple App Store.",
+      "intro": "Calendly में आपका स्वागत है। आपके समूह की गोपनीयता और डेटा सुरक्षा हमारी सर्वोच्च प्राथमिकताएँ हैं। यह गोपनीयता नीति बताती है कि जब आप हमारी वेबसाइट और मोबाइल ऐप का उपयोग करते हैं तो हम आपकी जानकारी कैसे एकत्र, उपयोग और सुरक्षित करते हैं। यह Apple App Store में हमारे गोपनीयता प्रकटीकरणों के अनुरूप है।",
       "sections": [
         {
-          "heading": "1. Information We Collect",
-          "lead": "We collect information necessary to provide group collaboration features. The categories below include the types of data we disclose in the App Store privacy nutrition labels (User Content, linked to your identity, for app functionality):",
+          "heading": "1. हम कौन-सी जानकारी एकत्र करते हैं",
+          "lead": "हम समूह सहयोग सुविधाएँ प्रदान करने के लिए आवश्यक जानकारी एकत्र करते हैं। नीचे दी गई श्रेणियों में App Store गोपनीयता लेबल में बताए गए डेटा प्रकार शामिल हैं (उपयोगकर्ता सामग्री, आपकी पहचान से जुड़ी, ऐप कार्यक्षमता के लिए):",
           "items": [
             {
-              "term": "Account Information:",
-              "body": "When you sign in using Sign in with Apple or Google (web console), we collect the name and email address provided by the identity provider to create and secure your account. This information is linked to your identity."
+              "term": "खाता जानकारी:",
+              "body": "जब आप Sign in with Apple या Google (वेब कंसोल) से साइन इन करते हैं, तो हम खाता बनाने और सुरक्षित रखने के लिए पहचान प्रदाता द्वारा दिया गया नाम और ईमेल एकत्र करते हैं। यह जानकारी आपकी पहचान से जुड़ी होती है।"
             },
             {
-              "term": "Emails or Text Messages:",
-              "body": "To operate core features, we process email addresses, phone numbers you optionally add to member profiles, invitation-related text, and other text you enter in tasks, feedback, or group communications. This data is linked to your account and used only for app functionality—not for advertising or cross-app tracking."
+              "term": "ईमेल या टेक्स्ट संदेश:",
+              "body": "मुख्य सुविधाएँ चलाने के लिए हम ईमेल पते, प्रोफ़ाइल में वैकल्पिक रूप से जोड़े गए फ़ोन नंबर, आमंत्रण-संबंधी पाठ, तथा कार्यों, प्रतिक्रिया या समूह संचार में आपका दर्ज किया पाठ संसाधित करते हैं। यह डेटा आपके खाते से जुड़ा है और केवल ऐप कार्यक्षमता के लिए उपयोग होता है—विज्ञापन या क्रॉस-ऐप ट्रैकिंग के लिए नहीं।"
             },
             {
-              "term": "Photos or Videos:",
-              "body": "If you choose to upload a profile avatar or attach photos or videos to tasks, feedback, or related group content, we store and display that media within your group. Such content is linked to your identity and used only to provide the service."
+              "term": "फ़ोटो या वीडियो:",
+              "body": "यदि आप प्रोफ़ाइल अवतार अपलोड करते हैं या कार्यों, प्रतिक्रिया या समूह सामग्री में फ़ोटो/वीडियो संलग्न करते हैं, तो हम उस मीडिया को आपके समूह में संग्रहीत और प्रदर्शित करते हैं। ऐसी सामग्री आपकी पहचान से जुड़ी है और केवल सेवा प्रदान करने के लिए उपयोग होती है।"
             },
             {
-              "term": "Other User Content:",
-              "body": "We store collaboration data you and your group create, including task and schedule details, group names and descriptions, managed member profiles, comments, attachments metadata, and similar content. This information is linked to your account or the profiles you manage and is used only for group collaboration features."
+              "term": "अन्य उपयोगकर्ता सामग्री:",
+              "body": "हम आपके और आपके समूह द्वारा बनाई सहयोग डेटा संग्रहीत करते हैं—कार्य और शेड्यूल विवरण, समूह नाम/विवरण, प्रबंधित सदस्य प्रोफ़ाइल, टिप्पणियाँ, अटैचमेंट मेटाडेटा आदि। यह जानकारी आपके खाते या आपके प्रबंधित प्रोफ़ाइलों से जुड़ी है और केवल समूह सहयोग सुविधाओं के लिए उपयोग होती है।"
             },
             {
-              "term": "Managed Profiles:",
-              "body": "If you create profiles for group members who do not have their own accounts (such as children or elders), you confirm that you have the right to provide their basic identifying information (such as names, nicknames, or optional contact details) for group management purposes."
+              "term": "प्रबंधित प्रोफ़ाइल:",
+              "body": "यदि आप बिना खाते वाले सदस्यों (जैसे बच्चे या बुजुर्ग) के लिए प्रोफ़ाइल बनाते हैं, तो आप पुष्टि करते हैं कि समूह प्रबंधन हेतु उनकी बुनियादी पहचान जानकारी (नाम, उपनाम या वैकल्पिक संपर्क) देने का अधिकार आपके पास है।"
             },
             {
-              "term": "Technical Data:",
-              "body": "We may collect non-personally identifiable information such as device type, app crash logs, and usage metrics to ensure the stability of the App. This data is not used for advertising."
+              "term": "तकनीकी डेटा:",
+              "body": "ऐप की स्थिरता सुनिश्चित करने के लिए हम डिवाइस प्रकार, क्रैश लॉग और उपयोग मीट्रिक जैसी गैर-व्यक्तिगत जानकारी एकत्र कर सकते हैं। इस डेटा का उपयोग विज्ञापन के लिए नहीं होता।"
             }
           ],
           "paragraphs": []
         },
         {
-          "heading": "2. How We Use Your Information",
-          "lead": "We use the information described above solely for app functionality, including:",
+          "heading": "2. हम आपकी जानकारी का उपयोग कैसे करते हैं",
+          "lead": "हम ऊपर वर्णित जानकारी का उपयोग केवल ऐप कार्यक्षमता के लिए करते हैं, जिसमें शामिल है:",
           "items": [
             {
               "term": "",
-              "body": "Providing, syncing, and displaying tasks, schedules, group roles, profiles, and user-generated content across authorized group members and your devices."
+              "body": "अधिकृत समूह सदस्यों और आपके डिवाइसों पर कार्य, शेड्यूल, समूह भूमिकाएँ, प्रोफ़ाइल और उपयोगकर्ता-जनित सामग्री प्रदान करना, सिंक करना और दिखाना।"
             },
             {
               "term": "",
-              "body": "Authenticating your identity and enforcing access controls so only members of your group can view that group's data."
+              "body": "आपकी पहचान प्रमाणित करना और पहुँच नियंत्रण लागू करना ताकि केवल आपके समूह के सदस्य उस समूह का डेटा देख सकें।"
             },
             {
               "term": "",
-              "body": "Storing and delivering photos, videos, and text you choose to share within the service."
+              "body": "सेवा में आप जो फ़ोटो, वीडियो और पाठ साझा करना चुनते हैं उन्हें संग्रहीत और वितरित करना।"
             },
             {
               "term": "",
-              "body": "Providing customer support, fixing errors, and improving reliability."
+              "body": "ग्राहक सहायता प्रदान करना, त्रुटियाँ ठीक करना और विश्वसनीयता सुधारना।"
             }
           ],
           "paragraphs": [
-            "We do not use your personal data for third-party advertising, and we do not sell your data. Data identified in the App Store as linked to you is associated with your account or profile for the purposes stated above."
+            "हम आपके व्यक्तिगत डेटा का उपयोग तृतीय-पक्ष विज्ञापन के लिए नहीं करते और आपका डेटा नहीं बेचते। App Store में आपको लिंक किए गए रूप में चिह्नित डेटा ऊपर बताए उद्देश्यों के लिए आपके खाते या प्रोफ़ाइल से जुड़ा होता है।"
           ]
         },
         {
-          "heading": "3. Data Storage & Security",
+          "heading": "3. डेटा भंडारण और सुरक्षा",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "We utilize enterprise-grade cloud infrastructure (including Supabase) to store your data securely. Your data is encrypted in transit and at rest. We employ strict Row-Level Security (RLS) database policies to ensure that your group data is completely isolated and only accessible to authorized members of your specific group."
+            "हम आपके डेटा को सुरक्षित रूप से संग्रहीत करने के लिए एंटरप्राइज़-स्तरीय क्लाउड अवसंरचना (जिसमें Supabase शामिल है) का उपयोग करते हैं। आपका डेटा पारगमन और विश्राम दोनों में एन्क्रिप्टेड है। हम सख्त Row-Level Security (RLS) नीतियाँ लागू करते हैं ताकि आपके समूह का डेटा पूरी तरह अलग रहे और केवल उस समूह के अधिकृत सदस्यों को ही उपलब्ध हो।"
           ]
         },
         {
-          "heading": "4. Information Sharing",
+          "heading": "4. जानकारी साझा करना",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "We do not, and will never, sell your personal data to third parties. We only share information with trusted service providers (such as secure cloud hosting) strictly for the purpose of operating our service. We may also disclose information if required by law."
+            "हम आपका व्यक्तिगत डेटा तृतीय पक्षों को नहीं बेचते और कभी नहीं बेचेंगे। हम जानकारी केवल विश्वसनीय सेवा प्रदाताओं (जैसे सुरक्षित क्लाउड होस्टिंग) के साथ सेवा चलाने के उद्देश्य से साझा करते हैं। कानून द्वारा आवश्यक होने पर भी जानकारी प्रकट की जा सकती है।"
           ]
         },
         {
-          "heading": "5. Your Rights and Data Deletion",
+          "heading": "5. आपके अधिकार और डेटा हटाना",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "You have full control over your data. You can edit your profile, delete specific tasks, remove attachments, or remove group members at any time within the App. You may also permanently delete your entire account and all associated user content via the account deletion options in the App's settings. Once deleted, this action is irreversible."
+            "आपके डेटा पर आपका पूरा नियंत्रण है। आप ऐप में कभी भी प्रोफ़ाइल संपादित कर सकते हैं, विशिष्ट कार्य हटा सकते हैं, अटैचमेंट हटा सकते हैं या सदस्यों को निकाल सकते हैं। ऐप सेटिंग्स में खाता हटाने के विकल्पों से आप पूरा खाता और संबंधित उपयोगकर्ता सामग्री स्थायी रूप से हटा भी सकते हैं। हटाने के बाद यह क्रिया अपरिवर्तनीय है।"
           ]
         },
         {
-          "heading": "6. Contact Us",
+          "heading": "6. हमसे संपर्क करें",
           "lead": "",
           "items": [],
           "paragraphs": []
         }
       ],
-      "contactLead": "If you have any questions about this Privacy Policy, please contact us at: jimo.cgg@gmail.com"
+      "contactLead": "इस गोपनीयता नीति के बारे में कोई प्रश्न हो तो संपर्क करें: jimo.cgg@gmail.com"
     },
     "terms": {
-      "intro": "These Terms of Service (\"Terms\") govern your access to and use of the WeFamily website and mobile application. By using our service, you agree to be bound by these Terms.",
+      "intro": "ये सेवा की शर्तें («शर्तें») Calendly वेबसाइट और मोबाइल ऐप तक आपकी पहुँच और उपयोग को नियंत्रित करती हैं। हमारी सेवा का उपयोग करके आप इन शर्तों से बाध्य होने के लिए सहमत होते हैं।",
       "sections": [
         {
-          "heading": "1. Description of Service",
+          "heading": "1. सेवा का विवरण",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "WeFamily is a group collaboration and productivity tool designed to help groups manage tasks, schedules, and member profiles. The service is provided \"as is\" and we reserve the right to modify, update, or discontinue features at our discretion."
+            "Calendly एक समूह सहयोग और उत्पादकता उपकरण है जो समूहों को कार्य, शेड्यूल और सदस्य प्रोफ़ाइल प्रबंधित करने में मदद करता है। सेवा «जैसी है» प्रदान की जाती है और हम सुविधाओं को संशोधित, अपडेट या बंद करने का अधिकार सुरक्षित रखते हैं।"
           ]
         },
         {
-          "heading": "2. User Accounts & Security",
+          "heading": "2. उपयोगकर्ता खाते और सुरक्षा",
           "lead": "",
           "items": [
             {
               "term": "",
-              "body": "You must provide accurate information when creating an account (e.g., via Apple ID)."
+              "body": "खाता बनाते समय आपको सटीक जानकारी देनी होगी (जैसे Apple ID के माध्यम से)।"
             },
             {
               "term": "",
-              "body": "You are responsible for maintaining the security of your account and any devices you use to access WeFamily."
+              "body": "अपने खाते और Calendly तक पहुँचने वाले किसी भी डिवाइस की सुरक्षा बनाए रखने की ज़िम्मेदारी आपकी है।"
             },
             {
               "term": "",
-              "body": "You must promptly notify us of any unauthorized use of your account."
+              "body": "खाते के किसी भी अनधिकृत उपयोग की सूचना हमें तुरंत दें।"
             }
           ],
           "paragraphs": []
         },
         {
-          "heading": "3. Group Administration",
+          "heading": "3. समूह प्रशासन",
           "lead": "",
           "items": [
             {
               "term": "",
-              "body": "When you create a \"Group\" within the App, you act as the Administrator."
+              "body": "ऐप में «समूह» बनाते समय आप व्यवस्थापक के रूप में कार्य करते हैं।"
             },
             {
               "term": "",
-              "body": "You are solely responsible for the data you input regarding other group members, including virtual profiles created for individuals without active accounts."
+              "body": "अन्य सदस्यों के बारे में आपके द्वारा दर्ज डेटा—सक्रिय खाते रहित व्यक्तियों के वर्चुअल प्रोफ़ाइल सहित—की पूरी ज़िम्मेदारी आपकी है।"
             },
             {
               "term": "",
-              "body": "You are responsible for managing who is invited to join your group and for removing members when necessary."
+              "body": "समूह में किसे आमंत्रित किया जाए और आवश्यकता पड़ने पर सदस्यों को हटाने की ज़िम्मेदारी आपकी है।"
             }
           ],
           "paragraphs": []
         },
         {
-          "heading": "4. User Content",
+          "heading": "4. उपयोगकर्ता सामग्री",
           "lead": "",
           "items": [
             {
               "term": "",
-              "body": "You retain ownership of the photos, videos, text, and other content you submit. By submitting content, you grant us a limited license to host, store, display, and transmit that content solely to operate the service for your group."
+              "body": "आप जो फ़ोटो, वीडियो, पाठ और अन्य सामग्री जमा करते हैं उसका स्वामित्व आपके पास रहता है। सामग्री जमा करके आप हमें केवल आपके समूह के लिए सेवा चलाने हेतु होस्ट, स्टोर, प्रदर्शित और प्रसारित करने का सीमित लाइसेंस देते हैं।"
             },
             {
               "term": "",
-              "body": "You represent that you have the necessary rights to upload and share any content you provide, including images and videos, and that doing so does not violate the privacy or rights of others."
+              "body": "आप प्रतिनिधित्व करते हैं कि आपके पास अपलोड और साझा करने के आवश्यक अधिकार हैं, और इससे दूसरों की गोपनीयता या अधिकारों का उल्लंघन नहीं होता।"
             },
             {
               "term": "",
-              "body": "You are responsible for the accuracy and legality of content you or your group administrators add, including contact information stored in member profiles."
+              "body": "आप या आपके समूह व्यवस्थापक द्वारा जोड़ी गई सामग्री—सदस्य प्रोफ़ाइल में संपर्क जानकारी सहित—की सटीकता और वैधता की ज़िम्मेदारी आपकी है।"
             }
           ],
           "paragraphs": []
         },
         {
-          "heading": "5. Acceptable Use",
-          "lead": "You agree not to use WeFamily to:",
+          "heading": "5. स्वीकार्य उपयोग",
+          "lead": "आप सहमत हैं कि Calendly का उपयोग निम्नलिखित के लिए नहीं करेंगे:",
           "items": [
             {
               "term": "",
-              "body": "Upload, post, or transmit any content that is illegal, abusive, harassing, or violates the privacy of others, including unauthorized photos or videos of other people."
+              "body": "कोई अवैध, अपमानजनक, उत्पीड़क सामग्री अपलोड/पोस्ट/प्रसारित करना या दूसरों की गोपनीयता का उल्लंघन—अनधिकृत फ़ोटो या वीडियो सहित।"
             },
             {
               "term": "",
-              "body": "Attempt to hack, disrupt, or compromise the security of the App, our servers, or our database structure."
+              "body": "ऐप, हमारे सर्वर या डेटाबेस संरचना की सुरक्षा हैक, बाधित या समझौता करने का प्रयास।"
             },
             {
               "term": "",
-              "body": "Reproduce, duplicate, copy, or resell any part of the Service without our express written permission."
+              "body": "हमारी स्पष्ट लिखित अनुमति के बिना सेवा के किसी भाग का पुनरुत्पादन, प्रतिलिपि या पुनर्विक्रय।"
             }
           ],
           "paragraphs": []
         },
         {
-          "heading": "6. Limitation of Liability",
+          "heading": "6. दायित्व की सीमा",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "To the maximum extent permitted by law, WeFamily and its creators shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, resulting from (a) your access to or use of or inability to access or use the Service; (b) any conduct or content of any third party on the Service."
+            "कानून द्वारा अनुमत अधिकतम सीमा तक, Calendly और उसके निर्माता किसी भी अप्रत्यक्ष, आकस्मिक, विशेष, परिणामी या दंडात्मक क्षति, या लाभ/राजस्व की हानि के लिए उत्तरदायी नहीं होंगे—चाहे वह (a) सेवा तक पहुँच/उपयोग या असमर्थता से हो; (b) सेवा पर किसी तृतीय पक्ष के आचरण या सामग्री से।"
           ]
         },
         {
-          "heading": "7. Governing Law",
+          "heading": "7. लागू कानून",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "These Terms shall be governed and construed in accordance with the laws of the Hong Kong Special Administrative Region, without regard to its conflict of law provisions."
+            "ये शर्तें हांगकांग विशेष प्रशासनिक क्षेत्र के कानूनों के अनुसार शासित और व्याख्यायित होंगी, संघर्ष-कानून प्रावधानों पर ध्यान दिए बिना।"
           ]
         },
         {
-          "heading": "8. Changes to Terms",
+          "heading": "8. शर्तों में परिवर्तन",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "We reserve the right to modify these Terms at any time. We will notify users of any significant changes by updating the \"Last Updated\" date at the top of this page. Your continued use of the Service after such changes constitutes acceptance of the new Terms."
+            "हम किसी भी समय इन शर्तों को संशोधित करने का अधिकार सुरक्षित रखते हैं। महत्वपूर्ण परिवर्तनों की सूचना इस पृष्ठ के शीर्ष पर «अंतिम अपडेट» तिथि अपडेट करके दी जाएगी। ऐसे परिवर्तनों के बाद सेवा का निरंतर उपयोग नई शर्तों की स्वीकृति माना जाएगा।"
           ]
         },
         {
-          "heading": "9. Contact Information",
+          "heading": "9. संपर्क जानकारी",
           "lead": "",
           "items": [],
           "paragraphs": []
         }
       ],
-      "contactLead": "For any questions regarding these Terms, please contact: jimo.cgg@gmail.com"
+      "contactLead": "इन शर्तों के बारे में किसी भी प्रश्न के लिए संपर्क करें: jimo.cgg@gmail.com"
     }
   }
 }
