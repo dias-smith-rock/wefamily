@@ -5,6 +5,7 @@ import { LegalDocument } from "@/components/legal-document";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { isLocale, type Locale } from "@/lib/i18n/config";
 import { ProductLogo } from "@/lib/i18n/product-brand";
+import { buildPageMetadata } from "@/lib/seo";
 import { CONTACT_EMAIL, PRODUCT_NAME_EN } from "@/lib/site-urls";
 const LAST_UPDATED = "June 1, 2026";
 
@@ -18,11 +19,14 @@ export async function generateMetadata({
   const { locale: localeParam } = await params;
   if (!isLocale(localeParam)) return {};
 
-  const dict = await getDictionary(localeParam as Locale);
-  return {
+  const locale = localeParam as Locale;
+  const dict = await getDictionary(locale);
+  return buildPageMetadata({
+    locale,
     title: `${dict.legal.privacyTitle} — ${PRODUCT_NAME_EN}`,
     description: dict.legal.privacyMetaDescription,
-  };
+    path: "/privacy",
+  });
 }
 
 export default async function PrivacyPage({ params }: PrivacyPageProps) {

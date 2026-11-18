@@ -154,11 +154,14 @@ export function CalendarModals({
       {modal.kind === "task" ? (
         <TaskDetailSheet
           event={modal.event}
+          householdId={householdId}
           membershipId={membershipId}
           membershipRole={membershipRole}
           householdName={householdName}
           open
           onClose={onClose}
+          onSaved={onCreated}
+          onSessionLost={onSessionLost}
           onReadonlyAction={onOpenReadonlyAlert}
         />
       ) : null}

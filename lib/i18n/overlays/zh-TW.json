@@ -57,7 +57,7 @@
     "membership": {
       "loadFailedTitle": "暫時無法載入群組資訊",
       "noMembershipTitle": "尚未加入群組",
-      "noMembershipBody": "您尚未加入任何群組，或加入申請正在審批中。請在 Calendly iOS 用戶端完成群組建立或加入。"
+      "noMembershipBody": "您尚未加入任何群組，或加入申請正在審批中。請在 WeFamily iOS 用戶端完成群組建立或加入。"
     },
     "nav": {
       "main": "主導航",
@@ -71,7 +71,7 @@
     "me": {
       "title": "我的",
       "accountSettings": "帳戶與設定",
-      "settingsHint": "完整設定請在 Calendly iOS 應用中管理。"
+      "settingsHint": "完整設定請在 WeFamily iOS 應用中管理。"
     },
     "group": {
       "title": "群組",
@@ -83,7 +83,7 @@
       "showPhone": "顯示手機號",
       "createdAt": "建立於 {date}",
       "memberCount": "目前共 {total} 位成員",
-      "editGroupHint": "如需修改群組名稱或解散群組，請前往Calendly iOS 用戶端。",
+      "editGroupHint": "如需修改群組名稱或解散群組，請前往WeFamily iOS 用戶端。",
       "phone": "手機號",
       "email": "信箱",
       "noContact": "暫無聯絡方式",
@@ -94,7 +94,7 @@
       "inviteMember": "邀請新成員",
       "createProfile": "建立免下載檔案",
       "securityLimitTitle": "多端安全限制",
-      "securityLimitBody": "請使用 Calendly iOS App 掃描 QR 碼或傳送快捷邀請連結。"
+      "securityLimitBody": "請使用 WeFamily iOS App 掃描 QR 碼或傳送快捷邀請連結。"
     },
     "calendar": {
       "switchView": "切換檢視",
@@ -119,7 +119,7 @@
       "titleRequired": "請填寫標題",
       "startRequired": "請選擇開始時間",
       "readonlyTitle": "唯讀模式",
-      "readonlyBody": "部分操作僅支援在 Calendly iOS 用戶端完成。",
+      "readonlyBody": "部分操作僅支援在 WeFamily iOS 用戶端完成。",
       "readonlyDetailHint": "目前帳號沒有編輯權限，僅可檢視。如需修改請使用 iOS 用戶端或聯繫家庭管理員。",
       "relatedToMe": "與我相關",
       "relatedToMeHint": "僅顯示今天與我相關的日程（我建立、我執行或受益）。",
@@ -245,10 +245,10 @@
     "privacyTitle": "隱私權政策",
     "termsTitle": "服務條款",
     "lastUpdated": "最後更新：{date}",
-    "privacyMetaDescription": "Calendly 在您使用網站與行動應用時如何收集、使用並保護您的資訊。",
-    "termsMetaDescription": "管轄您對Calendly網站與行動應用存取與使用的條款。",
+    "privacyMetaDescription": "WeFamily 在您使用網站與行動應用時如何收集、使用並保護您的資訊。",
+    "termsMetaDescription": "管轄您對WeFamily網站與行動應用存取與使用的條款。",
     "privacy": {
-      "intro": "歡迎使用 Calendly。您所在群組的隱私與資料安全是我們的首要關切。本隱私權政策說明我們在您使用網站與行動應用時如何收集、使用並保護您的資訊，並與我們在 Apple App Store 中提供的隱私說明保持一致。",
+      "intro": "歡迎使用 WeFamily。您所在群組的隱私與資料安全是我們的首要關切。本隱私權政策說明我們在您使用網站與行動應用時如何收集、使用並保護您的資訊，並與我們在 Apple App Store 中提供的隱私說明保持一致。",
       "sections": [
         {
           "heading": "1. 我們收集的資訊",
@@ -340,14 +340,14 @@
       "contactLead": "如您對本隱私權政策有任何疑問，請聯絡：jimo.cgg@gmail.com"
     },
     "terms": {
-      "intro": "本服務條款（「條款」）管轄您對Calendly網站與行動應用的存取與使用。使用我們的服務即表示您同意受本條款約束。",
+      "intro": "本服務條款（「條款」）管轄您對WeFamily網站與行動應用的存取與使用。使用我們的服務即表示您同意受本條款約束。",
       "sections": [
         {
           "heading": "1. 服務說明",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "Calendly 是一款群組協作與效率工具，協助群組管理任務、日程與成員檔案。服務按「現狀」提供，我們保留自行修改、更新或停用功能的權利。"
+            "WeFamily 是一款群組協作與效率工具，協助群組管理任務、日程與成員檔案。服務按「現狀」提供，我們保留自行修改、更新或停用功能的權利。"
           ]
         },
         {
@@ -360,7 +360,7 @@
             },
             {
               "term": "",
-              "body": "您須維護帳戶及用於存取Calendly之裝置的安全。"
+              "body": "您須維護帳戶及用於存取WeFamily之裝置的安全。"
             },
             {
               "term": "",
@@ -409,7 +409,7 @@
         },
         {
           "heading": "5. 可接受使用",
-          "lead": "您同意不將Calendly用於：",
+          "lead": "您同意不將WeFamily用於：",
           "items": [
             {
               "term": "",
@@ -431,7 +431,7 @@
           "lead": "",
           "items": [],
           "paragraphs": [
-            "在法律允許的最大範圍內，Calendly 及其建立者不對任何間接、附帶、特殊、後果性或懲罰性損害，或任何利潤或收入損失（無論直接還是間接產生）承擔責任，包括因 (a) 您存取、使用或無法存取、使用服務；(b) 服務上任何第三方的行為或內容而產生的情形。"
+            "在法律允許的最大範圍內，WeFamily 及其建立者不對任何間接、附帶、特殊、後果性或懲罰性損害，或任何利潤或收入損失（無論直接還是間接產生）承擔責任，包括因 (a) 您存取、使用或無法存取、使用服務；(b) 服務上任何第三方的行為或內容而產生的情形。"
           ]
         },
         {

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Calendly — 讓家庭日程與待辦同步",
+    "title": "WeFamily — 讓家庭日程與待辦同步",
     "description": "日曆、任務、成員檔案一站搞定——支援 Web 與 App。專為家庭設計。無需下載 App，打開網頁即可建立和查看任務、管理成員。"
   },
   "nav": {
@@ -11,7 +11,7 @@
     "console": "控制台"
   },
   "hero": {
-    "eyebrow": "Calendly",
+    "eyebrow": "WeFamily",
     "title": "讓家庭日程與待辦，真正同步",
     "subtitle": "日曆、任務、分工、成員檔案——專為家庭打造。也可直接使用免費 Web 控制台：在瀏覽器裡建立和查看任務、管理成員，不必先下載 App。",
     "downloadAppStore": "在 App Store 下載",

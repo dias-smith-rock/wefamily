@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Calendly — Keep Your Family’s Schedule in Sync",
+    "title": "WeFamily — Keep Your Family’s Schedule in Sync",
     "description": "Calendar, tasks, and member profiles in one place — on the web or in the app. Built for families. Create and view tasks or manage members in the browser without downloading an app."
   },
   "nav": {
@@ -11,7 +11,7 @@
     "console": "Console"
   },
   "hero": {
-    "eyebrow": "Calendly",
+    "eyebrow": "WeFamily",
     "title": "The simplest way to keep your family in sync",
     "subtitle": "Calendar, tasks, assignments, and member profiles — built for families. Use the free web console to create and view tasks or manage members in your browser — no app download required.",
     "downloadAppStore": "Download on the App Store",

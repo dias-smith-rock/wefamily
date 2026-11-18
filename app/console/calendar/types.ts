@@ -119,6 +119,22 @@ export type CreateTaskInput = {
   durationMinutes?: number;
 };
 
+export type UpdateTaskInput = {
+  taskId: string;
+  householdId: string;
+  title: string;
+  description?: string | null;
+  mode: CreateTaskMode;
+  isAllDay?: boolean;
+  dueDate?: string | null;
+  endDatetime?: string | null;
+  priority?: CreateTaskPriority;
+  involvedMemberIds?: string[] | null;
+  targetProfileIds?: string[] | null;
+  recurrenceRule?: string | null;
+  durationMinutes?: number;
+};
+
 export type HouseholdPersonOption = {
   membershipId: string;
   profileId: string | null;

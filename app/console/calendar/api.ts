@@ -12,6 +12,7 @@ import type {
   MembershipLookupRow,
   ProfileLookupRow,
   TaskRow,
+  UpdateTaskInput,
 } from "./types";
 
 const TASK_COLUMNS =
@@ -271,6 +272,94 @@ export async function fetchHouseholdPeople(
   return { ok: true, data: people };
 }
 
+export type UpdateTaskResult =
+  | { ok: true }
+  | {
+      ok: false;
+      reason: "no_client" | "no_session" | "expired" | "error" | "validation";
+      message: string;
+    };
+
+export async function updateTask(
+  input: UpdateTaskInput,
+): Promise<UpdateTaskResult> {
+  const title = input.title.trim();
+  if (!title) {
+    return { ok: false, reason: "validation", message: "titleRequired" };
+  }
+  if (!input.taskId || !input.householdId) {
+    return { ok: false, reason: "validation", message: "missingConfig" };
+  }
+
+  const supabase = getSupabaseBrowserClient();
+  if (!supabase) {
+    return { ok: false, reason: "no_client", message: "missingConfig" };
+  }
+
+  const guard = await requireAuthenticatedSession(supabase);
+  if (!guard.ok) {
+    if (guard.reason === "expired") {
+      return { ok: false, reason: "expired", message: "sessionExpired" };
+    }
+    return { ok: false, reason: "no_session", message: "pleaseSignIn" };
+  }
+
+  const isFlexible = input.mode === "flexible";
+  const isAllDay = isFlexible ? false : Boolean(input.isAllDay);
+  const dueDate = isFlexible ? null : input.dueDate ?? null;
+  const endDatetime = input.endDatetime ?? null;
+
+  if (!isFlexible && !dueDate) {
+    return { ok: false, reason: "validation", message: "startRequired" };
+  }
+
+  let durationMinutes = input.durationMinutes;
+  if (durationMinutes == null) {
+    if (isFlexible) {
+      durationMinutes = 60;
+    } else if (isAllDay) {
+      durationMinutes = 0;
+    } else if (dueDate && endDatetime) {
+      const ms = new Date(endDatetime).getTime() - new Date(dueDate).getTime();
+      durationMinutes = Math.max(0, Math.round(ms / 60000));
+    } else {
+      durationMinutes = 30;
+    }
+  }
+
+  const payload = {
+    title,
+    description: input.description?.trim() || null,
+    priority: input.priority ?? "normal",
+    task_type: isFlexible ? "flexible" : "scheduled",
+    due_date: dueDate,
+    end_datetime: endDatetime,
+    is_all_day: isAllDay,
+    involved_member_ids:
+      input.involvedMemberIds && input.involvedMemberIds.length > 0
+        ? input.involvedMemberIds
+        : null,
+    target_profile_ids:
+      input.targetProfileIds && input.targetProfileIds.length > 0
+        ? input.targetProfileIds
+        : null,
+    recurrence_rule: input.recurrenceRule?.trim() || null,
+    duration_minutes: durationMinutes,
+  };
+
+  const { error } = await supabase
+    .from("tasks")
+    .update(payload)
+    .eq("id", input.taskId)
+    .eq("household_id", input.householdId);
+
+  if (error) {
+    return { ok: false, reason: "error", message: error.message };
+  }
+
+  return { ok: true };
+}
+
 export async function createTask(
   input: CreateTaskInput,
 ): Promise<CreateTaskResult> {
@@ -357,4 +446,119 @@ export async function createTask(
   }
 
   return { ok: true, id: String(data.id) };
+}
+
+export type UploadTaskAttachmentsResult =
+  | { ok: true; uploaded: number }
+  | {
+      ok: false;
+      reason: "no_client" | "no_session" | "expired" | "error" | "validation";
+      message: string;
+      uploaded: number;
+    };
+
+function extensionForFile(file: File): string {
+  const fromName = file.name.includes(".")
+    ? file.name.split(".").pop()?.trim()
+    : "";
+  if (fromName) return fromName.toLowerCase().slice(0, 12);
+  if (file.type === "image/jpeg") return "jpg";
+  if (file.type === "image/png") return "png";
+  if (file.type === "image/webp") return "webp";
+  if (file.type === "application/pdf") return "pdf";
+  return "bin";
+}
+
+/** 上传任务附件到 Storage，并写入 `task_attachments`（对齐 iOS） */
+export async function uploadTaskAttachments(params: {
+  taskId: string;
+  files: File[];
+}): Promise<UploadTaskAttachmentsResult> {
+  const files = params.files.filter(Boolean);
+  if (!params.taskId) {
+    return {
+      ok: false,
+      reason: "validation",
+      message: "missingConfig",
+      uploaded: 0,
+    };
+  }
+  if (files.length === 0) {
+    return { ok: true, uploaded: 0 };
+  }
+
+  const supabase = getSupabaseBrowserClient();
+  if (!supabase) {
+    return {
+      ok: false,
+      reason: "no_client",
+      message: "missingConfig",
+      uploaded: 0,
+    };
+  }
+
+  const guard = await requireAuthenticatedSession(supabase);
+  if (!guard.ok) {
+    if (guard.reason === "expired") {
+      return {
+        ok: false,
+        reason: "expired",
+        message: "sessionExpired",
+        uploaded: 0,
+      };
+    }
+    return {
+      ok: false,
+      reason: "no_session",
+      message: "pleaseSignIn",
+      uploaded: 0,
+    };
+  }
+
+  const userId = guard.session.user.id;
+  let uploaded = 0;
+
+  for (const file of files) {
+    const objectPath = `${userId}/${crypto.randomUUID()}.${extensionForFile(file)}`;
+    const { error: uploadError } = await supabase.storage
+      .from("task_attachments")
+      .upload(objectPath, file, {
+        contentType: file.type || "application/octet-stream",
+        upsert: false,
+      });
+
+    if (uploadError) {
+      return {
+        ok: false,
+        reason: "error",
+        message: uploadError.message,
+        uploaded,
+      };
+    }
+
+    const { data: publicData } = supabase.storage
+      .from("task_attachments")
+      .getPublicUrl(objectPath);
+
+    const { error: insertError } = await supabase.from("task_attachments").insert({
+      task_id: params.taskId,
+      file_url: publicData.publicUrl,
+      file_type: file.type || "application/octet-stream",
+      file_size_bytes: file.size,
+      created_by: userId,
+    });
+
+    if (insertError) {
+      return {
+        ok: false,
+        reason: "error",
+        message: insertError.message,
+        uploaded,
+      };
+    }
+
+    uploaded += 1;
+  }
+
+  return { ok: true, uploaded };
 }

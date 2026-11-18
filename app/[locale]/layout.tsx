@@ -8,6 +8,7 @@ import {
   locales,
   type Locale,
 } from "@/lib/i18n/config";
+import { buildPageMetadata } from "@/lib/seo";
 
 type LocaleLayoutProps = {
   children: React.ReactNode;
@@ -28,11 +29,14 @@ export async function generateMetadata({
     return {};
   }
 
-  const dict = await getDictionary(localeParam);
-  return {
+  const locale = localeParam as Locale;
+  const dict = await getDictionary(locale);
+  return buildPageMetadata({
+    locale,
     title: dict.meta.title,
     description: dict.meta.description,
-  };
+    path: "/",
+  });
 }
 
 export default async function LocaleLayout({
