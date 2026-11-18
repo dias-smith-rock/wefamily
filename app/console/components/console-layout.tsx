@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import type { ConsoleNavId, ConsoleUser, HouseholdOption } from "../types";
+import {
+  DEMO_HOUSEHOLD_NAME,
+  useDemoMode,
+} from "../lib/use-demo-mode";
 import { CalendarView } from "./calendar-view";
 import { HouseholdSwitcher } from "./household-switcher";
 import { MobileTabBar } from "./mobile-tab-bar";
@@ -36,10 +40,23 @@ export function ConsoleLayout({
   children,
 }: ConsoleLayoutProps) {
   const [active, setActive] = useState<ConsoleNavId>("calendar");
+  const demoMode = useDemoMode();
+  const householdName = demoMode
+    ? DEMO_HOUSEHOLD_NAME
+    : householdOptions.find((o) => o.householdId === householdId)
+        ?.householdName;
+  const householdSwitcher = (
+    <HouseholdSwitcher
+      options={householdOptions}
+      selectedHouseholdId={householdId}
+      onSelect={onSelectHousehold}
+      variant="inline"
+      displayNameOverride={demoMode ? DEMO_HOUSEHOLD_NAME : undefined}
+    />
+  );
 
   return (
     <div className="console-shell font-sans">
-      <div className="console-wallpaper" aria-hidden />
       <div className="relative z-10 mx-auto min-h-dvh w-full max-w-lg min-w-0">
         <main
           className="min-w-0 w-full pb-[calc(6.25rem+env(safe-area-inset-bottom))]"
@@ -62,10 +79,7 @@ export function ConsoleLayout({
               <CalendarView
                 key={householdId}
                 householdId={householdId}
-                householdName={
-                  householdOptions.find((o) => o.householdId === householdId)
-                    ?.householdName
-                }
+                householdName={householdName}
                 membershipId={membershipId}
                 membershipRole={membershipRole}
                 profileId={profileId}
@@ -73,36 +87,19 @@ export function ConsoleLayout({
                 enabled
                 onSessionLost={onSessionLost}
                 onSignOut={onSignOut}
-                householdSwitcher={
-                  <HouseholdSwitcher
-                    options={householdOptions}
-                    selectedHouseholdId={householdId}
-                    onSelect={onSelectHousehold}
-                    variant="inline"
-                  />
-                }
+                householdSwitcher={householdSwitcher}
               />
             ) : (
               <TodoView
                 key={householdId}
                 householdId={householdId}
-                householdName={
-                  householdOptions.find((o) => o.householdId === householdId)
-                    ?.householdName
-                }
+                householdName={householdName}
                 membershipId={membershipId}
                 membershipRole={membershipRole}
                 enabled
                 onSessionLost={onSessionLost}
                 onSignOut={onSignOut}
-                householdSwitcher={
-                  <HouseholdSwitcher
-                    options={householdOptions}
-                    selectedHouseholdId={householdId}
-                    onSelect={onSelectHousehold}
-                    variant="inline"
-                  />
-                }
+                householdSwitcher={householdSwitcher}
               />
             ))}
         </main>

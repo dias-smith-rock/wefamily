@@ -15,33 +15,21 @@
     --ios-blue-bright: #3b9eff;
     --ios-text: #ffffff;
     --ios-mute: rgba(255, 255, 255, 0.58);
-    --ios-glass: rgba(18, 26, 46, 0.48);
-    --ios-glass-strong: rgba(10, 16, 32, 0.62);
-    --ios-card: rgba(48, 42, 96, 0.52);
-    --ios-card-day: rgba(22, 34, 62, 0.68);
+    --ios-glass: rgba(28, 36, 58, 0.72);
+    --ios-glass-strong: rgba(16, 22, 40, 0.88);
+    --ios-card: rgba(42, 48, 78, 0.78);
+    --ios-card-day: rgba(28, 36, 58, 0.86);
     --ios-line: rgba(255, 255, 255, 0.14);
     position: relative;
     min-height: 100dvh;
     color: var(--ios-text);
     background-color: #0b1220;
-  }
-
-  .console-wallpaper {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    background-image:
-      linear-gradient(
-        180deg,
-        rgba(6, 10, 22, 0.28) 0%,
-        rgba(6, 10, 22, 0.18) 35%,
-        rgba(6, 10, 22, 0.55) 100%
-      ),
-      url("/console/wallpaper.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    pointer-events: none;
+    background-image: linear-gradient(
+      165deg,
+      #121a2e 0%,
+      #0b1220 42%,
+      #0a101c 100%
+    );
   }
 
   .glass-panel {

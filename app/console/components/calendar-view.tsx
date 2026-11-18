@@ -40,6 +40,11 @@ import {
   getSavedCalendarViewMode,
   setSavedCalendarViewMode,
 } from "../lib/calendar-view-preference";
+import { buildDemoCalendarEvents } from "../lib/demo-console-data";
+import {
+  DEMO_HOUSEHOLD_NAME,
+  useDemoMode,
+} from "../lib/use-demo-mode";
 
 type CalendarViewProps = {
   householdId: string;
@@ -66,6 +71,7 @@ export function CalendarView({
   householdSwitcher,
 }: CalendarViewProps) {
   const { t } = useDictionary();
+  const demoMode = useDemoMode();
   const [selectedDate, setSelectedDate] = useState(() => startOfDay(new Date()));
   const [modal, setModal] = useState<CalendarModalState>({ kind: "none" });
   const [isMonthPickerOpen, setIsMonthPickerOpen] = useState(false);
@@ -114,11 +120,23 @@ export function CalendarView({
     onSessionLost,
   });
 
-  const events = useMemo(() => cachedEvents ?? [], [cachedEvents]);
+  useEffect(() => {
+    if (demoMode) setRelatedToMeOnly(false);
+  }, [demoMode]);
+
+  const events = useMemo(() => {
+    if (demoMode) {
+      return buildDemoCalendarEvents({ membershipId, householdId });
+    }
+    return cachedEvents ?? [];
+  }, [demoMode, cachedEvents, membershipId, householdId]);
   const scheduledEvents = useMemo(
     () => scheduledCalendarEvents(events),
     [events],
   );
+  const resolvedHouseholdName = demoMode
+    ? DEMO_HOUSEHOLD_NAME
+    : householdName;
 
   useEffect(() => {
     if (!isMonthPickerOpen) return;
@@ -211,11 +229,11 @@ export function CalendarView({
   const openEvent = (event: CalendarEvent) =>
     setModal({ kind: "task", event });
 
-  if (loading) {
+  if (!demoMode && loading) {
     return <CalendarPageSkeleton />;
   }
 
-  if (error) {
+  if (!demoMode && error) {
     return (
       <div className="px-4 pt-8">
         <div className="glass-panel rounded-3xl p-6 text-center">
@@ -328,7 +346,7 @@ export function CalendarView({
         householdId={householdId}
         membershipId={membershipId}
         membershipRole={membershipRole}
-        householdName={householdName}
+        householdName={resolvedHouseholdName}
         defaultDate={selectedDate}
         onClose={closeModal}
         onSelectCreate={(mode) => setModal({ kind: "create", mode })}

@@ -184,7 +184,6 @@ export default function ConsolePage() {
   if (auth.status === "loading" || membershipLoading) {
     return (
       <div className="console-shell relative flex min-h-screen flex-col items-center justify-center gap-3 text-white/70">
-        <div className="console-wallpaper" aria-hidden />
         <div className="relative z-10 flex flex-col items-center gap-3">
           <div className="h-9 w-9 animate-spin rounded-full border-2 border-white/20 border-t-white" />
           <span className="text-sm font-medium">{t("console.auth.verifying")}</span>
@@ -196,7 +195,6 @@ export default function ConsolePage() {
   if (auth.status === "config_error") {
     return (
       <div className="console-shell relative flex min-h-screen items-center justify-center px-6">
-        <div className="console-wallpaper" aria-hidden />
         <div className="relative z-10 max-w-md rounded-[24px] border border-white/10 bg-black/40 p-8 text-center shadow-2xl backdrop-blur-xl">
           <h1 className="text-lg font-semibold text-white">
             {t("console.auth.missingConfigTitle")}
@@ -212,7 +210,6 @@ export default function ConsolePage() {
   if (auth.status === "unauthenticated") {
     return (
       <div className="console-shell relative flex min-h-screen flex-col items-center justify-center p-6 font-sans">
-        <div className="console-wallpaper" aria-hidden />
         <div className="absolute right-4 top-[max(1rem,env(safe-area-inset-top))] z-20 flex items-center gap-2">
           <ConsoleLanguageSwitcher />
           <Link
@@ -294,7 +291,6 @@ export default function ConsolePage() {
   if (membershipQueryError) {
     return (
       <div className="console-shell relative flex min-h-screen flex-col items-center justify-center gap-6 px-6">
-        <div className="console-wallpaper" aria-hidden />
         <div className="relative z-10 max-w-md rounded-[24px] border border-white/10 bg-black/40 p-8 text-center shadow-2xl backdrop-blur-xl">
           <h1 className="text-lg font-semibold text-white">
             {t("console.membership.loadFailedTitle")}
@@ -317,7 +313,6 @@ export default function ConsolePage() {
   if (noMembership || !selectedHouseholdId) {
     return (
       <div className="console-shell relative flex min-h-screen flex-col items-center justify-center px-6">
-        <div className="console-wallpaper" aria-hidden />
         <div className="relative z-10 max-w-md rounded-[24px] border border-white/10 bg-black/40 p-8 text-center shadow-2xl backdrop-blur-xl">
           <h1 className="text-lg font-semibold text-white">
             {t("console.membership.noMembershipTitle")}

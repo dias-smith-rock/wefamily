@@ -10,6 +10,8 @@ type HouseholdSwitcherProps = {
   onSelect: (householdId: string) => void;
   /** inline：嵌入顶栏；bar：独立顶条（兼容旧用法） */
   variant?: "inline" | "bar";
+  /** 宣传截图时覆盖显示名（不改真实 household） */
+  displayNameOverride?: string;
 };
 
 const DOT_COLORS = [
@@ -31,6 +33,7 @@ export function HouseholdSwitcher({
   selectedHouseholdId,
   onSelect,
   variant = "bar",
+  displayNameOverride,
 }: HouseholdSwitcherProps) {
   const { t } = useDictionary();
   const selected =
@@ -38,6 +41,7 @@ export function HouseholdSwitcher({
 
   if (!selected) return null;
 
+  const displayName = displayNameOverride ?? selected.householdName;
   const canSwitch = options.length > 1;
   const pill = (
     <div className="relative min-w-0 max-w-[11.5rem]">
@@ -62,7 +66,9 @@ export function HouseholdSwitcher({
                 value={option.householdId}
                 className="bg-[#1c2438] text-white"
               >
-                {option.householdName}
+                {option.householdId === selectedHouseholdId && displayNameOverride
+                  ? displayNameOverride
+                  : option.householdName}
               </option>
             ))}
           </select>
@@ -74,7 +80,7 @@ export function HouseholdSwitcher({
         </>
       ) : (
         <div className="glass-pill flex items-center truncate rounded-full py-2 pe-3 ps-7 text-[13px] font-semibold text-white">
-          <span className="truncate">{selected.householdName}</span>
+          <span className="truncate">{displayName}</span>
         </div>
       )}
     </div>

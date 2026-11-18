@@ -6,6 +6,7 @@ export const MARKETING_ASSETS = {
   featureTasks: "/marketing/feature-tasks.jpg",
   featureMembers: "/marketing/feature-members.jpg",
   featureSync: "/marketing/feature-sync.jpg",
+  featureConsole: "/marketing/feature-console.jpg",
   appPromo: "/marketing/app-promo.jpg",
 } as const;
 

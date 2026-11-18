@@ -22,6 +22,14 @@ import { TodoListView } from "./calendar/todo-list-view";
 import { CreateListSheet } from "./todo/create-list-sheet";
 import { ListDetailSheet } from "./todo/list-detail-sheet";
 import { PlannerListsView } from "./todo/planner-lists-view";
+import {
+  buildDemoCalendarEvents,
+  buildDemoHouseholdLists,
+} from "../lib/demo-console-data";
+import {
+  DEMO_HOUSEHOLD_NAME,
+  useDemoMode,
+} from "../lib/use-demo-mode";
 
 type TodoSegment = "todos" | "planner";
 
@@ -46,6 +54,7 @@ export function TodoView({
   householdSwitcher,
 }: TodoViewProps) {
   const { t } = useDictionary();
+  const demoMode = useDemoMode();
   const [segment, setSegment] = useState<TodoSegment>("todos");
   const [modal, setModal] = useState<CalendarModalState>({ kind: "none" });
   const [lists, setLists] = useState<HouseholdListRow[]>([]);
@@ -75,14 +84,28 @@ export function TodoView({
     onSessionLost,
   });
 
-  const events = useMemo(() => cachedEvents ?? [], [cachedEvents]);
+  const events = useMemo(() => {
+    if (demoMode) {
+      return buildDemoCalendarEvents({ membershipId, householdId });
+    }
+    return cachedEvents ?? [];
+  }, [demoMode, cachedEvents, membershipId, householdId]);
   const openTodos = useMemo(() => openFlexibleTodoEvents(events), [events]);
   const allFlexibleTodos = useMemo(
     () => events.filter((e) => e.isFlexibleTodo),
     [events],
   );
+  const resolvedHouseholdName = demoMode
+    ? DEMO_HOUSEHOLD_NAME
+    : householdName;
 
   const reloadLists = useCallback(async () => {
+    if (demoMode) {
+      setLists(buildDemoHouseholdLists(householdId, membershipId));
+      setListsLoading(false);
+      setListsError(null);
+      return;
+    }
     setListsLoading(true);
     setListsError(null);
     const result = await fetchHouseholdLists(householdId);
@@ -96,10 +119,16 @@ export function TodoView({
       return;
     }
     setLists(result.data);
-  }, [householdId, onSessionLost]);
+  }, [demoMode, householdId, membershipId, onSessionLost]);
 
   useEffect(() => {
     if (!enabled || segment !== "planner") return;
+    if (demoMode) {
+      setLists(buildDemoHouseholdLists(householdId, membershipId));
+      setListsLoading(false);
+      setListsError(null);
+      return;
+    }
     let cancelled = false;
     void (async () => {
       setListsLoading(true);
@@ -120,7 +149,7 @@ export function TodoView({
     return () => {
       cancelled = true;
     };
-  }, [enabled, segment, householdId, onSessionLost]);
+  }, [enabled, segment, householdId, membershipId, onSessionLost, demoMode]);
 
   const closeModal = () => setModal({ kind: "none" });
 
@@ -132,11 +161,11 @@ export function TodoView({
     setModal({ kind: "create", mode: "flexible" });
   };
 
-  if (loading) {
+  if (!demoMode && loading) {
     return <CalendarPageSkeleton />;
   }
 
-  if (error) {
+  if (!demoMode && error) {
     return (
       <div className="px-4 pt-8">
         <div className="glass-panel rounded-3xl p-6 text-center">
@@ -230,7 +259,7 @@ export function TodoView({
       ) : (
         <PlannerListsView
           lists={lists}
-          householdName={householdName}
+          householdName={resolvedHouseholdName}
           onOpenList={setSelectedList}
           onCreateList={() => setCreateListOpen(true)}
         />
@@ -241,7 +270,7 @@ export function TodoView({
       <CreateListSheet
         open={createListOpen}
         householdId={householdId}
-        householdName={householdName}
+        householdName={resolvedHouseholdName}
         membershipId={membershipId}
         onClose={() => setCreateListOpen(false)}
         onCreated={(list) => {
@@ -265,7 +294,7 @@ export function TodoView({
         householdId={householdId}
         membershipId={membershipId}
         membershipRole={membershipRole}
-        householdName={householdName}
+        householdName={resolvedHouseholdName}
         defaultDate={new Date()}
         onClose={closeModal}
         onSelectCreate={(mode) => setModal({ kind: "create", mode })}

@@ -1,0 +1,383 @@
+import type { CalendarEvent, CalendarPerson } from "../calendar/types";
+import type { HouseholdListRow } from "../lists/types";
+
+function atDay(offset: number, hour: number, minute = 0) {
+  const d = new Date();
+  d.setHours(0, 0, 0, 0);
+  d.setDate(d.getDate() + offset);
+  d.setHours(hour, minute, 0, 0);
+  return d;
+}
+
+function person(
+  id: string,
+  name: string,
+  initials: string,
+  avatarClass: string,
+  isManagedProfile: boolean,
+): CalendarPerson {
+  return {
+    id,
+    name,
+    avatarUrl: null,
+    initials,
+    avatarClass,
+    isManagedProfile,
+    matchIds: [id],
+  };
+}
+
+type DemoIds = {
+  membershipId: string;
+  householdId: string;
+};
+
+/** 宣传截图用家庭日程 / 待办（标题与姓名均为自然文案，无 mock 标记） */
+export function buildDemoCalendarEvents({
+  membershipId,
+  householdId,
+}: DemoIds): CalendarEvent[] {
+  void householdId;
+
+  const sarah = person(membershipId, "Sarah Chen", "SC", "bg-blue-600", false);
+  const david = person("mem-david", "David Chen", "DC", "bg-emerald-500", false);
+  const emma = person("mem-emma", "Emma Chen", "EC", "bg-violet-500", true);
+  const leo = person("mem-leo", "Leo Chen", "LC", "bg-orange-500", true);
+  const grandma = person(
+    "mem-mei",
+    "Mei-Ling Wang",
+    "MW",
+    "bg-sky-500",
+    true,
+  );
+
+  const mk = (
+    base: Omit<CalendarEvent, "assignees" | "beneficiaries" | "forPerson">,
+    assignees: CalendarPerson[],
+    forWhom: CalendarPerson | null = assignees[0] ?? null,
+  ): CalendarEvent => ({
+    ...base,
+    forPerson: forWhom,
+    assignees,
+    beneficiaries: forWhom ? [forWhom] : [],
+  });
+
+  return [
+    mk(
+      {
+        id: "evt-dinner",
+        title: "Family dinner",
+        description: "Pasta night — everyone home by 7",
+        startAt: atDay(0, 18, 30),
+        endAt: atDay(0, 20, 0),
+        isAllDay: false,
+        status: "open",
+        priority: "medium",
+        statusLabel: "Open",
+        creatorId: membershipId,
+        involvedMemberIds: [membershipId, "mem-david", "mem-emma", "mem-leo"],
+        forWhomIds: [membershipId],
+        assigneeLabel: "Sarah Chen",
+        recurrenceRule: null,
+        recurrenceInterval: null,
+        taskType: "scheduled",
+        isFlexibleTodo: false,
+      },
+      [sarah, david, emma, leo],
+    ),
+    mk(
+      {
+        id: "evt-homework",
+        title: "Homework review",
+        description: "Math chapter 4 with Emma",
+        startAt: atDay(0, 16, 0),
+        endAt: atDay(0, 16, 45),
+        isAllDay: false,
+        status: "open",
+        priority: "high",
+        statusLabel: "Open",
+        creatorId: membershipId,
+        involvedMemberIds: [membershipId, "mem-emma"],
+        forWhomIds: ["mem-emma"],
+        assigneeLabel: "Sarah Chen",
+        recurrenceRule: null,
+        recurrenceInterval: null,
+        taskType: "scheduled",
+        isFlexibleTodo: false,
+      },
+      [sarah, emma],
+      emma,
+    ),
+    mk(
+      {
+        id: "evt-swim",
+        title: "Swim class",
+        description: null,
+        startAt: atDay(1, 15, 30),
+        endAt: atDay(1, 16, 30),
+        isAllDay: false,
+        status: "open",
+        priority: "medium",
+        statusLabel: "Open",
+        creatorId: membershipId,
+        involvedMemberIds: ["mem-leo"],
+        forWhomIds: ["mem-leo"],
+        assigneeLabel: "Leo Chen",
+        recurrenceRule: null,
+        recurrenceInterval: null,
+        taskType: "scheduled",
+        isFlexibleTodo: false,
+      },
+      [leo],
+      leo,
+    ),
+    mk(
+      {
+        id: "evt-piano",
+        title: "Piano lesson",
+        description: null,
+        startAt: atDay(1, 17, 0),
+        endAt: atDay(1, 17, 45),
+        isAllDay: false,
+        status: "open",
+        priority: "medium",
+        statusLabel: "Open",
+        creatorId: membershipId,
+        involvedMemberIds: ["mem-emma"],
+        forWhomIds: ["mem-emma"],
+        assigneeLabel: "Emma Chen",
+        recurrenceRule: null,
+        recurrenceInterval: null,
+        taskType: "scheduled",
+        isFlexibleTodo: false,
+      },
+      [emma],
+      emma,
+    ),
+    mk(
+      {
+        id: "evt-movie",
+        title: "Movie night",
+        description: "Living room — pick a family film",
+        startAt: atDay(2, 19, 0),
+        endAt: atDay(2, 21, 0),
+        isAllDay: false,
+        status: "open",
+        priority: "low",
+        statusLabel: "Open",
+        creatorId: membershipId,
+        involvedMemberIds: [membershipId, "mem-david", "mem-emma", "mem-leo"],
+        forWhomIds: [membershipId],
+        assigneeLabel: "Sarah Chen",
+        recurrenceRule: null,
+        recurrenceInterval: null,
+        taskType: "scheduled",
+        isFlexibleTodo: false,
+      },
+      [sarah, david, emma, leo],
+    ),
+    mk(
+      {
+        id: "evt-grocery",
+        title: "Grocery run",
+        description: "Weekly groceries",
+        startAt: atDay(3, 10, 0),
+        endAt: atDay(3, 11, 30),
+        isAllDay: false,
+        status: "open",
+        priority: "medium",
+        statusLabel: "Open",
+        creatorId: "mem-david",
+        involvedMemberIds: ["mem-david"],
+        forWhomIds: ["mem-david"],
+        assigneeLabel: "David Chen",
+        recurrenceRule: null,
+        recurrenceInterval: null,
+        taskType: "scheduled",
+        isFlexibleTodo: false,
+      },
+      [david],
+      david,
+    ),
+    mk(
+      {
+        id: "evt-checkup",
+        title: "Doctor checkup",
+        description: "Mei-Ling — annual visit",
+        startAt: atDay(4, 9, 30),
+        endAt: atDay(4, 10, 30),
+        isAllDay: false,
+        status: "open",
+        priority: "high",
+        statusLabel: "Open",
+        creatorId: membershipId,
+        involvedMemberIds: [membershipId, "mem-mei"],
+        forWhomIds: ["mem-mei"],
+        assigneeLabel: "Sarah Chen",
+        recurrenceRule: null,
+        recurrenceInterval: null,
+        taskType: "scheduled",
+        isFlexibleTodo: false,
+      },
+      [sarah, grandma],
+      grandma,
+    ),
+    mk(
+      {
+        id: "todo-docs",
+        title: "Pack travel documents",
+        description: "Passports and booking confirmations",
+        startAt: atDay(0, 9, 0),
+        endAt: null,
+        isAllDay: true,
+        status: "open",
+        priority: "high",
+        statusLabel: "Open",
+        creatorId: membershipId,
+        involvedMemberIds: [membershipId],
+        forWhomIds: [membershipId],
+        assigneeLabel: "Sarah Chen",
+        recurrenceRule: null,
+        recurrenceInterval: null,
+        taskType: "flexible",
+        isFlexibleTodo: true,
+      },
+      [sarah],
+    ),
+    mk(
+      {
+        id: "todo-plants",
+        title: "Water indoor plants",
+        description: null,
+        startAt: atDay(0, 10, 0),
+        endAt: null,
+        isAllDay: true,
+        status: "open",
+        priority: "low",
+        statusLabel: "Open",
+        creatorId: membershipId,
+        involvedMemberIds: ["mem-emma"],
+        forWhomIds: ["mem-emma"],
+        assigneeLabel: "Emma Chen",
+        recurrenceRule: null,
+        recurrenceInterval: null,
+        taskType: "flexible",
+        isFlexibleTodo: true,
+      },
+      [emma],
+      emma,
+    ),
+    mk(
+      {
+        id: "todo-album",
+        title: "Organize photo album",
+        description: "Summer trip folder",
+        startAt: atDay(2, 11, 0),
+        endAt: null,
+        isAllDay: true,
+        status: "open",
+        priority: "medium",
+        statusLabel: "Open",
+        creatorId: membershipId,
+        involvedMemberIds: [membershipId, "mem-david"],
+        forWhomIds: [membershipId],
+        assigneeLabel: "Sarah Chen",
+        recurrenceRule: null,
+        recurrenceInterval: null,
+        taskType: "flexible",
+        isFlexibleTodo: true,
+      },
+      [sarah, david],
+    ),
+    mk(
+      {
+        id: "todo-insurance",
+        title: "Renew car insurance",
+        description: null,
+        startAt: atDay(5, 12, 0),
+        endAt: null,
+        isAllDay: true,
+        status: "open",
+        priority: "high",
+        statusLabel: "Open",
+        creatorId: "mem-david",
+        involvedMemberIds: ["mem-david"],
+        forWhomIds: ["mem-david"],
+        assigneeLabel: "David Chen",
+        recurrenceRule: null,
+        recurrenceInterval: null,
+        taskType: "flexible",
+        isFlexibleTodo: true,
+      },
+      [david],
+      david,
+    ),
+    mk(
+      {
+        id: "todo-done-milk",
+        title: "Buy organic milk",
+        description: null,
+        startAt: atDay(-1, 9, 0),
+        endAt: null,
+        isAllDay: true,
+        status: "completed",
+        priority: "low",
+        statusLabel: "Done",
+        creatorId: membershipId,
+        involvedMemberIds: [membershipId],
+        forWhomIds: [membershipId],
+        assigneeLabel: "Sarah Chen",
+        recurrenceRule: null,
+        recurrenceInterval: null,
+        taskType: "flexible",
+        isFlexibleTodo: true,
+      },
+      [sarah],
+    ),
+  ];
+}
+
+export function buildDemoHouseholdLists(
+  householdId: string,
+  membershipId: string,
+): HouseholdListRow[] {
+  const now = new Date().toISOString();
+  return [
+    {
+      id: "list-groceries",
+      household_id: householdId,
+      creator_id: membershipId,
+      title: "Weekly Groceries",
+      kind: "shopping",
+      trip_start_date: null,
+      trip_end_date: null,
+      sort_order: 0,
+      created_at: now,
+      updated_at: now,
+    },
+    {
+      id: "list-weekend",
+      household_id: householdId,
+      creator_id: membershipId,
+      title: "Weekend camping",
+      kind: "trip",
+      trip_start_date: null,
+      trip_end_date: null,
+      sort_order: 1,
+      created_at: now,
+      updated_at: now,
+    },
+    {
+      id: "list-home",
+      household_id: householdId,
+      creator_id: membershipId,
+      title: "Home maintenance",
+      kind: "custom",
+      trip_start_date: null,
+      trip_end_date: null,
+      sort_order: 2,
+      created_at: now,
+      updated_at: now,
+    },
+  ];
+}

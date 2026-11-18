@@ -227,43 +227,15 @@ export default async function HomePage({ params }: HomePageProps) {
               </Link>
             </div>
             <ImagePlaceholder
-              assetPath={MARKETING_ASSETS.featureSync}
+              assetPath={MARKETING_ASSETS.featureConsole}
               brief={dict.webPromo.imageBrief}
               sizeHint="建议 1400×1050，宽屏 Web 控制台截图"
             />
           </div>
         </section>
 
-        {/* App promo */}
-        <section className="border-t border-[#FF6F4C]/10 bg-[#FFF8F4] py-20 md:py-28">
-          <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 lg:grid-cols-2 lg:gap-16">
-            <ImagePlaceholder
-              assetPath={MARKETING_ASSETS.appPromo}
-              brief={dict.appPromo.imageBrief}
-              sizeHint="建议竖图 900×1600 或带手机框 1200×1600"
-              aspectClassName="aspect-[3/4] max-w-md mx-auto w-full"
-              className="lg:order-1"
-            />
-            <div className="lg:order-2">
-              <div className="mb-4 h-1.5 w-12 rounded-full bg-gradient-to-r from-[#FF6F4C] to-[#FF9F0A]" />
-              <h2 className="text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">
-                {dict.appPromo.title}
-              </h2>
-              <p className="mt-4 max-w-md text-base leading-relaxed text-slate-500 md:text-lg">
-                {dict.appPromo.description}
-              </p>
-              <a
-                href={APP_STORE_HREF}
-                className="mt-8 inline-flex items-center justify-center rounded-full bg-[#FF6F4C] px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-[#FF6F4C]/25 transition hover:bg-[#F45A3A]"
-              >
-                {dict.appPromo.cta}
-              </a>
-            </div>
-          </div>
-        </section>
-
         {/* Capabilities grid */}
-        <section className="border-t border-[#FF6F4C]/10 bg-white py-20 md:py-28">
+        <section className="border-t border-[#FF6F4C]/10 bg-[#FFF8F4] py-20 md:py-28">
           <div className="mx-auto max-w-6xl px-6">
             <div className="mx-auto max-w-2xl text-center">
               <h2 className="text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">

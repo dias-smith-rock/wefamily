@@ -45,13 +45,13 @@ type MemberCard = {
   tasksCount: number;
 };
 
-const MOCK_SUMMARY = {
+const SUMMARY = {
   tasksToday: { fraction: "2/6", sub: "2 overdue · 4 on track" },
   members: { count: "4", sub: "All active this week" },
   events: { count: "3", sub: "Next: Sat, May 17" },
 };
 
-const MOCK_DASHBOARD_TASKS: DashboardTask[] = [
+const DASHBOARD_TASKS: DashboardTask[] = [
   {
     id: "1",
     title: "Clean kitchen after dinner",
@@ -78,13 +78,13 @@ const MOCK_DASHBOARD_TASKS: DashboardTask[] = [
   },
 ];
 
-const MOCK_EVENTS: DashboardEvent[] = [
+const UPCOMING_EVENTS: DashboardEvent[] = [
   { id: "1", title: "Group Movie Night", date: "Sat, May 17 · 8:00 PM", dot: "blue" },
   { id: "2", title: "Grandma’s birthday lunch", date: "Sun, May 18 · 12:30 PM", dot: "green" },
   { id: "3", title: "Soccer practice (Leo)", date: "Tue, May 20 · 4:00 PM", dot: "purple" },
 ];
 
-const MOCK_ACTIVITY: ActivityItem[] = [
+const RECENT_ACTIVITY: ActivityItem[] = [
   {
     id: "1",
     text: "Mia completed “Clean bedroom”",
@@ -101,7 +101,7 @@ const MOCK_ACTIVITY: ActivityItem[] = [
   },
 ];
 
-const MOCK_MEMBER_CARDS: MemberCard[] = [
+const MEMBER_CARDS: MemberCard[] = [
   {
     id: "1",
     name: "Sarah Chen",
@@ -199,10 +199,10 @@ export function DashboardView({ user }: DashboardViewProps) {
                 Tasks today
               </p>
               <p className="mt-3 text-4xl font-bold tabular-nums text-gray-900">
-                {MOCK_SUMMARY.tasksToday.fraction}
+                {SUMMARY.tasksToday.fraction}
               </p>
               <p className="mt-1 text-sm text-gray-500">
-                {MOCK_SUMMARY.tasksToday.sub}
+                {SUMMARY.tasksToday.sub}
               </p>
             </div>
             <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-100 text-blue-600">
@@ -218,10 +218,10 @@ export function DashboardView({ user }: DashboardViewProps) {
                 Group members
               </p>
               <p className="mt-3 text-4xl font-bold tabular-nums text-gray-900">
-                {MOCK_SUMMARY.members.count}
+                {SUMMARY.members.count}
               </p>
               <p className="mt-1 text-sm text-gray-500">
-                {MOCK_SUMMARY.members.sub}
+                {SUMMARY.members.sub}
               </p>
             </div>
             <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-600">
@@ -237,10 +237,10 @@ export function DashboardView({ user }: DashboardViewProps) {
                 Upcoming events
               </p>
               <p className="mt-3 text-4xl font-bold tabular-nums text-gray-900">
-                {MOCK_SUMMARY.events.count}
+                {SUMMARY.events.count}
               </p>
               <p className="mt-1 text-sm text-gray-500">
-                {MOCK_SUMMARY.events.sub}
+                {SUMMARY.events.sub}
               </p>
             </div>
             <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-violet-100 text-violet-600">
@@ -263,7 +263,7 @@ export function DashboardView({ user }: DashboardViewProps) {
             </button>
           </div>
           <ul className="mt-5 divide-y divide-gray-100">
-            {MOCK_DASHBOARD_TASKS.map((task) => (
+            {DASHBOARD_TASKS.map((task) => (
               <li
                 key={task.id}
                 className="flex min-h-[44px] items-start gap-3 py-3 first:pt-0 md:items-center md:py-4"
@@ -304,7 +304,7 @@ export function DashboardView({ user }: DashboardViewProps) {
           <section className="rounded-2xl border border-gray-100 bg-white p-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] md:rounded-3xl md:p-6">
             <h2 className="text-lg font-bold text-gray-900">Upcoming events</h2>
             <ul className="mt-4 space-y-4">
-              {MOCK_EVENTS.map((ev) => (
+              {UPCOMING_EVENTS.map((ev) => (
                 <li key={ev.id} className="flex gap-3">
                   <span
                     className={`mt-1.5 h-2 w-2 shrink-0 rounded-full ${dotClass[ev.dot]}`}
@@ -326,7 +326,7 @@ export function DashboardView({ user }: DashboardViewProps) {
                 className="absolute bottom-2 left-[15px] top-2 w-px bg-gray-200"
                 aria-hidden
               />
-              {MOCK_ACTIVITY.map((item) => (
+              {RECENT_ACTIVITY.map((item) => (
                 <li key={item.id} className="relative flex gap-3 pb-6 last:pb-0">
                   <div
                     className={`relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${item.iconBg} text-white shadow-sm`}
@@ -352,7 +352,7 @@ export function DashboardView({ user }: DashboardViewProps) {
       <section className="rounded-2xl border border-gray-100 bg-white p-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] md:rounded-3xl md:p-6 lg:p-8">
         <h2 className="text-lg font-bold text-gray-900">Group members</h2>
         <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {MOCK_MEMBER_CARDS.map((m) => (
+          {MEMBER_CARDS.map((m) => (
             <div
               key={m.id}
               className="rounded-2xl border border-gray-100 bg-gray-50/50 p-4 transition hover:border-gray-200 hover:bg-white md:p-5"
