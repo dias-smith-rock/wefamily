@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Calendly — Mantenha a agenda da família sincronizada",
+    "title": "Nudge — Mantenha a agenda da família sincronizada",
     "description": "Calendário e tarefas da família sincronizados na web ou no app — sem precisar baixar."
   },
   "nav": {
@@ -11,7 +11,7 @@
     "console": "Console"
   },
   "hero": {
-    "eyebrow": "Calendly",
+    "eyebrow": "Nudge",
     "title": "A forma mais simples de sincronizar sua família",
     "subtitle": "Calendário, tarefas, atribuições e perfis de membros — feito para famílias. Use o console web gratuito para criar e ver tarefas ou gerenciar membros no navegador — sem baixar o app.",
     "downloadAppStore": "Baixar na App Store",

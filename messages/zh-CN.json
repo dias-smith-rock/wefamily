@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Calendly — 让家庭日程与待办同步",
+    "title": "Nudge — 让家庭日程与待办同步",
     "description": "日历、任务、成员档案一站搞定——支持 Web 与 App。专为家庭设计。无需下载 App，打开网页即可创建和查看任务、管理成员。"
   },
   "nav": {
@@ -11,7 +11,7 @@
     "console": "控制台"
   },
   "hero": {
-    "eyebrow": "Calendly",
+    "eyebrow": "Nudge",
     "title": "让家庭日程与待办，真正同步",
     "subtitle": "日历、任务、分工、成员档案——专为家庭打造。也可直接使用免费 Web 控制台：在浏览器里创建和查看任务、管理成员，不必先下载 App。",
     "downloadAppStore": "在 App Store 下载",

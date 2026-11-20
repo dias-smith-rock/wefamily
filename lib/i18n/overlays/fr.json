@@ -56,7 +56,7 @@
     "membership": {
       "loadFailedTitle": "Impossible de charger le groupe",
       "noMembershipTitle": "Aucun groupe",
-      "noMembershipBody": "Vous n'avez rejoint aucun groupe ou votre demande est en attente. Créez ou rejoignez un groupe dans l'app Calendly iOS."
+      "noMembershipBody": "Vous n'avez rejoint aucun groupe ou votre demande est en attente. Créez ou rejoignez un groupe dans l'app Nudge iOS."
     },
     "nav": {
       "main": "Navigation principale",
@@ -70,7 +70,7 @@
     "me": {
       "title": "Moi",
       "accountSettings": "Compte et réglages",
-      "settingsHint": "Réglages complets dans l'app Calendly iOS."
+      "settingsHint": "Réglages complets dans l'app Nudge iOS."
     },
     "group": {
       "title": "Groupe",
@@ -82,7 +82,7 @@
       "showPhone": "Afficher le téléphone",
       "createdAt": "Créé le {date}",
       "memberCount": "{total} membres",
-      "editGroupHint": "Pour renommer ou dissoudre le groupe, utilisez l'app Calendly iOS.",
+      "editGroupHint": "Pour renommer ou dissoudre le groupe, utilisez l'app Nudge iOS.",
       "phone": "Téléphone",
       "email": "E-mail",
       "noContact": "Aucun contact",
@@ -93,7 +93,7 @@
       "inviteMember": "Inviter un membre",
       "createProfile": "Créer un profil sans app",
       "securityLimitTitle": "Sécurité multi-appareils",
-      "securityLimitBody": "Utilisez l'app Calendly iOS pour scanner un QR ou envoyer un lien d'invitation."
+      "securityLimitBody": "Utilisez l'app Nudge iOS pour scanner un QR ou envoyer un lien d'invitation."
     },
     "calendar": {
       "switchView": "Changer de vue",
@@ -113,7 +113,7 @@
       "newTask": "Nouvelle tâche",
       "newEvent": "Nouvel événement",
       "readonlyTitle": "Mode lecture seule",
-      "readonlyBody": "Certaines actions sont uniquement disponibles dans l’app Calendly iOS.",
+      "readonlyBody": "Certaines actions sont uniquement disponibles dans l’app Nudge iOS.",
       "aiTitle": "Assistant Hermes AI prêt",
       "aiBody": "Saisie vocale et planification intelligente uniquement sur iOS.",
       "taskDetail": "Détails de la tâche",
@@ -206,10 +206,10 @@
     "privacyTitle": "Politique de confidentialité",
     "termsTitle": "Conditions d'utilisation",
     "lastUpdated": "Dernière mise à jour : {date}",
-    "privacyMetaDescription": "Comment Calendly collecte, utilise et protège vos informations.",
-    "termsMetaDescription": "Conditions d'accès et d'utilisation de Calendly.",
+    "privacyMetaDescription": "Comment Nudge collecte, utilise et protège vos informations.",
+    "termsMetaDescription": "Conditions d'accès et d'utilisation de Nudge.",
     "privacy": {
-      "intro": "Bienvenue sur Calendly. La confidentialité et la sécurité des données de votre groupe sont nos priorités. Cette politique explique comment nous collectons, utilisons et protégeons vos informations lorsque vous utilisez notre site et notre application mobile, en cohérence avec les déclarations de confidentialité de l'App Store Apple.",
+      "intro": "Bienvenue sur Nudge. La confidentialité et la sécurité des données de votre groupe sont nos priorités. Cette politique explique comment nous collectons, utilisons et protégeons vos informations lorsque vous utilisez notre site et notre application mobile, en cohérence avec les déclarations de confidentialité de l'App Store Apple.",
       "sections": [
         {
           "heading": "1. Informations que nous collectons",
@@ -301,14 +301,14 @@
       "contactLead": "Pour toute question sur cette politique : music.player.250617@gmail.com"
     },
     "terms": {
-      "intro": "Les présentes conditions (« Conditions ») régissent votre accès et votre utilisation du site et de l'application Calendly. En utilisant le service, vous acceptez ces Conditions.",
+      "intro": "Les présentes conditions (« Conditions ») régissent votre accès et votre utilisation du site et de l'application Nudge. En utilisant le service, vous acceptez ces Conditions.",
       "sections": [
         {
           "heading": "1. Description du service",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "Calendly aide les groupes à gérer tâches, calendriers et profils. Le service est fourni « en l'état » ; nous pouvons modifier ou interrompre des fonctionnalités."
+            "Nudge aide les groupes à gérer tâches, calendriers et profils. Le service est fourni « en l'état » ; nous pouvons modifier ou interrompre des fonctionnalités."
           ]
         },
         {
@@ -370,7 +370,7 @@
         },
         {
           "heading": "5. Utilisation acceptable",
-          "lead": "Vous vous engagez à ne pas utiliser Calendly pour :",
+          "lead": "Vous vous engagez à ne pas utiliser Nudge pour :",
           "items": [
             {
               "term": "",
@@ -392,7 +392,7 @@
           "lead": "",
           "items": [],
           "paragraphs": [
-            "Dans la mesure permise par la loi, Calendly et ses créateurs ne sont pas responsables des dommages indirects ou pertes de profits liés à l'accès ou l'utilisation du service."
+            "Dans la mesure permise par la loi, Nudge et ses créateurs ne sont pas responsables des dommages indirects ou pertes de profits liés à l'accès ou l'utilisation du service."
           ]
         },
         {

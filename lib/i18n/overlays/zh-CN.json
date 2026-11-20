@@ -57,7 +57,7 @@
     "membership": {
       "loadFailedTitle": "暂时无法加载群组信息",
       "noMembershipTitle": "尚未加入群组",
-      "noMembershipBody": "您尚未加入任何群组，或加入申请正在审批中。请在 Calendly iOS 客户端完成群组创建或加入。"
+      "noMembershipBody": "您尚未加入任何群组，或加入申请正在审批中。请在 Nudge iOS 客户端完成群组创建或加入。"
     },
     "nav": {
       "main": "主导航",
@@ -71,7 +71,7 @@
     "me": {
       "title": "我的",
       "accountSettings": "账户与设置",
-      "settingsHint": "完整设置请在 Calendly iOS 应用中管理。"
+      "settingsHint": "完整设置请在 Nudge iOS 应用中管理。"
     },
     "settings": {
       "title": "设置",
@@ -95,7 +95,7 @@
       "showPhone": "显示手机号",
       "createdAt": "创建于 {date}",
       "memberCount": "当前共 {total} 位成员",
-      "editGroupHint": "如需修改群组名称或解散群组，请前往Calendly iOS 客户端。",
+      "editGroupHint": "如需修改群组名称或解散群组，请前往Nudge iOS 客户端。",
       "phone": "手机号",
       "email": "邮箱",
       "noContact": "暂无联系方式",
@@ -106,7 +106,7 @@
       "inviteMember": "邀请新成员",
       "createProfile": "创建免下载档案",
       "securityLimitTitle": "多端安全限制",
-      "securityLimitBody": "请使用 Calendly iOS App 扫描二维码或发送快捷邀请链接。"
+      "securityLimitBody": "请使用 Nudge iOS App 扫描二维码或发送快捷邀请链接。"
     },
     "calendar": {
       "switchView": "切换视图",
@@ -153,7 +153,7 @@
       "titleRequired": "请填写标题",
       "startRequired": "请选择开始时间",
       "readonlyTitle": "只读模式",
-      "readonlyBody": "部分操作仅支持在 Calendly iOS 客户端完成。",
+      "readonlyBody": "部分操作仅支持在 Nudge iOS 客户端完成。",
       "readonlyDetailHint": "当前账号无编辑权限，仅可查看。如需修改请使用 iOS 客户端或联系家庭管理员。",
       "relatedToMe": "与我相关",
       "relatedToMeHint": "仅显示今天与我相关的日程（我创建、我执行或受益）。",
@@ -249,10 +249,10 @@
     "privacyTitle": "隐私政策",
     "termsTitle": "服务条款",
     "lastUpdated": "最后更新：{date}",
-    "privacyMetaDescription": "Calendly 在您使用网站与移动应用时如何收集、使用并保护您的信息。",
-    "termsMetaDescription": "管辖您对 Calendly网站与移动应用访问与使用的条款。",
+    "privacyMetaDescription": "Nudge 在您使用网站与移动应用时如何收集、使用并保护您的信息。",
+    "termsMetaDescription": "管辖您对 Nudge网站与移动应用访问与使用的条款。",
     "privacy": {
-      "intro": "欢迎使用 Calendly。您所在群组的隐私与数据安全是我们的首要关切。本隐私政策说明我们在您使用网站与移动应用时如何收集、使用并保护您的信息，并与我们在 Apple App Store 中提供的隐私说明保持一致。",
+      "intro": "欢迎使用 Nudge。您所在群组的隐私与数据安全是我们的首要关切。本隐私政策说明我们在您使用网站与移动应用时如何收集、使用并保护您的信息，并与我们在 Apple App Store 中提供的隐私说明保持一致。",
       "sections": [
         {
           "heading": "1. 我们收集的信息",
@@ -344,14 +344,14 @@
       "contactLead": "如您对本隐私政策有任何疑问，请联系：music.player.250617@gmail.com"
     },
     "terms": {
-      "intro": "本服务条款（「条款」）管辖您对 Calendly网站与移动应用的访问与使用。使用我们的服务即表示您同意受本条款约束。",
+      "intro": "本服务条款（「条款」）管辖您对 Nudge网站与移动应用的访问与使用。使用我们的服务即表示您同意受本条款约束。",
       "sections": [
         {
           "heading": "1. 服务说明",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "Calendly 是一款群组协作与效率工具，帮助群组管理任务、日程与成员档案。服务按「现状」提供，我们保留自行修改、更新或停用功能的权利。"
+            "Nudge 是一款群组协作与效率工具，帮助群组管理任务、日程与成员档案。服务按「现状」提供，我们保留自行修改、更新或停用功能的权利。"
           ]
         },
         {
@@ -364,7 +364,7 @@
             },
             {
               "term": "",
-              "body": "您须维护账户及用于访问 Calendly之设备的安全。"
+              "body": "您须维护账户及用于访问 Nudge之设备的安全。"
             },
             {
               "term": "",
@@ -413,7 +413,7 @@
         },
         {
           "heading": "5. 可接受使用",
-          "lead": "您同意不将 Calendly用于：",
+          "lead": "您同意不将 Nudge用于：",
           "items": [
             {
               "term": "",
@@ -435,7 +435,7 @@
           "lead": "",
           "items": [],
           "paragraphs": [
-            "在法律允许的最大范围内，Calendly 及其创建者不对任何间接、附带、特殊、后果性或惩罚性损害，或任何利润或收入损失（无论直接还是间接产生）承担责任，包括因 (a) 您访问、使用或无法访问、使用服务；(b) 服务上任何第三方的行为或内容而产生的情形。"
+            "在法律允许的最大范围内，Nudge 及其创建者不对任何间接、附带、特殊、后果性或惩罚性损害，或任何利润或收入损失（无论直接还是间接产生）承担责任，包括因 (a) 您访问、使用或无法访问、使用服务；(b) 服务上任何第三方的行为或内容而产生的情形。"
           ]
         },
         {

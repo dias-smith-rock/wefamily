@@ -56,7 +56,7 @@
     "membership": {
       "loadFailedTitle": "No se puede cargar el grupo",
       "noMembershipTitle": "Sin grupo",
-      "noMembershipBody": "No se ha unido a ningún grupo o su solicitud está pendiente. Cree o únase en la app Calendly iOS."
+      "noMembershipBody": "No se ha unido a ningún grupo o su solicitud está pendiente. Cree o únase en la app Nudge iOS."
     },
     "nav": {
       "main": "Navegación principal",
@@ -70,7 +70,7 @@
     "me": {
       "title": "Yo",
       "accountSettings": "Cuenta y ajustes",
-      "settingsHint": "Ajustes completos en la app Calendly iOS."
+      "settingsHint": "Ajustes completos en la app Nudge iOS."
     },
     "group": {
       "title": "Grupo",
@@ -82,7 +82,7 @@
       "showPhone": "Mostrar teléfono",
       "createdAt": "Creado el {date}",
       "memberCount": "{total} miembros",
-      "editGroupHint": "Para renombrar o disolver el grupo, use la app Calendly iOS.",
+      "editGroupHint": "Para renombrar o disolver el grupo, use la app Nudge iOS.",
       "phone": "Teléfono",
       "email": "Correo",
       "noContact": "Sin contacto",
@@ -93,7 +93,7 @@
       "inviteMember": "Invitar miembro",
       "createProfile": "Crear perfil sin app",
       "securityLimitTitle": "Seguridad multidispositivo",
-      "securityLimitBody": "Use la app Calendly iOS para escanear un QR o enviar un enlace de invitación."
+      "securityLimitBody": "Use la app Nudge iOS para escanear un QR o enviar un enlace de invitación."
     },
     "calendar": {
       "switchView": "Switch view",
@@ -113,7 +113,7 @@
       "newTask": "New task",
       "newEvent": "New event",
       "readonlyTitle": "Modo solo lectura",
-      "readonlyBody": "Algunas acciones solo están disponibles en la app Calendly iOS.",
+      "readonlyBody": "Algunas acciones solo están disponibles en la app Nudge iOS.",
       "aiTitle": "Asistente Hermes AI listo",
       "aiBody": "Voz y planificación inteligente solo en iOS.",
       "taskDetail": "Detalles de la tarea",
@@ -206,10 +206,10 @@
     "privacyTitle": "Política de privacidad",
     "termsTitle": "Términos de servicio",
     "lastUpdated": "Última actualización: {date}",
-    "privacyMetaDescription": "Cómo Calendly recopila, usa y protege tu información cuando usas nuestro sitio web y la aplicación móvil.",
-    "termsMetaDescription": "Términos que rigen tu acceso y uso del sitio web y la aplicación móvil de Calendly.",
+    "privacyMetaDescription": "Cómo Nudge recopila, usa y protege tu información cuando usas nuestro sitio web y la aplicación móvil.",
+    "termsMetaDescription": "Términos que rigen tu acceso y uso del sitio web y la aplicación móvil de Nudge.",
     "privacy": {
-      "intro": "Bienvenido a Calendly. La privacidad y la seguridad de los datos de tu grupo son nuestras máximas prioridades. Esta Política de privacidad explica cómo recopilamos, usamos y protegemos tu información cuando usas nuestro sitio web y nuestra aplicación móvil. Está alineada con las divulgaciones de privacidad que proporcionamos en el Apple App Store.",
+      "intro": "Bienvenido a Nudge. La privacidad y la seguridad de los datos de tu grupo son nuestras máximas prioridades. Esta Política de privacidad explica cómo recopilamos, usamos y protegemos tu información cuando usas nuestro sitio web y nuestra aplicación móvil. Está alineada con las divulgaciones de privacidad que proporcionamos en el Apple App Store.",
       "sections": [
         {
           "heading": "1. Información que recopilamos",
@@ -301,14 +301,14 @@
       "contactLead": "Si tienes preguntas sobre esta Política de privacidad, contáctanos en: music.player.250617@gmail.com"
     },
     "terms": {
-      "intro": "Estos Términos de servicio («Términos») rigen tu acceso y uso del sitio web y la aplicación móvil de Calendly. Al usar nuestro servicio, aceptas quedar vinculado por estos Términos.",
+      "intro": "Estos Términos de servicio («Términos») rigen tu acceso y uso del sitio web y la aplicación móvil de Nudge. Al usar nuestro servicio, aceptas quedar vinculado por estos Términos.",
       "sections": [
         {
           "heading": "1. Descripción del servicio",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "Calendly es una herramienta de colaboración y productividad para grupos, diseñada para ayudar a gestionar tareas, agendas y perfiles de miembros. El servicio se ofrece «tal cual» y nos reservamos el derecho de modificar, actualizar o discontinuar funciones a nuestra discreción."
+            "Nudge es una herramienta de colaboración y productividad para grupos, diseñada para ayudar a gestionar tareas, agendas y perfiles de miembros. El servicio se ofrece «tal cual» y nos reservamos el derecho de modificar, actualizar o discontinuar funciones a nuestra discreción."
           ]
         },
         {
@@ -321,7 +321,7 @@
             },
             {
               "term": "",
-              "body": "Eres responsable de mantener la seguridad de tu cuenta y de cualquier dispositivo que uses para acceder a Calendly."
+              "body": "Eres responsable de mantener la seguridad de tu cuenta y de cualquier dispositivo que uses para acceder a Nudge."
             },
             {
               "term": "",
@@ -370,7 +370,7 @@
         },
         {
           "heading": "5. Uso aceptable",
-          "lead": "Aceptas no usar Calendly para:",
+          "lead": "Aceptas no usar Nudge para:",
           "items": [
             {
               "term": "",
@@ -392,7 +392,7 @@
           "lead": "",
           "items": [],
           "paragraphs": [
-            "En la máxima medida permitida por la ley, Calendly y sus creadores no serán responsables de daños indirectos, incidentales, especiales, consecuentes o punitivos, ni de pérdida de beneficios o ingresos, ya sea directa o indirectamente, derivados de (a) tu acceso, uso o imposibilidad de acceder o usar el Servicio; (b) cualquier conducta o contenido de terceros en el Servicio."
+            "En la máxima medida permitida por la ley, Nudge y sus creadores no serán responsables de daños indirectos, incidentales, especiales, consecuentes o punitivos, ni de pérdida de beneficios o ingresos, ya sea directa o indirectamente, derivados de (a) tu acceso, uso o imposibilidad de acceder o usar el Servicio; (b) cualquier conducta o contenido de terceros en el Servicio."
           ]
         },
         {
