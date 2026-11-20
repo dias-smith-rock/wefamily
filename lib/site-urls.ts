@@ -9,5 +9,5 @@ export const COMPANY_NAME_ZH = "良作國際有限公司";
 export const COMPANY_NAME_EN = "GOODCRAFT INTERNATIONAL LIMITED";
 
 /** 产品品牌 */
-export const PRODUCT_NAME_ZH = "Nudge";
-export const PRODUCT_NAME_EN = "Nudge";
+export const PRODUCT_NAME_ZH = "Nudge Family Calendar";
+export const PRODUCT_NAME_EN = "Nudge Family Calendar";

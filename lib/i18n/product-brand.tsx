@@ -95,7 +95,7 @@ export function formatCopyright(
   locale: Locale,
 ): string {
   const name = productName(locale);
-  // 中英文同名时只保留一个品牌名，避免 “Nudge (Nudge)”
+  // 中英文同名时只保留一个品牌名，避免 “Nudge Family Calendar (Nudge Family Calendar)”
   if (PRODUCT_NAME_ZH === PRODUCT_NAME_EN) {
     return copyrightTemplate
       .replace(/\{productZh\}\s*\(\{productEn\}\)/, name)

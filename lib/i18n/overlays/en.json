@@ -57,7 +57,7 @@
     "membership": {
       "loadFailedTitle": "Unable to load group information",
       "noMembershipTitle": "No group membership yet",
-      "noMembershipBody": "You have not joined any group, or your join request is pending approval. Create or join a group in the Nudge iOS app."
+      "noMembershipBody": "You have not joined any group, or your join request is pending approval. Create or join a group in the Nudge Family Calendar iOS app."
     },
     "nav": {
       "main": "Main navigation",
@@ -71,7 +71,7 @@
     "me": {
       "title": "Me",
       "accountSettings": "Account & settings",
-      "settingsHint": "Manage full settings in the Nudge iOS app."
+      "settingsHint": "Manage full settings in the Nudge Family Calendar iOS app."
     },
     "group": {
       "title": "Group",
@@ -83,7 +83,7 @@
       "showPhone": "Show phone number",
       "createdAt": "Created on {date}",
       "memberCount": "{total} members",
-      "editGroupHint": "To rename or dissolve this group, use the Nudge iOS app.",
+      "editGroupHint": "To rename or dissolve this group, use the Nudge Family Calendar iOS app.",
       "phone": "Phone",
       "email": "Email",
       "noContact": "No contact info",
@@ -94,7 +94,7 @@
       "inviteMember": "Invite member",
       "createProfile": "Create no-download profile",
       "securityLimitTitle": "Multi-device security",
-      "securityLimitBody": "Use the Nudge iOS app to scan a QR code or send a quick invite link."
+      "securityLimitBody": "Use the Nudge Family Calendar iOS app to scan a QR code or send a quick invite link."
     },
     "calendar": {
       "switchView": "Switch view",
@@ -123,7 +123,7 @@
       "titleRequired": "Please enter a title",
       "startRequired": "Please choose a start time",
       "readonlyTitle": "Read-only mode",
-      "readonlyBody": "Some actions are only available in the Nudge iOS app.",
+      "readonlyBody": "Some actions are only available in the Nudge Family Calendar iOS app.",
       "readonlyDetailHint": "You don’t have edit access. View only — change items in the iOS app or ask a household admin.",
       "relatedToMe": "Related to me",
       "relatedToMeHint": "Only show today’s events involving you (created, assigned, or for you).",
@@ -249,10 +249,10 @@
     "privacyTitle": "Privacy Policy",
     "termsTitle": "Terms of Service",
     "lastUpdated": "Last updated: {date}",
-    "privacyMetaDescription": "How Nudge collects, uses, and protects your information when you use our website and mobile app.",
-    "termsMetaDescription": "Terms governing your access to and use of the Nudge website and mobile app.",
+    "privacyMetaDescription": "How Nudge Family Calendar collects, uses, and protects your information when you use our website and mobile app.",
+    "termsMetaDescription": "Terms governing your access to and use of the Nudge Family Calendar website and mobile app.",
     "privacy": {
-      "intro": "Welcome to Nudge. Your group's privacy and data security are our highest priorities. This Privacy Policy explains how we collect, use, and protect your information when you use our website and mobile application. It is intended to align with the privacy disclosures we provide in the Apple App Store.",
+      "intro": "Welcome to Nudge Family Calendar. Your group's privacy and data security are our highest priorities. This Privacy Policy explains how we collect, use, and protect your information when you use our website and mobile application. It is intended to align with the privacy disclosures we provide in the Apple App Store.",
       "sections": [
         {
           "heading": "1. Information We Collect",
@@ -344,14 +344,14 @@
       "contactLead": "If you have any questions about this Privacy Policy, please contact us at: music.player.250617@gmail.com"
     },
     "terms": {
-      "intro": "These Terms of Service (\"Terms\") govern your access to and use of the Nudge website and mobile application. By using our service, you agree to be bound by these Terms.",
+      "intro": "These Terms of Service (\"Terms\") govern your access to and use of the Nudge Family Calendar website and mobile application. By using our service, you agree to be bound by these Terms.",
       "sections": [
         {
           "heading": "1. Description of Service",
           "lead": "",
           "items": [],
           "paragraphs": [
-            "Nudge is a group collaboration and productivity tool designed to help groups manage tasks, schedules, and member profiles. The service is provided \"as is\" and we reserve the right to modify, update, or discontinue features at our discretion."
+            "Nudge Family Calendar is a group collaboration and productivity tool designed to help groups manage tasks, schedules, and member profiles. The service is provided \"as is\" and we reserve the right to modify, update, or discontinue features at our discretion."
           ]
         },
         {
@@ -364,7 +364,7 @@
             },
             {
               "term": "",
-              "body": "You are responsible for maintaining the security of your account and any devices you use to access Nudge."
+              "body": "You are responsible for maintaining the security of your account and any devices you use to access Nudge Family Calendar."
             },
             {
               "term": "",
@@ -413,7 +413,7 @@
         },
         {
           "heading": "5. Acceptable Use",
-          "lead": "You agree not to use Nudge to:",
+          "lead": "You agree not to use Nudge Family Calendar to:",
           "items": [
             {
               "term": "",
@@ -435,7 +435,7 @@
           "lead": "",
           "items": [],
           "paragraphs": [
-            "To the maximum extent permitted by law, Nudge and its creators shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, resulting from (a) your access to or use of or inability to access or use the Service; (b) any conduct or content of any third party on the Service."
+            "To the maximum extent permitted by law, Nudge Family Calendar and its creators shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, resulting from (a) your access to or use of or inability to access or use the Service; (b) any conduct or content of any third party on the Service."
           ]
         },
         {

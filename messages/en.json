@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Nudge — Keep Your Family’s Schedule in Sync",
+    "title": "Nudge Family Calendar — Keep Your Family’s Schedule in Sync",
     "description": "Keep your family calendar and tasks in sync on the web or app — no download required."
   },
   "nav": {
@@ -11,7 +11,7 @@
     "console": "Console"
   },
   "hero": {
-    "eyebrow": "Nudge",
+    "eyebrow": "Nudge Family Calendar",
     "title": "The simplest way to keep your family in sync",
     "subtitle": "Calendar, tasks, assignments, and member profiles — built for families. Use the free web console to create and view tasks or manage members in your browser — no app download required.",
     "downloadAppStore": "Download on the App Store",

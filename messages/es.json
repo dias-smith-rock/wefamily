@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Nudge — Mantén sincronizada la agenda familiar",
+    "title": "Nudge Family Calendar — Mantén sincronizada la agenda familiar",
     "description": "Calendario y tareas familiares sincronizados en la web o la app — sin necesidad de descargar."
   },
   "nav": {
@@ -11,7 +11,7 @@
     "console": "Consola"
   },
   "hero": {
-    "eyebrow": "Nudge",
+    "eyebrow": "Nudge Family Calendar",
     "title": "La forma más sencilla de sincronizar a tu familia",
     "subtitle": "Calendario, tareas, asignaciones y perfiles de miembros — pensado para familias. Usa la consola web gratuita para crear y ver tareas o gestionar miembros en el navegador — sin descargar la app.",
     "downloadAppStore": "Descargar en el App Store",
